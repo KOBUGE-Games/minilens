@@ -1,6 +1,7 @@
 # Minilens
-Game is still being developed, please contribute.
 Free Puzzle Platform Game where you have to drop all Radioactive Barrels at Acid Lake and collect flowers etc.
+
+Game is still being developed, please contribute.
 
 Powered by Godot Engine
 ## Screenshot
