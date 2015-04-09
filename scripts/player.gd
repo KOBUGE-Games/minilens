@@ -94,11 +94,13 @@ func _fixed_process(delta):
 		#ask to move right
 		if ray_bottom.is_colliding() and move_right:
 			if Input.is_action_pressed("btn_right"):
+				get_node("Sprite").set_flip_h(false)
 				movement = 64
 				
 		#ask to move left
 		if ray_bottom.is_colliding() and move_left:
 			if Input.is_action_pressed("btn_left"):
+				get_node("Sprite").set_flip_h(true)
 				movement = -64
 				
 		#ask to climb
