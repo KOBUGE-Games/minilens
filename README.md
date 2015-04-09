@@ -1,3 +1,3 @@
 # minilens
 Free Puzzle Platform Game
-['Screenshot'](http://i.imgur.com/hkAJ24h.png)
+!['Screenshot'](http://i.imgur.com/hkAJ24h.png)
