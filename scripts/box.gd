@@ -48,6 +48,10 @@ func _ready():
 	#fix position
 	move(Vector2(0,-4))
 
+func destroy():
+	get_node("../../../level_holder").goal_take()
+	queue_free()
+
 func _fixed_process(delta):
 	if movement == 0:
 		var current_position = get_pos()/64
@@ -56,8 +60,7 @@ func _fixed_process(delta):
 		var check_overlap = tilemap.get_cell(current_position.x, current_position.y)
 		var check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 		if(check_top == TILE_ACID):
-			get_node("../../../level_holder").goal_take()
-			queue_free()
+			destroy()
 		if !ray_bottom.is_colliding() && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID:
 			move(Vector2(0,4))
 		else:

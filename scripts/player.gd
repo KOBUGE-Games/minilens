@@ -37,6 +37,8 @@ export var acid_animation_time = 1.0
 var move_up = 0
 var collider_name
 var acid_animation_pos = 0.0
+var place_bomb_was_pressed = false
+var bomb = preload("res://scenes/bomb.xml")
 
 func _ready():
 	ray_top = get_node("ray_top")
@@ -63,6 +65,9 @@ func level_load(var level_node):
 	tilemap = level_node.get_node("tilemap")
 	move(Vector2(0,-4))
 	set_fixed_process(true)
+
+func destroy():
+	get_node("../../level_holder").retry_level()
 
 func _fixed_process(delta):
 	acid_animation_pos = acid_animation_pos + delta
@@ -139,13 +144,22 @@ func _fixed_process(delta):
 			set_z(-1)
 			move(Vector2(0,1))
 			if(check_bottom == -1):
-				get_node("../../level_holder").retry_level()
+				destroy()
 			return
 
 		#fall
 		if move_down && check_overlap != TILE_LADDER:
 			move(Vector2(0,4))
 			return
+			
+		if(Input.is_action_pressed("place_bomb")):
+			if(!place_bomb_was_pressed):
+				var new_bomb = bomb.instance()
+				new_bomb.set_pos(get_pos() + Vector2(-32,0))
+				tilemap.get_parent().add_child(new_bomb)
+			place_bomb_was_pressed = true
+		else:
+			place_bomb_was_pressed = false
 	
 	if(1):
 		if movement > 0:
