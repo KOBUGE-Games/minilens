@@ -129,6 +129,8 @@ func _fixed_process(delta):
 		if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
 			set_z(-1)
 			move(Vector2(0,1))
+			if(check_bottom == -1):
+				get_node("../../level_holder").retry_level()
 			return
 		
 		#collect flower
