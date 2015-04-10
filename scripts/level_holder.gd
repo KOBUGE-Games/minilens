@@ -11,13 +11,14 @@ var goals_left = 0
 func load_level(var pack, var level):
 	current_level = level
 	current_pack = pack
-	goals_left = 0
 	level_scene = load(str("res://levels/", pack, "/level_", level, ".xml"))
 	for i in range(get_child_count()):
 		get_child(i).queue_free()
 	level_node = level_scene.instance()
+	goals_left = 0
 	add_child(level_node)
 	player.set_pos(level_node.get_node("start").get_pos() + Vector2(32,32))
+	player.set_z(0)
 	player.level_load(level_node)
 
 func retry_level():
