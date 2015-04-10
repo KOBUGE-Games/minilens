@@ -32,8 +32,10 @@ var move_down = false
 var tilemap
 var current_position
 export var TILE_LADDER = 1
+export var acid_animation_time = 1.0
 var move_up = 0
 var collider_name
+var acid_animation_pos = 0.0
 
 func _ready():
 	set_fixed_process(true)
@@ -60,7 +62,10 @@ func _ready():
 	move(Vector2(0,-4))
 	
 func _fixed_process(delta):
-	
+	acid_animation_pos = acid_animation_pos + delta
+	if(acid_animation_pos > acid_animation_time):
+		acid_animation_pos = acid_animation_pos - acid_animation_time
+	tilemap.get_tileset().tile_set_texture_offset(2, Vector2(-64*acid_animation_pos/acid_animation_time,0))
 	if movement == 0 and move_up == 0:
 		current_position = get_pos()/64
 		#allow to move right

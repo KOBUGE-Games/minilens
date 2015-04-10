@@ -24,6 +24,7 @@ var tilemap
 var movement = 0
 var move_right = false
 var move_left = false
+export var TILE_ACID = 2
 
 func _ready():
 	set_fixed_process(true)
@@ -54,9 +55,8 @@ func _fixed_process(delta):
 			collider_bottom = ""
 		else:
 			#sink
-			if(ray_bottom.is_colliding()):
-				collider_bottom = ray_bottom.get_collider().get_name()
-				if collider_bottom.substr(0,4) == "acid":
+			if(tilemap.get_cell(current_position.x, current_position.y + 1) == TILE_ACID):
+					set_z(-1)
 					move(Vector2(0,1))
 			#move left
 			if ray_check_left.is_colliding() and move_right:
