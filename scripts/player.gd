@@ -109,14 +109,14 @@ func _fixed_process(delta):
 				get_node("../../level_holder").goal_take()
 
 		#ask to move right
-		if !move_down and move_right:
+		if (!move_down || check_overlap == TILE_LADDER) and move_right:
 			if Input.is_action_pressed("btn_right"):
 				get_node("Sprite").set_flip_h(false)
 				movement = 64
 				return
 
 		#ask to move left
-		if !move_down and move_left:
+		if (!move_down || check_overlap == TILE_LADDER) and move_left:
 			if Input.is_action_pressed("btn_left"):
 				get_node("Sprite").set_flip_h(true)
 				movement = -64
@@ -129,7 +129,7 @@ func _fixed_process(delta):
 				return
 
 		#ask to lower
-		if check_bottom == TILE_LADDER || (check_overlap == TILE_LADDER && check_bottom == -1):
+		if check_bottom == TILE_LADDER || (check_overlap == TILE_LADDER && move_down):
 			if Input.is_action_pressed("btn_down"):
 				move_up = -64
 				return
