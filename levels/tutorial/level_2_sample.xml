@@ -2,13 +2,13 @@
 <resource_file type="PackedScene" subresource_count="6" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
 	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scenes/acid.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/player.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
-	<ext_resource path="res://scenes/acid.scn" type="PackedScene"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="65">
+			<string_array  len="64">
 				<string> "world" </string>
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
@@ -41,7 +41,6 @@
 				<string> "KinematicBody2D" </string>
 				<string> "box" </string>
 				<string> "box1" </string>
-				<string> "box2" </string>
 				<string> "acid" </string>
 				<string> "StaticBody2D" </string>
 				<string> "acid1" </string>
@@ -80,9 +79,9 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "node_count" </string>
-			<int> 23 </int>
+			<int> 22 </int>
 			<string> "variants" </string>
-			<array  len="51" shared="false">
+			<array  len="50" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -112,7 +111,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 1.227738 </real>
+							<real> 1 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -126,7 +125,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -13.0874, 111.131 </vector2>
+							<vector2> -244.584, -40.8224 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -240,9 +239,9 @@
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 2 </int>
 				<bool> False </bool>
-				<int_array  len="44"> 					131083, 0, 131084, 0, 131085, 1, 196621, 1, 262145, 0, 262146, 0, 262147, 0, 262148, 0, 262149, 0, 262150, 0, 262151, 0, 262152, 0, 262153, 0, 262154, 0, 262157, 1, 327693, 1, 393225, 0, 393229, 1, 458762, 0, 458763, 0, 458764, 0, 458765, 0 </int_array>
+				<int_array  len="28"> 					196611, 0, 196612, 0, 196613, 0, 196614, 0, 196615, 0, 196616, 0, 196617, 0, 196618, 0, 196619, 0, 196620, 0, 196621, 0, 196622, 0, 262145, 0, 262146, 0 </int_array>
 				<resource  resource_type="PackedScene" path="res://scenes/player.scn">  </resource>
-				<vector2> 704, 0 </vector2>
+				<vector2> 192, 128 </vector2>
 				<int> 9 </int>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
@@ -385,7 +384,7 @@
 					<string> "Script" </string>
 				</dictionary>
 				<resource  resource_type="PackedScene" path="res://scenes/box.scn">  </resource>
-				<vector2> 768, 384 </vector2>
+				<vector2> 64, 192 </vector2>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
@@ -526,8 +525,7 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
 				</dictionary>
-				<vector2> 192, 192 </vector2>
-				<vector2> 640, 192 </vector2>
+				<vector2> 896, 128 </vector2>
 				<resource  resource_type="PackedScene" path="res://scenes/acid.scn">  </resource>
 				<vector2> 0, 704 </vector2>
 				<dictionary  shared="false">
@@ -688,9 +686,9 @@
 				</dictionary>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="395"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 23, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 7, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 7, 22, 15, 23, 15, 24, 2, 25, 5, 26, 3, 27, 16, 0, 0, 0, 29, 28, 17, 4, 2, 0, 7, 18, 10, 19, 12, 20, 0, 0, 0, 29, 30, 21, 3, 2, 0, 7, 22, 12, 23, 0, 0, 0, 29, 31, 21, 3, 2, 0, 7, 24, 12, 23, 0, 0, 0, 29, 32, 21, 3, 2, 0, 7, 25, 12, 23, 0, 0, 0, 34, 33, 26, 3, 2, 0, 7, 27, 12, 28, 0, 0, 0, 34, 35, 26, 3, 2, 0, 7, 29, 12, 28, 0, 0, 0, 34, 36, 26, 3, 2, 0, 7, 30, 12, 28, 0, 0, 0, 34, 37, 26, 3, 2, 0, 7, 31, 12, 28, 0, 0, 0, 34, 38, 26, 3, 2, 0, 7, 32, 12, 28, 0, 0, 0, 34, 39, 26, 3, 2, 0, 7, 33, 12, 28, 0, 0, 0, 34, 40, 26, 3, 2, 0, 7, 34, 12, 28, 0, 0, 0, 34, 41, 26, 3, 2, 0, 7, 35, 12, 28, 0, 0, 0, 34, 42, 26, 3, 2, 0, 7, 36, 12, 28, 0, 0, 0, 34, 43, 26, 3, 2, 0, 7, 37, 12, 28, 0, 0, 0, 34, 44, 26, 3, 2, 0, 7, 38, 12, 28, 0, 0, 0, 34, 45, 26, 3, 2, 0, 7, 39, 12, 28, 0, 0, 0, 34, 46, 26, 3, 2, 0, 7, 40, 12, 28, 0, 0, 0, 34, 47, 26, 3, 2, 0, 7, 41, 12, 28, 0, 0, 0, 34, 48, 26, 3, 2, 0, 7, 42, 12, 28, 0, 0, 0, 34, 49, 26, 3, 2, 0, 7, 43, 12, 28, 0, 0, 0, 51, 50, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 44, 8, 5, 9, 6, 10, 45, 11, 1, 52, 46, 53, 1, 54, 47, 55, 15, 56, 15, 57, 3, 58, 3, 59, 7, 60, 48, 61, 15, 62, 49, 12, 50, 0 </int_array>
+			<int_array  len="382"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 23, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 7, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 7, 22, 15, 23, 15, 24, 2, 25, 5, 26, 3, 27, 16, 0, 0, 0, 29, 28, 17, 4, 2, 0, 7, 18, 10, 19, 12, 20, 0, 0, 0, 29, 30, 21, 3, 2, 0, 7, 22, 12, 23, 0, 0, 0, 29, 31, 21, 3, 2, 0, 7, 24, 12, 23, 0, 0, 0, 33, 32, 25, 3, 2, 0, 7, 26, 12, 27, 0, 0, 0, 33, 34, 25, 3, 2, 0, 7, 28, 12, 27, 0, 0, 0, 33, 35, 25, 3, 2, 0, 7, 29, 12, 27, 0, 0, 0, 33, 36, 25, 3, 2, 0, 7, 30, 12, 27, 0, 0, 0, 33, 37, 25, 3, 2, 0, 7, 31, 12, 27, 0, 0, 0, 33, 38, 25, 3, 2, 0, 7, 32, 12, 27, 0, 0, 0, 33, 39, 25, 3, 2, 0, 7, 33, 12, 27, 0, 0, 0, 33, 40, 25, 3, 2, 0, 7, 34, 12, 27, 0, 0, 0, 33, 41, 25, 3, 2, 0, 7, 35, 12, 27, 0, 0, 0, 33, 42, 25, 3, 2, 0, 7, 36, 12, 27, 0, 0, 0, 33, 43, 25, 3, 2, 0, 7, 37, 12, 27, 0, 0, 0, 33, 44, 25, 3, 2, 0, 7, 38, 12, 27, 0, 0, 0, 33, 45, 25, 3, 2, 0, 7, 39, 12, 27, 0, 0, 0, 33, 46, 25, 3, 2, 0, 7, 40, 12, 27, 0, 0, 0, 33, 47, 25, 3, 2, 0, 7, 41, 12, 27, 0, 0, 0, 33, 48, 25, 3, 2, 0, 7, 42, 12, 27, 0, 0, 0, 50, 49, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 43, 8, 5, 9, 6, 10, 44, 11, 1, 51, 45, 52, 1, 53, 46, 54, 15, 55, 15, 56, 3, 57, 3, 58, 7, 59, 47, 60, 15, 61, 48, 12, 49, 0 </int_array>
 			<string> "conns" </string>
-			<int_array  len="6"> 				1, 2, 64, 63, 2, 0 </int_array>
+			<int_array  len="6"> 				1, 2, 63, 62, 2, 0 </int_array>
 		</dictionary>
 
 	</main_resource>
