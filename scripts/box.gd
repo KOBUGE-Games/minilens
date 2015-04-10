@@ -25,6 +25,7 @@ var movement = 0
 var move_right = false
 var move_left = false
 export var TILE_ACID = 2
+export var TILE_LADDER = 1
 
 func _ready():
 	set_fixed_process(true)
@@ -50,12 +51,13 @@ func _fixed_process(delta):
 	if movement == 0:
 		var current_position = get_pos()/64
 		#fall
-		if !ray_bottom.is_colliding() && tilemap.get_cell(current_position.x, current_position.y + 1) == -1:
+		var check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
+		if !ray_bottom.is_colliding() && (check_bottom == -1 || check_bottom == TILE_LADDER):
 			move(Vector2(0,4))
 			collider_bottom = ""
 		else:
 			#sink
-			if(tilemap.get_cell(current_position.x, current_position.y + 1) == TILE_ACID):
+			if(tilemap.get_cell(current_position.x, current_position.y) == TILE_ACID || check_bottom == TILE_ACID):
 					set_z(-1)
 					move(Vector2(0,1))
 			
@@ -84,9 +86,9 @@ func _fixed_process(delta):
 			if ray_check_left.is_colliding() and move_right:
 				collider_left = ray_check_left.get_collider()
 				if collider_left.get_name() == "player" && !collider_left.move_down:
-					if Input.is_action_pressed("btn_right"):
+					if Input.is_action_pressed("btn_right") && collider_left.movement == 0:
 						movement = 64
-						collider_left.movement = collider_left.movement + 64
+						collider_left.movement = 64
 			else:
 				collider_left = ""
 				
@@ -94,9 +96,9 @@ func _fixed_process(delta):
 			if ray_check_right.is_colliding() and move_left:
 				collider_right = ray_check_right.get_collider()
 				if collider_right.get_name() == "player" && !collider_right.move_down:
-					if Input.is_action_pressed("btn_left"):
+					if Input.is_action_pressed("btn_left") && collider_right.movement == 0:
 						movement = -64
-						collider_right.movement = collider_right.movement - 64
+						collider_right.movement = -64
 			else:
 				collider_right = ""
 				

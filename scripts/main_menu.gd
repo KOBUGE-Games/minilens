@@ -25,4 +25,5 @@ func _fixed_process(delta):
 	if get_node("btn_play").is_pressed():
 		if run_once:
 			run_once = false
-			print(select_level.get_text())
+			var text = select_level.get_text()
+			get_node("/root/global").load_level("tutorial",text.substr(text.length()-5,1))

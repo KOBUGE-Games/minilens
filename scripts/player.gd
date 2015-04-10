@@ -32,6 +32,7 @@ var move_down = false
 var tilemap
 var current_position
 export var TILE_LADDER = 1
+export var TILE_ACID = 2
 export var acid_animation_time = 1.0
 var move_up = 0
 var collider_name
@@ -102,28 +103,39 @@ func _fixed_process(delta):
 			if Input.is_action_pressed("btn_right"):
 				get_node("Sprite").set_flip_h(false)
 				movement = 64
+				return
 				
 		#ask to move left
 		if !move_down and move_left:
 			if Input.is_action_pressed("btn_left"):
 				get_node("Sprite").set_flip_h(true)
 				movement = -64
+				return
 				
 		#ask to climb
 		if check_overlap == TILE_LADDER && check_top == -1 || check_top == TILE_LADDER:
 			if Input.is_action_pressed("btn_up"):
 				move_up = 64
+				return
 				
 		#ask to lower
-		if check_bottom == TILE_LADDER:
+		if check_bottom == TILE_LADDER || (check_overlap == TILE_LADDER && check_bottom == -1):
 			if Input.is_action_pressed("btn_down"):
 				move_up = -64
-
+				return
+				
+		#sink
+		if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
+			set_z(-1)
+			move(Vector2(0,1))
+			return
+			
 		#fall
-		if move_down:
+		if move_down && check_overlap != TILE_LADDER:
 			move(Vector2(0,4))
+			return
 	
-	else:
+	if(1):
 		if movement > 0:
 			get_node("Sprite").set_flip_h(false)
 			movement -= 4

@@ -79,10 +79,11 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 0 </int>
+							<int> 1 </int>
 							<string> "sources" </string>
-							<array  len="1" shared="false">
+							<array  len="2" shared="false">
 								<string> "res://scripts/main_menu.gd" </string>
+								<string> "res://scripts/global.gd" </string>
 							</array>
 						</dictionary>
 						<string> "2D" </string>
