@@ -14,7 +14,6 @@ func load_scene(var path):
 	
 func load_level(var pack, var level):
 	load_scene("res://scenes/main.xml")
-	print(level)
 	current_scene.get_node("level_holder").load_level(pack, level)
 	
 	

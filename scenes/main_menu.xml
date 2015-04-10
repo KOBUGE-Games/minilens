@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="4" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/main_menu_bg.png" type="Texture"></ext_resource>
-	<ext_resource path="res://scripts/main_menu.gd" type="Script"></ext_resource>
 	<ext_resource path="res://gfx/logo.png" type="Texture"></ext_resource>
-	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
+	<ext_resource path="res://scripts/main_menu.gd" type="Script"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="90">
+			<string_array  len="83">
 				<string> "Control" </string>
 				<string> "_import_path" </string>
 				<string> "visibility/visible" </string>
@@ -87,13 +86,6 @@
 				<string> "playback/speed" </string>
 				<string> "blend_times" </string>
 				<string> "autoplay" </string>
-				<string> "StreamPlayer" </string>
-				<string> "stream/stream" </string>
-				<string> "stream/play" </string>
-				<string> "stream/loop" </string>
-				<string> "stream/volume_db" </string>
-				<string> "stream/autoplay" </string>
-				<string> "stream/paused" </string>
 				<string> "_on_opt_pack_item_selected" </string>
 				<string> "item_selected" </string>
 				<string> "_on_btn_play_pressed" </string>
@@ -104,9 +96,9 @@
 			<string> "conn_count" </string>
 			<int> 2 </int>
 			<string> "node_count" </string>
-			<int> 10 </int>
+			<int> 9 </int>
 			<string> "variants" </string>
-			<array  len="44" shared="false">
+			<array  len="43" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -256,7 +248,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<real> 330 </real>
 				<real> 300 </real>
@@ -291,12 +283,11 @@
 				<int> -99 </int>
 				<resource  resource_type="Texture" path="res://gfx/main_menu_bg.png">  </resource>
 				<node_path> ".." </node_path>
-				<resource  resource_type="AudioStream" path="res://audio/main_menu.ogg">  </resource>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="514"> 				-1, -1, 0, 0, -1, 18, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 5, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 17, 8, 18, 9, 0, 0, 0, 20, 19, -1, 29, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 10, 22, 11, 6, 12, 7, 13, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 23, 6, 24, 6, 25, 6, 26, 6, 27, 14, 28, 15, 29, 6, 30, 6, 31, 16, 32, 17, 33, 18, 0, 0, 0, 20, 34, -1, 29, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 19, 22, 11, 6, 20, 7, 13, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 23, 6, 24, 6, 25, 6, 26, 6, 27, 14, 28, 15, 29, 6, 30, 6, 31, 16, 32, 17, 33, 18, 0, 0, 0, 36, 35, -1, 31, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 10, 22, 21, 6, 22, 7, 23, 8, 0, 9, 0, 10, 0, 11, 0, 12, 1, 13, 1, 14, 7, 16, 2, 37, 24, 38, 25, 39, 2, 40, 2, 41, 2, 42, 25, 43, 6, 44, 6, 27, 26, 31, 16, 45, 16, 46, 6, 47, 6, 48, 27, 0, 0, 0, 36, 49, -1, 31, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 19, 22, 21, 6, 28, 7, 23, 8, 0, 9, 0, 10, 0, 11, 0, 12, 1, 13, 1, 14, 7, 16, 2, 37, 24, 38, 25, 39, 2, 40, 2, 41, 2, 42, 25, 43, 6, 44, 6, 27, 29, 31, 16, 45, 16, 46, 6, 47, 6, 48, 27, 0, 0, 0, 51, 50, -1, 27, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 30, 22, 11, 6, 31, 7, 13, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 23, 6, 24, 6, 25, 6, 26, 6, 27, 32, 28, 15, 29, 6, 30, 6, 31, 3, 0, 0, 0, 53, 52, -1, 21, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 54, 33, 55, 25, 56, 34, 57, 16, 58, 1, 59, 35, 60, 1, 61, 36, 62, 6, 63, 6, 64, 3, 65, 3, 66, 16, 67, 37, 68, 6, 69, 38, 0, 0, 0, 53, 70, -1, 21, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 54, 39, 55, 25, 56, 34, 57, 40, 58, 1, 59, 41, 60, 1, 61, 36, 62, 6, 63, 6, 64, 3, 65, 3, 66, 16, 67, 37, 68, 6, 69, 38, 0, 7, 0, 71, 71, -1, 8, 1, 0, 72, 3, 73, 25, 74, 42, 75, 1, 76, 2, 77, 18, 78, 14, 0, 0, 0, 79, 79, -1, 7, 1, 0, 80, 43, 81, 6, 82, 1, 83, 25, 84, 1, 85, 6, 0 </int_array>
+			<int_array  len="493"> 				-1, -1, 0, 0, -1, 18, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 6, 4, 7, 5, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 17, 8, 18, 9, 0, 0, 0, 20, 19, -1, 29, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 10, 22, 11, 6, 12, 7, 13, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 23, 6, 24, 6, 25, 6, 26, 6, 27, 14, 28, 15, 29, 6, 30, 6, 31, 16, 32, 17, 33, 18, 0, 0, 0, 20, 34, -1, 29, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 19, 22, 11, 6, 20, 7, 13, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 23, 6, 24, 6, 25, 6, 26, 6, 27, 14, 28, 15, 29, 6, 30, 6, 31, 16, 32, 17, 33, 18, 0, 0, 0, 36, 35, -1, 31, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 10, 22, 21, 6, 22, 7, 23, 8, 0, 9, 0, 10, 0, 11, 0, 12, 1, 13, 1, 14, 7, 16, 2, 37, 24, 38, 25, 39, 2, 40, 2, 41, 2, 42, 25, 43, 6, 44, 6, 27, 26, 31, 16, 45, 16, 46, 6, 47, 6, 48, 27, 0, 0, 0, 36, 49, -1, 31, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 19, 22, 21, 6, 28, 7, 23, 8, 0, 9, 0, 10, 0, 11, 0, 12, 1, 13, 1, 14, 7, 16, 2, 37, 24, 38, 25, 39, 2, 40, 2, 41, 2, 42, 25, 43, 6, 44, 6, 27, 29, 31, 16, 45, 16, 46, 6, 47, 6, 48, 27, 0, 0, 0, 51, 50, -1, 27, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 21, 30, 22, 11, 6, 31, 7, 13, 8, 0, 9, 0, 10, 0, 11, 0, 12, 6, 13, 1, 14, 7, 15, 7, 16, 2, 23, 6, 24, 6, 25, 6, 26, 6, 27, 32, 28, 15, 29, 6, 30, 6, 31, 3, 0, 0, 0, 53, 52, -1, 21, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 54, 33, 55, 25, 56, 34, 57, 16, 58, 1, 59, 35, 60, 1, 61, 36, 62, 6, 63, 6, 64, 3, 65, 3, 66, 16, 67, 37, 68, 6, 69, 38, 0, 0, 0, 53, 70, -1, 21, 1, 0, 2, 1, 3, 2, 4, 2, 5, 3, 54, 39, 55, 25, 56, 34, 57, 40, 58, 1, 59, 41, 60, 1, 61, 36, 62, 6, 63, 6, 64, 3, 65, 3, 66, 16, 67, 37, 68, 6, 69, 38, 0, 7, 0, 71, 71, -1, 8, 1, 0, 72, 3, 73, 25, 74, 42, 75, 1, 76, 2, 77, 18, 78, 14, 0 </int_array>
 			<string> "conns" </string>
-			<int_array  len="12"> 				1, 0, 87, 86, 2, 0, 5, 0, 89, 88, 2, 0 </int_array>
+			<int_array  len="12"> 				1, 0, 80, 79, 2, 0, 5, 0, 82, 81, 2, 0 </int_array>
 		</dictionary>
 
 	</main_resource>
