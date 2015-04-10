@@ -119,10 +119,3 @@ func _fixed_process(delta):
 			movement += 4
 			move(Vector2(-4,0))
 
-
-
-
-
-
-
-

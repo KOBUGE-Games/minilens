@@ -108,9 +108,9 @@ func _fixed_process(delta):
 		check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 
 		#collect flower
-		if ray_overlap.is_colliding():
+		if ray_overlap.get_collider():
 			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
-				ray_overlap.get_collider().free()
+				ray_overlap.get_collider().queue_free()
 				get_node("../../level_holder").goal_take()
 
 		#ask to move right

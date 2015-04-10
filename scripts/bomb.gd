@@ -5,18 +5,17 @@ var ray_check_top
 var ray_check_right
 var ray_check_bottom
 var ray_check_left
+var ray_overlap
 
-var collider_top = ""
-var collider_right = ""
-var collider_bottom = ""
-var collider_left = ""
 
 var check_top = ""
 var check_right = ""
 var check_bottom = ""
 var check_left = ""
+var check_overlap = ""
 
 export var seconds_left_to_explode = 3.0
+var dangerous = true
 
 func _ready():
 	set_fixed_process(true)
@@ -24,6 +23,7 @@ func _ready():
 	ray_check_right = get_node("ray_check_right")
 	ray_check_bottom = get_node("ray_check_bottom")
 	ray_check_left = get_node("ray_check_left")
+	ray_overlap = get_node("ray_overlap")
 	
 	#fix position
 	move(Vector2(0,-4))
@@ -51,13 +51,16 @@ func _fixed_process(delta):
 			check_bottom = ray_check_bottom.get_collider().get_name()
 			if check_bottom.substr(0,3) == "box" or check_bottom == "player":
 				ray_check_bottom.get_collider().destroy()
-		queue_free()
+		#check overlap
+		if ray_overlap.is_colliding():
+			check_overlap = ray_overlap.get_collider().get_name()
+			if check_overlap.substr(0,3) == "box" or check_overlap == "player":
+				ray_overlap.get_collider().destroy()
+		get_node("AnimationPlayer").play("Explode")
+		set_fixed_process(false)
+		dangerous = false
 		
 
-
-
-
-
-
-
-
+func _on_AnimationPlayer_finished():
+	if(!dangerous):
+		queue_free()
