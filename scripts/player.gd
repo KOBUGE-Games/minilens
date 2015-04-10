@@ -87,6 +87,7 @@ func _fixed_process(delta):
 				move_left = false
 		#check overlap
 		check_overlap = tilemap.get_cell(current_position.x, current_position.y)
+
 		#check down
 		check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
 		move_down = (check_bottom == -1)
@@ -129,6 +130,11 @@ func _fixed_process(delta):
 			set_z(-1)
 			move(Vector2(0,1))
 			return
+		
+		#collect flower
+		if ray_overlap.is_colliding():
+			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
+				ray_overlap.get_collider().set_pos(Vector2(0,0))
 			
 		#fall
 		if move_down && check_overlap != TILE_LADDER:
