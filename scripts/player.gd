@@ -135,6 +135,7 @@ func _fixed_process(delta):
 		if ray_overlap.is_colliding():
 			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
 				ray_overlap.get_collider().set_pos(Vector2(0,0))
+				
 			
 		#fall
 		if move_down && check_overlap != TILE_LADDER:
