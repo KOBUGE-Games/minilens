@@ -70,11 +70,13 @@ func destroy():
 	get_node("../../level_holder").retry_level()
 
 func _fixed_process(delta):
+	get_node("AnimatedSprite/AnimationPlayer").stop()
 	acid_animation_pos = acid_animation_pos + delta
 	if(acid_animation_pos > acid_animation_time):
 		acid_animation_pos = acid_animation_pos - acid_animation_time
 	tilemap.get_tileset().tile_set_texture_offset(2, Vector2(-64*acid_animation_pos/acid_animation_time,0))
 	if movement == 0 and move_up == 0:
+		
 		current_position = (get_pos())/64
 		#allow to move right
 		check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
@@ -116,14 +118,14 @@ func _fixed_process(delta):
 		#ask to move right
 		if (!move_down || check_overlap == TILE_LADDER) and move_right:
 			if Input.is_action_pressed("btn_right"):
-				get_node("Sprite").set_flip_h(false)
+				get_node("AnimatedSprite").set_flip_h(false)
 				movement = 64
 				return
 
 		#ask to move left
 		if (!move_down || check_overlap == TILE_LADDER) and move_left:
 			if Input.is_action_pressed("btn_left"):
-				get_node("Sprite").set_flip_h(true)
+				get_node("AnimatedSprite").set_flip_h(true)
 				movement = -64
 				return
 
@@ -150,6 +152,7 @@ func _fixed_process(delta):
 		#fall
 		if move_down && check_overlap != TILE_LADDER:
 			move(Vector2(0,4))
+			get_node("AnimatedSprite/AnimationPlayer").play("fall")
 			return
 			
 		if(Input.is_action_pressed("place_bomb")):
@@ -162,12 +165,11 @@ func _fixed_process(delta):
 			place_bomb_was_pressed = false
 	
 	if(1):
+		get_node("AnimatedSprite/AnimationPlayer").play("walking")
 		if movement > 0:
-			get_node("Sprite").set_flip_h(false)
 			movement -= 4
 			move(Vector2(4,0))
 		elif movement < 0:
-			get_node("Sprite").set_flip_h(true)
 			movement += 4
 			move(Vector2(-4,0))
 		if move_up > 0:
@@ -176,4 +178,3 @@ func _fixed_process(delta):
 		elif move_up < 0:
 			move_up += 4
 			move(Vector2(0,4))
-
