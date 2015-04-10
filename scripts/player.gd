@@ -38,8 +38,6 @@ var collider_name
 var acid_animation_pos = 0.0
 
 func _ready():
-	set_fixed_process(true)
-	tilemap = get_node("../tilemap")
 	ray_top = get_node("ray_top")
 	ray_right = get_node("ray_right")
 	ray_bottom = get_node("ray_bottom")
@@ -59,15 +57,19 @@ func _ready():
 	ray_overlap.add_exception(self)
 	
 	#fix position
+
+func level_load(var level_node):
+	tilemap = level_node.get_node("tilemap")
 	move(Vector2(0,-4))
-	
+	set_fixed_process(true)
+
 func _fixed_process(delta):
 	acid_animation_pos = acid_animation_pos + delta
 	if(acid_animation_pos > acid_animation_time):
 		acid_animation_pos = acid_animation_pos - acid_animation_time
 	tilemap.get_tileset().tile_set_texture_offset(2, Vector2(-64*acid_animation_pos/acid_animation_time,0))
 	if movement == 0 and move_up == 0:
-		current_position = get_pos()/64
+		current_position = (get_pos())/64
 		#allow to move right
 		check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
 		move_right = (check_right == -1 || check_right == TILE_LADDER)
@@ -92,7 +94,7 @@ func _fixed_process(delta):
 			if collider_name.substr(0,3) == "box":
 				move_down = false
 		move_down = move_down || int(get_pos().y)%64 != 0
-		#check down
+		#check up
 		check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 	
 		#ask to move right

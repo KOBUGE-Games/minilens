@@ -58,26 +58,7 @@ func _fixed_process(delta):
 			if(tilemap.get_cell(current_position.x, current_position.y + 1) == TILE_ACID):
 					set_z(-1)
 					move(Vector2(0,1))
-			#move left
-			if ray_check_left.is_colliding() and move_right:
-				collider_left = ray_check_left.get_collider().get_name()
-				if collider_left == "player":
-					if Input.is_action_pressed("btn_right"):
-						movement = 64
-						ray_check_left.get_collider().movement = ray_check_left.get_collider().movement + 64
-			else:
-				collider_left = ""
-				
-			#move right
-			if ray_check_right.is_colliding() and move_left:
-				collider_right = ray_check_right.get_collider().get_name()
-				if collider_right == "player":
-					if Input.is_action_pressed("btn_left"):
-						movement = -64
-						ray_check_right.get_collider().movement = ray_check_right.get_collider().movement - 64
-			else:
-				collider_right = ""
-				
+			
 			#check left
 			if ray_check_left.is_colliding():
 				check_left = ray_check_left.get_collider().get_name()
@@ -99,8 +80,26 @@ func _fixed_process(delta):
 			else:
 				check_right == ""
 				move_right = true
+			#move left
+			if ray_check_left.is_colliding() and move_right:
+				collider_left = ray_check_left.get_collider()
+				if collider_left.get_name() == "player" && !collider_left.move_down:
+					if Input.is_action_pressed("btn_right"):
+						movement = 64
+						collider_left.movement = collider_left.movement + 64
+			else:
+				collider_left = ""
 				
-			#check bottom
+			#move right
+			if ray_check_right.is_colliding() and move_left:
+				collider_right = ray_check_right.get_collider()
+				if collider_right.get_name() == "player" && !collider_right.move_down:
+					if Input.is_action_pressed("btn_left"):
+						movement = -64
+						collider_right.movement = collider_right.movement - 64
+			else:
+				collider_right = ""
+				
 		
 	else:
 		if movement > 0:
