@@ -42,6 +42,6 @@ func _on_btn_play_pressed():
 
 func _fixed_process(delta):
 	set_fixed_process(false)
-	get_node("/root/global").load_level("tutorial",select_level.get_text())
+	get_node("/root/global").load_level(select_pack.get_text(),select_level.get_text())
 	
 
