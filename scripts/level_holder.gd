@@ -6,12 +6,12 @@ var current_pack
 var current_level
 var player
 var level_node
-var boxes_left = 0
+var goals_left = 0
 
 func load_level(var pack, var level):
 	current_level = level
 	current_pack = pack
-	boxes_left = 0
+	goals_left = 0
 	level_scene = load(str("res://levels/", pack, "/level_", level, ".xml"))
 	for i in range(get_child_count()):
 		get_child(i).queue_free()
@@ -23,14 +23,13 @@ func load_level(var pack, var level):
 func retry_level():
 	load_level(current_pack, current_level)
 
-func box_fell():
-	boxes_left = boxes_left - 1
-	print(boxes_left)
-	if(boxes_left == 0):
+func goal_take():
+	goals_left = goals_left - 1
+	if(goals_left == 0):
 		load_level(current_pack, int(current_level) + 1)
 	
-func box_add():
-	boxes_left = boxes_left + 1
+func goal_add():
+	goals_left = goals_left + 1
 
 func _input(event):
 	if(event.is_action("retry") && event.is_pressed() && !event.is_echo()):

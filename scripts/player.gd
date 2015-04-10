@@ -78,6 +78,7 @@ func _fixed_process(delta):
 			var collider_name = ray_check_right.get_collider().get_name()
 			if collider_name.substr(0,3) == "box":
 				move_right = false
+
 		#allow to move left
 		check_left = tilemap.get_cell(current_position.x - 1, current_position.y)
 		move_left = (check_left == -1 || check_left == TILE_LADDER)
@@ -85,6 +86,7 @@ func _fixed_process(delta):
 			var collider_name = ray_check_left.get_collider().get_name()
 			if collider_name.substr(0,3) == "box":
 				move_left = false
+
 		#check overlap
 		check_overlap = tilemap.get_cell(current_position.x, current_position.y)
 
@@ -96,35 +98,42 @@ func _fixed_process(delta):
 			if collider_name.substr(0,3) == "box":
 				move_down = false
 		move_down = move_down || int(get_pos().y)%64 != 0
+
 		#check up
 		check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
-	
+
+		#collect flower
+		if ray_overlap.is_colliding():
+			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
+				ray_overlap.get_collider().free()
+				get_node("../../level_holder").goal_take()
+
 		#ask to move right
 		if !move_down and move_right:
 			if Input.is_action_pressed("btn_right"):
 				get_node("Sprite").set_flip_h(false)
 				movement = 64
 				return
-				
+
 		#ask to move left
 		if !move_down and move_left:
 			if Input.is_action_pressed("btn_left"):
 				get_node("Sprite").set_flip_h(true)
 				movement = -64
 				return
-				
+
 		#ask to climb
 		if check_overlap == TILE_LADDER && check_top == -1 || check_top == TILE_LADDER:
 			if Input.is_action_pressed("btn_up"):
 				move_up = 64
 				return
-				
+
 		#ask to lower
 		if check_bottom == TILE_LADDER || (check_overlap == TILE_LADDER && check_bottom == -1):
 			if Input.is_action_pressed("btn_down"):
 				move_up = -64
 				return
-				
+
 		#sink
 		if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
 			set_z(-1)
@@ -132,13 +141,7 @@ func _fixed_process(delta):
 			if(check_bottom == -1):
 				get_node("../../level_holder").retry_level()
 			return
-		
-		#collect flower
-		if ray_overlap.is_colliding():
-			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
-				ray_overlap.get_collider().set_pos(Vector2(0,0))
-				
-			
+
 		#fall
 		if move_down && check_overlap != TILE_LADDER:
 			move(Vector2(0,4))

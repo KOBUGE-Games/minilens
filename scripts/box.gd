@@ -28,7 +28,7 @@ export var TILE_ACID = 2
 export var TILE_LADDER = 1
 
 func _ready():
-	get_node("../../../level_holder").box_add()
+	get_node("../../../level_holder").goal_add()
 	set_fixed_process(true)
 	tilemap = get_node("../tilemap")
 	ray_top = get_node("ray_top")
@@ -56,7 +56,7 @@ func _fixed_process(delta):
 		var check_overlap = tilemap.get_cell(current_position.x, current_position.y)
 		var check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 		if(check_top == TILE_ACID):
-			get_node("../../../level_holder").box_fell()
+			get_node("../../../level_holder").goal_take()
 			queue_free()
 		if !ray_bottom.is_colliding() && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID:
 			move(Vector2(0,4))
