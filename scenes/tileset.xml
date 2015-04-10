@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/ladderMid.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/grassMid.png" type="Texture"></ext_resource>
+<resource_file type="PackedScene" subresource_count="8" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://gfx/center.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/mid.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/left.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/acid_anim.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/ladderMid.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/right.png" type="Texture"></ext_resource>
 	<resource type="Animation" path="local://1">
 		<string name="resource/name"> "default" </string>
 		<real name="length"> 1.5 </real>
@@ -29,7 +32,7 @@
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="36">
+			<string_array  len="39">
 				<string> "Tileset" </string>
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
@@ -66,15 +69,18 @@
 				<string> "playback/speed" </string>
 				<string> "blend_times" </string>
 				<string> "autoplay" </string>
+				<string> "Right" </string>
+				<string> "Left" </string>
+				<string> "Center" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 5 </int>
+			<int> 8 </int>
 			<string> "variants" </string>
-			<array  len="23" shared="false">
+			<array  len="29" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -215,7 +221,7 @@
 					<string> "2D" </string>
 				</dictionary>
 				<vector2> 32, 32 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/grassMid.png">  </resource>
+				<resource  resource_type="Texture" path="res://gfx/mid.png">  </resource>
 				<bool> False </bool>
 				<color> 1, 1, 1, 1 </color>
 				<rect2> 0, 0, 0, 0 </rect2>
@@ -229,9 +235,15 @@
 				<array  len="0" shared="false">
 				</array>
 				<string> "default" </string>
+				<vector2> 160, 160 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/right.png">  </resource>
+				<vector2> 288, 32 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/left.png">  </resource>
+				<vector2> 288, 160 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/center.png">  </resource>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="201"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 10, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 26, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 14, 8, 5, 9, 6, 10, 7, 11, 1, 15, 15, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 14, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 16, 8, 5, 9, 6, 10, 7, 11, 1, 15, 17, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 1, 25, 18, 0, 3, 0, 27, 27, -1, 9, 2, 0, 28, 3, 29, 5, 30, 19, 31, 20, 32, 1, 33, 2, 34, 21, 35, 22, 0 </int_array>
+			<int_array  len="348"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 10, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 26, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 14, 8, 5, 9, 6, 10, 7, 11, 1, 15, 15, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 14, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 16, 8, 5, 9, 6, 10, 7, 11, 1, 15, 17, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 1, 25, 18, 0, 3, 0, 27, 27, -1, 9, 2, 0, 28, 3, 29, 5, 30, 19, 31, 20, 32, 1, 33, 2, 34, 21, 35, 22, 0, 0, 0, 14, 36, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 23, 8, 5, 9, 6, 10, 7, 11, 1, 15, 24, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 37, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 25, 8, 5, 9, 6, 10, 7, 11, 1, 15, 26, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 38, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 27, 8, 5, 9, 6, 10, 7, 11, 1, 15, 28, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>

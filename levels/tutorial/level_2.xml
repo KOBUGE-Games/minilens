@@ -95,7 +95,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 1.227737 </real>
+							<real> 0.902499 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -109,7 +109,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -49.4681, -22.0965 </vector2>
+							<vector2> -37.0807, -152.716 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -223,7 +223,7 @@
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 2 </int>
 				<bool> False </bool>
-				<int_array  len="138"> 					196612, 0, 196613, 0, 196614, 0, 196615, 0, 196616, 0, 196617, 1, 196618, 0, 196619, 1, 196620, 0, 196621, 1, 262145, 1, 262146, 0, 262153, 1, 262157, 1, 327681, 1, 327689, 1, 327690, 0, 327691, 0, 327692, 0, 327693, 1, 393217, 1, 393225, 1, 393229, 1, 458753, 0, 458754, 0, 458755, 0, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 0, 458764, 0, 458765, 0, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 786432, 2, 786433, 2, 786434, 2, 786435, 2, 786436, 2, 786437, 2, 786438, 2, 786439, 2, 786440, 2, 786441, 2, 786442, 2, 786443, 2, 786444, 2, 786445, 2, 786446, 2, 786447, 2, 786448, 2 </int_array>
+				<int_array  len="136"> 					196612, 4, 196613, 0, 196614, 0, 196615, 0, 196616, 3, 196617, 1, 196618, 0, 196619, 1, 196620, 0, 196621, 1, 262145, 1, 262146, 0, 262153, 1, 262157, 1, 327681, 1, 327689, 1, 327690, 4, 327691, 0, 327692, 3, 327693, 1, 393217, 1, 393225, 1, 458753, 4, 458754, 0, 458755, 0, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 3, 458764, 4, 458765, 3, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 786432, 2, 786433, 2, 786434, 2, 786435, 2, 786436, 2, 786437, 2, 786438, 2, 786439, 2, 786440, 2, 786441, 2, 786442, 2, 786443, 2, 786444, 2, 786445, 2, 786446, 2, 786447, 2, 786448, 2 </int_array>
 				<resource  resource_type="PackedScene" path="res://scenes/flower.xml">  </resource>
 				<vector2> 768, 384 </vector2>
 				<dictionary  shared="false">
@@ -247,16 +247,16 @@
 							<bool> False </bool>
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
+							<string> "snap_step" </string>
+							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
 							<string> "zoom" </string>
 							<real> 2.78951 </real>
-							<string> "snap_step" </string>
-							<vector2> 64, 64 </vector2>
-							<string> "snap_rotation_offset" </string>
-							<real> 0 </real>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
+							<string> "snap_rotation_offset" </string>
+							<real> 0 </real>
 							<string> "snap_show_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -268,6 +268,10 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
+							<string> "fov" </string>
+							<real> 45 </real>
+							<string> "zfar" </string>
+							<real> 500 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -335,28 +339,24 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
-							<string> "zfar" </string>
-							<real> 500 </real>
 							<string> "deflight_rot_y" </string>
 							<real> 0.628319 </real>
-							<string> "fov" </string>
-							<real> 45 </real>
-							<string> "default_light" </string>
-							<bool> True </bool>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "znear" </string>
-							<real> 0.1 </real>
 							<string> "show_origin" </string>
 							<bool> True </bool>
-							<string> "deflight_rot_x" </string>
-							<real> 0.942478 </real>
+							<string> "znear" </string>
+							<real> 0.1 </real>
 							<string> "default_srgb" </string>
 							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -389,16 +389,16 @@
 							<bool> False </bool>
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
+							<string> "snap_step" </string>
+							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
 							<string> "zoom" </string>
 							<real> 1 </real>
-							<string> "snap_step" </string>
-							<vector2> 64, 64 </vector2>
-							<string> "snap_grid" </string>
-							<bool> True </bool>
 							<string> "snap_rotation_offset" </string>
 							<real> 0 </real>
+							<string> "snap_grid" </string>
+							<bool> True </bool>
 							<string> "snap_show_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -410,6 +410,10 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
+							<string> "fov" </string>
+							<real> 45 </real>
+							<string> "zfar" </string>
+							<real> 500 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -477,28 +481,24 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
-							<string> "zfar" </string>
-							<real> 500 </real>
 							<string> "deflight_rot_y" </string>
 							<real> 0.628319 </real>
-							<string> "fov" </string>
-							<real> 45 </real>
-							<string> "viewport_mode" </string>
-							<int> 1 </int>
 							<string> "default_light" </string>
 							<bool> True </bool>
+							<string> "viewport_mode" </string>
+							<int> 1 </int>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "show_origin" </string>
-							<bool> True </bool>
 							<string> "znear" </string>
 							<real> 0.1 </real>
-							<string> "default_srgb" </string>
-							<bool> False </bool>
+							<string> "show_origin" </string>
+							<bool> True </bool>
 							<string> "deflight_rot_x" </string>
 							<real> 0.942478 </real>
+							<string> "default_srgb" </string>
+							<bool> False </bool>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
