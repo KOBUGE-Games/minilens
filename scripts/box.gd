@@ -70,9 +70,11 @@ func _fixed_process(delta):
 				move(Vector2(0,1))
 			
 			#check left
-			if ray_check_left.is_colliding():
+			if(tilemap.get_cell(current_position.x - 1, current_position.y) == 0):
+				move_left = false
+			elif ray_check_left.is_colliding():
 				check_left = ray_check_left.get_collider().get_name()
-				if tilemap.get_cell(current_position.x - 1, current_position.y) == 0 or check_left.substr(0,3) == "box":#!!!
+				if check_left.substr(0,3) == "box":#!!!
 					move_left = false
 				else:
 					move_left = true
@@ -81,9 +83,11 @@ func _fixed_process(delta):
 				move_left = true
 				
 			#check right
-			if ray_check_right.is_colliding():
+			if(tilemap.get_cell(current_position.x + 1, current_position.y) == 0):
+				move_right = false
+			elif ray_check_right.is_colliding():
 				check_right = ray_check_right.get_collider().get_name()
-				if tilemap.get_cell(current_position.x + 1, current_position.y) == 0 or check_right.substr(0,3) == "box":
+				if check_right.substr(0,3) == "box":
 					move_right = false
 				else:
 					move_right = true
