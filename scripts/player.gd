@@ -87,6 +87,8 @@ func _fixed_process(delta):
 			if collider_name.substr(0,3) == "box":
 				move_down = false
 		move_down = move_down || int(get_pos().y)%64 != 0
+		#check down
+		check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 	
 		#ask to move right
 		if !move_down and move_right:
@@ -101,7 +103,7 @@ func _fixed_process(delta):
 				movement = -64
 				
 		#ask to climb
-		if check_overlap == TILE_LADDER:
+		if check_overlap == TILE_LADDER && check_top == -1 || check_top == TILE_LADDER:
 			if Input.is_action_pressed("btn_up"):
 				move_up = 64
 				
