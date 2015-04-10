@@ -1,5 +1,5 @@
-extends KinematicBody2D
 
+extends KinematicBody2D
 var ray_top
 var ray_right
 var ray_bottom
@@ -86,6 +86,7 @@ func _fixed_process(delta):
 			var collider_name = ray_check_bottom.get_collider().get_name()
 			if collider_name.substr(0,3) == "box":
 				move_down = false
+		move_down = move_down || int(get_pos().y)%64 != 0
 	
 		#ask to move right
 		if !move_down and move_right:
@@ -110,7 +111,7 @@ func _fixed_process(delta):
 				move_up = -64
 
 		#fall
-		if move_down || int(get_pos().y)%64 > 0:
+		if move_down:
 			move(Vector2(0,4))
 	
 	else:
