@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="6" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/level_select_rect.png" type="Texture"></ext_resource>
 	<ext_resource path="res://scenes/level_select_btn.gd" type="Script"></ext_resource>
 	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
+	<ext_resource path="res://gfx/locked.png" type="Texture"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 50, 50 </vector2>
@@ -11,7 +12,7 @@
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="73">
+			<string_array  len="74">
 				<string> "level_select" </string>
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
@@ -83,6 +84,7 @@
 				<string> "CollisionShape2D" </string>
 				<string> "shape" </string>
 				<string> "trigger" </string>
+				<string> "lock" </string>
 				<string> "_on_Clickable_input_event" </string>
 				<string> "input_event" </string>
 			</string_array>
@@ -91,9 +93,9 @@
 			<string> "conn_count" </string>
 			<int> 1 </int>
 			<string> "node_count" </string>
-			<int> 5 </int>
+			<int> 6 </int>
 			<string> "variants" </string>
-			<array  len="27" shared="false">
+			<array  len="29" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -122,7 +124,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 3.424787 </real>
+							<real> 7.022685 </real>
 							<string> "snap_step" </string>
 							<vector2> 10, 10 </vector2>
 							<string> "snap_relative" </string>
@@ -136,7 +138,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -191.774, -109.39 </vector2>
+							<vector2> -124.786, -64.1739 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -260,11 +262,13 @@
 				<resource  resource_type="Texture" path="res://gfx/level_select_rect.png">  </resource>
 				<color> 1, 1, 1, 1 </color>
 				<rect2> 0, 0, 0, 0 </rect2>
+				<real> 0.5 </real>
+				<resource  resource_type="Texture" path="res://gfx/locked.png">  </resource>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="233"> 				-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 9, 0, 0, 0, 14, 14, -1, 32, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 15, 10, 16, 10, 17, 11, 18, 11, 19, 0, 20, 0, 21, 0, 22, 0, 23, 1, 24, 1, 25, 12, 26, 2, 27, 13, 28, 14, 29, 5, 30, 2, 31, 2, 32, 15, 33, 5, 34, 16, 35, 16, 36, 17, 37, 3, 38, 3, 39, 1, 40, 16, 41, 18, 0, 0, 0, 43, 42, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 44, 1, 45, 3, 46, 19, 47, 20, 48, 16, 49, 16, 50, 21, 51, 22, 52, 23, 53, 2, 54, 1, 55, 1, 0, 2, 0, 56, 56, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 57, 24, 58, 1, 59, 4, 60, 16, 61, 16, 62, 3, 63, 3, 64, 7, 65, 25, 66, 16, 67, 26, 0, 2, 0, 68, 68, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 69, 19, 70, 16, 0 </int_array>
+			<int_array  len="282"> 				-1, -1, 1, 0, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 9, 0, 0, 0, 14, 14, -1, 32, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 15, 10, 16, 10, 17, 11, 18, 11, 19, 0, 20, 0, 21, 0, 22, 0, 23, 1, 24, 1, 25, 12, 26, 2, 27, 13, 28, 14, 29, 5, 30, 2, 31, 2, 32, 15, 33, 5, 34, 16, 35, 16, 36, 17, 37, 3, 38, 3, 39, 1, 40, 16, 41, 18, 0, 0, 0, 43, 42, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 44, 1, 45, 3, 46, 19, 47, 20, 48, 16, 49, 16, 50, 21, 51, 22, 52, 23, 53, 2, 54, 1, 55, 1, 0, 2, 0, 56, 56, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 57, 24, 58, 1, 59, 4, 60, 16, 61, 16, 62, 3, 63, 3, 64, 7, 65, 25, 66, 16, 67, 26, 0, 2, 0, 68, 68, -1, 12, 2, 0, 3, 16, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 69, 19, 70, 16, 0, 0, 0, 56, 71, -1, 21, 2, 0, 3, 16, 4, 27, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 57, 28, 58, 1, 59, 4, 60, 16, 61, 16, 62, 3, 63, 3, 64, 7, 65, 25, 66, 16, 67, 26, 0 </int_array>
 			<string> "conns" </string>
-			<int_array  len="6"> 				2, 0, 72, 71, 2, 0 </int_array>
+			<int_array  len="6"> 				2, 0, 73, 72, 2, 0 </int_array>
 		</dictionary>
 
 	</main_resource>
