@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="7" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://scenes/bomb_pickup.xml" type="PackedScene"></ext_resource>
-	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
 	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
-	<ext_resource path="res://scenes/flower.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
+	<ext_resource path="res://scenes/bomb_pickup.xml" type="PackedScene"></ext_resource>
+	<ext_resource path="res://scenes/flower.xml" type="PackedScene"></ext_resource>
+	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
 	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="64">
+			<string_array  len="69">
 				<string> "level" </string>
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
@@ -73,16 +73,21 @@
 				<string> "StaticBody2D" </string>
 				<string> "flower" </string>
 				<string> "box1" </string>
+				<string> "box2" </string>
 				<string> "box3" </string>
+				<string> "bomb_pickup1" </string>
+				<string> "flower1" </string>
+				<string> "flower2" </string>
+				<string> "flower3" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 13 </int>
+			<int> 18 </int>
 			<string> "variants" </string>
-			<array  len="42" shared="false">
+			<array  len="47" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -127,7 +132,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -418.069, -117.21 </vector2>
+							<vector2> -45.5008, -296.363 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -241,8 +246,8 @@
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 2 </int>
 				<bool> False </bool>
-				<int_array  len="100"> 					131078, 4, 131079, 0, 131080, 3, 327688, 4, 327689, 0, 327690, 3, 393222, 4, 393223, 3, 524292, 4, 524293, 3, 524294, 1, 524299, 4, 524300, 3, 589830, 1, 589837, 4, 589838, 3, 655366, 1, 720902, 1, 786438, 1, 786440, 4, 786441, 0, 786442, 0, 786443, 3, 851974, 1, 917510, 1, 983046, 4, 983047, 0, 983048, 3, 983050, 4, 983051, 0, 983052, 3, 1048585, 0, 1179647, 2, 1114112, 2, 1114113, 2, 1114114, 2, 1114115, 2, 1114116, 2, 1114117, 2, 1114118, 2, 1114119, 2, 1114120, 2, 1114121, 2, 1114122, 2, 1114123, 2, 1114124, 2, 1114125, 2, 1114126, 2, 1114127, 2, 1114128, 2 </int_array>
-				<vector2> 448, 64 </vector2>
+				<int_array  len="118"> 					262150, 1, 262151, 4, 262152, 0, 262153, 0, 262154, 0, 262155, 0, 262156, 0, 262157, 0, 262158, 0, 262159, 3, 262160, 1, 327686, 1, 327696, 1, 393222, 1, 393232, 1, 458758, 1, 458759, 4, 458760, 0, 458761, 3, 458763, 4, 458764, 3, 458766, 4, 458767, 0, 458768, 0, 458769, 0, 458770, 0, 458771, 3, 524292, 4, 524293, 0, 524294, 3, 524298, 0, 524301, 0, 589825, 4, 589826, 0, 589827, 3, 720895, 2, 655360, 2, 655361, 2, 655362, 2, 655363, 2, 655364, 2, 655365, 2, 655366, 2, 655367, 2, 655368, 2, 655369, 2, 655370, 2, 655371, 2, 655372, 2, 655373, 2, 655374, 2, 655375, 2, 655376, 2, 655377, 2, 655378, 2, 655379, 2, 655380, 2, 655381, 2, 655382, 2 </int_array>
+				<vector2> 320, 384 </vector2>
 				<vector2> 3.2, 3.2 </vector2>
 				<int> -1 </int>
 				<dictionary  shared="false">
@@ -261,9 +266,9 @@
 				</dictionary>
 				<resource  resource_type="AudioStream" path="res://audio/main_menu.ogg">  </resource>
 				<vector2> 0, -64 </vector2>
-				<vector2> 960, 1152 </vector2>
+				<vector2> 1344, 704 </vector2>
 				<resource  resource_type="PackedScene" path="res://scenes/box.scn">  </resource>
-				<vector2> 320, 448 </vector2>
+				<vector2> 448, 384 </vector2>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
@@ -405,7 +410,7 @@
 					<string> "Script" </string>
 				</dictionary>
 				<resource  resource_type="PackedScene" path="res://scenes/bomb_pickup.xml">  </resource>
-				<vector2> 448, 448 </vector2>
+				<vector2> 896, 320 </vector2>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
@@ -550,7 +555,7 @@
 					<string> "2D" </string>
 				</dictionary>
 				<resource  resource_type="PackedScene" path="res://scenes/flower.xml">  </resource>
-				<vector2> 384, 64 </vector2>
+				<vector2> 256, 448 </vector2>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
@@ -694,11 +699,16 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
 				</dictionary>
-				<vector2> 448, 896 </vector2>
-				<vector2> 512, 64 </vector2>
+				<vector2> 576, 384 </vector2>
+				<vector2> 896, 384 </vector2>
+				<vector2> 1024, 384 </vector2>
+				<vector2> 1152, 320 </vector2>
+				<vector2> 64, 512 </vector2>
+				<vector2> 128, 512 </vector2>
+				<vector2> 192, 512 </vector2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="319"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 23, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 7, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 7, 22, 15, 23, 15, 24, 2, 25, 5, 26, 3, 27, 16, 0, 0, 0, 29, 28, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 17, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 30, 30, -1, 6, 2, 0, 31, 19, 32, 4, 33, 5, 34, 6, 12, 20, 0, 3, 0, 36, 35, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 22, 11, 15, 37, 23, 38, 1, 32, 24, 39, 15, 40, 15, 41, 3, 42, 3, 43, 7, 44, 25, 45, 15, 46, 26, 12, 27, 0, 0, 0, 48, 47, -1, 7, 2, 0, 49, 28, 50, 15, 51, 1, 52, 5, 53, 1, 54, 15, 0, 0, 0, 29, 55, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 29, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 29, 56, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 30, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 58, 57, 31, 3, 2, 0, 7, 32, 12, 33, 0, 0, 0, 60, 59, 34, 3, 2, 0, 7, 35, 12, 36, 0, 0, 0, 60, 61, 37, 3, 2, 0, 7, 38, 12, 39, 0, 0, 0, 58, 62, 31, 3, 2, 0, 7, 40, 12, 33, 0, 0, 0, 58, 63, 31, 3, 2, 0, 7, 41, 12, 33, 0 </int_array>
+			<int_array  len="384"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 23, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 7, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 7, 22, 15, 23, 15, 24, 2, 25, 5, 26, 3, 27, 16, 0, 0, 0, 29, 28, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 17, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 30, 30, -1, 6, 2, 0, 31, 19, 32, 4, 33, 5, 34, 6, 12, 20, 0, 3, 0, 36, 35, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 22, 11, 15, 37, 23, 38, 1, 32, 24, 39, 15, 40, 15, 41, 3, 42, 3, 43, 7, 44, 25, 45, 15, 46, 26, 12, 27, 0, 0, 0, 48, 47, -1, 7, 2, 0, 49, 28, 50, 15, 51, 1, 52, 5, 53, 1, 54, 15, 0, 0, 0, 29, 55, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 29, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 29, 56, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 30, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 58, 57, 31, 3, 2, 0, 7, 32, 12, 33, 0, 0, 0, 60, 59, 34, 3, 2, 0, 7, 35, 12, 36, 0, 0, 0, 60, 61, 37, 3, 2, 0, 7, 38, 12, 39, 0, 0, 0, 58, 62, 31, 3, 2, 0, 7, 40, 12, 33, 0, 0, 0, 58, 63, 31, 3, 2, 0, 7, 41, 12, 33, 0, 0, 0, 58, 64, 31, 3, 2, 0, 7, 42, 12, 33, 0, 0, 0, 60, 65, 34, 3, 2, 0, 7, 43, 12, 36, 0, 0, 0, 60, 66, 37, 3, 2, 0, 7, 44, 12, 39, 0, 0, 0, 60, 67, 37, 3, 2, 0, 7, 45, 12, 39, 0, 0, 0, 60, 68, 37, 3, 2, 0, 7, 46, 12, 39, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>
