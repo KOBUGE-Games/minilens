@@ -173,7 +173,7 @@ func _fixed_process(delta):
 		if(Input.is_action_pressed("place_bomb")):
 			if(!place_bomb_was_pressed && bombs > 0):
 				var new_bomb = bomb.instance()
-				new_bomb.set_pos(get_pos() + Vector2(-32,0))
+				new_bomb.set_pos(get_pos())
 				tilemap.get_parent().add_child(new_bomb)
 				bombs = bombs - 1
 			place_bomb_was_pressed = true
