@@ -115,7 +115,7 @@ func _fixed_process(delta):
 			#move left
 			if ray_check_left.is_colliding() and move_right:
 				collider_left = ray_check_left.get_collider()
-				if collider_left and collider_left.get_name() == "player" && !collider_left.move_down:
+				if collider_left and collider_left.get_name() == "player" && !collider_left.falling:
 					if Input.is_action_pressed("btn_right") && collider_left.movement == 0:
 						movement = 64
 						collider_left.movement = 64
@@ -125,7 +125,7 @@ func _fixed_process(delta):
 			#move right
 			if ray_check_right.is_colliding() and move_left:
 				collider_right = ray_check_right.get_collider()
-				if collider_right and collider_right.get_name() == "player" && !collider_right.move_down:
+				if collider_right and collider_right.get_name() == "player" && !collider_right.falling:
 					if Input.is_action_pressed("btn_left") && collider_right.movement == 0:
 						movement = -64
 						collider_right.movement = -64
