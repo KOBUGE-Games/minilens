@@ -111,7 +111,7 @@ func _fixed_process(delta):
 
 		#check down
 		check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
-		move_down = (check_bottom == -1)
+		move_down = (check_bottom == -1 || check_bottom == TILE_LADDER)
 		if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
 			var collider_name = ray_check_bottom.get_collider().get_name()
 			if collider_name.substr(0,3) == "box":
@@ -131,14 +131,14 @@ func _fixed_process(delta):
 				bombs = bombs + 1
 		
 		#ask to move right
-		if (!move_down || check_overlap == TILE_LADDER) and move_right:
+		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
 			if Input.is_action_pressed("btn_right"):
 				get_node("AnimatedSprite").set_flip_h(false)
 				movement = 64
 				return
 
 		#ask to move left
-		if (!move_down || check_overlap == TILE_LADDER) and move_left:
+		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_left:
 			if Input.is_action_pressed("btn_left"):
 				get_node("AnimatedSprite").set_flip_h(true)
 				movement = -64
@@ -151,7 +151,7 @@ func _fixed_process(delta):
 				return
 
 		#ask to lower
-		if check_bottom == TILE_LADDER || (check_overlap == TILE_LADDER && move_down):
+		if (check_bottom == TILE_LADDER || check_overlap == TILE_LADDER) && move_down:
 			if Input.is_action_pressed("btn_down"):
 				move_up = -64
 				return
@@ -165,7 +165,7 @@ func _fixed_process(delta):
 			return
 
 		#fall
-		if move_down && check_overlap != TILE_LADDER:
+		if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
 			move(Vector2(0,4))
 			get_node("AnimatedSprite/AnimationPlayer").play("fall")
 			return
