@@ -4,7 +4,13 @@
 	<ext_resource path="res://scenes/bomb_pickup.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
+<<<<<<< HEAD
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
+=======
+	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
+	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
+	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
+>>>>>>> fd0d6358cb9313cf30ea082b30956e9bc372638a
 	<ext_resource path="res://scenes/flower.xml" type="PackedScene"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
