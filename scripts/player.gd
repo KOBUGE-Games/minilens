@@ -137,7 +137,7 @@ func _fixed_process(delta):
 				return
 
 		#ask to climb
-		if check_overlap == TILE_LADDER && check_top == -1 || check_top == TILE_LADDER:
+		if check_overlap == TILE_LADDER && (check_top == -1 || check_top == TILE_LADDER):
 			if Input.is_action_pressed("btn_up"):
 				move_up = 64
 				return
