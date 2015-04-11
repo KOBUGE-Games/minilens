@@ -26,12 +26,13 @@ var tilemap
 var movement = 0
 var move_right = false
 var move_left = false
+export var moveable = true
 export var TILE_ACID = 2
 export var TILE_LADDER = 1
 
 func _ready():
 	get_node("../../../level_holder").goal_add()
-	set_fixed_process(true)
+	set_fixed_process(moveable)
 	tilemap = get_node("../tilemap")
 	ray_top = get_node("ray_top")
 	ray_right = get_node("ray_right")
