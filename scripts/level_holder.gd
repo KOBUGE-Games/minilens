@@ -17,7 +17,7 @@ func load_level(var pack, var level):
 	level_node = level_scene.instance()
 	goals_left = 0
 	add_child(level_node)
-	player.set_pos(level_node.get_node("start").get_pos() + Vector2(32,32))
+	player.set_pos(level_node.get_node("start").get_pos())
 	player.set_z(0)
 	player.level_load(level_node)
 

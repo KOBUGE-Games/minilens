@@ -64,6 +64,14 @@ func _ready():
 
 func level_load(var level_node):
 	tilemap = level_node.get_node("tilemap")
+	var camera = get_node("Camera2D")
+	var top_left_pos = level_node.get_node("camera_start").get_pos()
+	var bottom_right_pos = level_node.get_node("camera_end").get_pos()
+	camera.set_limit(MARGIN_TOP, top_left_pos.y)
+	camera.set_limit(MARGIN_LEFT, top_left_pos.x)
+	camera.set_limit(MARGIN_BOTTOM, bottom_right_pos.y)
+	camera.set_limit(MARGIN_RIGHT, bottom_right_pos.x)
+	
 	move(Vector2(0,-4))
 	set_fixed_process(true)
 	bombs = 0
