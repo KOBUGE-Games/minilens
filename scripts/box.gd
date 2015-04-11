@@ -59,9 +59,22 @@ func _fixed_process(delta):
 		var check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
 		var check_overlap = tilemap.get_cell(current_position.x, current_position.y)
 		var check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
+		var move_down
+		if ray_bottom.is_colliding() and ray_bottom.get_collider():
+			var collider_name = ray_bottom.get_collider().get_name()
+			if(collider_name.substr(0,6) == "flower"):
+				move_down = true
+				get_node("../../../level_holder").goal_take()
+				ray_bottom.get_collider().queue_free()
+			elif collider_name.substr(0,11) == "bomb_pickup":
+				move_down = true
+			else:
+				move_down = false
+		else:
+			move_down = true
 		if(check_top == TILE_ACID):
 			destroy()
-		if !ray_bottom.is_colliding() && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID:
+		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID:
 			move(Vector2(0,4))
 		else:
 			#sink
