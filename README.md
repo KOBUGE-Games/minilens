@@ -5,7 +5,7 @@ Earth is polluted, a robot is cleaning up (no its not Wall-E, its Minilens), the
 
 Game is still being developed, please contribute.
 
-Chec out our web site http://alketii.github.io/minilens/
+Check out our web site http://alketii.github.io/minilens/
 
 Powered by Godot Engine
 ## Screenshot
