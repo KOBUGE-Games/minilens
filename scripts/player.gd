@@ -40,6 +40,7 @@ var acid_animation_pos = 0.0
 var place_bomb_was_pressed = false
 var bomb = preload("res://scenes/bomb.xml")
 var bombs = 0
+var falling = false
 
 func _ready():
 	ray_top = get_node("ray_top")
@@ -133,14 +134,12 @@ func _fixed_process(delta):
 		#ask to move right
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
 			if Input.is_action_pressed("btn_right"):
-				get_node("AnimatedSprite").set_flip_h(false)
 				movement = 64
 				return
 
 		#ask to move left
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_left:
 			if Input.is_action_pressed("btn_left"):
-				get_node("AnimatedSprite").set_flip_h(true)
 				movement = -64
 				return
 
@@ -167,8 +166,11 @@ func _fixed_process(delta):
 		#fall
 		if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
 			move(Vector2(0,4))
+			falling = true
 			get_node("AnimatedSprite/AnimationPlayer").play("fall")
 			return
+		else:
+			falling = false
 			
 		if(Input.is_action_pressed("place_bomb")):
 			if(!place_bomb_was_pressed && bombs > 0):
@@ -185,9 +187,11 @@ func _fixed_process(delta):
 		if movement > 0:
 			movement -= 4
 			move(Vector2(4,0))
+			get_node("AnimatedSprite").set_flip_h(false)
 		elif movement < 0:
 			movement += 4
 			move(Vector2(-4,0))
+			get_node("AnimatedSprite").set_flip_h(true)
 		if move_up > 0:
 			move_up -= 4
 			move(Vector2(0,-4))
