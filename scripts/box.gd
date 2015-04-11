@@ -20,6 +20,8 @@ var check_right = ""
 var check_bottom = ""
 var check_left = ""
 
+var sinking = false
+
 var tilemap
 var movement = 0
 var move_right = false
@@ -77,7 +79,9 @@ func _fixed_process(delta):
 		
 		#sinking
 		if(check_bottom == TILE_ACID):
-			get_node("sink").play()
+			if !sinking:
+				sinking = true
+				get_node("sink").play()
 		
 		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID:
 			move(Vector2(0,4))
