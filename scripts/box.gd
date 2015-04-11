@@ -74,6 +74,11 @@ func _fixed_process(delta):
 			move_down = true
 		if(check_top == TILE_ACID):
 			destroy()
+		
+		#sinking
+		if(check_bottom == TILE_ACID):
+			get_node("sink").play()
+		
 		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID:
 			move(Vector2(0,4))
 		else:
