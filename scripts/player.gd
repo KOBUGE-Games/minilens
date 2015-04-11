@@ -85,7 +85,7 @@ func _fixed_process(delta):
 		#allow to move right
 		check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
 		move_right = (check_right == -1 || check_right == TILE_LADDER)
-		if ray_check_right.get_collider():
+		if ray_check_right.is_colliding() and ray_check_right.get_collider():
 			var collider_name = ray_check_right.get_collider().get_name()
 			if collider_name.substr(0,3) == "box":
 				move_right = false
@@ -93,7 +93,7 @@ func _fixed_process(delta):
 		#allow to move left
 		check_left = tilemap.get_cell(current_position.x - 1, current_position.y)
 		move_left = (check_left == -1 || check_left == TILE_LADDER)
-		if ray_check_left.get_collider():
+		if ray_check_left.is_colliding() and ray_check_left.get_collider():
 			var collider_name = ray_check_left.get_collider().get_name()
 			if collider_name.substr(0,3) == "box":
 				move_left = false
@@ -104,7 +104,7 @@ func _fixed_process(delta):
 		#check down
 		check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
 		move_down = (check_bottom == -1)
-		if ray_check_bottom.get_collider():
+		if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
 			var collider_name = ray_check_bottom.get_collider().get_name()
 			if collider_name.substr(0,3) == "box":
 				move_down = false
@@ -114,14 +114,14 @@ func _fixed_process(delta):
 		check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 
 		#collect flower
-		if ray_overlap.get_collider():
+		if ray_overlap.is_colliding() and ray_overlap.get_collider():
 			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
 				ray_overlap.get_collider().queue_free()
 				get_node("../../level_holder").goal_take()
 			elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
 				ray_overlap.get_collider().queue_free()
 				bombs = bombs + 1
-
+		
 		#ask to move right
 		if (!move_down || check_overlap == TILE_LADDER) and move_right:
 			if Input.is_action_pressed("btn_right"):
