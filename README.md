@@ -7,4 +7,4 @@ Game is still being developed, please contribute.
 
 Powered by Godot Engine
 ## Screenshot
-!['Screenshot'](http://i.imgur.com/hkAJ24h.png)
+!['Screenshot'](http://i.imgur.com/Nuu6g6j.png)
