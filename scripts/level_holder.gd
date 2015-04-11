@@ -40,4 +40,5 @@ func _ready():
 	player = get_node("../player_holder/player")
 	set_process_input(true)
 
-
+func back_to_menu():
+	get_node("/root/global").load_scene("res://scenes/main_menu.xml")
