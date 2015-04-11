@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="7" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
-	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
 	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
+	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/bomb_pickup.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/flower.xml" type="PackedScene"></ext_resource>
 	<main_resource>
