@@ -11,6 +11,12 @@ var goals_left = 0
 func load_level(var pack, var level):
 	current_level = level
 	current_pack = pack
+	var f = File.new()
+	var err = f.open(str("res://levels/", pack, "/level_", level, ".xml"), f.READ)
+	if(err != 0):
+		back_to_menu()
+		return
+	f.close()
 	level_scene = load(str("res://levels/", pack, "/level_", level, ".xml"))
 	for i in range(get_child_count()):
 		get_child(i).queue_free()

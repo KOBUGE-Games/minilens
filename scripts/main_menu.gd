@@ -1,11 +1,15 @@
 extends Control
 
-var select_level
 var select_pack
-
+var target
+var level_btn_scene = preload("res://scenes/level_select_btn.xml")
+var level_list
+export var level_btn_size = Vector2(100,100)
+var level_btn_row_count = 6
+var level_selected
 func _ready():
-	select_level = get_node("opt_level")
-	select_pack = get_node("opt_pack")
+	select_pack = get_node("level_selection/opt_pack")
+	level_list = get_node("level_selection/level_list")
 	
 	var diraccess = Directory.new()
 	diraccess.open("res://levels/")
@@ -22,26 +26,48 @@ func _ready():
 	_on_opt_pack_item_selected( 0 )
 
 func _on_opt_pack_item_selected( ID ):
-	select_level.clear()
+	
+	for i in range(level_list.get_child_count()):
+		level_list.get_child(i).queue_free()
 	var diraccess = Directory.new()
 	diraccess.open(str("res://levels/", select_pack.get_text()))
 
 	diraccess.list_dir_begin()
 	var name = diraccess.get_next()
-	var i = 1
+	var i = 0
 	while name:
 		if !diraccess.current_is_dir():
 			if name.length() > 3:
-				select_level.add_item(str(i))
+				var new_instance = level_btn_scene.instance()
+				new_instance.set_title(str("Level ",i + 1))
+				new_instance.set_metadata(i + 1)
+				var row_pos = int(i % level_btn_row_count)
+				var col_pos = int(i / level_btn_row_count)
+				new_instance.set_pos(Vector2(level_btn_size.x * row_pos, level_btn_size.y * col_pos))
+				level_list.add_child(new_instance)
 				i = i + 1
 		name = diraccess.get_next()
 	diraccess.list_dir_end()
 
-func _on_btn_play_pressed():
+func level_btn_clicked(var id):
+	level_selected = id
 	set_fixed_process(true)
 
 func _fixed_process(delta):
 	set_fixed_process(false)
-	get_node("/root/global").load_level(select_pack.get_text(),select_level.get_text())
+	get_node("/root/global").load_level(select_pack.get_text(),level_selected)
 	
+func _process(delta):
+	set_pos((get_pos()*4 + target)/5)
+	if(abs(get_pos().x - target.x) < 1):
+		set_pos(target)
+		set_process(false)
 
+func goto_levels():
+	target = Vector2(-1024,0)
+	set_process(true)
+
+
+func goto_start():
+	target = Vector2(0,0)
+	set_process(true)
