@@ -74,7 +74,6 @@ func level_load(var level_node):
 	camera.set_limit(MARGIN_LEFT, top_left_pos.x)
 	camera.set_limit(MARGIN_BOTTOM, bottom_right_pos.y)
 	camera.set_limit(MARGIN_RIGHT, bottom_right_pos.x)
-	
 	move(Vector2(0,-4))
 	set_fixed_process(true)
 	bombs = 0
@@ -132,6 +131,16 @@ func _fixed_process(delta):
 			elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
 				ray_overlap.get_collider().queue_free()
 				bombs = bombs + 1
+		#sink
+		if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
+			set_z(-1)
+			move(Vector2(0,1))
+			if !sinking:
+				sinking = true
+				get_node("sink").play()
+			if(check_bottom == -1):
+				destroy()
+			return
 		
 		#ask to move right
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
@@ -157,16 +166,6 @@ func _fixed_process(delta):
 				move_up = -64
 				return
 
-		#sink
-		if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
-			set_z(-1)
-			move(Vector2(0,1))
-			if !sinking:
-				sinking = true
-				get_node("sink").play()
-			if(check_bottom == -1):
-				destroy()
-			return
 			
 		#fall
 		if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
