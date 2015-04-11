@@ -24,6 +24,8 @@ var check_left = ""
 
 var check_overlap = ""
 
+var sinking = false
+
 var movement = 0
 var move_left = false
 var move_right = false
@@ -159,10 +161,13 @@ func _fixed_process(delta):
 		if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
 			set_z(-1)
 			move(Vector2(0,1))
+			if !sinking:
+				sinking = true
+				get_node("sink").play()
 			if(check_bottom == -1):
 				destroy()
 			return
-
+			
 		#fall
 		if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
 			move(Vector2(0,4))
