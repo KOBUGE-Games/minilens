@@ -3,11 +3,7 @@ Minilens
 
 **Free Puzzle Platform Game**
 
-Earth is polluted, a robot is cleaning up (no, it's not Wall-E, it's Minilens).
-
-The goal of the game is to drop all Radioactive Barrels at the Acid Lake and collect all flowers.
-
-The game is still being developed, please contribute.
+1000 years after post-apocalyptic Earth, many form of lifes went extinct, including humans. An alien robot series, called Minilens, are cleaning up earth and collecting surviving flora.
 
 Check out our website: <http://alketii.github.io/minilens/>
 
