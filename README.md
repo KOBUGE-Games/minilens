@@ -5,6 +5,10 @@ Minilens
 
 1000 years after post-apocalyptic Earth, many form of lifes went extinct, including humans. An alien robot series, called Minilens, are cleaning up earth and collecting surviving flora.
 
+The game is won by destroying all Radioactive Barrels and collecting surviving flora.
+
+The drawback is that Minilens can't jump.
+
 Check out our website: <http://alketii.github.io/minilens/>
 
 *Powered by Godot Engine*
