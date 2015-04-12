@@ -124,6 +124,7 @@ func _fixed_process(delta):
 					if Input.is_action_pressed("btn_right") && collider_left.movement == 0:
 						movement = 64
 						collider_left.movement = 64
+						get_node("hit").play()
 			else:
 				collider_left = ""
 				
@@ -134,6 +135,7 @@ func _fixed_process(delta):
 					if Input.is_action_pressed("btn_left") && collider_right.movement == 0:
 						movement = -64
 						collider_right.movement = -64
+						get_node("hit").play()
 			else:
 				collider_right = ""
 				

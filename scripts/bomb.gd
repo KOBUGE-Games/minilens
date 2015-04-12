@@ -31,6 +31,7 @@ func _ready():
 func _fixed_process(delta):
 	seconds_left_to_explode = seconds_left_to_explode - delta
 	if seconds_left_to_explode <= 0:
+		get_node("explode").play()
 		#check left
 		if ray_check_left.is_colliding():
 			check_left = ray_check_left.get_collider().get_name()

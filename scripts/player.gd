@@ -128,6 +128,7 @@ func _fixed_process(delta):
 			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
 				ray_overlap.get_collider().queue_free()
 				get_node("../../level_holder").goal_take()
+				get_node("pickup").play()
 			elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
 				ray_overlap.get_collider().queue_free()
 				bombs = bombs + 1

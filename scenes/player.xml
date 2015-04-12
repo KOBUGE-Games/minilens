@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="10" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="11" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/falling.png" type="Texture"></ext_resource>
-	<ext_resource path="res://scripts/player.gd" type="Script"></ext_resource>
+	<ext_resource path="res://audio/flower_pickup.ogg" type="AudioStream"></ext_resource>
 	<ext_resource path="res://audio/sink.ogg" type="AudioStream"></ext_resource>
-	<ext_resource path="res://gfx/player2.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scripts/player.gd" type="Script"></ext_resource>
 	<ext_resource path="res://gfx/player.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/player2.png" type="Texture"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 32, 32 </vector2>
@@ -19,6 +20,27 @@
 
 	</resource>
 	<resource type="Animation" path="local://3">
+		<real name="length"> 0.01 </real>
+		<bool name="loop"> False </bool>
+		<real name="step"> 0.1 </real>
+		<string name="tracks/0/type"> "value" </string>
+		<node_path name="tracks/0/path"> ".:frame" </node_path>
+		<int name="tracks/0/interp"> 1 </int>
+		<dictionary name="tracks/0/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "transitions" </string>
+			<real_array  len="1"> 				1 </real_array>
+			<string> "values" </string>
+			<array  len="1" shared="false">
+				<int> 2 </int>
+			</array>
+			<string> "times" </string>
+			<real_array  len="1"> 				0 </real_array>
+		</dictionary>
+
+	</resource>
+	<resource type="Animation" path="local://4">
 		<real name="length"> 0.3 </real>
 		<bool name="loop"> True </bool>
 		<real name="step"> 0.1 </real>
@@ -40,31 +62,10 @@
 		</dictionary>
 
 	</resource>
-	<resource type="Animation" path="local://4">
-		<real name="length"> 0.01 </real>
-		<bool name="loop"> False </bool>
-		<real name="step"> 0.1 </real>
-		<string name="tracks/0/type"> "value" </string>
-		<node_path name="tracks/0/path"> ".:frame" </node_path>
-		<int name="tracks/0/interp"> 1 </int>
-		<dictionary name="tracks/0/keys" shared="false">
-			<string> "cont" </string>
-			<bool> False </bool>
-			<string> "transitions" </string>
-			<real_array  len="1"> 				1 </real_array>
-			<string> "values" </string>
-			<array  len="1" shared="false">
-				<int> 2 </int>
-			</array>
-			<string> "times" </string>
-			<real_array  len="1"> 				0 </real_array>
-		</dictionary>
-
-	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="83">
+			<string_array  len="84">
 				<string> "player" </string>
 				<string> "KinematicBody2D" </string>
 				<string> "_import_path" </string>
@@ -119,8 +120,8 @@
 				<string> "playback/process_mode" </string>
 				<string> "playback/default_blend_time" </string>
 				<string> "root/root" </string>
-				<string> "anims/walking" </string>
 				<string> "anims/fall" </string>
+				<string> "anims/walking" </string>
 				<string> "playback/active" </string>
 				<string> "playback/speed" </string>
 				<string> "blend_times" </string>
@@ -148,15 +149,16 @@
 				<string> "stream/volume_db" </string>
 				<string> "stream/autoplay" </string>
 				<string> "stream/paused" </string>
+				<string> "pickup" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 15 </int>
+			<int> 16 </int>
 			<string> "variants" </string>
-			<array  len="36" shared="false">
+			<array  len="37" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -334,9 +336,10 @@
 				<int> 10000000 </int>
 				<real> 0.2 </real>
 				<resource  resource_type="AudioStream" path="res://audio/sink.ogg">  </resource>
+				<resource  resource_type="AudioStream" path="res://audio/flower_pickup.ogg">  </resource>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="529"> 				-1, -1, 1, 0, -1, 26, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 3, 26, 14, 27, 2, 0, 0, 0, 29, 28, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 16, 32, 3, 0, 0, 0, 29, 33, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 17, 32, 3, 0, 0, 0, 29, 34, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 18, 32, 3, 0, 0, 0, 29, 35, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 19, 32, 3, 0, 0, 0, 29, 36, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 20, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 37, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 22, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 38, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 23, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 39, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 24, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 40, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 41, 41, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 42, 9, 43, 8, 0, 0, 0, 44, 44, -1, 15, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 25, 8, 5, 9, 6, 10, 7, 11, 1, 45, 26, 46, 1, 47, 8, 48, 8, 49, 27, 0, 11, 0, 50, 50, -1, 10, 2, 0, 51, 3, 52, 5, 53, 28, 54, 29, 55, 30, 56, 1, 57, 2, 58, 31, 59, 32, 0, 0, 0, 60, 60, -1, 25, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 61, 8, 62, 1, 63, 5, 64, 6, 65, 7, 66, 7, 67, 33, 68, 33, 69, 1, 70, 1, 71, 34, 72, 34, 73, 34, 74, 34, 0, 0, 0, 76, 75, -1, 7, 2, 0, 77, 35, 78, 8, 79, 8, 80, 5, 81, 8, 82, 8, 0 </int_array>
+			<int_array  len="550"> 				-1, -1, 1, 0, -1, 26, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 3, 26, 14, 27, 2, 0, 0, 0, 29, 28, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 16, 32, 3, 0, 0, 0, 29, 33, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 17, 32, 3, 0, 0, 0, 29, 34, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 18, 32, 3, 0, 0, 0, 29, 35, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 19, 32, 3, 0, 0, 0, 29, 36, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 20, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 37, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 22, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 38, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 23, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 39, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 24, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 29, 40, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 30, 1, 31, 21, 32, 3, 0, 0, 0, 41, 41, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 42, 9, 43, 8, 0, 0, 0, 44, 44, -1, 15, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 25, 8, 5, 9, 6, 10, 7, 11, 1, 45, 26, 46, 1, 47, 8, 48, 8, 49, 27, 0, 11, 0, 50, 50, -1, 10, 2, 0, 51, 3, 52, 5, 53, 28, 54, 29, 55, 30, 56, 1, 57, 2, 58, 31, 59, 32, 0, 0, 0, 60, 60, -1, 25, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 15, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 61, 8, 62, 1, 63, 5, 64, 6, 65, 7, 66, 7, 67, 33, 68, 33, 69, 1, 70, 1, 71, 34, 72, 34, 73, 34, 74, 34, 0, 0, 0, 76, 75, -1, 7, 2, 0, 77, 35, 78, 8, 79, 8, 80, 5, 81, 8, 82, 8, 0, 0, 0, 76, 83, -1, 7, 2, 0, 77, 36, 78, 8, 79, 8, 80, 5, 81, 8, 82, 8, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>
