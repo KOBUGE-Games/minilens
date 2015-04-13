@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://gfx/flower48.png" type="Texture"></ext_resource>
 	<ext_resource path="res://scripts/flower.gd" type="Script"></ext_resource>
-	<ext_resource path="res://gfx/flower32.png" type="Texture"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 32, 32 </vector2>
@@ -244,9 +244,9 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
-				<resource  resource_type="Texture" path="res://gfx/flower32.png">  </resource>
+				<resource  resource_type="Texture" path="res://gfx/flower48.png">  </resource>
 				<color> 1, 1, 1, 1 </color>
 				<rect2> 0, 0, 0, 0 </rect2>
 				<node_path> ".." </node_path>
