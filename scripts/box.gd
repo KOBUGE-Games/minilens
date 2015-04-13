@@ -54,7 +54,7 @@ func _ready():
 func destroy():
 	if(moveable):
 		get_node("../../../level_holder").goal_take()
-		queue_free()
+	queue_free()
 
 func _fixed_process(delta):
 	if movement == 0:
