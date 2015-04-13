@@ -67,6 +67,10 @@ func _ready():
 	
 	set_process_unhandled_input(true)
 #	add_item("Objects","Name",res_obj_texture["Flower"],res_obj_scenes["Flower"])
+
+	var texture = preload("res://gfx/boxCrate_double.png")
+	var packed_scene = preload("res://scenes/box_static.xml")
+	add_item("Objects","Box",texture,packed_scene)
 	
 
 func _unhandled_input(ev):
@@ -230,7 +234,6 @@ func load_terrain_menu( tset = null ):
 # maybe later will add loading tileset from path(string)
 	var tmap = get_node("Level/tilemap")
 	if typeof(tset) == TYPE_OBJECT:
-		print("OBJ")
 		if tset extends TileSet:
 			pass
 		else:
