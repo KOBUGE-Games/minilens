@@ -138,6 +138,7 @@ func logic():
 		elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
 			ray_overlap.get_collider().queue_free()
 			bombs = bombs + 1
+			get_node("pickup").play()
 	#sink
 	if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
 		new_anim = "fall"
