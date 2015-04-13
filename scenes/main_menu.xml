@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="8" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-<<<<<<< HEAD
-	<ext_resource path="res://gfx/godot_logo.png" type="Texture"></ext_resource>
-	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
-	<ext_resource path="res://gfx/logo.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/main_menu_bg2.png" type="Texture"></ext_resource>
-=======
->>>>>>> b1bcc1a876999d8041ca1b75a255206ce49a6ba5
 	<ext_resource path="res://scripts/main_menu.gd" type="Script"></ext_resource>
 	<ext_resource path="res://scenes/level_select_btn.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://gfx/logo.png" type="Texture"></ext_resource>
@@ -176,7 +169,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 0.735092 </real>
+							<real> 1.108034 </real>
 							<string> "snap_step" </string>
 							<vector2> 10, 10 </vector2>
 							<string> "snap_relative" </string>
@@ -190,7 +183,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -482.102, -147.493 </vector2>
+							<vector2> -172.802, -62.1517 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -295,7 +288,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<vector2> 146, 146 </vector2>
 				<int> -1 </int>
