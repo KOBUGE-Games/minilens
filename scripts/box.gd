@@ -30,15 +30,9 @@ export var moveable = true
 export var TILE_ACID = 2
 export var TILE_LADDER = 1
 
-var count_total_barrels = 0
-var count_destroyed_barrels = 0
-
 func _ready():
 	if(moveable):
 		get_node("../../../level_holder").goal_add()
-		count_total_barrels = int(get_node("../../../gui/CanvasLayer/barrel_counter").get_text().split("/")[1])
-		count_total_barrels += 1
-		get_node("../../../gui/CanvasLayer/barrel_counter").set_text("0/"+str(count_total_barrels))
 
 	set_fixed_process(moveable)
 	tilemap = get_node("../tilemap")
@@ -60,11 +54,7 @@ func _ready():
 func destroy():
 	if(moveable):
 		get_node("../../../level_holder").goal_take()
-		count_destroyed_barrels = int(get_node("../../../gui/CanvasLayer/barrel_counter").get_text().split("/")[0])
-		count_destroyed_barrels += 1
-		count_total_barrels = int(get_node("../../../gui/CanvasLayer/barrel_counter").get_text().split("/")[1])
-		get_node("../../../gui/CanvasLayer/barrel_counter").set_text(str(count_destroyed_barrels)+"/"+str(count_total_barrels))
-	queue_free()
+		queue_free()
 
 func _fixed_process(delta):
 	if movement == 0:
