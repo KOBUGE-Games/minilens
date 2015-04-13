@@ -31,7 +31,8 @@ export var TILE_ACID = 2
 export var TILE_LADDER = 1
 
 func _ready():
-	get_node("../../../level_holder").goal_add()
+	if(moveable):
+		get_node("../../../level_holder").goal_add()
 	set_fixed_process(moveable)
 	tilemap = get_node("../tilemap")
 	ray_top = get_node("ray_top")
@@ -50,7 +51,8 @@ func _ready():
 	
 
 func destroy():
-	get_node("../../../level_holder").goal_take()
+	if(moveable):
+		get_node("../../../level_holder").goal_take()
 	queue_free()
 
 func _fixed_process(delta):
