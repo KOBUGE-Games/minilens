@@ -68,7 +68,7 @@ func _ready():
 	#fix position
 
 func level_load(var level_node):
-	get_node("AnimatedSprite").set_frame(0)
+	get_node("AnimatedSprite/AnimationPlayer").play("idle")
 	tilemap = level_node.get_node("tilemap")
 	var camera = get_node("Camera2D")
 	var top_left_pos = level_node.get_node("camera_start").get_pos()
@@ -90,11 +90,7 @@ func destroy():
 
 func play_anim():
 	if(old_anim != new_anim):
-		if(new_anim == "stop"):
-			get_node("AnimatedSprite").set_frame(0)
-			get_node("AnimatedSprite/AnimationPlayer").stop()
-		else:
-			get_node("AnimatedSprite/AnimationPlayer").play(new_anim)
+		get_node("AnimatedSprite/AnimationPlayer").play(new_anim)
 
 func logic():
 	current_position = (get_pos())/64
@@ -201,25 +197,26 @@ func logic():
 	if movement > 0:
 		movement -= 4
 		move(Vector2(4,0))
-		get_node("AnimatedSprite").set_flip_h(false)
+		get_node("AnimatedSprite").set_flip_h(true)
 		new_anim = "walking"
 	elif movement < 0:
 		movement += 4
 		move(Vector2(-4,0))
-		get_node("AnimatedSprite").set_flip_h(true)
+		get_node("AnimatedSprite").set_flip_h(false)
 		new_anim = "walking"
 	if move_up > 0:
 		move_up -= 4
 		move(Vector2(0,-4))
-		new_anim = "stop"
+		new_anim = "climb"
 	elif move_up < 0:
 		move_up += 4
 		move(Vector2(0,4))
-		new_anim = "stop"
+		new_anim = "climb"
+	elif movement == 0:
+		new_anim = "idle"
 
 func _fixed_process(delta):
 	old_anim = new_anim
-	new_anim = "stop"
 	acid_animation_pos = acid_animation_pos + delta
 	if(acid_animation_pos > acid_animation_time):
 		acid_animation_pos = acid_animation_pos - acid_animation_time
