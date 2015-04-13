@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="8" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/explode.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/bomb.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/smoke_particle.png" type="Texture"></ext_resource>
 	<ext_resource path="res://scripts/bomb.gd" type="Script"></ext_resource>
 	<ext_resource path="res://audio/explode.ogg" type="AudioStream"></ext_resource>
+	<ext_resource path="res://gfx/bomb.png" type="Texture"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 32, 32 </vector2>
@@ -53,28 +53,75 @@
 		<bool name="loop"> False </bool>
 		<real name="step"> 0.1 </real>
 		<string name="tracks/0/type"> "value" </string>
-		<node_path name="tracks/0/path"> "Explosions:visibility/opacity" </node_path>
+		<node_path name="tracks/0/path"> "Explosions/Explosion1:config/emitting" </node_path>
 		<int name="tracks/0/interp"> 1 </int>
 		<dictionary name="tracks/0/keys" shared="false">
 			<string> "cont" </string>
-			<bool> True </bool>
+			<bool> False </bool>
 			<string> "transitions" </string>
-			<real_array  len="3"> 				1, 1, 1 </real_array>
+			<real_array  len="2"> 				1, 1 </real_array>
 			<string> "values" </string>
-			<array  len="3" shared="false">
-				<real> 0 </real>
-				<real> 1 </real>
-				<real> 0 </real>
+			<array  len="2" shared="false">
+				<bool> True </bool>
+				<bool> False </bool>
 			</array>
 			<string> "times" </string>
-			<real_array  len="3"> 				0, 0.2, 0.4 </real_array>
+			<real_array  len="2"> 				0, 0.4 </real_array>
+		</dictionary>
+		<string name="tracks/1/type"> "value" </string>
+		<node_path name="tracks/1/path"> "Explosions/Explosion2:config/emitting" </node_path>
+		<int name="tracks/1/interp"> 1 </int>
+		<dictionary name="tracks/1/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "transitions" </string>
+			<real_array  len="2"> 				1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="2" shared="false">
+				<bool> True </bool>
+				<bool> False </bool>
+			</array>
+			<string> "times" </string>
+			<real_array  len="2"> 				0, 0.4 </real_array>
+		</dictionary>
+		<string name="tracks/2/type"> "value" </string>
+		<node_path name="tracks/2/path"> "Explosions/Explosion3:config/emitting" </node_path>
+		<int name="tracks/2/interp"> 1 </int>
+		<dictionary name="tracks/2/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "transitions" </string>
+			<real_array  len="2"> 				1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="2" shared="false">
+				<bool> True </bool>
+				<bool> False </bool>
+			</array>
+			<string> "times" </string>
+			<real_array  len="2"> 				0, 0.4 </real_array>
+		</dictionary>
+		<string name="tracks/3/type"> "value" </string>
+		<node_path name="tracks/3/path"> "Explosions/Explosion4:config/emitting" </node_path>
+		<int name="tracks/3/interp"> 1 </int>
+		<dictionary name="tracks/3/keys" shared="false">
+			<string> "cont" </string>
+			<bool> False </bool>
+			<string> "transitions" </string>
+			<real_array  len="2"> 				1, 1 </real_array>
+			<string> "values" </string>
+			<array  len="2" shared="false">
+				<bool> True </bool>
+				<bool> False </bool>
+			</array>
+			<string> "times" </string>
+			<real_array  len="2"> 				0, 0.4 </real_array>
 		</dictionary>
 
 	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="76">
+			<string_array  len="136">
 				<string> "bomb" </string>
 				<string> "KinematicBody2D" </string>
 				<string> "_import_path" </string>
@@ -125,12 +172,6 @@
 				<string> "ray_check_bottom" </string>
 				<string> "ray_check_left" </string>
 				<string> "ray_overlap" </string>
-				<string> "Explosions" </string>
-				<string> "Node2D" </string>
-				<string> "Explosion1" </string>
-				<string> "Explosion2" </string>
-				<string> "Explosion3" </string>
-				<string> "Explosion4" </string>
 				<string> "AnimationPlayer" </string>
 				<string> "playback/process_mode" </string>
 				<string> "playback/default_blend_time" </string>
@@ -149,6 +190,72 @@
 				<string> "stream/volume_db" </string>
 				<string> "stream/autoplay" </string>
 				<string> "stream/paused" </string>
+				<string> "Explosions" </string>
+				<string> "Node2D" </string>
+				<string> "visibility/blend_mode" </string>
+				<string> "Explosion1" </string>
+				<string> "Particles2D" </string>
+				<string> "visibility/behind_parent" </string>
+				<string> "config/amount" </string>
+				<string> "config/lifetime" </string>
+				<string> "config/time_scale" </string>
+				<string> "config/preprocess" </string>
+				<string> "config/emit_timeout" </string>
+				<string> "config/emitting" </string>
+				<string> "config/offset" </string>
+				<string> "config/half_extents" </string>
+				<string> "config/local_space" </string>
+				<string> "config/explosiveness" </string>
+				<string> "config/flip_h" </string>
+				<string> "config/flip_v" </string>
+				<string> "config/texture" </string>
+				<string> "config/h_frames" </string>
+				<string> "config/v_frames" </string>
+				<string> "params/direction" </string>
+				<string> "params/spread" </string>
+				<string> "params/linear_velocity" </string>
+				<string> "params/spin_velocity" </string>
+				<string> "params/orbit_velocity" </string>
+				<string> "params/gravity_direction" </string>
+				<string> "params/gravity_strength" </string>
+				<string> "params/radial_accel" </string>
+				<string> "params/tangential_accel" </string>
+				<string> "params/damping" </string>
+				<string> "params/initial_angle" </string>
+				<string> "params/initial_size" </string>
+				<string> "params/final_size" </string>
+				<string> "params/hue_variation" </string>
+				<string> "params/anim_speed_scale" </string>
+				<string> "params/anim_initial_pos" </string>
+				<string> "randomness/direction" </string>
+				<string> "randomness/spread" </string>
+				<string> "randomness/linear_velocity" </string>
+				<string> "randomness/spin_velocity" </string>
+				<string> "randomness/orbit_velocity" </string>
+				<string> "randomness/gravity_direction" </string>
+				<string> "randomness/gravity_strength" </string>
+				<string> "randomness/radial_accel" </string>
+				<string> "randomness/tangential_accel" </string>
+				<string> "randomness/damping" </string>
+				<string> "randomness/initial_angle" </string>
+				<string> "randomness/initial_size" </string>
+				<string> "randomness/final_size" </string>
+				<string> "randomness/hue_variation" </string>
+				<string> "randomness/anim_speed_scale" </string>
+				<string> "randomness/anim_initial_pos" </string>
+				<string> "color_phases/count" </string>
+				<string> "phase_0/pos" </string>
+				<string> "phase_0/color" </string>
+				<string> "phase_1/pos" </string>
+				<string> "phase_1/color" </string>
+				<string> "phase_2/pos" </string>
+				<string> "phase_2/color" </string>
+				<string> "phase_3/pos" </string>
+				<string> "phase_3/color" </string>
+				<string> "emission_points" </string>
+				<string> "Explosion2" </string>
+				<string> "Explosion3" </string>
+				<string> "Explosion4" </string>
 				<string> "_on_AnimationPlayer_finished" </string>
 				<string> "finished" </string>
 			</string_array>
@@ -159,7 +266,7 @@
 			<string> "node_count" </string>
 			<int> 15 </int>
 			<string> "variants" </string>
-			<array  len="29" shared="false">
+			<array  len="52" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -179,7 +286,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 3 </int>
+							<int> 1 </int>
 							<string> "sources" </string>
 							<array  len="4" shared="false">
 								<string> "res://scripts/box.gd" </string>
@@ -195,7 +302,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 2.78951 </real>
+							<real> 1.108034 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -209,7 +316,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 32, 32 </vector2>
 							<string> "ofs" </string>
-							<vector2> -298.593, -143.649 </vector2>
+							<vector2> -273.148, -340.862 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -314,17 +421,17 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
+				<vector2> 1.33133, 1.33133 </vector2>
 				<resource  resource_type="Texture" path="res://gfx/bomb.png">  </resource>
-				<color> 1, 1, 1, 1 </color>
+				<color> 1, 0.624682, 0.624682, 1 </color>
 				<rect2> 0, 0, 0, 0 </rect2>
 				<vector2> 0, -64 </vector2>
 				<vector2> 0, 8 </vector2>
 				<vector2> 64, 0 </vector2>
 				<vector2> 0, 64 </vector2>
 				<vector2> -64, 0 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/explode.png">  </resource>
 				<node_path> ".." </node_path>
 				<resource  resource_type="Animation" path="local://2">  </resource>
 				<resource  resource_type="Animation" path="local://3">  </resource>
@@ -332,11 +439,34 @@
 				</array>
 				<string> "Loop" </string>
 				<resource  resource_type="AudioStream" path="res://audio/explode.ogg">  </resource>
+				<int> 2 </int>
+				<vector2> 2.03434e-06, -64 </vector2>
+				<real> 180 </real>
+				<int> 16 </int>
+				<real> 2 </real>
+				<vector2> 15, 15 </vector2>
+				<real> 0.05 </real>
+				<resource  resource_type="Texture" path="res://gfx/smoke_particle.png">  </resource>
+				<real> 90 </real>
+				<real> 80 </real>
+				<real> 366.300018 </real>
+				<real> 0.7 </real>
+				<real> 3 </real>
+				<int> 4 </int>
+				<color> 1, 1, 1, 0 </color>
+				<real> 0.1 </real>
+				<color> 0.351123, 0.0962784, 0, 0.585526 </color>
+				<color> 0.599826, 0.405306, 0.202686, 0.123543 </color>
+				<color> 0, 0, 0, 0 </color>
+				<vector2_array  len="0"> 					 </vector2_array>
+				<vector2> 64, 3.8147e-06 </vector2>
+				<vector2> 1.78036e-06, 64 </vector2>
+				<vector2> -64, 3.8147e-06 </vector2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="571"> 				-1, -1, 1, 0, -1, 24, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 2, 0, 0, 0, 26, 26, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 27, 14, 28, 1, 29, 4, 30, 8, 31, 8, 32, 3, 33, 3, 34, 7, 35, 15, 36, 8, 37, 16, 0, 0, 0, 38, 38, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 39, 9, 40, 8, 0, 0, 0, 42, 41, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 17, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 18, 45, 3, 0, 0, 0, 42, 46, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 19, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 18, 45, 3, 0, 0, 0, 42, 47, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 20, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 18, 45, 3, 0, 0, 0, 42, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 18, 45, 3, 0, 0, 0, 42, 49, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 18, 45, 3, 0, 0, 0, 51, 50, -1, 10, 2, 0, 3, 1, 4, 5, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 0, 8, 0, 26, 52, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 19, 8, 5, 9, 6, 10, 7, 11, 1, 27, 22, 28, 1, 29, 4, 30, 8, 31, 8, 32, 3, 33, 3, 34, 7, 35, 15, 36, 8, 37, 16, 0, 8, 0, 26, 53, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 17, 8, 5, 9, 6, 10, 7, 11, 1, 27, 22, 28, 1, 29, 4, 30, 8, 31, 8, 32, 3, 33, 3, 34, 7, 35, 15, 36, 8, 37, 16, 0, 8, 0, 26, 54, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 7, 11, 1, 27, 22, 28, 1, 29, 4, 30, 8, 31, 8, 32, 3, 33, 3, 34, 7, 35, 15, 36, 8, 37, 16, 0, 8, 0, 26, 55, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 20, 8, 5, 9, 6, 10, 7, 11, 1, 27, 22, 28, 1, 29, 4, 30, 8, 31, 8, 32, 3, 33, 3, 34, 7, 35, 15, 36, 8, 37, 16, 0, 0, 0, 56, 56, -1, 10, 2, 0, 57, 3, 58, 5, 59, 23, 60, 24, 61, 25, 62, 1, 63, 2, 64, 26, 65, 27, 0, 0, 0, 67, 66, -1, 7, 2, 0, 68, 28, 69, 8, 70, 8, 71, 5, 72, 8, 73, 8, 0 </int_array>
+			<int_array  len="957"> 				-1, -1, 1, 0, -1, 24, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 2, 0, 0, 0, 26, 26, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 14, 10, 7, 11, 1, 27, 15, 28, 1, 29, 4, 30, 8, 31, 8, 32, 3, 33, 3, 34, 7, 35, 16, 36, 8, 37, 17, 0, 0, 0, 38, 38, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 39, 9, 40, 8, 0, 0, 0, 42, 41, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 18, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 19, 45, 3, 0, 0, 0, 42, 46, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 20, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 19, 45, 3, 0, 0, 0, 42, 47, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 19, 45, 3, 0, 0, 0, 42, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 22, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 19, 45, 3, 0, 0, 0, 42, 49, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 43, 1, 44, 19, 45, 3, 0, 0, 0, 50, 50, -1, 10, 2, 0, 51, 3, 52, 5, 53, 23, 54, 24, 55, 25, 56, 1, 57, 2, 58, 26, 59, 27, 0, 0, 0, 61, 60, -1, 7, 2, 0, 62, 28, 63, 8, 64, 8, 65, 5, 66, 8, 67, 8, 0, 0, 0, 69, 68, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 70, 29, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 0, 10, 0, 72, 71, -1, 69, 2, 0, 3, 1, 4, 2, 5, 2, 73, 1, 70, 3, 6, 3, 7, 30, 8, 31, 9, 6, 10, 7, 11, 1, 74, 32, 75, 2, 76, 33, 77, 5, 78, 5, 79, 8, 80, 4, 81, 34, 82, 8, 83, 35, 84, 8, 85, 8, 86, 36, 87, 3, 88, 3, 89, 5, 90, 31, 91, 37, 92, 5, 93, 5, 94, 31, 95, 38, 96, 5, 97, 5, 98, 39, 99, 2, 100, 40, 101, 41, 102, 5, 103, 2, 104, 5, 105, 5, 106, 5, 107, 5, 108, 5, 109, 5, 110, 5, 111, 5, 112, 5, 113, 5, 114, 5, 115, 5, 116, 5, 117, 5, 118, 5, 119, 5, 120, 5, 121, 42, 122, 5, 123, 43, 124, 44, 125, 45, 126, 40, 127, 46, 128, 2, 129, 47, 130, 48, 0, 10, 0, 72, 131, -1, 69, 2, 0, 3, 1, 4, 2, 5, 2, 73, 1, 70, 3, 6, 3, 7, 49, 8, 31, 9, 6, 10, 7, 11, 1, 74, 32, 75, 2, 76, 33, 77, 5, 78, 5, 79, 8, 80, 4, 81, 34, 82, 8, 83, 35, 84, 8, 85, 8, 86, 36, 87, 3, 88, 3, 89, 5, 90, 31, 91, 37, 92, 5, 93, 5, 94, 31, 95, 38, 96, 5, 97, 5, 98, 39, 99, 2, 100, 40, 101, 41, 102, 5, 103, 2, 104, 5, 105, 5, 106, 5, 107, 5, 108, 5, 109, 5, 110, 5, 111, 5, 112, 5, 113, 5, 114, 5, 115, 5, 116, 5, 117, 5, 118, 5, 119, 5, 120, 5, 121, 42, 122, 5, 123, 43, 124, 44, 125, 45, 126, 40, 127, 46, 128, 2, 129, 47, 130, 48, 0, 10, 0, 72, 132, -1, 69, 2, 0, 3, 1, 4, 2, 5, 2, 73, 1, 70, 3, 6, 3, 7, 50, 8, 31, 9, 6, 10, 7, 11, 1, 74, 32, 75, 2, 76, 33, 77, 5, 78, 5, 79, 8, 80, 4, 81, 34, 82, 8, 83, 35, 84, 8, 85, 8, 86, 36, 87, 3, 88, 3, 89, 5, 90, 31, 91, 37, 92, 5, 93, 5, 94, 31, 95, 38, 96, 5, 97, 5, 98, 39, 99, 2, 100, 40, 101, 41, 102, 5, 103, 2, 104, 5, 105, 5, 106, 5, 107, 5, 108, 5, 109, 5, 110, 5, 111, 5, 112, 5, 113, 5, 114, 5, 115, 5, 116, 5, 117, 5, 118, 5, 119, 5, 120, 5, 121, 42, 122, 5, 123, 43, 124, 44, 125, 45, 126, 40, 127, 46, 128, 2, 129, 47, 130, 48, 0, 10, 0, 72, 133, -1, 69, 2, 0, 3, 1, 4, 2, 5, 2, 73, 1, 70, 3, 6, 3, 7, 51, 8, 31, 9, 6, 10, 7, 11, 1, 74, 32, 75, 2, 76, 33, 77, 5, 78, 5, 79, 8, 80, 4, 81, 34, 82, 8, 83, 35, 84, 8, 85, 8, 86, 36, 87, 3, 88, 3, 89, 5, 90, 31, 91, 37, 92, 5, 93, 5, 94, 31, 95, 38, 96, 5, 97, 5, 98, 39, 99, 2, 100, 40, 101, 41, 102, 5, 103, 2, 104, 5, 105, 5, 106, 5, 107, 5, 108, 5, 109, 5, 110, 5, 111, 5, 112, 5, 113, 5, 114, 5, 115, 5, 116, 5, 117, 5, 118, 5, 119, 5, 120, 5, 121, 42, 122, 5, 123, 43, 124, 44, 125, 45, 126, 40, 127, 46, 128, 2, 129, 47, 130, 48, 0 </int_array>
 			<string> "conns" </string>
-			<int_array  len="6"> 				13, 0, 75, 74, 2, 0 </int_array>
+			<int_array  len="6"> 				8, 0, 135, 134, 2, 0 </int_array>
 		</dictionary>
 
 	</main_resource>
