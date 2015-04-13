@@ -12,6 +12,13 @@ func _ready():
 	global = get_node("/root/global")
 	select_pack = get_node("level_selection/opt_pack")
 	level_list = get_node("level_selection/level_list")
+	var credits = get_node("credits/Label")
+	var f = File.new()
+	f.open("res://CREDITS.txt", f.READ)
+	var credit = ""
+	while(!f.eof_reached()):
+		credit = str(credit, "\n", f.get_line())
+	credits.set_text(credit)
 	
 	var diraccess = Directory.new()
 	diraccess.open("res://levels/")
@@ -63,7 +70,7 @@ func _fixed_process(delta):
 	
 func _process(delta):
 	set_pos((get_pos()*4 + target)/5)
-	if(abs(get_pos().x - target.x) < 1):
+	if(abs(get_pos().x - target.x) < 1 && abs(get_pos().y - target.y) < 1):
 		set_pos(target)
 		set_process(false)
 
@@ -71,7 +78,17 @@ func goto_levels():
 	target = Vector2(-1024,0)
 	set_process(true)
 
-
 func goto_start():
 	target = Vector2(0,0)
 	set_process(true)
+	
+func goto_options():
+	target = Vector2(1024,0)
+	set_process(true)
+	
+func goto_credits():
+	target = Vector2(0,-768)
+	set_process(true)
+
+func quit():
+	get_tree().quit()
