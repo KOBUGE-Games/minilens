@@ -19,9 +19,10 @@ func _ready():
 	diraccess.list_dir_begin()
 	var name = diraccess.get_next()
 	var i = 1
+	select_pack.add_item("tutorial")
 	while name:
 		if diraccess.current_is_dir():
-			if name.length() > 3:
+			if name.length() > 3 and name != "tutorial":
 				select_pack.add_item(name)
 		name = diraccess.get_next()
 	diraccess.list_dir_end()
