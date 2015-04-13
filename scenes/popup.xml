@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resource_file type="PackedScene" subresource_count="6" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
+	<ext_resource path="res://gfx/grey_panel.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/green_panel.png" type="Texture"></ext_resource>
+	<resource type="StyleBoxTexture" path="local://1">
+		<real name="content_margin/left"> -1 </real>
+		<real name="content_margin/right"> -1 </real>
+		<real name="content_margin/top"> -1 </real>
+		<real name="content_margin/bottom"> -1 </real>
+		<resource name="texture" resource_type="Texture" path="res://gfx/green_panel.png">  </resource>
+		<real name="margin/left"> 33 </real>
+		<real name="margin/right"> 33 </real>
+		<real name="margin/top"> 33 </real>
+		<real name="margin/bottom"> 33 </real>
+		<real name="expand_margin/left"> 0 </real>
+		<real name="expand_margin/right"> 0 </real>
+		<real name="expand_margin/top"> 0 </real>
+		<real name="expand_margin/bottom"> 0 </real>
+		<bool name="draw_center"> True </bool>
+
+	</resource>
+	<resource type="StyleBoxTexture" path="local://2">
+		<real name="content_margin/left"> -1 </real>
+		<real name="content_margin/right"> -1 </real>
+		<real name="content_margin/top"> -1 </real>
+		<real name="content_margin/bottom"> -1 </real>
+		<resource name="texture" resource_type="Texture" path="res://gfx/grey_panel.png">  </resource>
+		<real name="margin/left"> 33 </real>
+		<real name="margin/right"> 33 </real>
+		<real name="margin/top"> 33 </real>
+		<real name="margin/bottom"> 33 </real>
+		<real name="expand_margin/left"> 0 </real>
+		<real name="expand_margin/right"> 0 </real>
+		<real name="expand_margin/top"> 0 </real>
+		<real name="expand_margin/bottom"> 0 </real>
+		<bool name="draw_center"> True </bool>
+
+	</resource>
+	<main_resource>
+		<dictionary name="_bundled" shared="false">
+			<string> "names" </string>
+			<string_array  len="60">
+				<string> "popup" </string>
+				<string> "Control" </string>
+				<string> "_import_path" </string>
+				<string> "visibility/visible" </string>
+				<string> "visibility/opacity" </string>
+				<string> "visibility/self_opacity" </string>
+				<string> "visibility/light_mask" </string>
+				<string> "margin/right" </string>
+				<string> "margin/bottom" </string>
+				<string> "focus_neighbour/left" </string>
+				<string> "focus_neighbour/top" </string>
+				<string> "focus_neighbour/right" </string>
+				<string> "focus_neighbour/bottom" </string>
+				<string> "focus/ignore_mouse" </string>
+				<string> "focus/stop_mouse" </string>
+				<string> "size_flags/horizontal" </string>
+				<string> "size_flags/vertical" </string>
+				<string> "size_flags/stretch_ratio" </string>
+				<string> "__meta__" </string>
+				<string> "header" </string>
+				<string> "Panel" </string>
+				<string> "custom_styles/panel" </string>
+				<string> "title" </string>
+				<string> "Label" </string>
+				<string> "anchor/right" </string>
+				<string> "anchor/bottom" </string>
+				<string> "margin/left" </string>
+				<string> "margin/top" </string>
+				<string> "custom_fonts/font" </string>
+				<string> "custom_colors/font_color_shadow" </string>
+				<string> "custom_constants/shadow_offset_x" </string>
+				<string> "custom_constants/shadow_offset_y" </string>
+				<string> "custom_constants/shadow_as_outline" </string>
+				<string> "range/min" </string>
+				<string> "range/max" </string>
+				<string> "range/step" </string>
+				<string> "range/page" </string>
+				<string> "range/value" </string>
+				<string> "range/exp_edit" </string>
+				<string> "rounded_values" </string>
+				<string> "text" </string>
+				<string> "align" </string>
+				<string> "valign" </string>
+				<string> "autowrap" </string>
+				<string> "uppercase" </string>
+				<string> "percent_visible" </string>
+				<string> "body" </string>
+				<string> "btn1" </string>
+				<string> "Button" </string>
+				<string> "anchor/top" </string>
+				<string> "disabled" </string>
+				<string> "toggle_mode" </string>
+				<string> "is_pressed" </string>
+				<string> "click_on_press" </string>
+				<string> "icon" </string>
+				<string> "flat" </string>
+				<string> "clip_text" </string>
+				<string> "btn2" </string>
+				<string> "anchor/left" </string>
+				<string> "btn3" </string>
+			</string_array>
+			<string> "version" </string>
+			<int> 1 </int>
+			<string> "conn_count" </string>
+			<int> 0 </int>
+			<string> "node_count" </string>
+			<int> 8 </int>
+			<string> "variants" </string>
+			<array  len="35" shared="false">
+				<node_path> "" </node_path>
+				<bool> True </bool>
+				<real> 1 </real>
+				<int> 1 </int>
+				<real> 40 </real>
+				<bool> False </bool>
+				<int> 2 </int>
+				<dictionary  shared="false">
+					<string> "__editor_plugin_states__" </string>
+					<dictionary  shared="false">
+						<string> "Script" </string>
+						<dictionary  shared="false">
+							<string> "current" </string>
+							<int> 0 </int>
+							<string> "sources" </string>
+							<array  len="1" shared="false">
+								<string> "res://scripts/level_holder.gd" </string>
+							</array>
+						</dictionary>
+						<string> "2D" </string>
+						<dictionary  shared="false">
+							<string> "snap_pixel" </string>
+							<bool> False </bool>
+							<string> "snap_rotation_step" </string>
+							<real> 0.261799 </real>
+							<string> "zoom" </string>
+							<real> 1.360374 </real>
+							<string> "snap_step" </string>
+							<vector2> 10, 10 </vector2>
+							<string> "snap_relative" </string>
+							<bool> False </bool>
+							<string> "snap_grid" </string>
+							<bool> False </bool>
+							<string> "snap_rotation_offset" </string>
+							<real> 0 </real>
+							<string> "snap_show_grid" </string>
+							<bool> False </bool>
+							<string> "snap_offset" </string>
+							<vector2> 0, 0 </vector2>
+							<string> "ofs" </string>
+							<vector2> -398.207, -190.237 </vector2>
+							<string> "snap_rotation" </string>
+							<bool> False </bool>
+						</dictionary>
+						<string> "3D" </string>
+						<dictionary  shared="false">
+							<string> "deflight_rot_y" </string>
+							<real> 0.628319 </real>
+							<string> "zfar" </string>
+							<real> 500 </real>
+							<string> "fov" </string>
+							<real> 45 </real>
+							<string> "viewports" </string>
+							<array  len="4" shared="false">
+								<dictionary  shared="false">
+									<string> "distance" </string>
+									<real> 4 </real>
+									<string> "x_rot" </string>
+									<real> 0 </real>
+									<string> "y_rot" </string>
+									<real> 0 </real>
+									<string> "listener" </string>
+									<bool> True </bool>
+									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
+									<bool> False </bool>
+									<string> "pos" </string>
+									<vector3> 0, 0, 0 </vector3>
+								</dictionary>
+								<dictionary  shared="false">
+									<string> "distance" </string>
+									<real> 4 </real>
+									<string> "x_rot" </string>
+									<real> 0 </real>
+									<string> "y_rot" </string>
+									<real> 0 </real>
+									<string> "listener" </string>
+									<bool> False </bool>
+									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
+									<bool> False </bool>
+									<string> "pos" </string>
+									<vector3> 0, 0, 0 </vector3>
+								</dictionary>
+								<dictionary  shared="false">
+									<string> "distance" </string>
+									<real> 4 </real>
+									<string> "x_rot" </string>
+									<real> 0 </real>
+									<string> "y_rot" </string>
+									<real> 0 </real>
+									<string> "listener" </string>
+									<bool> False </bool>
+									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
+									<bool> False </bool>
+									<string> "pos" </string>
+									<vector3> 0, 0, 0 </vector3>
+								</dictionary>
+								<dictionary  shared="false">
+									<string> "distance" </string>
+									<real> 4 </real>
+									<string> "x_rot" </string>
+									<real> 0 </real>
+									<string> "y_rot" </string>
+									<real> 0 </real>
+									<string> "listener" </string>
+									<bool> False </bool>
+									<string> "use_environment" </string>
+									<bool> False </bool>
+									<string> "use_orthogonal" </string>
+									<bool> False </bool>
+									<string> "pos" </string>
+									<vector3> 0, 0, 0 </vector3>
+								</dictionary>
+							</array>
+							<string> "viewport_mode" </string>
+							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
+							<string> "ambient_light_color" </string>
+							<color> 0.15, 0.15, 0.15, 1 </color>
+							<string> "show_grid" </string>
+							<bool> True </bool>
+							<string> "show_origin" </string>
+							<bool> True </bool>
+							<string> "znear" </string>
+							<real> 0.1 </real>
+							<string> "default_srgb" </string>
+							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
+						</dictionary>
+					</dictionary>
+					<string> "__editor_run_settings__" </string>
+					<dictionary  shared="false">
+						<string> "custom_args" </string>
+						<string> "-l $scene" </string>
+						<string> "run_mode" </string>
+						<int> 0 </int>
+					</dictionary>
+					<string> "__editor_plugin_screen__" </string>
+					<string> "2D" </string>
+				</dictionary>
+				<real> 528 </real>
+				<real> 55 </real>
+				<resource  resource_type="StyleBox" path="local://1">  </resource>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<real> 7 </real>
+				<real> 17 </real>
+				<resource  resource_type="Font" path="res://fonts/papercut.fnt">  </resource>
+				<color> 0, 0, 0, 1 </color>
+				<real> 0 </real>
+				<string> "Title" </string>
+				<int> 0 </int>
+				<real> 328 </real>
+				<resource  resource_type="StyleBox" path="local://2">  </resource>
+				<dictionary  shared="false">
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
+				</dictionary>
+				<int> 3 </int>
+				<string> "Level passed!" </string>
+				<real> -1 </real>
+				<real> 99 </real>
+				<real> 3 </real>
+				<real> 58 </real>
+				<string> "Retry" </string>
+				<resource name=""></resource>				<real> -4 </real>
+				<string> "Next level" </string>
+				<real> 51 </real>
+				<real> 10 </real>
+				<string> "Back to menu" </string>
+			</array>
+			<string> "nodes" </string>
+			<int_array  len="498"> 				-1, -1, 1, 0, -1, 17, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 4, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 18, 7, 0, 0, 0, 20, 19, -1, 18, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 8, 8, 9, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 21, 10, 18, 11, 0, 1, 0, 23, 22, -1, 37, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 24, 3, 25, 3, 26, 12, 27, 12, 7, 12, 8, 13, 9, 0, 10, 0, 11, 0, 12, 0, 13, 1, 14, 1, 15, 6, 17, 2, 28, 14, 29, 15, 30, 3, 31, 3, 32, 3, 33, 16, 34, 2, 35, 2, 36, 2, 37, 16, 38, 5, 39, 5, 40, 17, 41, 18, 42, 18, 43, 5, 44, 5, 45, 2, 0, 0, 0, 20, 46, -1, 19, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 4, 7, 8, 8, 19, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 21, 20, 18, 21, 0, 3, 0, 23, 40, -1, 36, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 24, 3, 25, 22, 26, 12, 27, 12, 7, 12, 9, 0, 10, 0, 11, 0, 12, 0, 13, 1, 14, 1, 15, 6, 17, 2, 28, 14, 29, 15, 30, 3, 31, 3, 32, 3, 33, 16, 34, 2, 35, 2, 36, 2, 37, 16, 38, 5, 39, 5, 40, 23, 41, 3, 42, 3, 43, 5, 44, 5, 45, 24, 0, 3, 0, 48, 47, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 49, 3, 24, 22, 25, 3, 26, 12, 27, 25, 7, 26, 8, 27, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 28, 14, 50, 5, 51, 5, 52, 5, 53, 5, 40, 28, 54, 29, 55, 5, 56, 5, 41, 3, 0, 3, 0, 48, 57, -1, 32, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 58, 22, 49, 3, 24, 3, 25, 3, 26, 30, 27, 25, 7, 12, 8, 27, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 28, 14, 50, 5, 51, 5, 52, 5, 53, 5, 40, 31, 54, 29, 55, 5, 56, 5, 41, 3, 0, 3, 0, 48, 59, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 49, 3, 24, 3, 25, 3, 26, 12, 27, 32, 7, 12, 8, 33, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 28, 14, 50, 5, 51, 5, 52, 5, 53, 5, 40, 34, 54, 29, 55, 5, 56, 5, 41, 3, 0 </int_array>
+			<string> "conns" </string>
+			<int_array  len="0"> 				 </int_array>
+		</dictionary>
+
+	</main_resource>
+</resource_file>

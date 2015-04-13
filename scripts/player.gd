@@ -84,7 +84,7 @@ func level_load(var level_node):
 	move_up = 0
 
 func destroy():
-	get_node("../../level_holder").retry_level()
+	get_node("../../level_holder").prompt_retry_level()
 
 func play_anim():
 	if(old_anim != new_anim):
