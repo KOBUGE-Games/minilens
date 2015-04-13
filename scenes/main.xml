@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="7" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://scenes/popup.xml" type="PackedScene"></ext_resource>
-	<ext_resource path="res://scenes/player.xml" type="PackedScene"></ext_resource>
-	<ext_resource path="res://gfx/return.png" type="Texture"></ext_resource>
-	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
+<resource_file type="PackedScene" subresource_count="9" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://scripts/level_holder.gd" type="Script"></ext_resource>
+	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
+	<ext_resource path="res://gfx/radioactive_icon.png" type="Texture"></ext_resource>
+	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
 	<ext_resource path="res://gfx/menuGrid.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/return.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scenes/player.xml" type="PackedScene"></ext_resource>
+	<ext_resource path="res://scenes/popup.xml" type="PackedScene"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="64">
+			<string_array  len="94">
 				<string> "world" </string>
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
@@ -63,6 +65,36 @@
 				<string> "menu" </string>
 				<string> "popup" </string>
 				<string> "Control" </string>
+				<string> "barrel_counter" </string>
+				<string> "Label" </string>
+				<string> "margin/top" </string>
+				<string> "custom_fonts/font" </string>
+				<string> "custom_colors/font_color" </string>
+				<string> "range/min" </string>
+				<string> "range/max" </string>
+				<string> "range/step" </string>
+				<string> "range/page" </string>
+				<string> "range/value" </string>
+				<string> "range/exp_edit" </string>
+				<string> "rounded_values" </string>
+				<string> "text" </string>
+				<string> "align" </string>
+				<string> "valign" </string>
+				<string> "autowrap" </string>
+				<string> "uppercase" </string>
+				<string> "percent_visible" </string>
+				<string> "box_icon" </string>
+				<string> "Sprite" </string>
+				<string> "texture" </string>
+				<string> "centered" </string>
+				<string> "flip_h" </string>
+				<string> "flip_v" </string>
+				<string> "vframes" </string>
+				<string> "hframes" </string>
+				<string> "frame" </string>
+				<string> "modulate" </string>
+				<string> "region" </string>
+				<string> "region_rect" </string>
 				<string> "music" </string>
 				<string> "StreamPlayer" </string>
 				<string> "stream/stream" </string>
@@ -80,9 +112,9 @@
 			<string> "conn_count" </string>
 			<int> 2 </int>
 			<string> "node_count" </string>
-			<int> 10 </int>
+			<int> 12 </int>
 			<string> "variants" </string>
-			<array  len="28" shared="false">
+			<array  len="40" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -97,7 +129,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 0 </int>
+							<int> 3 </int>
 							<string> "sources" </string>
 							<array  len="5" shared="false">
 								<string> "res://scripts/level_holder.gd" </string>
@@ -120,7 +152,7 @@
 							<string> "snap_relative" </string>
 							<bool> False </bool>
 							<string> "snap_grid" </string>
-							<bool> True </bool>
+							<bool> False </bool>
 							<string> "snap_rotation_offset" </string>
 							<real> 0 </real>
 							<string> "snap_show_grid" </string>
@@ -128,7 +160,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -491.003, -125.1 </vector2>
+							<vector2> -203.003, -125.1 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -237,6 +269,10 @@
 				</dictionary>
 				<resource  resource_type="Script" path="res://scripts/level_holder.gd">  </resource>
 				<vector2> 32, 32 </vector2>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
 				<resource  resource_type="PackedScene" path="res://scenes/player.xml">  </resource>
 				<vector2> -32, 0 </vector2>
 				<dictionary  shared="false">
@@ -264,10 +300,10 @@
 							<real> 4.204739 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
-							<string> "snap_rotation_offset" </string>
-							<real> 0 </real>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
+							<string> "snap_rotation_offset" </string>
+							<real> 0 </real>
 							<string> "snap_show_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -352,22 +388,22 @@
 							<real> 0.628319 </real>
 							<string> "fov" </string>
 							<real> 45 </real>
-							<string> "default_light" </string>
-							<bool> True </bool>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "znear" </string>
-							<real> 0.1 </real>
 							<string> "show_origin" </string>
 							<bool> True </bool>
-							<string> "deflight_rot_x" </string>
-							<real> 0.942478 </real>
+							<string> "znear" </string>
+							<real> 0.1 </real>
 							<string> "default_srgb" </string>
 							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -392,8 +428,6 @@
 				<resource  resource_type="Texture" path="res://gfx/menuGrid.png">  </resource>
 				<resource  resource_type="PackedScene" path="res://scenes/popup.xml">  </resource>
 				<dictionary  shared="false">
-					<string> "_edit_lock_" </string>
-					<bool> True </bool>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
@@ -408,10 +442,10 @@
 							<bool> False </bool>
 							<string> "zoom" </string>
 							<real> 2.050546 </real>
-							<string> "snap_rotation_offset" </string>
-							<real> 0 </real>
 							<string> "snap_grid" </string>
 							<bool> False </bool>
+							<string> "snap_rotation_offset" </string>
+							<real> 0 </real>
 							<string> "snap_show_grid" </string>
 							<bool> False </bool>
 							<string> "snap_offset" </string>
@@ -496,24 +530,26 @@
 							</array>
 							<string> "deflight_rot_y" </string>
 							<real> 0.628319 </real>
-							<string> "default_light" </string>
-							<bool> True </bool>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "znear" </string>
-							<real> 0.1 </real>
 							<string> "show_origin" </string>
 							<bool> True </bool>
-							<string> "deflight_rot_x" </string>
-							<real> 0.942478 </real>
+							<string> "znear" </string>
+							<real> 0.1 </real>
 							<string> "default_srgb" </string>
 							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
+					<string> "_edit_lock_" </string>
+					<bool> True </bool>
 					<string> "__editor_run_settings__" </string>
 					<dictionary  shared="false">
 						<string> "custom_args" </string>
@@ -524,12 +560,23 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
 				</dictionary>
+				<real> 96 </real>
+				<real> 4 </real>
+				<real> 136 </real>
+				<real> 37 </real>
+				<resource  resource_type="Font" path="res://fonts/papercut.fnt">  </resource>
+				<color> 0, 0, 0, 1 </color>
+				<string> "0/0" </string>
+				<real> -1 </real>
+				<vector2> 81.8219, 16.5942 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/radioactive_icon.png">  </resource>
+				<rect2> 0, 0, 0, 0 </rect2>
 				<resource  resource_type="AudioStream" path="res://audio/main_menu.ogg">  </resource>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="306"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 1, 13, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 14, 9, 0, 0, 0, 1, 15, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 10, 8, 5, 9, 6, 10, 7, 11, 1, 0, 2, 0, 17, 16, 11, 3, 2, 0, 7, 12, 12, 13, 0, 0, 0, 1, 18, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 0, 4, 0, 19, 19, -1, 5, 2, 0, 20, 7, 21, 4, 22, 5, 23, 6, 0, 5, 0, 25, 24, -1, 29, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 26, 14, 27, 15, 28, 16, 29, 0, 30, 0, 31, 0, 32, 0, 33, 17, 34, 17, 35, 18, 36, 18, 37, 2, 38, 17, 39, 17, 40, 17, 41, 17, 42, 19, 43, 20, 44, 20, 45, 20, 46, 20, 47, 20, 48, 21, 49, 22, 0, 5, 0, 25, 50, -1, 29, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 26, 15, 27, 23, 28, 16, 29, 0, 30, 0, 31, 0, 32, 0, 33, 17, 34, 1, 35, 18, 36, 18, 37, 2, 38, 17, 39, 17, 40, 17, 41, 17, 42, 24, 43, 20, 44, 20, 45, 20, 46, 20, 47, 20, 48, 21, 49, 22, 0, 5, 0, 52, 51, 25, 3, 2, 0, 3, 17, 12, 26, 0, 0, 0, 54, 53, -1, 7, 2, 0, 55, 27, 56, 17, 57, 17, 58, 5, 59, 17, 60, 17, 0 </int_array>
+			<int_array  len="428"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 1, 13, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 14, 9, 0, 0, 0, 1, 15, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 10, 8, 5, 9, 6, 10, 7, 11, 1, 12, 11, 0, 2, 0, 17, 16, 12, 3, 2, 0, 7, 13, 12, 14, 0, 0, 0, 1, 18, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 0, 4, 0, 19, 19, -1, 5, 2, 0, 20, 7, 21, 4, 22, 5, 23, 6, 0, 5, 0, 25, 24, -1, 29, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 26, 15, 27, 16, 28, 17, 29, 0, 30, 0, 31, 0, 32, 0, 33, 18, 34, 18, 35, 19, 36, 19, 37, 2, 38, 18, 39, 18, 40, 18, 41, 18, 42, 20, 43, 21, 44, 21, 45, 21, 46, 21, 47, 21, 48, 22, 49, 23, 0, 5, 0, 25, 50, -1, 29, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 26, 16, 27, 24, 28, 17, 29, 0, 30, 0, 31, 0, 32, 0, 33, 18, 34, 1, 35, 19, 36, 19, 37, 2, 38, 18, 39, 18, 40, 18, 41, 18, 42, 25, 43, 21, 44, 21, 45, 21, 46, 21, 47, 21, 48, 22, 49, 23, 0, 5, 0, 52, 51, 26, 3, 2, 0, 3, 18, 12, 27, 0, 5, 0, 54, 53, -1, 32, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 26, 28, 55, 29, 27, 30, 28, 31, 29, 0, 30, 0, 31, 0, 32, 0, 33, 1, 34, 1, 35, 19, 37, 2, 56, 32, 57, 33, 58, 5, 59, 2, 60, 2, 61, 2, 62, 5, 63, 18, 64, 18, 65, 34, 66, 7, 67, 7, 68, 18, 69, 18, 70, 35, 0, 5, 0, 72, 71, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 36, 8, 5, 9, 6, 10, 7, 11, 1, 73, 37, 74, 1, 21, 4, 75, 18, 76, 18, 77, 3, 78, 3, 79, 7, 80, 23, 81, 18, 82, 38, 0, 0, 0, 84, 83, -1, 7, 2, 0, 85, 39, 86, 18, 87, 18, 88, 5, 89, 18, 90, 18, 0 </int_array>
 			<string> "conns" </string>
-			<int_array  len="12"> 				6, 1, 62, 61, 2, 0, 7, 1, 62, 63, 2, 0 </int_array>
+			<int_array  len="12"> 				6, 1, 92, 91, 2, 0, 7, 1, 92, 93, 2, 0 </int_array>
 		</dictionary>
 
 	</main_resource>
