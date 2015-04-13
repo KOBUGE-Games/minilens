@@ -25,6 +25,7 @@ func _ready():
 	ray_check_left = get_node("ray_check_left")
 	ray_overlap = get_node("ray_overlap")
 	
+	ray_overlap.add_exception(self)
 	#fix position
 	move(Vector2(0,-4))
 
