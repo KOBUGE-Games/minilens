@@ -89,60 +89,71 @@ func _fixed_process(delta):
 	if(acid_animation_pos > acid_animation_time):
 		acid_animation_pos = acid_animation_pos - acid_animation_time
 	tilemap.get_tileset().tile_set_texture_offset(2, Vector2(-64*acid_animation_pos/acid_animation_time,0))
+		
+	current_position = (get_pos())/64
+	#allow to move right
+	check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
+	move_right = (check_right == -1 || check_right == TILE_LADDER)
+	if ray_check_right.is_colliding() and ray_check_right.get_collider():
+		var collider_name = ray_check_right.get_collider().get_name()
+		if collider_name.substr(0,3) == "box":
+			move_right = false
+
+	#allow to move left
+	check_left = tilemap.get_cell(current_position.x - 1, current_position.y)
+	move_left = (check_left == -1 || check_left == TILE_LADDER)
+	if ray_check_left.is_colliding() and ray_check_left.get_collider():
+		var collider_name = ray_check_left.get_collider().get_name()
+		if collider_name.substr(0,3) == "box":
+			move_left = false
+
+	#check overlap
+	check_overlap = tilemap.get_cell(current_position.x, current_position.y)
+
+	#check down
+	check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
+	move_down = (check_bottom == -1 || check_bottom == TILE_LADDER)
+	if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
+		var collider_name = ray_check_bottom.get_collider().get_name()
+		if collider_name.substr(0,3) == "box":
+			move_down = false
+	move_down = move_down || int(get_pos().y)%64 != 0
+
+	#check up
+	check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
+
+	#collect flower
+	if ray_overlap.is_colliding() and ray_overlap.get_collider():
+		if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
+			ray_overlap.get_collider().queue_free()
+			get_node("../../level_holder").goal_take()
+			get_node("pickup").play()
+		elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
+			ray_overlap.get_collider().queue_free()
+			bombs = bombs + 1
+	#sink
+	if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
+		set_z(-1)
+		move(Vector2(0,1))
+		if !sinking:
+			sinking = true
+			get_node("sink").play()
+		if(check_bottom == -1):
+			destroy()
+		return
+	
+	#fall
+	if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
+		falling = true
+	else:
+		falling = false
+		
 	if movement == 0 and move_up == 0:
-		
-		current_position = (get_pos())/64
-		#allow to move right
-		check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
-		move_right = (check_right == -1 || check_right == TILE_LADDER)
-		if ray_check_right.is_colliding() and ray_check_right.get_collider():
-			var collider_name = ray_check_right.get_collider().get_name()
-			if collider_name.substr(0,3) == "box":
-				move_right = false
-
-		#allow to move left
-		check_left = tilemap.get_cell(current_position.x - 1, current_position.y)
-		move_left = (check_left == -1 || check_left == TILE_LADDER)
-		if ray_check_left.is_colliding() and ray_check_left.get_collider():
-			var collider_name = ray_check_left.get_collider().get_name()
-			if collider_name.substr(0,3) == "box":
-				move_left = false
-
-		#check overlap
-		check_overlap = tilemap.get_cell(current_position.x, current_position.y)
-
-		#check down
-		check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
-		move_down = (check_bottom == -1 || check_bottom == TILE_LADDER)
-		if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
-			var collider_name = ray_check_bottom.get_collider().get_name()
-			if collider_name.substr(0,3) == "box":
-				move_down = false
-		move_down = move_down || int(get_pos().y)%64 != 0
-
-		#check up
-		check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
-
-		#collect flower
-		if ray_overlap.is_colliding() and ray_overlap.get_collider():
-			if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
-				ray_overlap.get_collider().queue_free()
-				get_node("../../level_holder").goal_take()
-				get_node("pickup").play()
-			elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
-				ray_overlap.get_collider().queue_free()
-				bombs = bombs + 1
-		#sink
-		if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
-			set_z(-1)
-			move(Vector2(0,1))
-			if !sinking:
-				sinking = true
-				get_node("sink").play()
-			if(check_bottom == -1):
-				destroy()
+			
+		if(falling):
+			move(Vector2(0,4))
+			get_node("AnimatedSprite/AnimationPlayer").play("fall")
 			return
-		
 		#ask to move right
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
 			if Input.is_action_pressed("btn_right"):
@@ -167,15 +178,6 @@ func _fixed_process(delta):
 				move_up = -64
 				return
 
-			
-		#fall
-		if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
-			move(Vector2(0,4))
-			falling = true
-			get_node("AnimatedSprite/AnimationPlayer").play("fall")
-			return
-		else:
-			falling = false
 			
 		if(Input.is_action_pressed("place_bomb")):
 			if(!place_bomb_was_pressed && bombs > 0):
