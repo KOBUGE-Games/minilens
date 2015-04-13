@@ -82,6 +82,7 @@ func level_load(var level_node):
 	bombs = 0
 	movement = 0
 	move_up = 0
+	falling = true
 
 func destroy():
 	get_node("../../level_holder").prompt_retry_level()
