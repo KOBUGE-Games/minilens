@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="6" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="7" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://gfx/popup_bg.png" type="Texture"></ext_resource>
 	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
-	<ext_resource path="res://gfx/grey_panel.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/green_panel.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/grey_panel.png" type="Texture"></ext_resource>
 	<resource type="StyleBoxTexture" path="local://1">
 		<real name="content_margin/left"> -1 </real>
 		<real name="content_margin/right"> -1 </real>
@@ -40,7 +41,7 @@
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="60">
+			<string_array  len="78">
 				<string> "popup" </string>
 				<string> "Control" </string>
 				<string> "_import_path" </string>
@@ -48,6 +49,8 @@
 				<string> "visibility/opacity" </string>
 				<string> "visibility/self_opacity" </string>
 				<string> "visibility/light_mask" </string>
+				<string> "margin/left" </string>
+				<string> "margin/top" </string>
 				<string> "margin/right" </string>
 				<string> "margin/bottom" </string>
 				<string> "focus_neighbour/left" </string>
@@ -67,8 +70,6 @@
 				<string> "Label" </string>
 				<string> "anchor/right" </string>
 				<string> "anchor/bottom" </string>
-				<string> "margin/left" </string>
-				<string> "margin/top" </string>
 				<string> "custom_fonts/font" </string>
 				<string> "custom_colors/font_color_shadow" </string>
 				<string> "custom_constants/shadow_offset_x" </string>
@@ -101,20 +102,41 @@
 				<string> "btn2" </string>
 				<string> "anchor/left" </string>
 				<string> "btn3" </string>
+				<string> "popup_bg" </string>
+				<string> "Sprite" </string>
+				<string> "transform/pos" </string>
+				<string> "transform/rot" </string>
+				<string> "transform/scale" </string>
+				<string> "z/z" </string>
+				<string> "z/relative" </string>
+				<string> "texture" </string>
+				<string> "centered" </string>
+				<string> "offset" </string>
+				<string> "flip_h" </string>
+				<string> "flip_v" </string>
+				<string> "vframes" </string>
+				<string> "hframes" </string>
+				<string> "frame" </string>
+				<string> "modulate" </string>
+				<string> "region" </string>
+				<string> "region_rect" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 8 </int>
+			<int> 9 </int>
 			<string> "variants" </string>
-			<array  len="35" shared="false">
+			<array  len="46" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
 				<int> 1 </int>
-				<real> 40 </real>
+				<real> 260 </real>
+				<real> 210 </real>
+				<real> 300 </real>
+				<real> 250 </real>
 				<bool> False </bool>
 				<int> 2 </int>
 				<dictionary  shared="false">
@@ -136,13 +158,13 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 1.360374 </real>
+							<real> 0.54036 </real>
 							<string> "snap_step" </string>
 							<vector2> 10, 10 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
 							<string> "snap_grid" </string>
-							<bool> False </bool>
+							<bool> True </bool>
 							<string> "snap_rotation_offset" </string>
 							<real> 0 </real>
 							<string> "snap_show_grid" </string>
@@ -150,7 +172,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -398.207, -190.237 </vector2>
+							<vector2> -514.349, -515.122 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -271,6 +293,7 @@
 				<real> 0 </real>
 				<string> "Title" </string>
 				<int> 0 </int>
+				<real> 40 </real>
 				<real> 328 </real>
 				<resource  resource_type="StyleBox" path="local://2">  </resource>
 				<dictionary  shared="false">
@@ -289,9 +312,16 @@
 				<real> 51 </real>
 				<real> 10 </real>
 				<string> "Back to menu" </string>
+				<vector2> 252, 174 </vector2>
+				<vector2> 1, 1 </vector2>
+				<int> -999 </int>
+				<resource  resource_type="Texture" path="res://gfx/popup_bg.png">  </resource>
+				<vector2> 0, 0 </vector2>
+				<color> 1, 1, 1, 1 </color>
+				<rect2> 0, 0, 0, 0 </rect2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="498"> 				-1, -1, 1, 0, -1, 17, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 4, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 18, 7, 0, 0, 0, 20, 19, -1, 18, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 8, 8, 9, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 21, 10, 18, 11, 0, 1, 0, 23, 22, -1, 37, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 24, 3, 25, 3, 26, 12, 27, 12, 7, 12, 8, 13, 9, 0, 10, 0, 11, 0, 12, 0, 13, 1, 14, 1, 15, 6, 17, 2, 28, 14, 29, 15, 30, 3, 31, 3, 32, 3, 33, 16, 34, 2, 35, 2, 36, 2, 37, 16, 38, 5, 39, 5, 40, 17, 41, 18, 42, 18, 43, 5, 44, 5, 45, 2, 0, 0, 0, 20, 46, -1, 19, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 4, 7, 8, 8, 19, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 21, 20, 18, 21, 0, 3, 0, 23, 40, -1, 36, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 24, 3, 25, 22, 26, 12, 27, 12, 7, 12, 9, 0, 10, 0, 11, 0, 12, 0, 13, 1, 14, 1, 15, 6, 17, 2, 28, 14, 29, 15, 30, 3, 31, 3, 32, 3, 33, 16, 34, 2, 35, 2, 36, 2, 37, 16, 38, 5, 39, 5, 40, 23, 41, 3, 42, 3, 43, 5, 44, 5, 45, 24, 0, 3, 0, 48, 47, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 49, 3, 24, 22, 25, 3, 26, 12, 27, 25, 7, 26, 8, 27, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 28, 14, 50, 5, 51, 5, 52, 5, 53, 5, 40, 28, 54, 29, 55, 5, 56, 5, 41, 3, 0, 3, 0, 48, 57, -1, 32, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 58, 22, 49, 3, 24, 3, 25, 3, 26, 30, 27, 25, 7, 12, 8, 27, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 28, 14, 50, 5, 51, 5, 52, 5, 53, 5, 40, 31, 54, 29, 55, 5, 56, 5, 41, 3, 0, 3, 0, 48, 59, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 49, 3, 24, 3, 25, 3, 26, 12, 27, 32, 7, 12, 8, 33, 9, 0, 10, 0, 11, 0, 12, 0, 13, 5, 14, 1, 15, 6, 16, 6, 17, 2, 28, 14, 50, 5, 51, 5, 52, 5, 53, 5, 40, 34, 54, 29, 55, 5, 56, 5, 41, 3, 0 </int_array>
+			<int_array  len="551"> 				-1, -1, 1, 0, -1, 19, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 0, 12, 0, 13, 0, 14, 0, 15, 8, 16, 1, 17, 9, 18, 9, 19, 2, 20, 10, 0, 0, 0, 22, 21, -1, 18, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 9, 11, 10, 12, 11, 0, 12, 0, 13, 0, 14, 0, 15, 8, 16, 1, 17, 9, 18, 9, 19, 2, 23, 13, 20, 14, 0, 1, 0, 25, 24, -1, 37, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 26, 3, 27, 3, 7, 15, 8, 15, 9, 15, 10, 16, 11, 0, 12, 0, 13, 0, 14, 0, 15, 1, 16, 1, 17, 9, 19, 2, 28, 17, 29, 18, 30, 3, 31, 3, 32, 3, 33, 19, 34, 2, 35, 2, 36, 2, 37, 19, 38, 8, 39, 8, 40, 20, 41, 21, 42, 21, 43, 8, 44, 8, 45, 2, 0, 0, 0, 22, 46, -1, 19, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 8, 22, 9, 11, 10, 23, 11, 0, 12, 0, 13, 0, 14, 0, 15, 8, 16, 1, 17, 9, 18, 9, 19, 2, 23, 24, 20, 25, 0, 3, 0, 25, 40, -1, 36, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 26, 3, 27, 26, 7, 15, 8, 15, 9, 15, 11, 0, 12, 0, 13, 0, 14, 0, 15, 1, 16, 1, 17, 9, 19, 2, 28, 17, 29, 18, 30, 3, 31, 3, 32, 3, 33, 19, 34, 2, 35, 2, 36, 2, 37, 19, 38, 8, 39, 8, 40, 27, 41, 3, 42, 3, 43, 8, 44, 8, 45, 28, 0, 3, 0, 48, 47, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 49, 3, 26, 26, 27, 3, 7, 15, 8, 29, 9, 30, 10, 31, 11, 0, 12, 0, 13, 0, 14, 0, 15, 8, 16, 1, 17, 9, 18, 9, 19, 2, 28, 17, 50, 8, 51, 8, 52, 8, 53, 8, 40, 32, 54, 33, 55, 8, 56, 8, 41, 3, 0, 3, 0, 48, 57, -1, 32, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 58, 26, 49, 3, 26, 3, 27, 3, 7, 34, 8, 29, 9, 15, 10, 31, 11, 0, 12, 0, 13, 0, 14, 0, 15, 8, 16, 1, 17, 9, 18, 9, 19, 2, 28, 17, 50, 8, 51, 8, 52, 8, 53, 8, 40, 35, 54, 33, 55, 8, 56, 8, 41, 3, 0, 3, 0, 48, 59, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 49, 3, 26, 3, 27, 3, 7, 15, 8, 36, 9, 15, 10, 37, 11, 0, 12, 0, 13, 0, 14, 0, 15, 8, 16, 1, 17, 9, 18, 9, 19, 2, 28, 17, 50, 8, 51, 8, 52, 8, 53, 8, 40, 38, 54, 33, 55, 8, 56, 8, 41, 3, 0, 0, 0, 61, 60, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 62, 39, 63, 19, 64, 40, 65, 41, 66, 1, 67, 42, 68, 1, 69, 43, 70, 8, 71, 8, 72, 3, 73, 3, 74, 21, 75, 44, 76, 8, 77, 45, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>

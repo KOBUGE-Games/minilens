@@ -48,8 +48,6 @@ func _ready():
 	ray_bottom.add_exception(self)
 	ray_left.add_exception(self)
 	
-	#fix position
-	move(Vector2(0,-4))
 
 func destroy():
 	get_node("../../../level_holder").goal_take()
