@@ -43,6 +43,8 @@ var place_bomb_was_pressed = false
 var bomb = preload("res://scenes/bomb.xml")
 var bombs = 0
 var falling = false
+var old_anim
+var new_anim
 
 func _ready():
 	ray_top = get_node("ray_top")
@@ -66,6 +68,7 @@ func _ready():
 	#fix position
 
 func level_load(var level_node):
+	get_node("AnimatedSprite").set_frame(0)
 	tilemap = level_node.get_node("tilemap")
 	var camera = get_node("Camera2D")
 	var top_left_pos = level_node.get_node("camera_start").get_pos()
@@ -83,13 +86,15 @@ func level_load(var level_node):
 func destroy():
 	get_node("../../level_holder").retry_level()
 
-func _fixed_process(delta):
-	get_node("AnimatedSprite/AnimationPlayer").stop()
-	acid_animation_pos = acid_animation_pos + delta
-	if(acid_animation_pos > acid_animation_time):
-		acid_animation_pos = acid_animation_pos - acid_animation_time
-	tilemap.get_tileset().tile_set_texture_offset(2, Vector2(-64*acid_animation_pos/acid_animation_time,0))
-		
+func play_anim():
+	if(old_anim != new_anim):
+		if(new_anim == "stop"):
+			get_node("AnimatedSprite/AnimationPlayer")
+			get_node("AnimatedSprite/AnimationPlayer").stop()
+		else:
+			get_node("AnimatedSprite/AnimationPlayer").play(new_anim)
+
+func logic():
 	current_position = (get_pos())/64
 	#allow to move right
 	check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
@@ -133,6 +138,7 @@ func _fixed_process(delta):
 			bombs = bombs + 1
 	#sink
 	if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
+		new_anim = "fall"
 		set_z(-1)
 		move(Vector2(0,1))
 		if !sinking:
@@ -152,7 +158,7 @@ func _fixed_process(delta):
 			
 		if(falling):
 			move(Vector2(0,4))
-			get_node("AnimatedSprite/AnimationPlayer").play("fall")
+			new_anim = "fall"
 			return
 		#ask to move right
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
@@ -189,19 +195,33 @@ func _fixed_process(delta):
 		else:
 			place_bomb_was_pressed = false
 	
-	if(1):
-		get_node("AnimatedSprite/AnimationPlayer").play("walking")
-		if movement > 0:
-			movement -= 4
-			move(Vector2(4,0))
-			get_node("AnimatedSprite").set_flip_h(false)
-		elif movement < 0:
-			movement += 4
-			move(Vector2(-4,0))
-			get_node("AnimatedSprite").set_flip_h(true)
-		if move_up > 0:
-			move_up -= 4
-			move(Vector2(0,-4))
-		elif move_up < 0:
-			move_up += 4
-			move(Vector2(0,4))
+	if movement > 0:
+		movement -= 4
+		move(Vector2(4,0))
+		get_node("AnimatedSprite").set_flip_h(false)
+		new_anim = "walking"
+	elif movement < 0:
+		movement += 4
+		move(Vector2(-4,0))
+		get_node("AnimatedSprite").set_flip_h(true)
+		new_anim = "walking"
+	if move_up > 0:
+		move_up -= 4
+		move(Vector2(0,-4))
+		new_anim = "stop"
+	elif move_up < 0:
+		move_up += 4
+		move(Vector2(0,4))
+		new_anim = "stop"
+
+func _fixed_process(delta):
+	old_anim = new_anim
+	new_anim = "stop"
+	acid_animation_pos = acid_animation_pos + delta
+	if(acid_animation_pos > acid_animation_time):
+		acid_animation_pos = acid_animation_pos - acid_animation_time
+	tilemap.get_tileset().tile_set_texture_offset(2, Vector2(-64*acid_animation_pos/acid_animation_time,0))
+	logic()
+	play_anim()
+	
+	
