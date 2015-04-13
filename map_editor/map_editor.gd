@@ -1,3 +1,6 @@
+# Map editor for Minilens
+# Author: Kermer
+
 extends Node
 # Notes:
 # - It might be vulnerable to project resolution changes
