@@ -89,7 +89,7 @@ func destroy():
 func play_anim():
 	if(old_anim != new_anim):
 		if(new_anim == "stop"):
-			get_node("AnimatedSprite/AnimationPlayer")
+			get_node("AnimatedSprite").set_frame(0)
 			get_node("AnimatedSprite/AnimationPlayer").stop()
 		else:
 			get_node("AnimatedSprite/AnimationPlayer").play(new_anim)
