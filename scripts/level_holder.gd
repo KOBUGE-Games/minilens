@@ -54,6 +54,7 @@ func _input(event):
 func _ready():
 	global = get_node("/root/global")
 	player = get_node("../player_holder/player")
+	get_node("../gui/CanvasLayer/retry").set_focus_mode(Control.FOCUS_NONE)
 	set_process_input(true)
 
 func back_to_menu():
