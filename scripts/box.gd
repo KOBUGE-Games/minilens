@@ -33,8 +33,9 @@ func _ready():
 	tilemap = get_node("../tilemap")
 	ray_check_top = get_node("ray_check_top")
 	ray_check_right = get_node("ray_check_right")
-	ray_check_bottom = get_node("ray_check_bottom")
+	ray_check_bottom = get_node("ray_bottom")
 	ray_check_left = get_node("ray_check_left")
+	ray_check_bottom.add_exception(self)
 	
 
 func destroy(var by): # Called whenever the box is destroyed
