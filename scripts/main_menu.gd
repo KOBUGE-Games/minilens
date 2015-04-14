@@ -8,6 +8,7 @@ export var level_btn_size = Vector2(100,100) # the size+margin of every level se
 var level_btn_row_count = 6 #
 var level_selected # The level we have selected
 var global # the global node (serves like a library, see global.gd)
+var packs_included = [] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
 
 func _ready():
 	# Finding nodes
@@ -24,17 +25,26 @@ func _ready():
 	credits.set_text(credit)
 	# Using the Diectory class to list all folders, so we can add the packs to the menu
 	var diraccess = Directory.new()
-	diraccess.open("res://levels/")
-	diraccess.list_dir_begin()
-	var name = diraccess.get_next()
-	var i = 1 # the id of the number
-	select_pack.add_item("tutorial")
-	while name:
-		if diraccess.current_is_dir():
-			if name != "." and name != ".." and name != "tutorial":
-				select_pack.add_item(name)
-		name = diraccess.get_next()
-	diraccess.list_dir_end()
+	# check 2 paths - 1. bundled levels, 2. created later using map editor
+	var dir_paths = ["res://levels/"] # res://levels (bundled)
+	dir_paths.append(Globals.globalize_path(dir_paths[0])) # C:/.../levels (disk)
+	for path in dir_paths:
+		diraccess.open(path)
+		diraccess.list_dir_begin()
+		var name = diraccess.get_next()
+		var i = 1 # the id of the number
+		select_pack.add_item("tutorial")
+		while name:
+			if diraccess.current_is_dir():
+				if name != "." and name != ".." and name != "tutorial":
+					if path.begins_with("res://"): # bundled
+						select_pack.add_item(name)
+						packs_included.append(name)
+					else: # made with map editor
+						if !name in packs_included: 
+							select_pack.add_item(name)
+			name = diraccess.get_next()
+		diraccess.list_dir_end()
 	_on_opt_pack_item_selected(0)#Update level list
 
 func _on_opt_pack_item_selected( ID ):
@@ -55,7 +65,8 @@ func _on_opt_pack_item_selected( ID ):
 	f.close()
 	#Using the Directory class to list all files
 	var diraccess = Directory.new()
-	diraccess.open(str("res://levels/", select_pack.get_text()))
+	if diraccess.open(str("res://levels/", select_pack.get_text())) != 0: # pack is not bundled
+		diraccess.open(Globals.globalize_path(str("res://levels/", select_pack.get_text()))) # load from disk
 	diraccess.list_dir_begin()
 	var name = diraccess.get_next()
 	var i = 0 #The number of the current level
