@@ -24,6 +24,7 @@ var move_left = false
 export var moveable = true # Can we move, or is this box a static one
 export var TILE_ACID = 2 
 export var TILE_LADDER = 1
+var is_goal = true # Do we have to remove the box from the list of goals?
 
 func _ready():
 	if(moveable):
@@ -39,12 +40,14 @@ func _ready():
 	
 
 func destroy(var by): # Called whenever the box is destroyed
-	if(moveable):
+	if(moveable && is_goal):
 		if(by == "bomb"): # When we were demolished by a bomb
 			get_node("../../../level_holder").goal_take("box",1)
 		else:
 			get_node("../../../level_holder").goal_take("box")
-	queue_free() # delete the box from the scene
+		is_goal = 0
+	if(by != "acid"): # When we weren't coroding
+		queue_free() # delete the box from the scene
 
 func _fixed_process(delta):
 	if movement == 0: # We aren't moveing right now
@@ -66,7 +69,7 @@ func _fixed_process(delta):
 		else:
 			move_down = true
 		if(check_top == TILE_ACID):#When we have fallen through the acid
-			destroy("acid")
+			queue_free() # delete the box from the scene
 		
 		#sinking
 		if(check_bottom == TILE_ACID):
@@ -78,9 +81,11 @@ func _fixed_process(delta):
 			move(Vector2(0,4))
 		else:
 			#sink
-			if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):# if we can sink
+			if((check_overlap == TILE_ACID && move_down && (check_bottom == -1 || check_bottom == TILE_LADDER)) || check_bottom == TILE_ACID && move_down):# if we can sink
 				set_z(-1)
 				move(Vector2(0,1))
+			if(check_overlap == TILE_ACID):
+				destroy("acid")
 			
 			#check if we can move left
 			if(tilemap.get_cell(current_position.x - 1, current_position.y) == 0):

@@ -110,7 +110,7 @@ func logic():
 
 	#Can we move down?
 	check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
-	move_down = (check_bottom == -1 || check_bottom == TILE_LADDER) # We can move through air and ladders
+	move_down = (check_bottom == -1 || check_bottom == TILE_LADDER || check_bottom == TILE_ACID) # We can move through air and ladders
 	if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
 		var collider_name = ray_check_bottom.get_collider().get_name()
 		if collider_name.substr(0,3) == "box":
@@ -131,17 +131,6 @@ func logic():
 			get_node("pickup").play()
 			bomb_counter.get_node("Label").set_text(str(" x ", bombs))
 			bomb_counter.show()
-	#sink in acid
-	if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
-		new_anim = "fall"
-		set_z(-1)
-		move(Vector2(0,1))
-		if !sinking:
-			sinking = true
-			get_node("sink").play()
-		if(check_bottom == -1): # We passed through the acid
-			destroy("acid")
-		return
 	
 	#Check if we have to fall
 	if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
@@ -150,6 +139,17 @@ func logic():
 		falling = false
 		
 	if movement == 0 and move_up == 0: # We aren't moving
+		#sink in acid
+		if((check_overlap == TILE_ACID && move_down) || (check_bottom == TILE_ACID && move_down)):
+			new_anim = "fall"
+			set_z(-1)
+			move(Vector2(0,1))
+			if !sinking:
+				sinking = true
+				get_node("sink").play()
+			if(check_overlap == TILE_ACID): # We passed through the acid
+				destroy("acid")
+			return
 			
 		if(falling): # We have to fall
 			move(Vector2(0,4))
