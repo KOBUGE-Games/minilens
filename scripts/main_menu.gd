@@ -40,6 +40,17 @@ func _on_opt_pack_item_selected( ID ):
 	for i in range(level_list.get_child_count()):
 		level_list.get_child(i).queue_free()
 	var locked_count = global.get_reached_level(select_pack.get_text())
+	var level_names = {}
+	var f = File.new()
+	var err = f.open(str("res://levels/", select_pack.get_text(), "/names.txt"),File.READ)
+	if(!err):
+		print(1)
+		while(!f.eof_reached()):
+			var line = f.get_line().split(":")
+			if(line[0] != ""):
+				level_names[int(line[0])] = line[1]
+	f.close()
+	print(level_names.to_json())
 	var diraccess = Directory.new()
 	diraccess.open(str("res://levels/", select_pack.get_text()))
 	diraccess.list_dir_begin()
@@ -47,9 +58,12 @@ func _on_opt_pack_item_selected( ID ):
 	var i = 0
 	while name:
 		if !diraccess.current_is_dir():
-			if name.length() > 3:
+			if name.substr(0,5) == "level":
 				var new_instance = level_btn_scene.instance()
-				new_instance.set_title(str("Level ",i + 1))
+				if(level_names.has(i+1)):
+					new_instance.set_title(level_names[i+1])
+				else:
+					new_instance.set_title(str("Level ",i + 1))
 				new_instance.set_metadata(i + 1)
 				new_instance.set_locked((i + 1) > locked_count)
 				var row_pos = int(i % level_btn_row_count)
