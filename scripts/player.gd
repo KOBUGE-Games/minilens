@@ -87,7 +87,7 @@ func check_orientation():# Check if the current orientation matches the movement
 func logic():
 	# Get the current position in the tilemap, and round it
 	current_position = (get_pos())/64
-	current_position = Vector2(round(current_position.x), round(current_position.y))
+	current_position = Vector2(round(current_position.x), floor(current_position.y))
 	
 	#Can we move right?
 	check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
@@ -110,7 +110,7 @@ func logic():
 
 	#Can we move down?
 	check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
-	move_down = (check_bottom == -1 || check_bottom == TILE_LADDER || check_bottom == TILE_ACID) # We can move through air and ladders
+	move_down = (check_bottom == -1 || check_bottom == TILE_LADDER || check_bottom == TILE_ACID) # We can move through air and ladders and acid
 	if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
 		var collider_name = ray_check_bottom.get_collider().get_name()
 		if collider_name.substr(0,3) == "box":
@@ -139,6 +139,12 @@ func logic():
 		falling = false
 		
 	if movement == 0 and move_up == 0: # We aren't moving
+			
+		if(falling): # We have to fall
+			move(Vector2(0,4))
+			new_anim = "fall"
+			return # Stop the other actions (you can't fall and move right, after all)
+		
 		#sink in acid
 		if((check_overlap == TILE_ACID && move_down) || (check_bottom == TILE_ACID && move_down)):
 			new_anim = "fall"
@@ -150,11 +156,6 @@ func logic():
 			if(check_overlap == TILE_ACID): # We passed through the acid
 				destroy("acid")
 			return
-			
-		if(falling): # We have to fall
-			move(Vector2(0,4))
-			new_anim = "fall"
-			return # Stop the other actions (you can't fall and move right, after all)
 		
 		#Should we move right?
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
