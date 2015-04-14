@@ -139,23 +139,24 @@ func logic():
 		falling = false
 		
 	if movement == 0 and move_up == 0: # We aren't moving
-			
-		if(falling): # We have to fall
-			move(Vector2(0,4))
-			new_anim = "fall"
-			return # Stop the other actions (you can't fall and move right, after all)
 		
 		#sink in acid
-		if((check_overlap == TILE_ACID && move_down) || (check_bottom == TILE_ACID && move_down)):
+		if((check_overlap == TILE_ACID && (move_down || int(get_pos().y)%64 == 0)) || (check_bottom == TILE_ACID && move_down)):
 			new_anim = "fall"
 			set_z(-1)
 			move(Vector2(0,1))
 			if !sinking:
 				sinking = true
 				get_node("sink").play()
-			if(check_overlap == TILE_ACID): # We passed through the acid
+			if(check_bottom != TILE_ACID): # We passed through the acid
 				destroy("acid")
 			return
+		
+		if(falling): # We have to fall
+			move(Vector2(0,4))
+			new_anim = "fall"
+			return # Stop the other actions (you can't fall and move right, after all)
+		
 		
 		#Should we move right?
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
