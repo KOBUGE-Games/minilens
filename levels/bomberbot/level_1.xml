@@ -2,9 +2,9 @@
 <resource_file type="PackedScene" subresource_count="6" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
+	<ext_resource path="res://scenes/box_static.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/bomb_pickup.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
-	<ext_resource path="res://scenes/box_static.xml" type="PackedScene"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
@@ -137,7 +137,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 0.358486 </real>
+							<real> 0.323534 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -151,7 +151,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -181.286, -296.122 </vector2>
+							<vector2> -162.501, -319.819 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -265,7 +265,7 @@
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 2 </int>
 				<bool> False </bool>
-				<int_array  len="134"> 					65537, 1, 65538, 1, 65539, 1, 65540, 1, 65541, 1, 65542, 1, 65543, 1, 65544, 1, 65545, 1, 65546, 1, 65547, 1, 65548, 1, 65549, 1, 65550, 1, 65551, 1, 131073, 1, 131087, 1, 196609, 1, 196623, 1, 262145, 1, 262159, 1, 327681, 1, 327695, 1, 393217, 1, 393231, 1, 458753, 1, 458767, 1, 589822, 4, 589823, 3, 524289, 1, 524298, 1, 524303, 1, 524305, 4, 524306, 3, 589824, 4, 589825, 0, 589826, 0, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589834, 0, 589835, 0, 589836, 0, 589837, 0, 589838, 0, 589839, 0, 589840, 3, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2 </int_array>
+				<int_array  len="144"> 					65537, 1, 65538, 1, 65539, 1, 65540, 1, 65541, 1, 65542, 1, 65543, 1, 65544, 1, 65545, 1, 65546, 1, 65547, 1, 65548, 1, 65549, 1, 65550, 1, 65551, 1, 131073, 1, 131087, 1, 196609, 1, 196623, 1, 262145, 1, 262159, 1, 327681, 1, 327695, 1, 393217, 1, 393231, 1, 458753, 1, 458767, 1, 589822, 4, 589823, 3, 524289, 1, 524298, 1, 524303, 1, 524305, 4, 524306, 3, 589824, 4, 589825, 0, 589826, 0, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 589834, 0, 589835, 0, 589836, 0, 589837, 0, 589838, 0, 589839, 0, 589840, 3, 786430, 2, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 720913, 2, 720914, 2 </int_array>
 				<dictionary  shared="false">
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
@@ -288,7 +288,7 @@
 					<bool> True </bool>
 				</dictionary>
 				<vector2> -128, -128 </vector2>
-				<vector2> 1152, 768 </vector2>
+				<vector2> 1216, 768 </vector2>
 				<resource  resource_type="PackedScene" path="res://scenes/bomb_pickup.xml">  </resource>
 				<vector2> 192, 0 </vector2>
 				<dictionary  shared="false">
