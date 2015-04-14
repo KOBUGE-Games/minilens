@@ -9,6 +9,7 @@ var level_node
 var goals_left = 0
 var global
 var btn2_action = 0
+var time_until_popup = 0
 
 func load_level(var pack, var level):
 	current_level = level
@@ -39,7 +40,8 @@ func load_level(var pack, var level):
 func retry_level():
 	load_level(current_pack, current_level)
 
-func goal_take():
+func goal_take(var wait = 0):
+	time_until_popup = wait
 	goals_left = goals_left - 1
 	if(goals_left == 0):
 		global.increase_reached_level(current_pack)
@@ -80,7 +82,13 @@ func show_popup(var title, var text):
 		popup.get_node("body/btn2").set_disabled(false)
 	else:
 		popup.get_node("body/btn2").set_disabled(true)
-	popup.show()
+	set_process(true)
+func _process(delta):
+	time_until_popup = time_until_popup - delta
+	if(time_until_popup <= 0):
+		var popup = get_node("../gui/CanvasLayer/popup")
+		player.set_fixed_process(false)
+		popup.show()
 
 func hide_popup():
 	var popup = get_node("../gui/CanvasLayer/popup")

@@ -51,9 +51,12 @@ func _ready():
 	ray_left.add_exception(self)
 	
 
-func destroy():
+func destroy(var by):
 	if(moveable):
-		get_node("../../../level_holder").goal_take()
+		if(by == "bomb"):
+			get_node("../../../level_holder").goal_take(1)
+		else:
+			get_node("../../../level_holder").goal_take()
 	queue_free()
 
 func _fixed_process(delta):
@@ -77,7 +80,7 @@ func _fixed_process(delta):
 		else:
 			move_down = true
 		if(check_top == TILE_ACID):
-			destroy()
+			destroy("acid")
 		
 		#sinking
 		if(check_bottom == TILE_ACID):

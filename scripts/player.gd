@@ -84,13 +84,12 @@ func level_load(var level_node):
 	move_up = 0
 	falling = true
 
-func destroy():
+func destroy(var by):
 	get_node("../../level_holder").prompt_retry_level()
 	set_fixed_process(false)
 
 func play_anim():
 	if(old_anim != new_anim):
-		print(new_anim) #DEBUG (Delete if animation works)
 		get_node("SpriteGroup/AnimationPlayer").play(new_anim)
 
 func check_orientation():
