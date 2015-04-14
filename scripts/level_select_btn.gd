@@ -17,6 +17,7 @@ func set_locked(var locked): # set if the level is locked
 
 func set_metadata(var data): # set the metadata
 	metadata = data
+	get_node("Label/bg_num").set_text(str(data))
 
 func _on_Clickable_input_event( viewport, event, shape_idx ): # on click
 	#it's a click, it isn't an echo of a previous click, it is pressed, and the level isn't locked
