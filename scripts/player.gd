@@ -68,7 +68,7 @@ func _ready():
 	#fix position
 
 func level_load(var level_node):
-	get_node("AnimatedSprite/AnimationPlayer").play("idle")
+	get_node("SpriteGroup/AnimationPlayer").play("idle")
 	tilemap = level_node.get_node("tilemap")
 	var camera = get_node("Camera2D")
 	var top_left_pos = level_node.get_node("camera_start").get_pos()
@@ -90,7 +90,12 @@ func destroy():
 
 func play_anim():
 	if(old_anim != new_anim):
-		get_node("AnimatedSprite/AnimationPlayer").play(new_anim)
+		print(new_anim) #DEBUG (Delete if animation works)
+		get_node("SpriteGroup/AnimationPlayer").play(new_anim)
+
+func check_orientation():
+	if sign(movement) == sign(get_node("SpriteGroup").get_scale().x):
+		get_node("SpriteGroup").set_scale(get_node("SpriteGroup").get_scale() * Vector2(-1,1))
 
 func logic():
 	current_position = (get_pos())/64
@@ -197,13 +202,13 @@ func logic():
 	if movement > 0:
 		movement -= 4
 		move(Vector2(4,0))
-		get_node("AnimatedSprite").set_flip_h(true)
-		new_anim = "walking"
+		check_orientation()
+		new_anim = "walk"
 	elif movement < 0:
 		movement += 4
 		move(Vector2(-4,0))
-		get_node("AnimatedSprite").set_flip_h(false)
-		new_anim = "walking"
+		check_orientation()
+		new_anim = "walk"
 	if move_up > 0:
 		move_up -= 4
 		move(Vector2(0,-4))
@@ -212,7 +217,7 @@ func logic():
 		move_up += 4
 		move(Vector2(0,4))
 		new_anim = "climb"
-	elif movement == 0:
+	elif (movement == 0) and !falling:
 		new_anim = "idle"
 
 func _fixed_process(delta):
