@@ -22,4 +22,3 @@ func _on_Clickable_input_event( viewport, event, shape_idx ): # on click
 	#it's a click, it isn't an echo of a previous click, it is pressed, and the level isn't locked
 	if(event.type == InputEvent.MOUSE_BUTTON && !event.is_echo() && event.is_pressed() && !lock):
 		get_node("../../../").level_btn_clicked(metadata)#We call the level_btn_clicked function, with the metadata
-		pass # replace with function body
