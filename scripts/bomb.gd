@@ -14,7 +14,7 @@ var check_bottom = ""
 var check_left = ""
 var check_overlap = ""
 
-export var seconds_left_to_explode = 3.0 # In how many seconds the bomb will explode?
+var seconds_left_to_explode = 2.2 # In how many seconds the bomb will explode?
 var dangerous = true # Has the bomb exploded already?
 
 func _ready():
