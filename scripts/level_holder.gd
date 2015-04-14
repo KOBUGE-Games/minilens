@@ -89,6 +89,7 @@ func _process(delta):
 		var popup = get_node("../gui/CanvasLayer/popup")
 		player.set_fixed_process(false)
 		popup.show()
+		set_process(false)
 
 func hide_popup():
 	var popup = get_node("../gui/CanvasLayer/popup")
@@ -100,6 +101,7 @@ func popup_btn1_pressed():
 	hide_popup()
 func popup_btn2_pressed():
 	if(btn2_action == 1):
+		btn2_action = 0
 		next_level()
 		hide_popup()
 func popup_btn3_pressed():
