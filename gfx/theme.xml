@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="Theme" subresource_count="28" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/theme/red_panel.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/grey_circle.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/grey_panel.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/button_pressed.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/button_hover.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/open_.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/button_focus.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/grey_boxTick.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/button_pressed.png" type="Texture"></ext_resource>
 	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
+	<ext_resource path="res://gfx/theme/grey_panel.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/button_hover.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/red_panel.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/grey_boxTick.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/button_normal.png" type="Texture"></ext_resource>
 	<resource type="ImageTexture" path="local://1">
 		<int name="flags"> 4 </int>
@@ -52,32 +52,7 @@
 		<bool name="draw_center"> True </bool>
 
 	</resource>
-	<resource type="ImageTexture" path="local://4">
-		<int name="flags"> 4 </int>
-		<image name="image" encoding="raw" width="16" height="16" mipmaps="0" format="rgba"> 000000040000000A0000000F000000100000001000000010000000100000001000000010000000100000001000000010000000100000000F0000000A000000040000000A0000001C000000280000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B000000280000001C0000000A0000000F000000283D3B3F39605D62636562676465626764656267646562676465626764656267646562676465626764605D62633D3B3F39000000280000000F000000100000002B605D6264565358644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E6456535864605D62640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B605D6264565358644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E6456535864605D62640000002B000000100000000F000000283D3B3F39605D62636562676465626764656267646562676465626764656267646562676465626764605D62633D3B3F39000000280000000F0000000A0000001C000000280000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B000000280000001C0000000A000000040000000A0000000F000000100000001000000010000000100000001000000010000000100000001000000010000000100000000F0000000A00000004 </image>
-		<vector2 name="size"> 16, 16 </vector2>
-		<int name="storage"> 0 </int>
-		<real name="lossy_quality"> 0.7 </real>
-
-	</resource>
-	<resource type="StyleBoxTexture" path="local://5">
-		<real name="content_margin/left"> -1 </real>
-		<real name="content_margin/right"> -1 </real>
-		<real name="content_margin/top"> -1 </real>
-		<real name="content_margin/bottom"> -1 </real>
-		<resource name="texture" resource_type="Texture" path="local://4">  </resource>
-		<real name="margin/left"> 4 </real>
-		<real name="margin/right"> 4 </real>
-		<real name="margin/top"> 4 </real>
-		<real name="margin/bottom"> 4 </real>
-		<real name="expand_margin/left"> 0 </real>
-		<real name="expand_margin/right"> 0 </real>
-		<real name="expand_margin/top"> 0 </real>
-		<real name="expand_margin/bottom"> 0 </real>
-		<bool name="draw_center"> True </bool>
-
-	</resource>
-	<resource type="StyleBoxTexture" path="local://6">
+	<resource type="StyleBoxTexture" path="local://4">
 		<real name="content_margin/left"> -1 </real>
 		<real name="content_margin/right"> -1 </real>
 		<real name="content_margin/top"> -1 </real>
@@ -87,6 +62,31 @@
 		<real name="margin/right"> 10 </real>
 		<real name="margin/top"> 10 </real>
 		<real name="margin/bottom"> 10 </real>
+		<real name="expand_margin/left"> 0 </real>
+		<real name="expand_margin/right"> 0 </real>
+		<real name="expand_margin/top"> 0 </real>
+		<real name="expand_margin/bottom"> 0 </real>
+		<bool name="draw_center"> True </bool>
+
+	</resource>
+	<resource type="ImageTexture" path="local://5">
+		<int name="flags"> 4 </int>
+		<image name="image" encoding="raw" width="16" height="16" mipmaps="0" format="rgba"> 000000040000000A0000000F000000100000001000000010000000100000001000000010000000100000001000000010000000100000000F0000000A000000040000000A0000001C000000280000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B000000280000001C0000000A0000000F000000283D3B3F39605D62636562676465626764656267646562676465626764656267646562676465626764605D62633D3B3F39000000280000000F000000100000002B605D6264565358644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E6456535864605D62640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B656267644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E64656267640000002B00000010000000100000002B605D6264565358644B494E644B494E644B494E644B494E644B494E644B494E644B494E644B494E6456535864605D62640000002B000000100000000F000000283D3B3F39605D62636562676465626764656267646562676465626764656267646562676465626764605D62633D3B3F39000000280000000F0000000A0000001C000000280000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B0000002B000000280000001C0000000A000000040000000A0000000F000000100000001000000010000000100000001000000010000000100000001000000010000000100000000F0000000A00000004 </image>
+		<vector2 name="size"> 16, 16 </vector2>
+		<int name="storage"> 0 </int>
+		<real name="lossy_quality"> 0.7 </real>
+
+	</resource>
+	<resource type="StyleBoxTexture" path="local://6">
+		<real name="content_margin/left"> -1 </real>
+		<real name="content_margin/right"> -1 </real>
+		<real name="content_margin/top"> -1 </real>
+		<real name="content_margin/bottom"> -1 </real>
+		<resource name="texture" resource_type="Texture" path="local://5">  </resource>
+		<real name="margin/left"> 4 </real>
+		<real name="margin/right"> 4 </real>
+		<real name="margin/top"> 4 </real>
+		<real name="margin/bottom"> 4 </real>
 		<real name="expand_margin/left"> 0 </real>
 		<real name="expand_margin/right"> 0 </real>
 		<real name="expand_margin/top"> 0 </real>
@@ -248,18 +248,18 @@
 	<main_resource>
 		<resource name="default_font" resource_type="Font" path="res://fonts/papercut.fnt">  </resource>
 		<resource name="OptionButton/icons/arrow" resource_type="Texture" path="res://gfx/theme/open_.png">  </resource>
-		<resource name="PopupMenu/icons/checked" resource_type="Texture" path="res://gfx/theme/grey_boxTick.png">  </resource>
 		<resource name="PopupMenu/icons/submenu" resource_type="Texture" path="local://1">  </resource>
+		<resource name="PopupMenu/icons/checked" resource_type="Texture" path="res://gfx/theme/grey_boxTick.png">  </resource>
 		<resource name="PopupMenu/icons/unchecked" resource_type="Texture" path="res://gfx/theme/grey_circle.png">  </resource>
 		<resource name="Button/styles/hover" resource_type="StyleBox" path="local://2">  </resource>
 		<resource name="Button/styles/pressed" resource_type="StyleBox" path="local://3">  </resource>
-		<resource name="Button/styles/disabled" resource_type="StyleBox" path="local://5">  </resource>
-		<resource name="Button/styles/focus" resource_type="StyleBox" path="local://6">  </resource>
+		<resource name="Button/styles/focus" resource_type="StyleBox" path="local://4">  </resource>
+		<resource name="Button/styles/disabled" resource_type="StyleBox" path="local://6">  </resource>
 		<resource name="Button/styles/normal" resource_type="StyleBox" path="local://7">  </resource>
 		<resource name="OptionButton/styles/hover" resource_type="StyleBox" path="local://2">  </resource>
 		<resource name="OptionButton/styles/pressed" resource_type="StyleBox" path="local://3">  </resource>
-		<resource name="OptionButton/styles/disabled" resource_type="StyleBox" path="local://5">  </resource>
-		<resource name="OptionButton/styles/focus" resource_type="StyleBox" path="local://6">  </resource>
+		<resource name="OptionButton/styles/focus" resource_type="StyleBox" path="local://4">  </resource>
+		<resource name="OptionButton/styles/disabled" resource_type="StyleBox" path="local://6">  </resource>
 		<resource name="OptionButton/styles/normal" resource_type="StyleBox" path="local://7">  </resource>
 		<resource name="Panel/styles/panelf" resource_type="StyleBox" path="local://9">  </resource>
 		<resource name="Panel/styles/panel" resource_type="StyleBox" path="local://10">  </resource>
@@ -282,8 +282,8 @@
 		<color name="OptionButton/colors/font_color_pressed"> 1, 1, 1, 1 </color>
 		<color name="Label/colors/font_color"> 0, 0, 0, 1 </color>
 		<color name="Label/colors/font_color_shadow"> 1, 1, 1, 0.138644 </color>
-		<color name="PopupMenu/colors/font_color_accel"> 0.7, 0.7, 0.7, 0.8 </color>
 		<color name="PopupMenu/colors/font_color_disabled"> 0.4, 0.4, 0.4, 0.8 </color>
+		<color name="PopupMenu/colors/font_color_accel"> 0.7, 0.7, 0.7, 0.8 </color>
 		<color name="PopupMenu/colors/font_color"> 0.342368, 0.342368, 0.342368, 1 </color>
 		<color name="PopupMenu/colors/font_color_hover"> 0.878431, 0.878431, 0.878431, 1 </color>
 		<int name="Button/constants/hseparation"> 2 </int>

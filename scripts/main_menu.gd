@@ -8,7 +8,7 @@ export var level_btn_size = Vector2(100,100) # the size+margin of every level se
 var level_btn_row_count = 6 #
 var level_selected # The level we have selected
 var global # the global node (serves like a library, see global.gd)
-var packs_included = [] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
+var packs_included = ["tutorial"] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
 
 func _ready():
 	# Finding nodes
@@ -28,12 +28,12 @@ func _ready():
 	# check 2 paths - 1. bundled levels, 2. created later using map editor
 	var dir_paths = ["res://levels/"] # res://levels (bundled)
 	dir_paths.append(Globals.globalize_path(dir_paths[0])) # C:/.../levels (disk)
+	select_pack.add_item("tutorial")
 	for path in dir_paths:
 		diraccess.open(path)
 		diraccess.list_dir_begin()
 		var name = diraccess.get_next()
 		var i = 1 # the id of the number
-		select_pack.add_item("tutorial")
 		while name:
 			if diraccess.current_is_dir():
 				if name != "." and name != ".." and name != "tutorial":
@@ -41,7 +41,7 @@ func _ready():
 						select_pack.add_item(name)
 						packs_included.append(name)
 					else: # made with map editor
-						if !name in packs_included: 
+						if !name in packs_included:
 							select_pack.add_item(name)
 			name = diraccess.get_next()
 		diraccess.list_dir_end()
