@@ -9,6 +9,9 @@ var goals_left = 0 # the amount of goals left to be taken
 var global # the global node (serves like a library, see global.gd)
 var btn2_action = 0 # Can we move left, when we press the secound button
 var time_until_popup = 0 # How much time should we wait 
+export var acid_animation_time = 1.0 # The speed of the acid animation
+var acid_animation_pos = 0.0 # The current pos of the animation (0-1)
+var tileset = TileSet.new() # the Tileset
 
 func load_level(var pack, var level): # Load level N from pack P
 	current_level = level
@@ -30,6 +33,7 @@ func load_level(var pack, var level): # Load level N from pack P
 	player.set_pos(level_node.get_node("start").get_pos()) # Teleport the player to his new location
 	player.set_z(0)
 	player.level_load(level_node) # Have the player prepare to play..
+	tileset = level_node.get_node("tilemap").get_tileset()
 
 func retry_level(): # Retry the current level
 	load_level(current_pack, current_level)
@@ -67,6 +71,13 @@ func _ready():
 	get_node("../gui/CanvasLayer/popup/body/btn2").connect("pressed", self, "popup_btn2_pressed")
 	get_node("../gui/CanvasLayer/popup/body/btn3").connect("pressed", self, "popup_btn3_pressed")
 	set_process_input(true)
+	set_process(true)
+
+func _process(delta): # move the acid
+	acid_animation_pos = acid_animation_pos + delta
+	if(acid_animation_pos > acid_animation_time):
+		acid_animation_pos = acid_animation_pos - acid_animation_time
+	tileset.tile_set_region(2, Rect2(64-64*acid_animation_pos/acid_animation_time,0,64,64))
 
 func back_to_menu(): # jump back to the main menu
 	global.load_scene("res://scenes/main_menu.xml")
@@ -79,15 +90,15 @@ func show_popup(var title, var text): # Show a popup with some title, and some t
 		popup.get_node("body/btn2").set_disabled(false)
 	else:
 		popup.get_node("body/btn2").set_disabled(true)
-	set_process(true)
+	set_fixed_process(true)
 
-func _process(delta): # When we have to wait till the popup is shown
+func _fixed_process(delta): # When we have to wait till the popup is shown
 	time_until_popup = time_until_popup - delta
 	if(time_until_popup <= 0):
 		var popup = get_node("../gui/CanvasLayer/popup")
 		player.set_fixed_process(false)
 		popup.show()
-		set_process(false)
+		set_fixed_process(false)
 
 func hide_popup(): # Hide the popup
 	var popup = get_node("../gui/CanvasLayer/popup")

@@ -1,44 +1,36 @@
-
 extends KinematicBody2D
-var ray_top
-var ray_right
-var ray_bottom
-var ray_left
+# This (long) script moves the player
 
-var ray_check_top
+var ray_check_top # rays to check for objects in each direction
 var ray_check_right
 var ray_check_bottom
 var ray_check_left
-
 var ray_overlap
 
-var collider_top = ""
+var collider_top = "" # Variables in which we store the colliders we find
 var collider_right = ""
 var collider_bottom = ""
 var collider_left = ""
 
-var check_top = ""
+var check_top = "" # Variables in which we store the tiles in each direction
 var check_right = ""
 var check_bottom = ""
 var check_left = ""
-
 var check_overlap = ""
 
-var sinking = false
+var sinking = false # Are we sinking?
 
-var movement = 0
-var move_left = false
+var movement = 0 # How much do we have to move? (+ for right)
+var move_left = false # Can we move left/right
 var move_right = false
-var move_down = false
+var move_down = false # How much do we have to move vertically? (+ for down)
 
-var tilemap
-var current_position
+var tilemap # the Tilemap
+var current_position # our current position in the tilemap
 export var TILE_LADDER = 1
 export var TILE_ACID = 2
-export var acid_animation_time = 1.0
 var move_up = 0
 var collider_name
-var acid_animation_pos = 0.0
 var place_bomb_was_pressed = false
 var bomb = preload("res://scenes/bomb.xml")
 var bombs = 0
@@ -47,21 +39,12 @@ var old_anim
 var new_anim
 
 func _ready():
-	ray_top = get_node("ray_top")
-	ray_right = get_node("ray_right")
-	ray_bottom = get_node("ray_bottom")
-	ray_left = get_node("ray_left")
 	ray_check_top = get_node("ray_check_top")
 	ray_check_right = get_node("ray_check_right")
 	ray_check_bottom = get_node("ray_check_bottom")
 	ray_check_left = get_node("ray_check_left")
 	
 	ray_overlap = get_node("ray_overlap")
-	
-	ray_top.add_exception(self)
-	ray_right.add_exception(self)
-	ray_bottom.add_exception(self)
-	ray_left.add_exception(self)
 	
 	ray_overlap.add_exception(self)
 	
@@ -149,7 +132,7 @@ func logic():
 			sinking = true
 			get_node("sink").play()
 		if(check_bottom == -1):
-			destroy()
+			destroy("acid")
 		return
 	
 	#fall
@@ -222,10 +205,6 @@ func logic():
 
 func _fixed_process(delta):
 	old_anim = new_anim
-	acid_animation_pos = acid_animation_pos + delta
-	if(acid_animation_pos > acid_animation_time):
-		acid_animation_pos = acid_animation_pos - acid_animation_time
-	tilemap.get_tileset().tile_set_texture_offset(2, Vector2(-64*acid_animation_pos/acid_animation_time,0))
 	logic()
 	play_anim()
 	

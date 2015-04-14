@@ -10,7 +10,7 @@ var collider_right = ""
 var collider_bottom = ""
 var collider_left = ""
 
-var check_top = "" # Variables in which we store the wiles in each direction
+var check_top = "" # Variables in which we store the tiles in each direction
 var check_right = ""
 var check_bottom = ""
 var check_left = ""
