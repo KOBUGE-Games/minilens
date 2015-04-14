@@ -99,6 +99,7 @@ func check_orientation():
 
 func logic():
 	current_position = (get_pos())/64
+	current_position = Vector2(round(current_position.x), round(current_position.y))
 	#allow to move right
 	check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
 	move_right = (check_right == -1 || check_right == TILE_LADDER)
