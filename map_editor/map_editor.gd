@@ -1,10 +1,7 @@
-# Map editor for Minilens
-# Author: Kermer
-
 extends Node
 # Notes:
 # - It might be vulnerable to project resolution changes
-# - Supports adding custom Objects, not tested tho
+# - Supports adding most of the custom Objects
 # - Terrain tab is loaded from Level/tilemap:TileSet
 #   - So as their names and textures
 #   - No flipping, etc. supported... yet
@@ -67,7 +64,6 @@ func _ready():
 	
 	set_process_unhandled_input(true)
 #	add_item("Objects","Name",res_obj_texture["Flower"],res_obj_scenes["Flower"])
-
 	var texture = preload("res://gfx/boxCrate_double.png")
 	var packed_scene = preload("res://scenes/box_static.xml")
 	add_item("Objects","Box",texture,packed_scene)
@@ -280,14 +276,29 @@ func save( pack, idx = 0 ):
 	var path = "levels/"+pack+"/level_"+str(idx)+".xml"
 	# check if there's a pack folder
 	var dir = Directory.new()
-	if dir.open("res://levels/"+pack) != 0:
-		dir.open("res://levels")
+	
+#	dir.open(g_path("res://levels"))
+#	print(dir.get_current_dir())
+#	return
+	
+	if dir.open(g_path("res://levels/"+pack)) != 0:
+		if dir.open(g_path("res://levels")) != 0:
+			print(" No folder \"levels\", please create it.")
+			dir.open(g_path("res://"))
+			print(dir.get_current_dir())
+			dir.make_dir("levels")
+		print(" No folder \"levels/",pack,"\", creating...")
+		dir.open(g_path("res://levels"))
 		dir.make_dir(pack)
 	
 	path = "levels/"+pack+"/level_1.xml" # ERASE (will increment _nr automatically)
 	
-	print(" Saving level \"",path,"\"")
-	ResourceSaver.save("res://"+path, level)
+	print(" Saving level \".../",path,"\"")
+	ResourceSaver.save(g_path("res://"+path), level)
+
+func g_path( path ):
+#	print(Globals.globalize_path(path))
+	return Globals.globalize_path(path)
 
 func get_packed_level():
 	var blank_level = preload("res://map_editor/level_blank.xml")
