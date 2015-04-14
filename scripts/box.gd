@@ -27,7 +27,7 @@ export var TILE_LADDER = 1
 
 func _ready():
 	if(moveable):
-		get_node("../../../level_holder").goal_add() # When we can move, we add a goal to the level
+		get_node("../../../level_holder").goal_add("box") # When we can move, we add a goal to the level
 		set_fixed_process(true)
 	# Getting nodes
 	tilemap = get_node("../tilemap")
@@ -41,9 +41,9 @@ func _ready():
 func destroy(var by): # Called whenever the box is destroyed
 	if(moveable):
 		if(by == "bomb"): # When we were demolished by a bomb
-			get_node("../../../level_holder").goal_take(1)
+			get_node("../../../level_holder").goal_take("box",1)
 		else:
-			get_node("../../../level_holder").goal_take()
+			get_node("../../../level_holder").goal_take("box")
 	queue_free() # delete the box from the scene
 
 func _fixed_process(delta):

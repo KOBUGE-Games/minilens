@@ -6,6 +6,8 @@ var current_level
 var player # The player ofc
 var level_node # the Node with the level
 var goals_left = 0 # the amount of goals left to be taken
+var goals_amount_by_type = {} # a Dictionary containing the STARTING amounts of different goals left to be taken
+var goals_taken_by_type = {} # a Dictionary containing the TAKEN amounts of different goals
 var global # the global node (serves like a library, see global.gd)
 var btn2_action = 0 # Can we move left, when we press the secound button
 var time_until_popup = 0 # How much time should we wait 
@@ -28,7 +30,10 @@ func load_level(var pack, var level): # Load level N from pack P
 	for i in range(get_child_count()):
 		get_child(i).queue_free()
 	level_node = level_scene.instance() # instance the new level
-	goals_left = 0 # reset the counter
+	# reset the counters
+	goals_left = 0 
+	goals_taken_by_type = {}
+	goals_amount_by_type = {}
 	add_child(level_node) # add that node to the scene
 	player.set_pos(level_node.get_node("start").get_pos()) # Teleport the player to his new location
 	player.set_z(0)
@@ -38,7 +43,13 @@ func load_level(var pack, var level): # Load level N from pack P
 func retry_level(): # Retry the current level
 	load_level(current_pack, current_level)
 
-func goal_take(var wait = 0): # Called when a goal is taken
+func goal_take(var type = "",var wait = 0): # Called when a goal is taken
+	if(goals_amount_by_type.has(type)):
+		goals_taken_by_type[type] += 1
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# get node like ../gui/CanvasLayer/<type>
+		print(goals_node)
+		if(goals_node):
+			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
 	time_until_popup = wait
 	goals_left = goals_left - 1
 	if(goals_left == 0): # no more goals ;(
@@ -53,8 +64,20 @@ func prompt_retry_level(): # Called when the robot dies
 func next_level(): # go to the next level
 	load_level(current_pack, int(current_level) + 1)
 
-func goal_add(): # Add one more goal
+func goal_add(var type=""): # Add one more goal
 	goals_left = goals_left + 1
+	if(goals_amount_by_type.has(type)):
+		goals_amount_by_type[type] += 1
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# get node like ../gui/CanvasLayer/<type>
+		if(goals_node):
+			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
+	elif(type != ""):
+		goals_taken_by_type[type] = 0
+		goals_amount_by_type[type] = 1
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# get node like ../gui/CanvasLayer/<type>
+		if(goals_node):
+			goals_node.show()
+			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
 
 func _input(event):
 	if(event.is_action("retry") && event.is_pressed() && !event.is_echo()):
