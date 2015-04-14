@@ -57,8 +57,7 @@ func _fixed_process(delta):
 			var collider_name = ray_check_bottom.get_collider().get_name()
 			if(collider_name.substr(0,6) == "flower"): # When we fall into a flower
 				move_down = true
-				get_node("../../../level_holder").goal_take()
-				ray_check_bottom.get_collider().queue_free()
+				ray_check_bottom.get_collider().destroy("box")
 			elif collider_name.substr(0,11) == "bomb_pickup": # When we fall into a bomb
 				move_down = true
 			else:
