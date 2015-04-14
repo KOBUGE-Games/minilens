@@ -1,0 +1,4 @@
+1. http://kenney.nl - for the most graphical assets
+2. http://opengameart.org/users/qubodup - for the acid barrel
+3. Michel Baradari - http://opengameart.org/content/2-high-quality-explosions - for explosion sounds
+4. Blender Foundation - http://opengameart.org/content/life-pickup-yo-frankie - for flower pickup sound

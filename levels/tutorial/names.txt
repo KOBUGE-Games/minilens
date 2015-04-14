@@ -1,0 +1,8 @@
+1:Basics
+2:Flowers
+3:Tricks
+4:Time for bombs
+5:Stair quirks
+6:Even more tricks
+7:Static boxes
+8:More bombs

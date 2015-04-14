@@ -21,7 +21,7 @@ var occupied_pos = {}
 var ghost_tile = Sprite.new()
 var current_sel_menu = "Terrain"
 var res_obj_texture = { "Spawn":preload("res://gfx/player.png"), "Radioactive":preload("res://gfx/radioactive.png"), 
-	"Flower":preload("res://gfx/flower32.png"), "Bomb":preload("res://gfx/pickup_bomb.png") }
+	"Flower":preload("res://gfx/flower.png"), "Bomb":preload("res://gfx/pickup_bomb.png") }
 var res_obj_scenes = { "Spawn":preload("res://scenes/player.xml"), "Radioactive":preload("res://scenes/box.scn"), 
 	"Flower":preload("res://scenes/flower.xml"), "Bomb":preload("res://scenes/bomb_pickup.xml") }
 var res_tile_texture = {}

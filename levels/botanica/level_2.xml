@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="4" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://scenes/flower.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
-	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
-	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="59">
+			<string_array  len="65">
 				<string> "level" </string>
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
@@ -55,27 +54,33 @@
 				<string> "modulate" </string>
 				<string> "region" </string>
 				<string> "region_rect" </string>
-				<string> "music" </string>
-				<string> "StreamPlayer" </string>
-				<string> "stream/stream" </string>
-				<string> "stream/play" </string>
-				<string> "stream/loop" </string>
-				<string> "stream/volume_db" </string>
-				<string> "stream/autoplay" </string>
-				<string> "stream/paused" </string>
 				<string> "camera_start" </string>
 				<string> "camera_end" </string>
-				<string> "box" </string>
-				<string> "KinematicBody2D" </string>
+				<string> "flower" </string>
+				<string> "StaticBody2D" </string>
+				<string> "flower1" </string>
+				<string> "flower2" </string>
+				<string> "flower3" </string>
+				<string> "flower4" </string>
+				<string> "flower5" </string>
+				<string> "flower6" </string>
+				<string> "flower7" </string>
+				<string> "flower8" </string>
+				<string> "flower9" </string>
+				<string> "flower10" </string>
+				<string> "flower11" </string>
+				<string> "flower12" </string>
+				<string> "flower13" </string>
+				<string> "flower14" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 9 </int>
+			<int> 22 </int>
 			<string> "variants" </string>
-			<array  len="35" shared="false">
+			<array  len="47" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -106,7 +111,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 0.735092 </real>
+							<real> 0.440127 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -120,7 +125,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -91.1333, -104.922 </vector2>
+							<vector2> -393.437, -749.061 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -234,8 +239,8 @@
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 2 </int>
 				<bool> False </bool>
-				<int_array  len="54"> 					262147, 4, 262148, 0, 262149, 0, 262150, 0, 262151, 3, 262153, 4, 262154, 0, 262155, 0, 262156, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 </int_array>
-				<vector2> 704, 192 </vector2>
+				<int_array  len="114"> 					131078, 4, 131079, 0, 131080, 3, 262151, 4, 262152, 0, 262153, 0, 262154, 0, 262155, 0, 262157, 0, 327686, 1, 393218, 4, 393219, 0, 393220, 0, 393221, 3, 393222, 1, 393225, 1, 393226, 4, 393227, 0, 393228, 0, 393229, 0, 393230, 3, 393231, 1, 393232, 0, 458758, 1, 458761, 1, 458767, 1, 524294, 4, 524295, 0, 524296, 0, 524297, 3, 524299, 1, 524301, 1, 524303, 4, 524304, 3, 524305, 1, 589835, 1, 589837, 1, 589841, 1, 655361, 4, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 3, 655377, 1, 720910, 0, 720913, 4, 720914, 3, 786447, 0, 851984, 0 </int_array>
+				<vector2> 448, 0 </vector2>
 				<vector2> 3.2, 3.2 </vector2>
 				<int> -1 </int>
 				<dictionary  shared="false">
@@ -252,11 +257,9 @@
 					<string> "_edit_lock_" </string>
 					<bool> True </bool>
 				</dictionary>
-				<resource  resource_type="AudioStream" path="res://audio/main_menu.ogg">  </resource>
 				<vector2> 0, -64 </vector2>
-				<vector2> 3.2, 3.2 </vector2>
-				<vector2> 960, 768 </vector2>
-				<resource  resource_type="PackedScene" path="res://scenes/box.scn">  </resource>
+				<vector2> 1216, 896 </vector2>
+				<resource  resource_type="PackedScene" path="res://scenes/flower.xml">  </resource>
 				<vector2> 448, 192 </vector2>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
@@ -264,10 +267,13 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 0 </int>
+							<int> 1 </int>
 							<string> "sources" </string>
-							<array  len="1" shared="false">
+							<array  len="4" shared="false">
+								<string> "res://scripts/flower.gd" </string>
+								<string> "res://scripts/level_holder.gd" </string>
 								<string> "res://scripts/box.gd" </string>
+								<string> "res://scripts/player.gd" </string>
 							</array>
 						</dictionary>
 						<string> "2D" </string>
@@ -276,31 +282,27 @@
 							<bool> False </bool>
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
-							<string> "snap_step" </string>
-							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
 							<string> "zoom" </string>
-							<real> 1 </real>
-							<string> "snap_rotation_offset" </string>
-							<real> 0 </real>
+							<real> 2.78951 </real>
+							<string> "snap_step" </string>
+							<vector2> 64, 64 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
+							<string> "snap_rotation_offset" </string>
+							<real> 0 </real>
 							<string> "snap_show_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> 0, -10 </vector2>
+							<vector2> -221.811, -79.8023 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
-							<string> "fov" </string>
-							<real> 45 </real>
-							<string> "zfar" </string>
-							<real> 500 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -368,24 +370,28 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
+							<string> "zfar" </string>
+							<real> 500 </real>
 							<string> "deflight_rot_y" </string>
 							<real> 0.628319 </real>
-							<string> "default_light" </string>
-							<bool> True </bool>
+							<string> "fov" </string>
+							<real> 45 </real>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "znear" </string>
-							<real> 0.1 </real>
 							<string> "show_origin" </string>
 							<bool> True </bool>
-							<string> "deflight_rot_x" </string>
-							<real> 0.942478 </real>
+							<string> "znear" </string>
+							<real> 0.1 </real>
 							<string> "default_srgb" </string>
 							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
@@ -398,9 +404,23 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
 				</dictionary>
+				<vector2> 704, 192 </vector2>
+				<vector2> 128, 320 </vector2>
+				<vector2> 640, 320 </vector2>
+				<vector2> 1088, 320 </vector2>
+				<vector2> 64, 512 </vector2>
+				<vector2> 512, 448 </vector2>
+				<vector2> 640, 512 </vector2>
+				<vector2> 768, 512 </vector2>
+				<vector2> 896, 512 </vector2>
+				<vector2> 1024, 704 </vector2>
+				<vector2> 1152, 640 </vector2>
+				<vector2> 1024, 448 </vector2>
+				<vector2> 384, 256 </vector2>
+				<vector2> 768, 256 </vector2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="267"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 23, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 7, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 7, 22, 15, 23, 15, 24, 2, 25, 5, 26, 3, 27, 16, 0, 0, 0, 29, 28, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 17, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 30, 30, -1, 6, 2, 0, 31, 19, 32, 4, 33, 5, 34, 6, 12, 20, 0, 3, 0, 36, 35, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 22, 11, 15, 37, 23, 38, 1, 32, 24, 39, 15, 40, 15, 41, 3, 42, 3, 43, 7, 44, 25, 45, 15, 46, 26, 12, 27, 0, 0, 0, 48, 47, -1, 7, 2, 0, 49, 28, 50, 15, 51, 1, 52, 5, 53, 1, 54, 15, 0, 0, 0, 29, 55, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 29, 8, 5, 9, 30, 10, 7, 11, 1, 0, 0, 0, 29, 56, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 31, 8, 5, 9, 30, 10, 7, 11, 1, 0, 0, 0, 58, 57, 32, 3, 2, 0, 7, 33, 12, 34, 0 </int_array>
+			<int_array  len="428"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 23, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 7, 16, 10, 17, 11, 18, 12, 19, 13, 20, 14, 21, 7, 22, 15, 23, 15, 24, 2, 25, 5, 26, 3, 27, 16, 0, 0, 0, 29, 28, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 17, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 30, 30, -1, 6, 2, 0, 31, 19, 32, 4, 33, 5, 34, 6, 12, 20, 0, 3, 0, 36, 35, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 22, 11, 15, 37, 23, 38, 1, 32, 24, 39, 15, 40, 15, 41, 3, 42, 3, 43, 7, 44, 25, 45, 15, 46, 26, 12, 27, 0, 0, 0, 29, 47, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 28, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 29, 48, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 29, 8, 5, 9, 18, 10, 7, 11, 1, 0, 0, 0, 50, 49, 30, 3, 2, 0, 7, 31, 12, 32, 0, 0, 0, 50, 51, 30, 3, 2, 0, 7, 33, 12, 32, 0, 0, 0, 50, 52, 30, 3, 2, 0, 7, 34, 12, 32, 0, 0, 0, 50, 53, 30, 3, 2, 0, 7, 35, 12, 32, 0, 0, 0, 50, 54, 30, 3, 2, 0, 7, 36, 12, 32, 0, 0, 0, 50, 55, 30, 3, 2, 0, 7, 37, 12, 32, 0, 0, 0, 50, 56, 30, 3, 2, 0, 7, 38, 12, 32, 0, 0, 0, 50, 57, 30, 3, 2, 0, 7, 39, 12, 32, 0, 0, 0, 50, 58, 30, 3, 2, 0, 7, 40, 12, 32, 0, 0, 0, 50, 59, 30, 3, 2, 0, 7, 41, 12, 32, 0, 0, 0, 50, 60, 30, 3, 2, 0, 7, 42, 12, 32, 0, 0, 0, 50, 61, 30, 3, 2, 0, 7, 43, 12, 32, 0, 0, 0, 50, 62, 30, 3, 2, 0, 7, 44, 12, 32, 0, 0, 0, 50, 63, 30, 3, 2, 0, 7, 45, 12, 32, 0, 0, 0, 50, 64, 30, 3, 2, 0, 7, 46, 12, 32, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>

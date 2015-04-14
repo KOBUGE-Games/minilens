@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/flower32.png" type="Texture"></ext_resource>
 	<ext_resource path="res://scripts/flower.gd" type="Script"></ext_resource>
+	<ext_resource path="res://gfx/flower.png" type="Texture"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 32, 32 </vector2>
@@ -14,7 +14,7 @@
 		<real name="step"> 0.1 </real>
 		<string name="tracks/0/type"> "value" </string>
 		<node_path name="tracks/0/path"> ".:transform/rot" </node_path>
-		<int name="tracks/0/interp"> 1 </int>
+		<int name="tracks/0/interp"> 2 </int>
 		<dictionary name="tracks/0/keys" shared="false">
 			<string> "cont" </string>
 			<bool> True </bool>
@@ -22,11 +22,11 @@
 			<real_array  len="2"> 				1, 1 </real_array>
 			<string> "values" </string>
 			<array  len="2" shared="false">
-				<real> 0 </real>
-				<real> 359 </real>
+				<real> 45 </real>
+				<real> -45 </real>
 			</array>
 			<string> "times" </string>
-			<real_array  len="2"> 				0, 2 </real_array>
+			<real_array  len="2"> 				0, 1 </real_array>
 		</dictionary>
 
 	</resource>
@@ -90,7 +90,7 @@
 			<string> "node_count" </string>
 			<int> 4 </int>
 			<string> "variants" </string>
-			<array  len="20" shared="false">
+			<array  len="21" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -109,7 +109,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 1 </int>
+							<int> 0 </int>
 							<string> "sources" </string>
 							<array  len="4" shared="false">
 								<string> "res://scripts/flower.gd" </string>
@@ -139,7 +139,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -221.811, -79.8023 </vector2>
+							<vector2> -146.17, -85.1796 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -244,9 +244,10 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
-				<resource  resource_type="Texture" path="res://gfx/flower32.png">  </resource>
+				<real> 45 </real>
+				<resource  resource_type="Texture" path="res://gfx/flower.png">  </resource>
 				<color> 1, 1, 1, 1 </color>
 				<rect2> 0, 0, 0, 0 </rect2>
 				<node_path> ".." </node_path>
@@ -256,7 +257,7 @@
 				<string> "idle" </string>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="156"> 				-1, -1, 1, 0, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 4, 19, 5, 20, 2, 21, 5, 22, 11, 23, 12, 0, 0, 0, 24, 24, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 25, 13, 26, 1, 27, 4, 28, 8, 29, 8, 30, 3, 31, 3, 32, 7, 33, 14, 34, 8, 35, 15, 0, 1, 0, 36, 36, -1, 9, 2, 0, 37, 3, 38, 5, 39, 16, 40, 17, 41, 1, 42, 2, 43, 18, 44, 19, 0, 0, 0, 45, 45, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 9, 47, 8, 0 </int_array>
+			<int_array  len="156"> 				-1, -1, 1, 0, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 4, 19, 5, 20, 2, 21, 5, 22, 11, 23, 12, 0, 0, 0, 24, 24, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 13, 9, 6, 10, 7, 11, 1, 25, 14, 26, 1, 27, 4, 28, 8, 29, 8, 30, 3, 31, 3, 32, 7, 33, 15, 34, 8, 35, 16, 0, 1, 0, 36, 36, -1, 9, 2, 0, 37, 3, 38, 5, 39, 17, 40, 18, 41, 1, 42, 2, 43, 19, 44, 20, 0, 0, 0, 45, 45, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 9, 47, 8, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>
