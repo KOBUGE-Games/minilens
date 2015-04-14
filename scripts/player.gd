@@ -40,6 +40,8 @@ export var TILE_ACID = 2
 var old_anim # the new and the old animation
 var new_anim
 
+var bomb_counter # The node counting the bombs
+
 func _ready():
 	# Find nodes
 	ray_check_top = get_node("ray_check_top")
@@ -50,6 +52,7 @@ func _ready():
 	
 	ray_overlap.add_exception(self)
 	
+	bomb_counter = get_node("../../gui/CanvasLayer/bombs")
 
 func level_load(var level_node):
 	get_node("SpriteGroup/AnimationPlayer").play("idle") # Play the idle animation when we enter the level
@@ -126,6 +129,8 @@ func logic():
 			ray_overlap.get_collider().queue_free()
 			bombs = bombs + 1
 			get_node("pickup").play()
+			bomb_counter.get_node("Label").set_text(str(" x ", bombs))
+			bomb_counter.show()
 	#sink in acid
 	if(check_overlap == TILE_ACID || check_bottom == TILE_ACID):
 		new_anim = "fall"
@@ -182,6 +187,9 @@ func logic():
 				new_bomb.set_pos(get_pos())
 				tilemap.get_parent().add_child(new_bomb)
 				bombs = bombs - 1
+				bomb_counter.get_node("Label").set_text(str(" x ", bombs))
+				if(bombs == 0):
+					bomb_counter.hide()# Hide counter when no bombs are available
 			place_bomb_was_pressed = true
 		else:
 			place_bomb_was_pressed = false
