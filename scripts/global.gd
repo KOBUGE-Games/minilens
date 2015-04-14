@@ -36,7 +36,7 @@ func get_reached_level(var pack):
 	f.close() # allways close files (just in case the engine doesn't)
 	return 1 # If we either haven't found our pack, or we failed to open the savedata, we just return one(e.g. first level)
 	
-func increase_reached_level(var pack):
+func set_reached_level(var pack, var value):
 	var f = File.new()
 	var err = f.open_encrypted_with_pass("user://savedata.bin",File.READ,str("minilens",OS.get_unique_ID()))
 	if(err): # If the file doesn't exist, we try to write to it first
@@ -54,7 +54,7 @@ func increase_reached_level(var pack):
 			data.append([parse[0],int(parse[1])])
 			if(parse[0] == pack):
 				found = true
-				data[data.size() - 1][1] = data[data.size() - 1][1] + 1 # if we reach the needed pack, we just increase the amount we've read by one
+				data[data.size() - 1][1] = max(data[data.size() - 1][1], value) # if we reach the needed pack, we just set the amount we've read to value
 			next_line = f.get_line()
 		if(!found):
 			data.append([pack,2])

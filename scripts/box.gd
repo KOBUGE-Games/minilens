@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+#This script is used for movable and static boxes
 var ray_check_top # rays to check for objects in each direction
 var ray_check_right
 var ray_check_bottom
@@ -53,12 +53,12 @@ func _fixed_process(delta):
 		var check_overlap = tilemap.get_cell(current_position.x, current_position.y)
 		var check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 		var move_down # can we move down
-		if ray_bottom.is_colliding() and ray_bottom.get_collider():
-			var collider_name = ray_bottom.get_collider().get_name()
+		if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
+			var collider_name = ray_check_bottom.get_collider().get_name()
 			if(collider_name.substr(0,6) == "flower"): # When we fall into a flower
 				move_down = true
 				get_node("../../../level_holder").goal_take()
-				ray_bottom.get_collider().queue_free()
+				ray_check_bottom.get_collider().queue_free()
 			elif collider_name.substr(0,11) == "bomb_pickup": # When we fall into a bomb
 				move_down = true
 			else:

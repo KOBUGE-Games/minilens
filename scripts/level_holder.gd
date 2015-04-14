@@ -44,7 +44,7 @@ func goal_take(var wait = 0):
 	time_until_popup = wait
 	goals_left = goals_left - 1
 	if(goals_left == 0):
-		global.increase_reached_level(current_pack)
+		global.set_reached_level(current_pack,current_level + 1)
 		btn2_action = 1
 		show_popup("Good job!","Level passed")
 
