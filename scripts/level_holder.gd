@@ -18,13 +18,6 @@ var tileset = TileSet.new() # the Tileset
 func load_level(var pack, var level): # Load level N from pack P
 	current_level = level
 	current_pack = pack
-	# try to open the level
-	var f = File.new()
-	var err = f.open(str("res://levels/", pack, "/level_", level, ".xml"), f.READ)
-	if(err != 0):# if we are unable to open it, we return to the menu instead of crashing
-		back_to_menu()
-		return
-	f.close()
 	level_scene = load(str("res://levels/", pack, "/level_", level, ".xml"))
 	# Remove every currently loaded level
 	for i in range(get_child_count()):
@@ -55,9 +48,17 @@ func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 	time_until_popup = wait
 	goals_left = goals_left - 1
 	if(goals_left == 0): # no more goals ;(
-		global.set_reached_level(current_pack,current_level + 1)
-		btn2_action = 1 # can pass
-		show_popup("Good job!","Level passed")
+		global.set_reached_level(current_pack, current_level + 1)
+		# try to open the next level
+		var f = File.new()
+		var err = f.open(str("res://levels/", current_pack, "/level_", int(current_level) + 1, ".xml"), f.READ)
+		if(err != 0):# if we are unable to open it, we show that no more levels are left in this pack instead of crashing
+			btn2_action = 0 # can't click "Next Level", because there is no level after that one
+			show_popup("Pack passed!","There are no more levels left in this pack. You can go to play some other pack, though.")
+		else:
+			btn2_action = 1 # can click "Next Level"
+			show_popup("Good job!","Level passed")
+		f.close()
 
 func prompt_retry_level(): # Called when the robot dies
 	btn2_action = 0
