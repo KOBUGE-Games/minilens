@@ -25,6 +25,10 @@ export var moveable = true # Can we move, or is this box a static one
 export var TILE_ACID = 2 
 export var TILE_LADDER = 1
 var is_goal = true # Do we have to remove the box from the list of goals?
+var can_move_in = 5 # We freese te box for the first few frames
+#some classes (e.g. other scripts)
+var box_class = get_script()
+var player_class = preload("res://scripts/player.gd")
 
 func _ready():
 	if(moveable):
@@ -50,6 +54,9 @@ func destroy(var by): # Called whenever the box is destroyed
 		queue_free() # delete the box from the scene
 
 func _fixed_process(delta):
+	if(can_move_in > 0):
+		can_move_in = can_move_in - 1
+		return
 	if movement == 0: # We aren't moveing right now
 		var current_position = get_pos()/64
 		#fall
@@ -92,13 +99,13 @@ func _fixed_process(delta):
 			if(tm_left != -1 && tm_left != TILE_LADDER && tm_left != TILE_ACID):
 				move_left = false
 			elif ray_check_left.is_colliding() and ray_check_left.get_collider():
-				check_left = ray_check_left.get_collider().get_name()
-				if check_left.substr(0,3) == "box": # We can't move through boxes
+				check_left = ray_check_left.get_collider()
+				if check_left extends box_class: # We can't move through boxes
 					move_left = false
 				else:
 					move_left = true
 			else:
-				check_left == ""
+				check_left = ""
 				move_left = true
 				
 			#check if we can move right
@@ -106,19 +113,19 @@ func _fixed_process(delta):
 			if(tm_right != -1 && tm_right != TILE_LADDER && tm_right != TILE_ACID):
 				move_right = false
 			elif ray_check_right.is_colliding() and ray_check_right.get_collider():
-				check_right = ray_check_right.get_collider().get_name()
-				if check_right.substr(0,3) == "box": # We can't move through boxes
+				check_right = ray_check_right.get_collider()
+				if check_right extends box_class: # We can't move through boxes
 					move_right = false
 				else:
 					move_right = true
 			else:
-				check_right == ""
+				check_right = ""
 				move_right = true
 			
 			#Is the player pushing right?
 			if ray_check_left.is_colliding() and move_right:
 				collider_left = ray_check_left.get_collider()
-				if collider_left and collider_left.get_name() == "player" && !collider_left.falling:
+				if collider_left and collider_left extends player_class && !collider_left.falling:
 					if Input.is_action_pressed("btn_right") && collider_left.movement == 0:# the player doesn't move, and is pressing right, and doesn't fall
 						movement = 64 # Both we and the player move 64 px left
 						collider_left.movement = 64
@@ -129,7 +136,7 @@ func _fixed_process(delta):
 			#Is the player pushing left?
 			if ray_check_right.is_colliding() and move_left:
 				collider_right = ray_check_right.get_collider()
-				if collider_right and collider_right.get_name() == "player" && !collider_right.falling:
+				if collider_right and collider_right extends player_class && !collider_right.falling:
 					if Input.is_action_pressed("btn_left") && collider_right.movement == 0:# the player doesn't move, and is pressing left, and doesn't fall
 						movement = -64
 						collider_right.movement = -64

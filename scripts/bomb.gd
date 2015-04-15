@@ -34,28 +34,28 @@ func _fixed_process(delta):
 		get_node("explode").play()
 		#check for objects left
 		if ray_check_left.is_colliding():
-			check_left = ray_check_left.get_collider().get_name()
-			if check_left.substr(0,3) == "box" or check_left == "player":
+			check_left = ray_check_left.get_collider()
+			if check_left.has_method("destroy"):
 				ray_check_left.get_collider().destroy("bomb")
 		#check for objects right
 		if ray_check_right.is_colliding():
-			check_right = ray_check_right.get_collider().get_name()
-			if check_right.substr(0,3) == "box" or check_right == "player":
+			check_right = ray_check_right.get_collider()
+			if check_right.has_method("destroy"):
 				ray_check_right.get_collider().destroy("bomb")
 		#check for objects top
 		if ray_check_top.is_colliding():
-			check_top = ray_check_top.get_collider().get_name()
-			if check_top.substr(0,3) == "box" or check_top == "player":
+			check_top = ray_check_top.get_collider()
+			if check_top.has_method("destroy"):
 				ray_check_top.get_collider().destroy("bomb")
 		#check for objects bottom
 		if ray_check_bottom.is_colliding():
-			check_bottom = ray_check_bottom.get_collider().get_name()
-			if check_bottom.substr(0,3) == "box" or check_bottom == "player":
+			check_bottom = ray_check_bottom.get_collider()
+			if check_bottom.has_method("destroy"):
 				ray_check_bottom.get_collider().destroy("bomb")
 		#check for objects that overlap (e.g. the player)
 		if ray_overlap.is_colliding():
-			check_overlap = ray_overlap.get_collider().get_name()
-			if check_overlap.substr(0,3) == "box" or check_overlap == "player":
+			check_overlap = ray_overlap.get_collider()
+			if check_overlap.has_method("destroy"):
 				ray_overlap.get_collider().destroy("bomb")
 		get_node("AnimationPlayer").play("Explode")
 		set_fixed_process(false)

@@ -42,6 +42,8 @@ var old_anim # the new and the old animation
 var new_anim
 
 var bomb_counter # The node counting the bombs
+#some classes (e.g. other scripts)
+var box_class = preload("res://scripts/box.gd")
 
 func _ready():
 	# Find nodes
@@ -94,16 +96,16 @@ func logic():
 	check_right = tilemap.get_cell(current_position.x + 1, current_position.y)
 	move_right = (check_right == -1 || check_right == TILE_LADDER) # We can move through air and ladders
 	if ray_check_right.is_colliding() and ray_check_right.get_collider():
-		var collider_name = ray_check_right.get_collider().get_name()
-		if collider_name.substr(0,3) == "box":
+		var collider = ray_check_right.get_collider()
+		if collider extends box_class:
 			move_right = false # But we can't move through boxes
 
 	#Can we move left?
 	check_left = tilemap.get_cell(current_position.x - 1, current_position.y)
 	move_left = (check_left == -1 || check_left == TILE_LADDER) # We can move through air and ladders
 	if ray_check_left.is_colliding() and ray_check_left.get_collider():
-		var collider_name = ray_check_left.get_collider().get_name()
-		if collider_name.substr(0,3) == "box":
+		var collider = ray_check_left.get_collider()
+		if collider extends box_class:
 			move_left = false # But we can't move through boxes
 
 	#Get the tile we overlap
@@ -113,8 +115,8 @@ func logic():
 	check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
 	move_down = (check_bottom == -1 || check_bottom == TILE_LADDER || check_bottom == TILE_ACID) # We can move through air and ladders and acid
 	if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
-		var collider_name = ray_check_bottom.get_collider().get_name()
-		if collider_name.substr(0,3) == "box":
+		var collider = ray_check_bottom.get_collider()
+		if collider extends box_class:
 			move_down = false # But we can't move through boxes
 	move_down = move_down || int(get_pos().y)%64 != 0
 	
@@ -122,8 +124,8 @@ func logic():
 	check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 	move_up = (check_top == -1 || check_top == TILE_LADDER || check_top == TILE_ACID) # We can move through air and ladders and acid
 	if ray_check_top.is_colliding() and ray_check_top.get_collider():
-		var collider_name = ray_check_top.get_collider().get_name()
-		if collider_name.substr(0,3) == "box":
+		var collider = ray_check_top.get_collider()
+		if collider extends box_class:
 			move_up = false # But we can't move through boxes
 
 	#collect flowers or bombs
