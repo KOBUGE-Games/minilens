@@ -5,10 +5,12 @@ var areas = [] # an array with the different area nodes
 var areas_fade_dir = {} # a dictionary in which we will store all ongoing and stopped animations
 var fade_time = 1 # time (in sec) for the area to fade in
 var player_class = preload("res://scripts/player.gd") # the class of the player (so we can check if the player is the body tat we are touching)
+var pos_reached = 0 # how many tut messages have we shown?
 
 func _ready():
 	var area_node = get_node("areas") # get the node containing the areas
 	if(area_node): # make sure that this node exists
+		area_node.set_z(10) # make hints above everything else
 		for i in range(area_node.get_child_count()): # for each area
 			var current_area = area_node.get_child(i)
 			current_area.connect("body_enter",self,"tutorial_area_enter",[i])
@@ -19,7 +21,9 @@ func _ready():
 	set_process( true )
 
 func tutorial_area_enter(var body, var idx = 0):
-	if(body extends player_class):
+	var diff = idx - pos_reached
+	if(body extends player_class && (diff == 1 || diff == 0)):
+		pos_reached = idx
 		areas_fade_dir[idx] = 1 # fade in
 	
 func tutorial_area_exit(var body, var idx = 0):

@@ -50,7 +50,6 @@ func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 	if(goals_amount_by_type.has(type)):
 		goals_taken_by_type[type] += 1
 		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# get node like ../gui/CanvasLayer/<type>
-		print(goals_node)
 		if(goals_node):
 			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
 	time_until_popup = wait
