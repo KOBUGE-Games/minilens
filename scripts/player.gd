@@ -23,10 +23,11 @@ var sinking = false # Are we sinking?
 var falling = false # Are we falling?
 
 var movement = 0 # How much do we have to move? (+ for right)
-var move_left = false # Can we move left/right/up
+var movement_up = 0 # How much do we have to move vertically? (+ for down)
+var move_left = false # Can we move left/right/up/down
 var move_right = false
-var move_up = 0
-var move_down = false # How much do we have to move vertically? (+ for down)
+var move_up = false
+var move_down = false
 
 var place_bomb_was_pressed = false # Did we press space the last frame?
 var bomb = preload("res://scenes/bomb.xml") # The bomb scene
@@ -68,7 +69,7 @@ func level_load(var level_node):
 	#Reset variables
 	bombs = 0
 	movement = 0
-	move_up = 0
+	movement_up = 0
 	falling = true
 	set_fixed_process(true) # Lights on
 
@@ -116,9 +117,14 @@ func logic():
 		if collider_name.substr(0,3) == "box":
 			move_down = false # But we can't move through boxes
 	move_down = move_down || int(get_pos().y)%64 != 0
-
-	#Get the tile above
+	
+	#Can we move up?
 	check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
+	move_up = (check_top == -1 || check_top == TILE_LADDER || check_top == TILE_ACID) # We can move through air and ladders and acid
+	if ray_check_top.is_colliding() and ray_check_top.get_collider():
+		var collider_name = ray_check_top.get_collider().get_name()
+		if collider_name.substr(0,3) == "box":
+			move_up = false # But we can't move through boxes
 
 	#collect flowers or bombs
 	if ray_overlap.is_colliding() and ray_overlap.get_collider():
@@ -138,7 +144,7 @@ func logic():
 	else:
 		falling = false
 		
-	if movement == 0 and move_up == 0: # We aren't moving
+	if movement == 0 and movement_up == 0: # We aren't moving
 		
 		#sink in acid
 		if((check_overlap == TILE_ACID && (move_down || int(get_pos().y)%64 == 0)) || (check_bottom == TILE_ACID && move_down)):
@@ -171,15 +177,15 @@ func logic():
 				return
 
 		#Should we climb up?
-		if check_overlap == TILE_LADDER && (check_top == -1 || check_top == TILE_LADDER):
+		if check_overlap == TILE_LADDER && move_up:
 			if Input.is_action_pressed("btn_up"):
-				move_up = 64
+				movement_up = 64
 				return
 
 		#Should we climb down?
 		if (check_bottom == TILE_LADDER || check_overlap == TILE_LADDER) && move_down:
 			if Input.is_action_pressed("btn_down"):
-				move_up = -64
+				movement_up = -64
 				return
 
 		# Should we place a bomb
@@ -206,12 +212,12 @@ func logic():
 		move(Vector2(-4,0))
 		check_orientation()
 		new_anim = "walk"
-	if move_up > 0:
-		move_up -= 4
+	if movement_up > 0:
+		movement_up -= 4
 		move(Vector2(0,-4))
 		new_anim = "climb"
-	elif move_up < 0:
-		move_up += 4
+	elif movement_up < 0:
+		movement_up += 4
 		move(Vector2(0,4))
 		new_anim = "climb"
 	elif (movement == 0) and !falling:# Not moving and not falling
