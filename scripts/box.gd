@@ -88,7 +88,8 @@ func _fixed_process(delta):
 				destroy("acid")
 			
 			#check if we can move left
-			if(tilemap.get_cell(current_position.x - 1, current_position.y) == 0):
+			var tm_left = tilemap.get_cell(current_position.x - 1, current_position.y)
+			if(tm_left != -1 && tm_left != TILE_LADDER && tm_left != TILE_ACID):
 				move_left = false
 			elif ray_check_left.is_colliding() and ray_check_left.get_collider():
 				check_left = ray_check_left.get_collider().get_name()
@@ -101,7 +102,8 @@ func _fixed_process(delta):
 				move_left = true
 				
 			#check if we can move right
-			if(tilemap.get_cell(current_position.x + 1, current_position.y) == 0):
+			var tm_right = tilemap.get_cell(current_position.x + 1, current_position.y)
+			if(tm_right != -1 && tm_right != TILE_LADDER && tm_right != TILE_ACID):
 				move_right = false
 			elif ray_check_right.is_colliding() and ray_check_right.get_collider():
 				check_right = ray_check_right.get_collider().get_name()

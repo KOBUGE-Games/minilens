@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="9" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/logo.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme.xml" type="Theme"></ext_resource>
-	<ext_resource path="res://scenes/level_select_btn.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
+	<ext_resource path="res://gfx/theme.xml" type="Theme"></ext_resource>
 	<ext_resource path="res://scripts/main_menu.gd" type="Script"></ext_resource>
-	<ext_resource path="res://gfx/main_menu_bg2.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scenes/level_select_btn.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://gfx/godot_logo.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/main_menu_bg2.png" type="Texture"></ext_resource>
 	<resource type="Animation" path="local://1">
 		<string name="resource/name"> "default" </string>
 		<real name="length"> 8 </real>
@@ -161,7 +161,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 4 </int>
+							<int> 2 </int>
 							<string> "sources" </string>
 							<array  len="7" shared="false">
 								<string> "res://scripts/main_menu.gd" </string>
@@ -370,16 +370,16 @@
 							<bool> False </bool>
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
+							<string> "snap_step" </string>
+							<vector2> 10, 10 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
 							<string> "zoom" </string>
 							<real> 4.204739 </real>
-							<string> "snap_step" </string>
-							<vector2> 10, 10 </vector2>
-							<string> "snap_rotation_offset" </string>
-							<real> 0 </real>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
+							<string> "snap_rotation_offset" </string>
+							<real> 0 </real>
 							<string> "snap_show_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -391,6 +391,10 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
+							<string> "fov" </string>
+							<real> 45 </real>
+							<string> "zfar" </string>
+							<real> 500 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -458,28 +462,24 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
-							<string> "zfar" </string>
-							<real> 500 </real>
 							<string> "deflight_rot_y" </string>
 							<real> 0.628319 </real>
-							<string> "fov" </string>
-							<real> 45 </real>
-							<string> "default_light" </string>
-							<bool> True </bool>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "znear" </string>
-							<real> 0.1 </real>
 							<string> "show_origin" </string>
 							<bool> True </bool>
-							<string> "deflight_rot_x" </string>
-							<real> 0.942478 </real>
+							<string> "znear" </string>
+							<real> 0.1 </real>
 							<string> "default_srgb" </string>
 							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
