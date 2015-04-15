@@ -2,12 +2,23 @@ extends Node
 #This script is used by others to:
 # 1. change the current scene
 # 2. Set/Get the amount of locked levels in a pack
+# 3. keep the aspect ratio
 var root
 var current_scene
+var orig_size
+var viewport
 
 func _ready():
 	root = get_tree().get_root()
+	viewport = get_viewport()
 	current_scene = root.get_child(root.get_child_count()-1)
+	orig_size = OS.get_window_size()
+	#viewport.connect("size_changed",self,"window_resize")
+
+func window_resize():
+	var new_aspect = OS.get_window_size().get_aspect() # x/y
+	var new_size = Vector2(orig_size.x, orig_size.y * new_aspect)
+	viewport.set_size_override(true, new_size)
 
 func load_scene(var path):
 	current_scene.queue_free() # Destroy the current scene

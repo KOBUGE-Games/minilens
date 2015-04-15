@@ -9,12 +9,14 @@ var level_btn_row_count = 6 #
 var level_selected # The level we have selected
 var global # the global node (serves like a library, see global.gd)
 var packs_included = ["tutorial"] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
+var options # the node containing all options
 
 func _ready():
 	# Finding nodes
 	global = get_node("/root/global")
 	select_pack = get_node("level_selection/opt_pack")
 	level_list = get_node("level_selection/level_list")
+	options = get_node("options")
 	# Filling the credits label
 	var credits = get_node("credits/Label")
 	var f = File.new()
@@ -46,6 +48,10 @@ func _ready():
 			name = diraccess.get_next()
 		diraccess.list_dir_end()
 	_on_opt_pack_item_selected(0)#Update level list
+	#populating options
+	var fullscreen_opt = options.get_node("fullscreen/opt")
+	fullscreen_opt.add_item("On")
+	fullscreen_opt.add_item("Off")
 
 func _on_opt_pack_item_selected( ID ):
 	#remove old level selection buttons
