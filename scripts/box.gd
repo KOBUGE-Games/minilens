@@ -30,6 +30,8 @@ var can_move_in = 5 # We freese te box for the first few frames
 var box_class = get_script()
 var player_class = preload("res://scripts/player.gd")
 
+var JS # joystick support module
+
 func _ready():
 	if(moveable):
 		get_node("../../../level_holder").goal_add("box") # When we can move, we add a goal to the level
@@ -41,7 +43,7 @@ func _ready():
 	ray_check_bottom = get_node("ray_bottom")
 	ray_check_left = get_node("ray_check_left")
 	ray_check_bottom.add_exception(self)
-	
+	JS = get_node("/root/SUTjoystick")
 
 func destroy(var by): # Called whenever the box is destroyed
 	if(moveable && is_goal):
@@ -126,7 +128,7 @@ func _fixed_process(delta):
 			if ray_check_left.is_colliding() and move_right:
 				collider_left = ray_check_left.get_collider()
 				if collider_left and collider_left extends player_class && !collider_left.falling:
-					if Input.is_action_pressed("btn_right") && collider_left.movement == 0:# the player doesn't move, and is pressing right, and doesn't fall
+					if (Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right")) && collider_left.movement == 0:# the player doesn't move, and is pressing right, and doesn't fall
 						movement = 64 # Both we and the player move 64 px left
 						collider_left.movement = 64
 						get_node("hit").play()
@@ -137,7 +139,7 @@ func _fixed_process(delta):
 			if ray_check_right.is_colliding() and move_left:
 				collider_right = ray_check_right.get_collider()
 				if collider_right and collider_right extends player_class && !collider_right.falling:
-					if Input.is_action_pressed("btn_left") && collider_right.movement == 0:# the player doesn't move, and is pressing left, and doesn't fall
+					if (Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left")) && collider_right.movement == 0:# the player doesn't move, and is pressing left, and doesn't fall
 						movement = -64
 						collider_right.movement = -64
 						get_node("hit").play()

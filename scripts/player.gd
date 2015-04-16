@@ -45,6 +45,8 @@ var bomb_counter # The node counting the bombs
 #some classes (e.g. other scripts)
 var box_class = preload("res://scripts/box.gd")
 
+var JS # the SUTjoystick module
+
 func _ready():
 	# Find nodes
 	ray_check_top = get_node("ray_check_top")
@@ -56,6 +58,8 @@ func _ready():
 	ray_overlap.add_exception(self)
 	
 	bomb_counter = get_node("../../gui/CanvasLayer/bombs")
+
+	JS = get_node("/root/SUTjoystick")
 
 func level_load(var level_node):
 	get_node("SpriteGroup/AnimationPlayer").play("idle") # Play the idle animation when we enter the level
@@ -88,6 +92,10 @@ func check_orientation():# Check if the current orientation matches the movement
 		get_node("SpriteGroup").set_scale(get_node("SpriteGroup").get_scale() * Vector2(-1,1))
 
 func logic():
+	# allow gamepad back button to restart level
+	if JS.get_digital("back"):
+		get_node("../../level_holder").retry_level()
+	
 	# Get the current position in the tilemap, and round it
 	current_position = (get_pos())/64
 	current_position = Vector2(round(current_position.x), floor(current_position.y))
@@ -168,30 +176,30 @@ func logic():
 		
 		#Should we move right?
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
-			if Input.is_action_pressed("btn_right"):
+			if Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right"):
 				movement = 64
 				return
 
 		#Should we move left?
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_left:
-			if Input.is_action_pressed("btn_left"):
+			if Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left"):
 				movement = -64
 				return
 
 		#Should we climb up?
 		if check_overlap == TILE_LADDER && move_up:
-			if Input.is_action_pressed("btn_up"):
+			if Input.is_action_pressed("btn_up") || JS.get_digital("leftstick_up") || JS.get_digital("dpad_up"):
 				movement_up = 64
 				return
 
 		#Should we climb down?
 		if (check_bottom == TILE_LADDER || check_overlap == TILE_LADDER) && move_down:
-			if Input.is_action_pressed("btn_down"):
+			if Input.is_action_pressed("btn_down") || JS.get_digital("leftstick_down") || JS.get_digital("dpad_down"):
 				movement_up = -64
 				return
 
 		# Should we place a bomb
-		if(Input.is_action_pressed("place_bomb")):
+		if(Input.is_action_pressed("place_bomb") || JS.get_digital("action_1")):
 			if(!place_bomb_was_pressed && bombs > 0): # Check if we have placed a bomb in the last frame.. if we had it will be better to not place one again
 				var new_bomb = bomb.instance()
 				new_bomb.set_pos(get_pos())
