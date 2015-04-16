@@ -1,0 +1,19 @@
+Did you know that minilens can't jump?
+Visit the nearest space station for more info.
+null
+undefined
+Bombs x 1
+Flowers 2/4
+42
+One day...
+Hi!
+- Please, can you stop dropping me in the acid?
+Did you know that if you leave the game for an hour, nothing will happen?
+Bump
+Please contribute at www.github.com/alketii/minilens
+WE NEED MORE SPLASHES
+Did you try the another_dimension pack?
+I guess all levels are passable!
+
+{object Object}
+<div></div>
