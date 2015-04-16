@@ -10,6 +10,14 @@ var level_selected # The level we have selected
 var global # the global node (serves like a library, see global.gd)
 var packs_included = ["tutorial"] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
 var options # the node containing all options
+var pack_folders = [] # the folders of the packs
+
+func snake_case_to_Name(var string):
+	var split = string.split("_")
+	var name = ""
+	for i in split:
+		name += i.capitalize() + " "
+	return name
 
 func _ready():
 	# Finding nodes
@@ -41,21 +49,23 @@ func _ready():
 	# check 2 paths - 1. bundled levels, 2. created later using map editor
 	var dir_paths = ["res://levels/"] # res://levels (bundled)
 	dir_paths.append(Globals.globalize_path(dir_paths[0])) # C:/.../levels (disk)
-	select_pack.add_item("tutorial")
+	select_pack.add_item("Tutorial")
+	pack_folders.append("tutorial")
+	var i = 0 # the id of the number
 	for path in dir_paths:
 		diraccess.open(path)
 		diraccess.list_dir_begin()
 		var name = diraccess.get_next()
-		var i = 1 # the id of the number
 		while name:
 			if diraccess.current_is_dir():
 				if name != "." and name != ".." and name != "tutorial":
+					pack_folders.append(name)
 					if path.begins_with("res://"): # bundled
-						select_pack.add_item(name)
+						select_pack.add_item(snake_case_to_Name(name))
 						packs_included.append(name)
 					else: # made with map editor
 						if !name in packs_included:
-							select_pack.add_item(name)
+							select_pack.add_item(snake_case_to_Name(name))
 			name = diraccess.get_next()
 		diraccess.list_dir_end()
 	_on_opt_pack_item_selected(0)#Update level list
@@ -68,12 +78,14 @@ func _on_opt_pack_item_selected( ID ):
 	#remove old level selection buttons
 	for i in range(level_list.get_child_count()):
 		level_list.get_child(i).queue_free()
+	#Get the pack
+	var pack = pack_folders[select_pack.get_selected()]
 	#Get the number of locked levels
-	var locked_count = global.get_reached_level(select_pack.get_text())
+	var locked_count = global.get_reached_level(pack)
 	#Get the names of the levels
 	var level_names = {}
 	var f = File.new()
-	var err = f.open(str("res://levels/", select_pack.get_text(), "/names.txt"),File.READ)
+	var err = f.open(str("res://levels/", pack, "/names.txt"),File.READ)
 	if(!err):#if we can open that file
 		while(!f.eof_reached()):
 			var line = f.get_line().split(":")      #Read every line
@@ -82,8 +94,8 @@ func _on_opt_pack_item_selected( ID ):
 	f.close()
 	#Using the Directory class to list all files
 	var diraccess = Directory.new()
-	if diraccess.open(str("res://levels/", select_pack.get_text())) != 0: # pack is not bundled
-		diraccess.open(Globals.globalize_path(str("res://levels/", select_pack.get_text()))) # load from disk
+	if diraccess.open(str("res://levels/", pack)) != 0: # pack is not bundled
+		diraccess.open(Globals.globalize_path(str("res://levels/", pack))) # load from disk
 	diraccess.list_dir_begin()
 	var name = diraccess.get_next()
 	var i = 0 #The number of the current level
@@ -110,8 +122,10 @@ func level_btn_clicked(var id): # When any level button is clicked
 	set_fixed_process(true) # We use _fixed_process to change scenes, so no crashes happen
 
 func _fixed_process(delta):
+	#Get the pack
+	var pack = pack_folders[select_pack.get_selected()]
 	set_fixed_process(false)
-	global.load_level(select_pack.get_text(),level_selected) # We use _fixed_process to change scenes, so no crashes happen
+	global.load_level(pack,level_selected) # We use _fixed_process to change scenes, so no crashes happen
 	
 func _process(delta):
 	# We use _process to move the screen
