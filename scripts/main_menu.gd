@@ -17,6 +17,7 @@ func _ready():
 	select_pack = get_node("level_selection/opt_pack")
 	level_list = get_node("level_selection/level_list")
 	options = get_node("options")
+	var splash = get_node("splash/Label")
 	# Filling the credits label
 	var credits = get_node("credits/Label")
 	var f = File.new()
@@ -25,6 +26,16 @@ func _ready():
 	while(!f.eof_reached()):
 		credit = str(credit, "\n", f.get_line())
 	credits.set_text(credit)
+	# Filling the splash label
+	var f = File.new()
+	f.open("res://splashes.txt", f.READ)
+	var splashes = []
+	while(!f.eof_reached()):
+		splashes.append(f.get_line())
+	print()
+	var random = int(rand_seed(OS.get_unix_time())[1] % splashes.size())
+	print(random)
+	splash.set_text(splashes[random])
 	# Using the Diectory class to list all folders, so we can add the packs to the menu
 	var diraccess = Directory.new()
 	# check 2 paths - 1. bundled levels, 2. created later using map editor
