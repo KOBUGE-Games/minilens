@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="11" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://scripts/level_holder.gd" type="Script"></ext_resource>
 	<ext_resource path="res://scenes/player.xml" type="PackedScene"></ext_resource>
-	<ext_resource path="res://gfx/menuGrid.png" type="Texture"></ext_resource>
-	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
-	<ext_resource path="res://gfx/radioactive.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/return.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme.xml" type="Theme"></ext_resource>
 	<ext_resource path="res://gfx/flower.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/bomb.png" type="Texture"></ext_resource>
+	<ext_resource path="res://audio/main_menu.ogg" type="AudioStream"></ext_resource>
+	<ext_resource path="res://gfx/return.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme.xml" type="Theme"></ext_resource>
+	<ext_resource path="res://scripts/level_holder.gd" type="Script"></ext_resource>
 	<ext_resource path="res://scenes/popup.xml" type="PackedScene"></ext_resource>
+	<ext_resource path="res://gfx/menuGrid.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/radioactive.png" type="Texture"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
@@ -132,7 +132,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 1 </int>
+							<int> 0 </int>
 							<string> "sources" </string>
 							<array  len="7" shared="false">
 								<string> "res://scripts/level_holder.gd" </string>
@@ -151,7 +151,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 4.65899 </real>
+							<real> 0.66342 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -165,7 +165,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> 43.7816, -41.8833 </vector2>
+							<vector2> -581.453, -175.948 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>

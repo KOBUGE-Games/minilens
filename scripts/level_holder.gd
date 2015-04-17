@@ -14,6 +14,10 @@ var time_until_popup = 0 # How much time should we wait
 export var acid_animation_time = 1.0 # The speed of the acid animation
 var acid_animation_pos = 0.0 # The current pos of the animation (0-1)
 var tileset = TileSet.new() # the Tileset
+var viewport # the Viewport
+var tile_map_acid_y # when we extend the tilemap, we need to know on which Y we should place the acid
+var tile_map_acid_x_start # when we extend the tilemap, we need to know on which Y we should place the acid
+var tile_map_acid_x_end # when we extend the tilemap, we need to know on which Y we should place the acid
 
 func load_level(var pack, var level): # Load level N from pack P
 	current_level = level
@@ -35,6 +39,33 @@ func load_level(var pack, var level): # Load level N from pack P
 	player.set_z(0)
 	player.level_load(level_node) # Have the player prepare to play..
 	tileset = level_node.get_node("tilemap").get_tileset()
+	var tilemap = level_node.get_node("tilemap")
+	tile_map_acid_y = 0
+	tile_map_acid_x_start = 2
+	tile_map_acid_x_end = 1
+	while(tilemap.get_cell(0,tile_map_acid_y) != 2 && tile_map_acid_y < 3000):
+		tile_map_acid_y += 1
+	while(tilemap.get_cell(tile_map_acid_x_start, tile_map_acid_y) == 2 && tile_map_acid_x_start > -100):
+		tile_map_acid_x_start -= 1
+	while(tilemap.get_cell(tile_map_acid_x_end, tile_map_acid_y) == 2 && tile_map_acid_x_end < 3000):
+		tile_map_acid_x_end += 1
+	window_resize()
+
+func window_resize():
+	var new_size = viewport.get_size_override()
+	var new_pos = Vector2((new_size.x-1024)/2,0)
+	get_node("../gui/CanvasLayer/popup").set_pos(Vector2(new_size.x/2-252,210))
+	get_node("../gui/CanvasLayer/retry").set_pos(Vector2(new_size.x-128,0))
+	get_node("../gui/CanvasLayer/menu").set_pos(Vector2(new_size.x-64,0))
+	var tilemap = level_node.get_node("tilemap")
+	for i in range(ceil(new_size.x/2/64)):
+		tilemap.set_cell(tile_map_acid_x_start - i, tile_map_acid_y, 2)
+		tilemap.set_cell(tile_map_acid_x_end + i, tile_map_acid_y, 2)
+	var scale = new_size.x/1024
+	if(scale > 1):
+		get_node("../gui/CanvasLayer/popup/popup_bg").set_scale(Vector2(scale,scale))
+		level_node.get_node("CanvasLayer").set_scale(Vector2(scale,scale))
+		level_node.get_node("CanvasLayer").set_offset(Vector2(32,32-(scale - 1)*768/2))
 
 func retry_level(): # Retry the current level
 	load_level(current_pack, current_level)
@@ -90,6 +121,7 @@ func _ready():
 	# Find nodes
 	global = get_node("/root/global")
 	player = get_node("../player_holder/player")
+	viewport = get_viewport()
 	#Removes the focus from the retry button
 	get_node("../gui/CanvasLayer/retry").set_focus_mode(Control.FOCUS_NONE)
 	#Connect the popup buttons
@@ -98,6 +130,7 @@ func _ready():
 	get_node("../gui/CanvasLayer/popup/body/btn3").connect("pressed", self, "popup_btn3_pressed")
 	set_process_input(true)
 	set_process(true)
+	viewport.connect("size_changed",self,"window_resize")
 
 func _process(delta): # move the acid
 	acid_animation_pos = acid_animation_pos + delta
