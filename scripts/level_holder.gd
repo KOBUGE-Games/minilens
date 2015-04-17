@@ -9,6 +9,7 @@ var goals_left = 0 # the amount of goals left to be taken
 var goals_amount_by_type = {} # a Dictionary containing the STARTING amounts of different goals left to be taken
 var goals_taken_by_type = {} # a Dictionary containing the TAKEN amounts of different goals
 var global # the global node (serves like a library, see global.gd)
+var JS # the SUTjoystick module
 var btn2_action = 0 # Can we move left, when we press the secound button
 var time_until_popup = 0 # How much time should we wait 
 export var acid_animation_time = 1.0 # The speed of the acid animation
@@ -89,6 +90,7 @@ func _input(event):
 func _ready():
 	# Find nodes
 	global = get_node("/root/global")
+	JS = get_node("/root/SUTjoystick")
 	player = get_node("../player_holder/player")
 	#Removes the focus from the retry button
 	get_node("../gui/CanvasLayer/retry").set_focus_mode(Control.FOCUS_NONE)
@@ -98,6 +100,7 @@ func _ready():
 	get_node("../gui/CanvasLayer/popup/body/btn3").connect("pressed", self, "popup_btn3_pressed")
 	set_process_input(true)
 	set_process(true)
+	JS.emulate_mouse(false) # turn off mouse emulation in-game
 
 func _process(delta): # move the acid
 	acid_animation_pos = acid_animation_pos + delta
@@ -125,19 +128,21 @@ func _fixed_process(delta): # When we have to wait till the popup is shown
 		player.set_fixed_process(false)
 		popup.show()
 		set_fixed_process(false)
+		JS.emulate_mouse(true) # turn on mouse emulation for popups
 
 func hide_popup(): # Hide the popup
 	var popup = get_node("../gui/CanvasLayer/popup")
 	popup.hide()
-	
 
 func popup_btn1_pressed():# Actions for different popup buttons
+	JS.emulate_mouse(false) # turn off mouse emulation again	
 	retry_level()
 	hide_popup()
 
 func popup_btn2_pressed():
 	if(btn2_action == 1):
 		btn2_action = 0 # No double clicking pls
+		JS.emulate_mouse(false) # turn off mouse emulation again	
 		next_level()
 		hide_popup()
 	
