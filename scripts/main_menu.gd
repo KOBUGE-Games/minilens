@@ -11,6 +11,9 @@ var global # the global node (serves like a library, see global.gd)
 var packs_included = ["tutorial"] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
 var options # the node containing all options
 var pack_folders = [] # the folders of the packs
+var viewport # The viewport
+var my_pos = Vector2(0,0) # The current position of the start screen
+var current_target = "start" # The screen we are currently on
 
 func snake_case_to_Name(var string):
 	var split = string.split("_")
@@ -26,6 +29,7 @@ func _ready():
 	level_list = get_node("level_selection/level_list")
 	options = get_node("options")
 	var splash = get_node("splash/Label")
+	viewport = get_viewport()
 	# Filling the credits label
 	var credits = get_node("credits/Label")
 	var f = File.new()
@@ -78,6 +82,24 @@ func _ready():
 	fullscreen_opt.add_item("On")
 	if(current_options.has("fullscreen")):
 		fullscreen_opt.select(current_options["fullscreen"])
+	#prepare to move thing when the aspect ratio changes
+	viewport.connect("size_changed",self,"window_resize")
+	window_resize()
+func window_resize():
+	var new_size = viewport.get_size_override()
+	my_pos = Vector2((new_size.x-1024)/2,0)
+	#set_pos(my_pos)
+	get_node("level_selection").set_pos(my_pos + Vector2(1024,0))
+	get_node("options").set_pos(Vector2(-new_size.x-1024,0))
+	get_node("options").set_size(new_size)
+	get_node("options/back").set_pos(Vector2(new_size.x-96,8))
+	get_node("credits").set_pos(Vector2(-my_pos.x,768))
+	get_node("credits").set_size(new_size)
+	var scale = new_size.x/1024
+	if(scale > 1):
+		get_node("CanvasLayer").set_scale(Vector2(scale,scale))
+		get_node("CanvasLayer").set_offset(Vector2(0,-(scale*768-768)))
+	goto_target(current_target)
 
 func _on_opt_pack_item_selected( ID ):
 	#remove old level selection buttons
@@ -139,22 +161,29 @@ func _process(delta):
 		set_pos(target)
 		set_process(false)
 
-
-func goto_levels():
-	target = Vector2(-1024,0) #Select the target coordinates
+func goto_target(var target_place = "start"):
+	current_target = target_place
+	if(target_place == "start"):
+		target = my_pos
+	elif(target_place == "levels"):
+		target = -get_node("level_selection").get_pos() #Select the target coordinates
+	elif(target_place == "options"):
+		target = -get_node("options").get_pos()
+	elif(target_place == "credits"):
+		target = -get_node("credits").get_pos()
 	set_process(true) # We use _process to move the screen
 
+func goto_levels():
+	goto_target("levels")
+
 func goto_start():
-	target = Vector2(0,0)
-	set_process(true)
+	goto_target("start")
 	
 func goto_options():
-	target = Vector2(1024,0)
-	set_process(true)
+	goto_target("options")
 	
 func goto_credits():
-	target = Vector2(0,-768)
-	set_process(true)
+	goto_target("credits")
 
 func quit():
 	get_tree().quit() # Exit the game
