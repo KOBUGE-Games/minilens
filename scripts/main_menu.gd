@@ -5,7 +5,8 @@ var target         # When moveing the view, where do we want to go?
 var level_btn_scene = preload("res://scenes/level_select_btn.xml") # the Level selecion button in a scene
 var level_list     # the node that contains all level buttons
 export var level_btn_size = Vector2(100,100) # the size+margin of every level selecion button
-var level_btn_row_count = 6 #
+export var level_btn_margin_x = 212.0 # the size+margin of every level selecion button
+var level_btn_row_count = 6 # How many level buttons can we arrange in a row?
 var level_selected # The level we have selected
 var global # the global node (serves like a library, see global.gd)
 var packs_included = ["tutorial"] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
@@ -85,8 +86,13 @@ func _ready():
 	#prepare to move thing when the aspect ratio changes
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
+
 func window_resize():
 	var new_size = viewport.get_size_override()
+	var old_row_count = level_btn_row_count
+	level_btn_row_count = int((new_size.x - level_btn_margin_x*2) / level_btn_size.x) + 1
+	if(old_row_count != level_btn_row_count): #So we have a reason to relayout
+		_on_opt_pack_item_selected(0) # Recalculate btn positions
 	my_pos = Vector2((new_size.x-1024)/2,0)
 	#set_pos(my_pos)
 	get_node("level_selection").set_pos(my_pos + Vector2(1024,0))
@@ -138,7 +144,7 @@ func _on_opt_pack_item_selected( ID ):
 				new_instance.set_locked((i + 1) > locked_count) # When the level is locked we show it as one
 				var row_pos = int(i % level_btn_row_count) # The position on X
 				var col_pos = int(i / level_btn_row_count) # and on Y
-				new_instance.set_pos(Vector2(level_btn_size.x * row_pos, level_btn_size.y * col_pos)) # then both of them used to make the final pos
+				new_instance.set_pos(Vector2(level_btn_size.x * row_pos + level_btn_margin_x, level_btn_size.y * col_pos)) # then both of them used to make the final pos
 				level_list.add_child(new_instance) # At last we add it to the list
 				i = i + 1
 		name = diraccess.get_next()
