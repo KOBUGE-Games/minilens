@@ -10,10 +10,12 @@ var level_selected # The level we have selected
 var global # the global node (serves like a library, see global.gd)
 var packs_included = ["tutorial"] # name of packs loaded from "res://levels" (levels existing when exporting project), generated in _ready
 var options # the node containing all options
+var JS # SUTjoystick module
 
 func _ready():
 	# Finding nodes
 	global = get_node("/root/global")
+	JS = get_node("/root/SUTjoystick")
 	select_pack = get_node("level_selection/opt_pack")
 	level_list = get_node("level_selection/level_list")
 	options = get_node("options")
@@ -52,6 +54,7 @@ func _ready():
 	var fullscreen_opt = options.get_node("fullscreen/opt")
 	fullscreen_opt.add_item("On")
 	fullscreen_opt.add_item("Off")
+	JS.emulate_mouse(true) # enable gamepad mouse emulation for menus
 
 func _on_opt_pack_item_selected( ID ):
 	#remove old level selection buttons
@@ -101,7 +104,8 @@ func level_btn_clicked(var id): # When any level button is clicked
 func _fixed_process(delta):
 	set_fixed_process(false)
 	global.load_level(select_pack.get_text(),level_selected) # We use _fixed_process to change scenes, so no crashes happen
-	
+
+
 func _process(delta):
 	# We use _process to move the screen
 	set_pos((get_pos()*4 + target)/5)
