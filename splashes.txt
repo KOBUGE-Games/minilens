@@ -3,7 +3,7 @@ Visit the nearest space station for more info.
 42
 Hi!
 - Please, can you stop dropping me in the acid?
-Did you know that if you leave the game for an hour, nothing will happen?
+Did you know that if you leave the game for an hour, nothing will ever happen?
 Please contribute at www.github.com/alketii/minilens
 WE NEED MORE SPLASHES
 Did you try the another_dimension pack?
@@ -19,3 +19,17 @@ Please, smile while you are playing the game.
 This is a sample splash.
 Colorless green ideas sleep furiously!
 Did you collect all the flowers?
+A big snake bars the way!
+XYZZY
+Did you know that the robot falls because of gravity?
+Did you know that minilens were made by aliens?
+A piece of a cake
+I guess that the only missing thing in this game is... apples!
+Bonjour
+0110 1110 0100 = 0010 1010 ^ 0010
+#635437
+@alketii
+@fry-
+@bojidar-bg
+www.freenode.net #minilens
+GPL3 Free Puzzle Platformer
