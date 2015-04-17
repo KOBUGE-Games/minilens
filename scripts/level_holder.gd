@@ -66,6 +66,7 @@ func window_resize():
 		get_node("../gui/CanvasLayer/popup/popup_bg").set_scale(Vector2(scale,scale))
 		level_node.get_node("CanvasLayer").set_scale(Vector2(scale,scale))
 		level_node.get_node("CanvasLayer").set_offset(Vector2(32,32-(scale - 1)*768/2))
+	player.get_node("Camera2D").force_update_scroll()
 
 func retry_level(): # Retry the current level
 	load_level(current_pack, current_level)
