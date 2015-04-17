@@ -13,11 +13,12 @@ func _ready():
 	viewport = get_viewport()
 	current_scene = root.get_child(root.get_child_count()-1)
 	orig_size = OS.get_window_size()
-	#viewport.connect("size_changed",self,"window_resize")
+	viewport.connect("size_changed",self,"window_resize")
 
 func window_resize():
-	var new_aspect = OS.get_window_size().get_aspect() # x/y
-	var new_size = Vector2(orig_size.x, orig_size.y * new_aspect)
+	var window_size = OS.get_window_size()
+	var scale_factor = orig_size.y/window_size.y
+	var new_size = Vector2(window_size.x*scale_factor, orig_size.y)
 	viewport.set_size_override(true, new_size)
 
 func load_scene(var path):
