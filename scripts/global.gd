@@ -13,11 +13,21 @@ func _ready():
 	viewport = get_viewport()
 	current_scene = root.get_child(root.get_child_count()-1)
 	orig_size = OS.get_window_size()
-	#viewport.connect("size_changed",self,"window_resize")
+	viewport.connect("size_changed",self,"window_resize")
 
 func window_resize():
-	var new_aspect = OS.get_window_size().get_aspect() # x/y
-	var new_size = Vector2(orig_size.x, orig_size.y * new_aspect)
+	var window_size = OS.get_window_size()
+	var changed = false
+	if(window_size.x < 300):
+		window_size.x = 300
+		changed = true
+	if(window_size.y < 250):
+		window_size.y = 250
+		changed = true
+	if(changed):
+		OS.set_window_size(window_size)
+	var scale_factor = orig_size.y/window_size.y
+	var new_size = Vector2(window_size.x*scale_factor, orig_size.y)
 	viewport.set_size_override(true, new_size)
 
 func load_scene(var path):
@@ -68,10 +78,37 @@ func set_reached_level(var pack, var value):
 				data[data.size() - 1][1] = max(data[data.size() - 1][1], value) # if we reach the needed pack, we just set the amount we've read to value
 			next_line = f.get_line()
 		if(!found):
-			data.append([pack,2])
+			data.append([pack,value])
 		f.close()
 		var err = f.open_encrypted_with_pass("user://savedata.bin",File.WRITE,str("minilens",OS.get_unique_ID()))
 		if(!err):# then we rewrite everything
 			for line in data:
 				f.store_line(str(line[0]," ",line[1]))
+	f.close()
+
+func read_options():
+	var f = File.new()
+	var err = f.open("user://options.txt",File.READ)
+	if(err): # If the file doesn't exist, we try to write to it first
+		f.close()
+		f.open("user://options.txt",File.WRITE)
+		f.store_line("fullscreen:0")
+		f.close()
+		var err = f.open("user://options.txt",File.READ)
+	if(!err):
+		var data = {}
+		var next_line = f.get_line()
+		while(!f.eof_reached()): # We read line by line
+			var parse = next_line.split(":")
+			data[parse[0]] = parse[1]
+			next_line = f.get_line()
+		return data
+	f.close()
+	return {}
+func save_options(data):
+	var f = File.new()
+	var err = f.open("user://options.txt",File.WRITE)
+	if(!err):
+		for i in data:
+			f.store_line(str(i,":",data[i]))
 	f.close()

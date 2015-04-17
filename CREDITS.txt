@@ -1,4 +1,19 @@
-1. http://kenney.nl - for the most graphical assets
-2. http://opengameart.org/users/qubodup - for the acid barrel
-3. Michel Baradari - http://opengameart.org/content/2-high-quality-explosions - for explosion sounds
-4. Blender Foundation - http://opengameart.org/content/life-pickup-yo-frankie - for flower pickup sound
+
+
+Authors
+    alketii - Project leader, code, gfx, level design
+    bojidar-bg - Code leader, level design
+    fry- - Graphics leader, code, level design
+
+Special thanks to:
+    Godot Engine
+    Kenney
+    Calinou
+    Kermer
+    adolson
+
+Kenney - http://kenney.nl - for the most graphical assets
+Michel Baradari - http://opengameart.org/content/2-high-quality-explosions - for explosion sounds
+Blender Foundation - http://opengameart.org/content/life-pickup-yo-frankie - for flower pickup sound
+
+and many others which we forgot.
