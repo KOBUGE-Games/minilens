@@ -116,7 +116,11 @@ func goal_add(var type=""): # Add one more goal
 
 func _input(event):
 	if(event.is_action("retry") && event.is_pressed() && !event.is_echo()):
-		retry_level()
+		popup_btn1_pressed()
+	if(event.is_action("next_level") && event.is_pressed() && !event.is_echo()):
+		popup_btn2_pressed()
+	if(event.is_action("to_menu") && event.is_pressed() && !event.is_echo()):
+		popup_btn3_pressed()
 
 func _ready():
 	# Find nodes
