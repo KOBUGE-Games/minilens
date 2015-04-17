@@ -161,7 +161,7 @@ func _fixed_process(delta):
 	#Get the pack
 	var pack = pack_folders[select_pack.get_selected()]
 	set_fixed_process(false)
-	global.load_level(select_pack.get_text(),level_selected) # We use _fixed_process to change scenes, so no crashes happen
+	global.load_level(pack,level_selected) # We use _fixed_process to change scenes, so no crashes happen
 	
 func _process(delta):
 	# We use _process to move the screen
