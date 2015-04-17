@@ -24,6 +24,7 @@
 #   get_device_number(player) - pass the player number (optional). Returns the system device number assigned to the player.
 #   get_device_player(device) - pass the system device number. Returns the player number using the device.
 #   deregister_player(player) - pass the player number (optional). Clears the assigned device(s) from the player or all players.
+#   emulate_mouse(enabled, player) - pass a boolean and player number (optional). Allows controlling the mouse with the controller.
 #
 # Fully-detailed documentation is available in the README; also online here:
 # https://gitlab.com/shine-upon-thee/joystick
@@ -46,7 +47,6 @@
 #==============================================================================#
 extends Node
 
-# Windows is in the list, but not really supported properly yet. Godot for Windows needs work...
 const supported_os = [
 	"x11",
 	"windows"
@@ -114,6 +114,11 @@ var player_device = [-1, -1, -1, -1] # 4-player support max (could be extended i
 var active_map = [null,null,null,null]
 # this is set at every input, allows to get input for any player
 var active_player = 1 # from 1 to 4
+# virtual mouse cursor variables
+var virtual_mouse_enabled = false
+var virtual_mouse_speed = 500 # pixels per second
+var virtual_mouse_pos = Vector2()
+var disable_mouse_warp = false # disable mouse pointer warping when enabling/disabling mouse emulation
 
 # these hold the axis and button states in analog and digital formats
 var analog_state = [
@@ -129,6 +134,8 @@ var digital_state = [
 	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0}
 ]
 
+var semaphore = {}
+
 func _init():
 	if not OS.get_name().to_lower() in supported_os:
 		print("[SUTjoystick]: operating system not currently supported")
@@ -139,6 +146,20 @@ func _init():
 	print("[SUTjoystick]: module loaded")
 	return
 
+func emulate_mouse(enable, player=0):
+# toggle mouse emulation, with an optional player number
+	if enable:
+		virtual_mouse_enabled = true
+		set_process(true)
+		if !disable_mouse_warp:
+			virtual_mouse_pos = OS.get_window_size() / 2 # warp to middle of window
+		debug_print("mouse emulation enabled")
+	else:
+		virtual_mouse_enabled = false
+		set_process(false)
+		if !disable_mouse_warp:
+			Input.warp_mouse_pos(OS.get_window_size()) # warp cursor to bottom corner, out of view
+		debug_print("mouse emulation disabled")
 
 func load_js_maps():
 # this function loads platform-specific maps and fallbacks into the js_maps array
@@ -491,6 +512,7 @@ func _input(ev):
 					val = 1
 				# set the analog state/value
 				analog_state[player][axis_name] = val
+				
 				# convert analog values to digital states
 				# mappings include a possible digital state for this axis
 				if active_map[player]["button"].has(axis_name):
@@ -512,6 +534,84 @@ func _input(ev):
 		if not skip_active_player_update:
 			active_player = player + 1
 	return
+
+
+func _process(delta):
+	# handle mouse movement emulation, when enabled
+	# we need to maintain an internal position, because warp_mouse_pos doesn't update the real cursor position
+	if virtual_mouse_enabled:
+		# cursor position
+		var virtual_mouse_movement = Vector2()
+		virtual_mouse_movement.x = virtual_mouse_speed * delta * get_analog("leftstick_hor")
+		virtual_mouse_movement.y = virtual_mouse_speed * delta * get_analog("leftstick_ver")
+		if virtual_mouse_movement != Vector2(0,0):
+			virtual_mouse_pos += virtual_mouse_movement
+			var screen_size = OS.get_window_size() # leave this here, in case window size changes
+			virtual_mouse_pos.x = min(max(virtual_mouse_pos.x,0), screen_size.x)
+			virtual_mouse_pos.y = min(max(virtual_mouse_pos.y,0), screen_size.y)
+			Input.warp_mouse_pos(virtual_mouse_pos)
+		# left-click
+		if !semaphore.has("mouse1") and get_digital("action_1"):
+			semaphore["mouse1"] = true
+			var mouse_click = InputEvent()
+			mouse_click.type = InputEvent.MOUSE_BUTTON
+			mouse_click.pressed = true
+			mouse_click.pos = virtual_mouse_pos
+			mouse_click.button_index = 1
+			get_tree().input_event(mouse_click)
+			mouse_click.pressed = false
+			get_tree().input_event(mouse_click)
+		elif semaphore.has("mouse1") and !get_digital("action_1"):
+			semaphore.erase("mouse1")
+		# right-click
+		if !semaphore.has("mouse2") and get_digital("action_2"):
+			semaphore["mouse2"] = true
+			var mouse_click = InputEvent()
+			mouse_click.type = InputEvent.MOUSE_BUTTON
+			mouse_click.pressed = true
+			mouse_click.pos = virtual_mouse_pos
+			mouse_click.button_index = 2
+			get_tree().input_event(mouse_click)
+			mouse_click.pressed = false
+			get_tree().input_event(mouse_click)
+		elif semaphore.has("mouse2") and !get_digital("action_2"):
+			semaphore.erase("mouse2")
+		# middle-click
+		if !semaphore.has("mouse3") and get_digital("action_4"):
+			semaphore["mouse3"] = true
+			var mouse_click = InputEvent()
+			mouse_click.type = InputEvent.MOUSE_BUTTON
+			mouse_click.pressed = true
+			mouse_click.pos = virtual_mouse_pos
+			mouse_click.button_index = 3
+			get_tree().input_event(mouse_click)
+			mouse_click.pressed = false
+			get_tree().input_event(mouse_click)
+		elif semaphore.has("mouse3") and !get_digital("action_4"):
+			semaphore.erase("mouse3")
+		# scroll wheel
+		if !semaphore.has("mousewheel") and (get_digital("dpad_up") or get_digital("rightstick_up")):
+			semaphore["mousewheel"] = true
+			var mouse_click = InputEvent()
+			mouse_click.type = InputEvent.MOUSE_BUTTON
+			mouse_click.pressed = true
+			mouse_click.pos = virtual_mouse_pos
+			mouse_click.button_index = 4
+			get_tree().input_event(mouse_click)
+			mouse_click.pressed = false
+			get_tree().input_event(mouse_click)
+		elif !semaphore.has("mousewheel") and (get_digital("dpad_down") or get_digital("rightstick_down")):
+			semaphore["mousewheel"] = true
+			var mouse_click = InputEvent()
+			mouse_click.type = InputEvent.MOUSE_BUTTON
+			mouse_click.pressed = true
+			mouse_click.pos = virtual_mouse_pos
+			mouse_click.button_index = 5
+			get_tree().input_event(mouse_click)
+			mouse_click.pressed = false
+			get_tree().input_event(mouse_click)
+		elif semaphore.has("mousewheel") and !get_digital("dpad_up") and !get_digital("rightstick_up"):
+			semaphore.erase("mousewheel")
 
 
 func update_js_map(player):
