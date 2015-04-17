@@ -15,6 +15,7 @@ var pack_folders = [] # the folders of the packs
 var viewport # The viewport
 var my_pos = Vector2(0,0) # The current position of the start screen
 var current_target = "start" # The screen we are currently on
+var JS # SUTjoystick module
 
 func snake_case_to_Name(var string):
 	var split = string.split("_")
@@ -26,6 +27,7 @@ func snake_case_to_Name(var string):
 func _ready():
 	# Finding nodes
 	global = get_node("/root/global")
+	JS = get_node("/root/SUTjoystick")
 	select_pack = get_node("level_selection/opt_pack")
 	level_list = get_node("level_selection/level_list")
 	options = get_node("options")
@@ -81,6 +83,7 @@ func _ready():
 	var fullscreen_opt = options.get_node("fullscreen/opt")
 	fullscreen_opt.add_item("Off")
 	fullscreen_opt.add_item("On")
+	JS.emulate_mouse(true) # enable gamepad mouse emulation for menus
 	if(current_options.has("fullscreen")):
 		fullscreen_opt.select(current_options["fullscreen"])
 	#prepare to move thing when the aspect ratio changes
