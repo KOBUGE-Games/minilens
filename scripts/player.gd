@@ -92,10 +92,6 @@ func check_orientation():# Check if the current orientation matches the movement
 		get_node("SpriteGroup").set_scale(get_node("SpriteGroup").get_scale() * Vector2(-1,1))
 
 func logic():
-	# allow gamepad back button to restart level
-	if JS.get_digital("back"):
-		get_node("../../level_holder").retry_level()
-	
 	# Get the current position in the tilemap, and round it
 	current_position = (get_pos())/64
 	current_position = Vector2(round(current_position.x), floor(current_position.y))
