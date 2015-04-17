@@ -70,9 +70,14 @@ func _ready():
 		diraccess.list_dir_end()
 	_on_opt_pack_item_selected(0)#Update level list
 	#populating options
+	var current_options = global.read_options()
+	for i in current_options:
+		set_option(i,current_options[i]) # remeber last values
 	var fullscreen_opt = options.get_node("fullscreen/opt")
-	fullscreen_opt.add_item("On")
 	fullscreen_opt.add_item("Off")
+	fullscreen_opt.add_item("On")
+	if(current_options.has("fullscreen")):
+		fullscreen_opt.select(current_options["fullscreen"])
 
 func _on_opt_pack_item_selected( ID ):
 	#remove old level selection buttons
@@ -153,3 +158,14 @@ func goto_credits():
 
 func quit():
 	get_tree().quit() # Exit the game
+
+func _on_options_change(var ID, var setting):
+	var current_options = global.read_options()
+	if(setting == "fullscreen"):
+		current_options["fullscreen"] = get_node("options/fullscreen/opt").get_selected()
+		set_option("fullscreen",current_options["fullscreen"])
+	global.save_options(current_options)
+
+func set_option(var setting, var value):
+	if(setting == "fullscreen"):
+		OS.set_window_fullscreen(bool(int(value)))
