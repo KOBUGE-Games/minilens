@@ -17,6 +17,15 @@ func _ready():
 
 func window_resize():
 	var window_size = OS.get_window_size()
+	var changed = false
+	if(window_size.x < 300):
+		window_size.x = 300
+		changed = true
+	if(window_size.y < 250):
+		window_size.y = 250
+		changed = true
+	if(changed):
+		OS.set_window_size(window_size)
 	var scale_factor = orig_size.y/window_size.y
 	var new_size = Vector2(window_size.x*scale_factor, orig_size.y)
 	viewport.set_size_override(true, new_size)
