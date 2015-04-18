@@ -7,6 +7,7 @@ var ray_check_bottom
 var ray_check_left
 var ray_overlap
 
+var sample_player # The node that plays samples
 
 var check_top = "" # Variables in which we store the colliders we find
 var check_right = ""
@@ -24,6 +25,7 @@ func _ready():
 	ray_check_bottom = get_node("ray_check_bottom")
 	ray_check_left = get_node("ray_check_left")
 	ray_overlap = get_node("ray_overlap")
+	sample_player = get_node("../../../sample")
 	ray_overlap.add_exception(self)
 	
 	set_fixed_process(true)
@@ -31,7 +33,7 @@ func _ready():
 func _fixed_process(delta):
 	seconds_left_to_explode = seconds_left_to_explode - delta # Decrease the timer
 	if seconds_left_to_explode <= 0 && dangerous: # EXPLODE!
-		get_node("explode").play()
+		sample_player.play("explode")
 		#check for objects left
 		if ray_check_left.is_colliding():
 			check_left = ray_check_left.get_collider()

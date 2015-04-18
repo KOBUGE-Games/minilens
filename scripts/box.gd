@@ -29,7 +29,7 @@ var can_move_in = 5 # We freese te box for the first few frames
 #some classes (e.g. other scripts)
 var box_class = get_script()
 var player_class = preload("res://scripts/player.gd")
-
+var sample_player # The node that plays samples
 var JS # joystick support module
 
 func _ready():
@@ -44,6 +44,7 @@ func _ready():
 	ray_check_left = get_node("ray_check_left")
 	ray_check_bottom.add_exception(self)
 	JS = get_node("/root/SUTjoystick")
+	sample_player = get_node("../../../sample")
 
 func destroy(var by): # Called whenever the box is destroyed
 	if(moveable && is_goal):
@@ -84,7 +85,7 @@ func _fixed_process(delta):
 		if(check_bottom == TILE_ACID):
 			if !sinking:
 				sinking = true
-				get_node("sink").play()
+				sample_player.play("sink", false)
 		
 		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID: # we are able to fall
 			move(Vector2(0,4))
@@ -131,7 +132,7 @@ func _fixed_process(delta):
 					if (Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right")) && collider_left.movement == 0:# the player doesn't move, and is pressing right, and doesn't fall
 						movement = 64 # Both we and the player move 64 px left
 						collider_left.movement = 64
-						get_node("hit").play()
+						sample_player.play("box_hit", false)
 			else:
 				collider_left = ""
 				
@@ -142,7 +143,7 @@ func _fixed_process(delta):
 					if (Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left")) && collider_right.movement == 0:# the player doesn't move, and is pressing left, and doesn't fall
 						movement = -64
 						collider_right.movement = -64
-						get_node("hit").play()
+						sample_player.play("box_hit", false)
 			else:
 				collider_right = ""
 				

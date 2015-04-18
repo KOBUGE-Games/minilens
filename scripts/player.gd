@@ -46,6 +46,7 @@ var bomb_counter # The node counting the bombs
 var box_class = preload("res://scripts/box.gd")
 
 var JS # the SUTjoystick module
+var sample_player # The node that plays samples
 
 func _ready():
 	# Find nodes
@@ -54,6 +55,7 @@ func _ready():
 	ray_check_bottom = get_node("ray_check_bottom")
 	ray_check_left = get_node("ray_check_left")
 	ray_overlap = get_node("ray_overlap")
+	sample_player = get_node("../../sample")
 	
 	ray_overlap.add_exception(self)
 	
@@ -136,11 +138,11 @@ func logic():
 	if ray_overlap.is_colliding() and ray_overlap.get_collider():
 		if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
 			ray_overlap.get_collider().destroy("player")
-			get_node("pickup").play()
+			sample_player.play("flower_pickup", false)
 		elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
 			ray_overlap.get_collider().queue_free()
 			bombs = bombs + 1
-			get_node("pickup").play()
+			sample_player.play("flower_pickup", false)
 			bomb_counter.get_node("Label").set_text(str(" x ", bombs))
 			bomb_counter.show()
 	

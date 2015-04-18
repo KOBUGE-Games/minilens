@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="4" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://scripts/box.gd" type="Script"></ext_resource>
-	<ext_resource path="res://audio/sink.ogg" type="AudioStream"></ext_resource>
 	<ext_resource path="res://gfx/boxCrate_double.png" type="Texture"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
@@ -11,7 +10,7 @@
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="63">
+			<string_array  len="55">
 				<string> "box" </string>
 				<string> "KinematicBody2D" </string>
 				<string> "_import_path" </string>
@@ -67,23 +66,15 @@
 				<string> "ray_check_right" </string>
 				<string> "ray_check_bottom" </string>
 				<string> "ray_check_left" </string>
-				<string> "sink" </string>
-				<string> "StreamPlayer" </string>
-				<string> "stream/stream" </string>
-				<string> "stream/play" </string>
-				<string> "stream/loop" </string>
-				<string> "stream/volume_db" </string>
-				<string> "stream/autoplay" </string>
-				<string> "stream/paused" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 12 </int>
+			<int> 11 </int>
 			<string> "variants" </string>
-			<array  len="28" shared="false">
+			<array  len="27" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -236,7 +227,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
 				<int> 2 </int>
 				<resource  resource_type="Texture" path="res://gfx/boxCrate_double.png">  </resource>
@@ -251,10 +242,9 @@
 				<vector2> 64, 0 </vector2>
 				<vector2> 0, 64 </vector2>
 				<vector2> -64, 0 </vector2>
-				<resource  resource_type="AudioStream" path="res://audio/sink.ogg">  </resource>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="424"> 				-1, -1, 1, 0, -1, 26, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 8, 26, 14, 27, 3, 0, 0, 0, 28, 28, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 29, 15, 30, 1, 31, 4, 32, 8, 33, 8, 34, 3, 35, 3, 36, 7, 37, 16, 38, 8, 39, 17, 0, 0, 0, 40, 40, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 41, 9, 42, 8, 0, 0, 0, 44, 43, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 18, 47, 3, 0, 0, 0, 44, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 19, 47, 3, 0, 0, 0, 44, 49, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 20, 47, 3, 0, 0, 0, 44, 50, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 21, 47, 3, 0, 0, 0, 44, 51, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 22, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0, 0, 0, 44, 52, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 24, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0, 0, 0, 44, 53, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 25, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0, 0, 0, 44, 54, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 26, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0, 0, 0, 56, 55, -1, 7, 2, 0, 57, 27, 58, 8, 59, 8, 60, 5, 61, 8, 62, 8, 0 </int_array>
+			<int_array  len="403"> 				-1, -1, 1, 0, -1, 26, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 8, 26, 14, 27, 3, 0, 0, 0, 28, 28, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 29, 15, 30, 1, 31, 4, 32, 8, 33, 8, 34, 3, 35, 3, 36, 7, 37, 16, 38, 8, 39, 17, 0, 0, 0, 40, 40, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 41, 9, 42, 8, 0, 0, 0, 44, 43, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 18, 47, 3, 0, 0, 0, 44, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 19, 47, 3, 0, 0, 0, 44, 49, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 20, 47, 3, 0, 0, 0, 44, 50, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 21, 47, 3, 0, 0, 0, 44, 51, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 22, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0, 0, 0, 44, 52, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 24, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0, 0, 0, 44, 53, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 25, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0, 0, 0, 44, 54, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 26, 8, 5, 9, 6, 10, 7, 11, 1, 45, 1, 46, 23, 47, 3, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>
