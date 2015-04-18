@@ -51,6 +51,7 @@ func load_level(var pack, var level): # Load level N from pack P
 	while(tilemap.get_cell(tile_map_acid_x_end, tile_map_acid_y) == 2 && tile_map_acid_x_end < 3000):
 		tile_map_acid_x_end += 1
 	window_resize()
+	get_node("../music").play()
 
 func window_resize():
 	var new_size = viewport.get_size_override()
