@@ -161,7 +161,7 @@ func logic():
 			move(Vector2(0,1))
 			if !sinking:
 				sinking = true
-				get_node("sink").play()
+				sample_player.play("sink", false)
 			if(check_bottom != TILE_ACID): # We passed through the acid
 				destroy("acid")
 			return
