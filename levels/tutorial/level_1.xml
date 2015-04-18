@@ -2,10 +2,10 @@
 <resource_file type="PackedScene" subresource_count="11" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
 	<ext_resource path="res://audio/music_1.ogg" type="AudioStream"></ext_resource>
+	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://gfx/theme.xml" type="Theme"></ext_resource>
 	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
 	<ext_resource path="res://scripts/tutorial_level.gd" type="Script"></ext_resource>
-	<ext_resource path="res://scenes/box.scn" type="PackedScene"></ext_resource>
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
