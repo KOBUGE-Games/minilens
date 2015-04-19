@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="TileSet" subresource_count="7" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/center.png" type="Texture"></ext_resource>
+<resource_file type="TileSet" subresource_count="8" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://gfx/mid.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/left.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/acid_anim.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/left.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/ladderMid.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/right.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/center.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/chest.png" type="Texture"></ext_resource>
 	<main_resource>
 		<string name="0/name"> "Grass" </string>
 		<resource name="0/texture" resource_type="Texture" path="res://gfx/mid.png">  </resource>
@@ -25,10 +26,10 @@
 		<resource name="1/navigation"></resource>		<vector2 name="1/shape_offset"> 0, 0 </vector2>
 		<array name="1/shapes" len="0" shared="false">
 		</array>
-		<string name="2/name"> "Sprite" </string>
+		<string name="2/name"> "Acid" </string>
 		<resource name="2/texture" resource_type="Texture" path="res://gfx/acid_anim.png">  </resource>
 		<vector2 name="2/tex_offset"> 0, 0 </vector2>
-		<resource name="2/material"></resource>		<rect2 name="2/region"> 0, 0, 64, 64 </rect2>
+		<resource name="2/material"></resource>		<rect2 name="2/region"> 59, 0, 64, 64 </rect2>
 		<vector2 name="2/occluder_offset"> 32, 32 </vector2>
 		<resource name="2/occluder"></resource>		<vector2 name="2/navigation_offset"> 32, 32 </vector2>
 		<resource name="2/navigation"></resource>		<vector2 name="2/shape_offset"> 0, 0 </vector2>
@@ -60,6 +61,15 @@
 		<resource name="5/occluder"></resource>		<vector2 name="5/navigation_offset"> 32, 32 </vector2>
 		<resource name="5/navigation"></resource>		<vector2 name="5/shape_offset"> 0, 0 </vector2>
 		<array name="5/shapes" len="0" shared="false">
+		</array>
+		<string name="6/name"> "Chest" </string>
+		<resource name="6/texture" resource_type="Texture" path="res://gfx/chest.png">  </resource>
+		<vector2 name="6/tex_offset"> 0, 0 </vector2>
+		<resource name="6/material"></resource>		<rect2 name="6/region"> 0, 0, 0, 0 </rect2>
+		<vector2 name="6/occluder_offset"> 32, 32 </vector2>
+		<resource name="6/occluder"></resource>		<vector2 name="6/navigation_offset"> 32, 32 </vector2>
+		<resource name="6/navigation"></resource>		<vector2 name="6/shape_offset"> 0, 0 </vector2>
+		<array name="6/shapes" len="0" shared="false">
 		</array>
 
 	</main_resource>

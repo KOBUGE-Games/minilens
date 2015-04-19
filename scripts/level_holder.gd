@@ -103,6 +103,10 @@ func prompt_retry_level(): # Called when the robot dies
 	btn2_action = 0
 	show_popup("You died","Your robot was destroyed!\n Do you want to try again?")
 
+func level_impossible(var wait = 0): # Called when the level is impossible
+	btn2_action = 0
+	time_until_popup = wait
+	show_popup("Impossible","It seems that it is impossible to pass that level!\n Do you want to try again?")
 func next_level(): # Go to the next level
 	load_level(current_pack, int(current_level) + 1)
 

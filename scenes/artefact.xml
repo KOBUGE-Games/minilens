@@ -1,41 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="9" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/mid.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/acid_anim.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/left.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/ladderMid.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/right.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/center.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/chest.png" type="Texture"></ext_resource>
-	<resource type="Animation" path="local://1">
-		<string name="resource/name"> "default" </string>
-		<real name="length"> 1.5 </real>
-		<bool name="loop"> True </bool>
-		<real name="step"> 0.1 </real>
-		<string name="tracks/0/type"> "value" </string>
-		<node_path name="tracks/0/path"> ".:region_rect" </node_path>
-		<int name="tracks/0/interp"> 1 </int>
-		<dictionary name="tracks/0/keys" shared="false">
-			<string> "cont" </string>
-			<bool> True </bool>
-			<string> "transitions" </string>
-			<real_array  len="2"> 				1, 1 </real_array>
-			<string> "values" </string>
-			<array  len="2" shared="false">
-				<rect2> 0, 0, 64, 64 </rect2>
-				<rect2> 64, 0, 64, 64 </rect2>
-			</array>
-			<string> "times" </string>
-			<real_array  len="2"> 				0, 1.5 </real_array>
-		</dictionary>
+<resource_file type="PackedScene" subresource_count="4" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+	<ext_resource path="res://scripts/box.gd" type="Script"></ext_resource>
+	<ext_resource path="res://gfx/artefact.png" type="Texture"></ext_resource>
+	<resource type="RectangleShape2D" path="local://1">
+		<real name="custom_solver_bias"> 0 </real>
+		<vector2 name="extents"> 32, 32 </vector2>
 
 	</resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="41">
-				<string> "Tileset" </string>
-				<string> "Node2D" </string>
+			<string_array  len="56">
+				<string> "box" </string>
+				<string> "KinematicBody2D" </string>
 				<string> "_import_path" </string>
 				<string> "visibility/visible" </string>
 				<string> "visibility/opacity" </string>
@@ -46,8 +23,23 @@
 				<string> "transform/scale" </string>
 				<string> "z/z" </string>
 				<string> "z/relative" </string>
+				<string> "input/pickable" </string>
+				<string> "shape_count" </string>
+				<string> "shapes/0/shape" </string>
+				<string> "shapes/0/transform" </string>
+				<string> "shapes/0/trigger" </string>
+				<string> "layers" </string>
+				<string> "collide_with/static" </string>
+				<string> "collide_with/kinematic" </string>
+				<string> "collide_with/rigid" </string>
+				<string> "collide_with/character" </string>
+				<string> "collision/margin" </string>
+				<string> "script/script" </string>
 				<string> "__meta__" </string>
-				<string> "Grass" </string>
+				<string> "moveable" </string>
+				<string> "TILE_COLLECT" </string>
+				<string> "TILE_SINK" </string>
+				<string> "TILE_LADDER" </string>
 				<string> "Sprite" </string>
 				<string> "texture" </string>
 				<string> "centered" </string>
@@ -60,30 +52,30 @@
 				<string> "modulate" </string>
 				<string> "region" </string>
 				<string> "region_rect" </string>
-				<string> "Ladder" </string>
-				<string> "Acid" </string>
-				<string> "AnimationPlayer" </string>
-				<string> "playback/process_mode" </string>
-				<string> "playback/default_blend_time" </string>
-				<string> "root/root" </string>
-				<string> "anims/default" </string>
-				<string> "playback/active" </string>
-				<string> "playback/speed" </string>
-				<string> "blend_times" </string>
-				<string> "autoplay" </string>
-				<string> "Right" </string>
-				<string> "Left" </string>
-				<string> "Center" </string>
-				<string> "Chest" </string>
+				<string> "CollisionShape2D" </string>
+				<string> "shape" </string>
+				<string> "trigger" </string>
+				<string> "ray_top" </string>
+				<string> "RayCast2D" </string>
+				<string> "enabled" </string>
+				<string> "cast_to" </string>
+				<string> "layer_mask" </string>
+				<string> "ray_right" </string>
+				<string> "ray_bottom" </string>
+				<string> "ray_left" </string>
+				<string> "ray_check_top" </string>
+				<string> "ray_check_right" </string>
+				<string> "ray_check_bottom" </string>
+				<string> "ray_check_left" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
 			<int> 0 </int>
 			<string> "node_count" </string>
-			<int> 9 </int>
+			<int> 11 </int>
 			<string> "variants" </string>
-			<array  len="31" shared="false">
+			<array  len="29" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -92,9 +84,25 @@
 				<real> 0 </real>
 				<vector2> 1, 1 </vector2>
 				<int> 0 </int>
+				<bool> False </bool>
+				<resource  resource_type="Shape2D" path="local://1">  </resource>
+				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<real> 0.08 </real>
+				<resource  resource_type="Script" path="res://scripts/box.gd">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
+						<string> "Script" </string>
+						<dictionary  shared="false">
+							<string> "current" </string>
+							<int> 0 </int>
+							<string> "sources" </string>
+							<array  len="3" shared="false">
+								<string> "res://scripts/box.gd" </string>
+								<string> "res://scripts/level_holder.gd" </string>
+								<string> "res://scripts/artefact.gd" </string>
+							</array>
+						</dictionary>
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "snap_pixel" </string>
@@ -102,7 +110,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 1.670183 </real>
+							<real> 4.65899 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -116,7 +124,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -227.032, -57.6175 </vector2>
+							<vector2> -189.502, -84.7721 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -221,34 +229,26 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
-				<vector2> 32, 32 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/mid.png">  </resource>
-				<bool> False </bool>
+				<int> 6 </int>
+				<int> 2 </int>
+				<vector2> 0.5, 0.5 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/artefact.png">  </resource>
 				<color> 1, 1, 1, 1 </color>
 				<rect2> 0, 0, 0, 0 </rect2>
-				<vector2> 160, 32 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/ladderMid.png">  </resource>
-				<vector2> 288, 32 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/acid_anim.png">  </resource>
-				<rect2> 59.29, 0, 64, 64 </rect2>
-				<node_path> ".." </node_path>
-				<resource  resource_type="Animation" path="local://1">  </resource>
-				<array  len="0" shared="false">
-				</array>
-				<string> "default" </string>
-				<vector2> 160, 160 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/right.png">  </resource>
-				<vector2> 32, 160 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/left.png">  </resource>
-				<vector2> 288, 160 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/center.png">  </resource>
-				<vector2> 32, 288 </vector2>
-				<resource  resource_type="Texture" path="res://gfx/chest.png">  </resource>
+				<vector2> 0, -32 </vector2>
+				<vector2> 32, 0 </vector2>
+				<vector2> 0, 32 </vector2>
+				<vector2> -32, 0 </vector2>
+				<vector2> 0, -64 </vector2>
+				<vector2> 0, 8 </vector2>
+				<vector2> 64, 0 </vector2>
+				<vector2> 0, 64 </vector2>
+				<vector2> -64, 0 </vector2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="397"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 14, 13, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 9, 8, 5, 9, 6, 10, 7, 11, 1, 15, 10, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 26, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 14, 8, 5, 9, 6, 10, 7, 11, 1, 15, 15, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 27, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 16, 8, 5, 9, 6, 10, 7, 11, 1, 15, 17, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 1, 25, 18, 0, 3, 0, 28, 28, -1, 9, 2, 0, 29, 3, 30, 5, 31, 19, 32, 20, 33, 1, 34, 2, 35, 21, 36, 22, 0, 0, 0, 14, 37, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 23, 8, 5, 9, 6, 10, 7, 11, 1, 15, 24, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 38, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 25, 8, 5, 9, 6, 10, 7, 11, 1, 15, 26, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 39, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 27, 8, 5, 9, 6, 10, 7, 11, 1, 15, 28, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0, 0, 0, 14, 40, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 29, 8, 5, 9, 6, 10, 7, 11, 1, 15, 30, 16, 1, 17, 4, 18, 11, 19, 11, 20, 3, 21, 3, 22, 7, 23, 12, 24, 11, 25, 13, 0 </int_array>
+			<int_array  len="405"> 				-1, -1, 1, 0, -1, 27, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 1, 26, 14, 27, 15, 28, 3, 0, 0, 0, 29, 29, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 16, 10, 7, 11, 1, 30, 17, 31, 1, 32, 4, 33, 8, 34, 8, 35, 3, 36, 3, 37, 7, 38, 18, 39, 8, 40, 19, 0, 0, 0, 41, 41, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 42, 9, 43, 8, 0, 0, 0, 45, 44, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 20, 48, 3, 0, 0, 0, 45, 49, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 21, 48, 3, 0, 0, 0, 45, 50, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 22, 48, 3, 0, 0, 0, 45, 51, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 23, 48, 3, 0, 0, 0, 45, 52, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 24, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0, 0, 0, 45, 53, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 26, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0, 0, 0, 45, 54, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 27, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0, 0, 0, 45, 55, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 28, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>

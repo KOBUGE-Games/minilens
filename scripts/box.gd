@@ -1,5 +1,5 @@
 extends KinematicBody2D
-#This script is used for movable and static boxes
+#This script is used for movable and static boxes/a
 var ray_check_top # rays to check for objects in each direction
 var ray_check_right
 var ray_check_bottom
@@ -22,7 +22,8 @@ var movement = 0 # How much do we have to move? (+ for right)
 var move_right = false # can we move left/right
 var move_left = false
 export var moveable = true # Can we move, or is this box a static one
-export var TILE_ACID = 2 
+export var TILE_COLLECT = 2 
+export var TILE_SINK = 2 
 export var TILE_LADDER = 1
 var is_goal = true # Do we have to remove the box from the list of goals?
 var can_move_in = 5 # We freese te box for the first few frames
@@ -50,7 +51,7 @@ func destroy(var by): # Called whenever the box is destroyed
 	if(moveable && is_goal):
 		if(by == "bomb"): # When we were demolished by a bomb
 			get_node("../../../level_holder").goal_take("box",1)
-		else:
+		elif(by == "collect"):
 			get_node("../../../level_holder").goal_take("box")
 		is_goal = 0
 	if(by != "acid"): # When we weren't coroding
@@ -81,28 +82,33 @@ func _fixed_process(delta):
 				move_down = false
 		else:
 			move_down = true
-		if(check_top == TILE_ACID):#When we have fallen through the acid
+		if(check_top == TILE_SINK):#When we have fallen through the acid
 			queue_free() # delete the box from the scene
+			if(is_goal): # No way to pass the level if we are still a goal..
+				get_node("../../../level_holder").level_impossible(0.1)
 		
 		#sinking
-		if(check_bottom == TILE_ACID):
+		if(check_bottom == TILE_SINK):
 			if !sinking:
 				sinking = true
 				sample_player.play("sink", false)
+		elif(check_bottom == TILE_COLLECT):
+			if !sinking:
+				sinking = true
 		
-		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_ACID: # we are able to fall
+		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_SINK && check_overlap != TILE_COLLECT: # we are able to fall
 			move(Vector2(0,4))
 		else:
 			#sink
-			if((check_overlap == TILE_ACID && move_down && (check_bottom == -1 || check_bottom == TILE_LADDER)) || check_bottom == TILE_ACID && move_down):# if we can sink
+			if(((check_overlap == TILE_SINK || check_overlap == TILE_COLLECT)&& move_down && (check_bottom == -1 || check_bottom == TILE_LADDER)) || check_bottom == TILE_SINK || check_bottom == TILE_COLLECT && move_down):# if we can sink
 				set_z(-1)
 				move(Vector2(0,1))
-			if(check_overlap == TILE_ACID):
-				destroy("acid")
+			if(check_overlap == TILE_COLLECT):
+				destroy("collect")
 			
 			#check if we can move left
 			var tm_left = tilemap.get_cell(current_position.x - 1, current_position.y)
-			if(tm_left != -1 && tm_left != TILE_LADDER && tm_left != TILE_ACID):
+			if(tm_left != -1 && tm_left != TILE_LADDER && tm_left != TILE_SINK):
 				move_left = false
 			elif ray_check_left.is_colliding() and ray_check_left.get_collider():
 				check_left = ray_check_left.get_collider()
@@ -116,7 +122,7 @@ func _fixed_process(delta):
 				
 			#check if we can move right
 			var tm_right = tilemap.get_cell(current_position.x + 1, current_position.y)
-			if(tm_right != -1 && tm_right != TILE_LADDER && tm_right != TILE_ACID):
+			if(tm_right != -1 && tm_right != TILE_LADDER && tm_right != TILE_SINK):
 				move_right = false
 			elif ray_check_right.is_colliding() and ray_check_right.get_collider():
 				check_right = ray_check_right.get_collider()
