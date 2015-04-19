@@ -103,7 +103,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -108.979, -58.117 </vector2>
+							<vector2> -122.08, -52.5636 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -208,7 +208,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<string> "../teleporter" </string>
 				<vector2> 0.432432, 0.432432 </vector2>

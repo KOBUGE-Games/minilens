@@ -5,10 +5,10 @@ var ray_overlap # the ray with which we are checking for overlap
 export var to_teleport_path = "../teleporter"
 var to
 var lock
-var locked = false
+var locked = true
 var was_locked = false
 export var locked_timeout = 1
-var lock_left = 0
+var lock_left = 0.1
 
 func _ready():
 	# Find nodes
