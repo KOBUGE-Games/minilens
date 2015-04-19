@@ -16,6 +16,10 @@ var viewport # The viewport
 var my_pos = Vector2(0,0) # The current position of the start screen
 var current_target = "start" # The screen we are currently on
 var JS # SUTjoystick module
+var locales = ["en_US", "bg_BG"] # The avaiable locales
+var locales_names = ["English", "БълБBulgarian"] # The names of the avaiable locales
+var lang_timeout = 1.0
+var language = "en_US"
 
 func snake_case_to_Name(var string):
 	var split = string.split("_")
@@ -83,9 +87,15 @@ func _ready():
 	var fullscreen_opt = options.get_node("fullscreen/opt")
 	fullscreen_opt.add_item("Off")
 	fullscreen_opt.add_item("On")
-	JS.emulate_mouse(true) # enable gamepad mouse emulation for menus
 	if(current_options.has("fullscreen")):
 		fullscreen_opt.select(current_options["fullscreen"])
+	var language_opt = options.get_node("language/opt")
+	for locale in locales_names:
+		language_opt.add_item(locale)
+	if(current_options.has("language")):
+		language_opt.select(locales.find(current_options["language"]))
+	JS.emulate_mouse(true) # enable gamepad mouse emulation for menus
+	global.first_load = false
 	#prepare to move thing when the aspect ratio changes
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
@@ -202,8 +212,30 @@ func _on_options_change(var ID, var setting):
 	if(setting == "fullscreen"):
 		current_options["fullscreen"] = get_node("options/fullscreen/opt").get_selected()
 		set_option("fullscreen",current_options["fullscreen"])
+	elif(setting == "language"):
+		var lang_id = get_node("options/language/opt").get_selected()
+		current_options["language"] = locales[lang_id]
+		set_option("language",current_options["language"])
 	global.save_options(current_options)
 
 func set_option(var setting, var value):
 	if(setting == "fullscreen"):
 		OS.set_window_fullscreen(bool(int(value)))
+	if(setting == "language"):
+		language = value
+		if(value != TranslationServer.get_locale()):
+			TranslationServer.set_locale( value )
+			if(global.first_load):
+				get_node("lang_timeout").start()
+			else:
+				get_node("options/language/Button").show()
+func reload_scene():
+	global.load_scene("res://scenes/main_menu.xml")
+
+func _on_lang_timeout():
+	if(language != TranslationServer.get_locale()):
+		TranslationServer.set_locale( language )
+	else:
+		global.first_load = false
+	get_node("lang_timeout").stop()
+	reload_scene()
