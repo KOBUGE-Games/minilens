@@ -18,6 +18,9 @@ Screenshot
 
 ![Screenshot](http://i.imgur.com/Nuu6g6j.png)
 
+Daily Builds
+----------
+https://dl.dropboxusercontent.com/u/82342922/minilens/minilens.html
 
 License
 -------
