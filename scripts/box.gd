@@ -56,6 +56,9 @@ func destroy(var by): # Called whenever the box is destroyed
 	if(by != "acid"): # When we weren't coroding
 		queue_free() # delete the box from the scene
 
+func stop_move():
+	movement = 0
+
 func _fixed_process(delta):
 	if(can_move_in > 0):
 		can_move_in = can_move_in - 1

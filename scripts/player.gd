@@ -93,6 +93,10 @@ func check_orientation():# Check if the current orientation matches the movement
 	if sign(movement) == sign(get_node("SpriteGroup").get_scale().x):
 		get_node("SpriteGroup").set_scale(get_node("SpriteGroup").get_scale() * Vector2(-1,1))
 
+func stop_move():
+	movement = 0
+	movement_up = 0
+
 func logic():
 	# Get the current position in the tilemap, and round it
 	current_position = (get_pos())/64
