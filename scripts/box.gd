@@ -3,6 +3,7 @@ extends KinematicBody2D
 var ray_check_top # rays to check for objects in each direction
 var ray_check_right
 var ray_check_bottom
+var ray_bottom
 var ray_check_left
 
 var collider_top = "" # Variables in which we store the colliders we find
@@ -41,9 +42,10 @@ func _ready():
 	tilemap = get_node("../tilemap")
 	ray_check_top = get_node("ray_check_top")
 	ray_check_right = get_node("ray_check_right")
-	ray_check_bottom = get_node("ray_bottom")
+	ray_bottom = get_node("ray_bottom")
+	ray_check_bottom = get_node("ray_check_bottom")
 	ray_check_left = get_node("ray_check_left")
-	ray_check_bottom.add_exception(self)
+	ray_bottom.add_exception(self)
 	JS = get_node("/root/SUTjoystick")
 	sample_player = get_node("../../../sample")
 
@@ -71,13 +73,19 @@ func _fixed_process(delta):
 		var check_overlap = tilemap.get_cell(current_position.x, current_position.y)
 		var check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
 		var move_down # can we move down
-		if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
-			var collider_name = ray_check_bottom.get_collider().get_name()
+		if ray_bottom.is_colliding() and ray_bottom.get_collider():
+			var collider_name = ray_bottom.get_collider().get_name()
 			if(collider_name.substr(0,6) == "flower"): # When we fall into a flower
 				move_down = true
-				ray_check_bottom.get_collider().destroy("box")
+				ray_bottom.get_collider().destroy("box")
 			elif collider_name.substr(0,11) == "bomb_pickup": # When we fall into a bomb
-				move_down = true
+				if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
+					if(ray_bottom.get_collider() extends box_class):
+						move_down = true
+					else:
+						move_down = false
+				else:
+					move_down = true
 			else:
 				move_down = false
 		else:
