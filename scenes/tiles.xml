@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="TileSet" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/chest.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/ladderMid.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/terrain.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/chest.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/acid_anim.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/ladder.png" type="Texture"></ext_resource>
 	<main_resource>
 		<string name="0/name"> "Grass" </string>
 		<resource name="0/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="0/tex_offset"> 0, 0 </vector2>
-		<resource name="0/material"></resource>		<rect2 name="0/region"> 192, 0, 64, 64 </rect2>
-		<vector2 name="0/occluder_offset"> 32, 32 </vector2>
-		<resource name="0/occluder"></resource>		<vector2 name="0/navigation_offset"> 32, 32 </vector2>
+		<vector2 name="0/tex_offset"> 0, -8 </vector2>
+		<resource name="0/material"></resource>		<rect2 name="0/region"> 176, 136, 64, 80 </rect2>
+		<vector2 name="0/occluder_offset"> -0, -0 </vector2>
+		<resource name="0/occluder"></resource>		<vector2 name="0/navigation_offset"> -0, -0 </vector2>
 		<resource name="0/navigation"></resource>		<vector2 name="0/shape_offset"> 0, 0 </vector2>
 		<array name="0/shapes" len="0" shared="false">
 		</array>
 		<string name="1/name"> "Ladder" </string>
-		<resource name="1/texture" resource_type="Texture" path="res://gfx/ladderMid.png">  </resource>
+		<resource name="1/texture" resource_type="Texture" path="res://gfx/ladder.png">  </resource>
 		<vector2 name="1/tex_offset"> 0, 0 </vector2>
 		<resource name="1/material"></resource>		<rect2 name="1/region"> 0, 0, 0, 0 </rect2>
-		<vector2 name="1/occluder_offset"> 32, 32 </vector2>
-		<resource name="1/occluder"></resource>		<vector2 name="1/navigation_offset"> 32, 32 </vector2>
+		<vector2 name="1/occluder_offset"> -0, -0 </vector2>
+		<resource name="1/occluder"></resource>		<vector2 name="1/navigation_offset"> -0, -0 </vector2>
 		<resource name="1/navigation"></resource>		<vector2 name="1/shape_offset"> 0, 0 </vector2>
 		<array name="1/shapes" len="0" shared="false">
 		</array>
@@ -34,26 +34,26 @@
 		</array>
 		<string name="3/name"> "Right" </string>
 		<resource name="3/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="3/tex_offset"> 0, 0 </vector2>
-		<resource name="3/material"></resource>		<rect2 name="3/region"> 256, 0, 64, 64 </rect2>
-		<vector2 name="3/occluder_offset"> 32, 32 </vector2>
-		<resource name="3/occluder"></resource>		<vector2 name="3/navigation_offset"> 32, 32 </vector2>
+		<vector2 name="3/tex_offset"> 0, -8 </vector2>
+		<resource name="3/material"></resource>		<rect2 name="3/region"> 240, 136, 64, 80 </rect2>
+		<vector2 name="3/occluder_offset"> -0, -0 </vector2>
+		<resource name="3/occluder"></resource>		<vector2 name="3/navigation_offset"> -0, -0 </vector2>
 		<resource name="3/navigation"></resource>		<vector2 name="3/shape_offset"> 0, 0 </vector2>
 		<array name="3/shapes" len="0" shared="false">
 		</array>
 		<string name="4/name"> "Left" </string>
 		<resource name="4/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="4/tex_offset"> 0, 0 </vector2>
-		<resource name="4/material"></resource>		<rect2 name="4/region"> 128, 0, 64, 64 </rect2>
-		<vector2 name="4/occluder_offset"> 32, 32 </vector2>
-		<resource name="4/occluder"></resource>		<vector2 name="4/navigation_offset"> 32, 32 </vector2>
+		<vector2 name="4/tex_offset"> 0, -8 </vector2>
+		<resource name="4/material"></resource>		<rect2 name="4/region"> 112, 136, 64, 80 </rect2>
+		<vector2 name="4/occluder_offset"> -0, -0 </vector2>
+		<resource name="4/occluder"></resource>		<vector2 name="4/navigation_offset"> -0, -0 </vector2>
 		<resource name="4/navigation"></resource>		<vector2 name="4/shape_offset"> 0, 0 </vector2>
 		<array name="4/shapes" len="0" shared="false">
 		</array>
 		<string name="5/name"> "Center" </string>
 		<resource name="5/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
 		<vector2 name="5/tex_offset"> 0, -64 </vector2>
-		<resource name="5/material"></resource>		<rect2 name="5/region"> 192, 64, 64, 128 </rect2>
+		<resource name="5/material"></resource>		<rect2 name="5/region"> 176, 0, 64, 136 </rect2>
 		<vector2 name="5/occluder_offset"> -0, -0 </vector2>
 		<resource name="5/occluder"></resource>		<vector2 name="5/navigation_offset"> -0, -0 </vector2>
 		<resource name="5/navigation"></resource>		<vector2 name="5/shape_offset"> 0, 0 </vector2>
@@ -70,17 +70,17 @@
 		</array>
 		<string name="7/name"> "Single" </string>
 		<resource name="7/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="7/tex_offset"> 0, 0 </vector2>
-		<resource name="7/material"></resource>		<rect2 name="7/region"> 0, 0, 64, 64 </rect2>
-		<vector2 name="7/occluder_offset"> 32, 32 </vector2>
-		<resource name="7/occluder"></resource>		<vector2 name="7/navigation_offset"> 32, 32 </vector2>
+		<vector2 name="7/tex_offset"> 0, -8 </vector2>
+		<resource name="7/material"></resource>		<rect2 name="7/region"> 16, 136, 64, 90 </rect2>
+		<vector2 name="7/occluder_offset"> -0, -0 </vector2>
+		<resource name="7/occluder"></resource>		<vector2 name="7/navigation_offset"> -0, -0 </vector2>
 		<resource name="7/navigation"></resource>		<vector2 name="7/shape_offset"> 0, 0 </vector2>
 		<array name="7/shapes" len="0" shared="false">
 		</array>
 		<string name="8/name"> "CenterRight" </string>
 		<resource name="8/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
 		<vector2 name="8/tex_offset"> 0, -64 </vector2>
-		<resource name="8/material"></resource>		<rect2 name="8/region"> 256, 64, 64, 128 </rect2>
+		<resource name="8/material"></resource>		<rect2 name="8/region"> 240, 0, 64, 136 </rect2>
 		<vector2 name="8/occluder_offset"> -0, -0 </vector2>
 		<resource name="8/occluder"></resource>		<vector2 name="8/navigation_offset"> -0, -0 </vector2>
 		<resource name="8/navigation"></resource>		<vector2 name="8/shape_offset"> 0, 0 </vector2>
@@ -89,7 +89,7 @@
 		<string name="9/name"> "CenterLeft" </string>
 		<resource name="9/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
 		<vector2 name="9/tex_offset"> 0, -64 </vector2>
-		<resource name="9/material"></resource>		<rect2 name="9/region"> 128, 64, 64, 128 </rect2>
+		<resource name="9/material"></resource>		<rect2 name="9/region"> 112, 0, 64, 136 </rect2>
 		<vector2 name="9/occluder_offset"> -0, -0 </vector2>
 		<resource name="9/occluder"></resource>		<vector2 name="9/navigation_offset"> -0, -0 </vector2>
 		<resource name="9/navigation"></resource>		<vector2 name="9/shape_offset"> 0, 0 </vector2>
@@ -98,7 +98,7 @@
 		<string name="10/name"> "CenterSingle" </string>
 		<resource name="10/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
 		<vector2 name="10/tex_offset"> 0, -64 </vector2>
-		<resource name="10/material"></resource>		<rect2 name="10/region"> 0, 64, 64, 128 </rect2>
+		<resource name="10/material"></resource>		<rect2 name="10/region"> 16, 0, 64, 136 </rect2>
 		<vector2 name="10/occluder_offset"> -0, -0 </vector2>
 		<resource name="10/occluder"></resource>		<vector2 name="10/navigation_offset"> -0, -0 </vector2>
 		<resource name="10/navigation"></resource>		<vector2 name="10/shape_offset"> 0, 0 </vector2>
@@ -106,8 +106,8 @@
 		</array>
 		<string name="11/name"> "ConcaveRightEnd" </string>
 		<resource name="11/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="11/tex_offset"> 0, -64 </vector2>
-		<resource name="11/material"></resource>		<rect2 name="11/region"> 192, 192, 64, 128 </rect2>
+		<vector2 name="11/tex_offset"> 0, -24 </vector2>
+		<resource name="11/material"></resource>		<rect2 name="11/region"> 192, 216, 64, 96 </rect2>
 		<vector2 name="11/occluder_offset"> -0, -0 </vector2>
 		<resource name="11/occluder"></resource>		<vector2 name="11/navigation_offset"> -0, -0 </vector2>
 		<resource name="11/navigation"></resource>		<vector2 name="11/shape_offset"> 0, 0 </vector2>
@@ -115,8 +115,8 @@
 		</array>
 		<string name="12/name"> "ConcaveLeftEnd" </string>
 		<resource name="12/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="12/tex_offset"> 0, -64 </vector2>
-		<resource name="12/material"></resource>		<rect2 name="12/region"> 64, 192, 64, 128 </rect2>
+		<vector2 name="12/tex_offset"> 0, -24 </vector2>
+		<resource name="12/material"></resource>		<rect2 name="12/region"> 64, 216, 64, 96 </rect2>
 		<vector2 name="12/occluder_offset"> -0, -0 </vector2>
 		<resource name="12/occluder"></resource>		<vector2 name="12/navigation_offset"> -0, -0 </vector2>
 		<resource name="12/navigation"></resource>		<vector2 name="12/shape_offset"> 0, 0 </vector2>
@@ -124,8 +124,8 @@
 		</array>
 		<string name="13/name"> "ConcaveRight" </string>
 		<resource name="13/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="13/tex_offset"> 0, -64 </vector2>
-		<resource name="13/material"></resource>		<rect2 name="13/region"> 192, 320, 64, 128 </rect2>
+		<vector2 name="13/tex_offset"> 0, -24 </vector2>
+		<resource name="13/material"></resource>		<rect2 name="13/region"> 192, 312, 64, 96 </rect2>
 		<vector2 name="13/occluder_offset"> -0, -0 </vector2>
 		<resource name="13/occluder"></resource>		<vector2 name="13/navigation_offset"> -0, -0 </vector2>
 		<resource name="13/navigation"></resource>		<vector2 name="13/shape_offset"> 0, 0 </vector2>
@@ -133,8 +133,8 @@
 		</array>
 		<string name="14/name"> "ConcaveLeft" </string>
 		<resource name="14/texture" resource_type="Texture" path="res://gfx/terrain.png">  </resource>
-		<vector2 name="14/tex_offset"> 0, -64 </vector2>
-		<resource name="14/material"></resource>		<rect2 name="14/region"> 64, 320, 64, 128 </rect2>
+		<vector2 name="14/tex_offset"> 0, -24 </vector2>
+		<resource name="14/material"></resource>		<rect2 name="14/region"> 64, 312, 64, 96 </rect2>
 		<vector2 name="14/occluder_offset"> -0, -0 </vector2>
 		<resource name="14/occluder"></resource>		<vector2 name="14/navigation_offset"> -0, -0 </vector2>
 		<resource name="14/navigation"></resource>		<vector2 name="14/shape_offset"> 0, 0 </vector2>
