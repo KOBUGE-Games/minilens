@@ -33,10 +33,10 @@ var box_class = get_script()
 var player_class = preload("res://scripts/player.gd")
 var sample_player # The node that plays samples
 var JS # joystick support module
+var goal_type = "box" # The type of the goal
 
 func _ready():
 	if(moveable):
-		get_node("../../../level_holder").goal_add("box") # When we can move, we add a goal to the level
 		set_fixed_process(true)
 	# Getting nodes
 	tilemap = get_node("../tilemap")
@@ -52,9 +52,9 @@ func _ready():
 func destroy(var by): # Called whenever the box is destroyed
 	if(moveable && is_goal):
 		if(by == "bomb"): # When we were demolished by a bomb
-			get_node("../../../level_holder").goal_take("box",1)
+			get_node("../../../level_holder").goal_take(goal_type,1)
 		elif(by == "collect"):
-			get_node("../../../level_holder").goal_take("box")
+			get_node("../../../level_holder").goal_take(goal_type)
 		is_goal = 0
 	if(by != "acid"): # When we weren't coroding
 		queue_free() # delete the box from the scene
@@ -65,6 +65,8 @@ func stop_move():
 func _fixed_process(delta):
 	if(can_move_in > 0):
 		can_move_in = can_move_in - 1
+		if(can_move_in <= 0 && moveable):
+			get_node("../../../level_holder").goal_add(goal_type) # When we can move, we add a goal to the level
 		return
 	if movement == 0: # We aren't moveing right now
 		var current_position = get_pos()/64
@@ -77,7 +79,7 @@ func _fixed_process(delta):
 			var collider_name = ray_bottom.get_collider().get_name()
 			if(collider_name.substr(0,6) == "flower"): # When we fall into a flower
 				move_down = true
-				ray_bottom.get_collider().destroy("box")
+				ray_bottom.get_collider().destroy(goal_type)
 			elif collider_name.substr(0,11) == "bomb_pickup": # When we fall into a bomb
 				if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
 					if(ray_bottom.get_collider() extends box_class):

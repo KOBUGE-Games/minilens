@@ -98,6 +98,14 @@ func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 			btn2_action = 1 # Can click "Next Level"
 			show_popup("Good job!","Level passed")
 		f.close()
+		
+func goal_return(var type = "",var wait = 0): # Called when a goal is returned (e.g. when you push a artefact out of a force)
+	if(goals_amount_by_type.has(type)):
+		goals_taken_by_type[type] -= 1
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# Get node like ../gui/CanvasLayer/<type>
+		if(goals_node):
+			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
+	goals_left = goals_left + 1
 
 func prompt_retry_level(): # Called when the robot dies
 	btn2_action = 0
