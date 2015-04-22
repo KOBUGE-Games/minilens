@@ -56,7 +56,7 @@ func destroy(var by): # Called whenever the box is destroyed
 		elif(by == "collect"):
 			get_node("../../../level_holder").goal_take(goal_type)
 		is_goal = 0
-	if(by != "acid"): # When we weren't coroding
+	if(by != "acid" && by != "collect"): # When we weren't coroding
 		queue_free() # delete the box from the scene
 
 func stop_move():
@@ -110,7 +110,7 @@ func _fixed_process(delta):
 			move(Vector2(0,4))
 		else:
 			#sink
-			if(((check_overlap == TILE_SINK || check_overlap == TILE_COLLECT)&& move_down && (check_bottom == -1 || check_bottom == TILE_LADDER)) || check_bottom == TILE_SINK || check_bottom == TILE_COLLECT && move_down):# if we can sink
+			if(((check_overlap == TILE_SINK || check_overlap == TILE_COLLECT) && move_down && (check_bottom == -1 || check_bottom == TILE_LADDER)) || (check_bottom == TILE_SINK || check_bottom == TILE_COLLECT) && move_down):# if we can sink
 				set_z(-1)
 				move(Vector2(0,1))
 			if(check_overlap == TILE_COLLECT):
