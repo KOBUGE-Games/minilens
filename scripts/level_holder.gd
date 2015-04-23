@@ -62,8 +62,7 @@ func window_resize():
 	var new_size = viewport.get_size_override()
 	var new_pos = Vector2((new_size.x-1024)/2,0)
 	get_node("../gui/CanvasLayer/popup").set_pos(Vector2(new_size.x/2-252,210))
-	get_node("../gui/CanvasLayer/retry").set_pos(Vector2(new_size.x-128,0))
-	get_node("../gui/CanvasLayer/menu").set_pos(Vector2(new_size.x-64,0))
+	get_node("../gui/CanvasLayer/touch_buttons").set_pos(Vector2(new_size.x-200,568))
 	var tilemap = level_node.get_node("tilemap")
 	for i in range(ceil(new_size.x/2/64)):
 		tilemap.set_cell(tile_map_acid_x_start - i, tile_map_acid_y, 2)

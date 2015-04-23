@@ -12,18 +12,18 @@ func _ready():
 	root = get_tree().get_root()
 	viewport = get_viewport()
 	current_scene = root.get_child(root.get_child_count()-1)
-	orig_size = OS.get_window_size()
+	orig_size = Vector2(1024,768)
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
 
 func window_resize():
 	var window_size = OS.get_window_size()
 	var changed = false
-	if(window_size.x < 300):
-		window_size.x = 300
+	if(window_size.x < 100):
+		window_size.x = 100
 		changed = true
-	if(window_size.y < 250):
-		window_size.y = 250
+	if(window_size.y < 100):
+		window_size.y = 100
 		changed = true
 	if(changed):
 		OS.set_window_size(window_size)
