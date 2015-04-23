@@ -50,7 +50,7 @@
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="53">
+			<string_array  len="55">
 				<string> "breakable_ground" </string>
 				<string> "StaticBody2D" </string>
 				<string> "_import_path" </string>
@@ -104,11 +104,13 @@
 				<string> "enabled" </string>
 				<string> "cast_to" </string>
 				<string> "layer_mask" </string>
+				<string> "_on_AnimationPlayer_finished" </string>
+				<string> "finished" </string>
 			</string_array>
 			<string> "version" </string>
 			<int> 1 </int>
 			<string> "conn_count" </string>
-			<int> 0 </int>
+			<int> 1 </int>
 			<string> "node_count" </string>
 			<int> 5 </int>
 			<string> "variants" </string>
@@ -145,7 +147,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 2.050549 </real>
+							<real> 5.720026 </real>
 							<string> "snap_step" </string>
 							<vector2> 16, 16 </vector2>
 							<string> "snap_relative" </string>
@@ -159,7 +161,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -268.129, -184.659 </vector2>
+							<vector2> -135.317, -96.4315 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -280,7 +282,7 @@
 			<string> "nodes" </string>
 			<int_array  len="189"> 				-1, -1, 1, 0, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 4, 19, 5, 20, 2, 21, 5, 22, 11, 23, 12, 0, 0, 0, 24, 24, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 13, 8, 5, 9, 6, 10, 7, 11, 1, 25, 14, 26, 1, 27, 4, 28, 8, 29, 8, 30, 3, 31, 3, 32, 7, 33, 15, 34, 8, 35, 16, 0, 1, 0, 36, 36, -1, 9, 2, 0, 37, 3, 38, 5, 39, 17, 40, 18, 41, 1, 42, 2, 43, 19, 44, 20, 0, 0, 0, 45, 45, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 9, 47, 8, 0, 0, 0, 49, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 7, 11, 1, 50, 1, 51, 21, 52, 3, 0 </int_array>
 			<string> "conns" </string>
-			<int_array  len="0"> 				 </int_array>
+			<int_array  len="6"> 				2, 0, 54, 53, 2, 0 </int_array>
 		</dictionary>
 
 	</main_resource>
