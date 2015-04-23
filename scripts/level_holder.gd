@@ -20,6 +20,7 @@ var tile_map_acid_y # When we extend the tilemap, we need to know on which Y we 
 var tile_map_acid_x_start # When we extend the tilemap, we need to know on which Y we should place the acid
 var tile_map_acid_x_end # When we extend the tilemap, we need to know on which Y we should place the acid
 var musics = ["music_1.ogg","music_2.ogg"] # The possible background music files
+var turns = 0 # How many turns passed from the start
 
 func load_level(var pack, var level): # Load level N from pack P
 	current_level = level
@@ -39,6 +40,8 @@ func load_level(var pack, var level): # Load level N from pack P
 	add_child(level_node) # Add that node to the scene
 	player.set_pos(level_node.get_node("start").get_pos()) # Teleport the player to his new location
 	player.set_z(0)
+	turns = -1 # reset the number of turns
+	turn() # This will increase the number of turns by one, so will still have 0 turns...
 	player.level_load(level_node) # Have the player prepare to play..
 	tileset = level_node.get_node("tilemap").get_tileset()
 	var tilemap = level_node.get_node("tilemap")
@@ -74,6 +77,10 @@ func window_resize():
 		level_node.get_node("CanvasLayer").set_offset(Vector2(32,32-(scale - 1)*768/2))
 	player.get_node("Camera2D").force_update_scroll()
 
+func turn():
+	turns += 1
+	get_node("../gui/CanvasLayer/turns/Label").set_text(str(turns))
+
 func retry_level(): # Retry the current level
 	load_level(current_pack, current_level)
 
@@ -92,10 +99,10 @@ func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 		var err = f.open(str("res://levels/", current_pack, "/level_", int(current_level) + 1, ".xml"), f.READ)
 		if(err != 0):# If we are unable to open it, we show that no more levels are left in this pack instead of crashing
 			btn2_action = 0 # Can't click "Next Level", because there is no level after that one
-			show_popup("Pack passed!","There are no more levels left in this pack. You can go to play some other pack, though.")
+			show_popup("Good job!",str("Level passed in ",turns," turns.\nThere are no more levels left in this pack. You can go to play some other pack, though."))
 		else:
 			btn2_action = 1 # Can click "Next Level"
-			show_popup("Good job!","Level passed")
+			show_popup("Good job!",str("Level passed in ",turns," turns."))
 		f.close()
 		
 func goal_return(var type = "",var wait = 0): # Called when a goal is returned (e.g. when you push a artefact out of a force)
