@@ -14,6 +14,7 @@ func _ready():
 	current_scene = root.get_child(root.get_child_count()-1)
 	orig_size = OS.get_window_size()
 	viewport.connect("size_changed",self,"window_resize")
+	window_resize()
 
 func window_resize():
 	var window_size = OS.get_window_size()
