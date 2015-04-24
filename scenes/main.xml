@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="13" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
+<resource_file type="PackedScene" subresource_count="19" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
 	<ext_resource path="res://scripts/level_holder.gd" type="Script"></ext_resource>
-	<ext_resource path="res://gfx/theme.xml" type="Theme"></ext_resource>
-	<ext_resource path="res://gfx/radioactive.png" type="Texture"></ext_resource>
-	<ext_resource path="res://audio/samples.xml" type="SampleLibrary"></ext_resource>
-	<ext_resource path="res://gfx/bomb.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/menuGrid.png" type="Texture"></ext_resource>
+	<ext_resource path="res://audio/samples.xml" type="SampleLibrary"></ext_resource>
 	<ext_resource path="res://audio/music_2.ogg" type="AudioStream"></ext_resource>
-	<ext_resource path="res://gfx/return.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/radioactive.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/btn_left.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/bomb.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme.xml" type="Theme"></ext_resource>
+	<ext_resource path="res://gfx/btn_down.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/flower.png" type="Texture"></ext_resource>
-	<ext_resource path="res://scenes/popup.xml" type="PackedScene"></ext_resource>
-	<ext_resource path="res://scenes/player.xml" type="PackedScene"></ext_resource>
+	<ext_resource path="res://gfx/btn_bomb.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/artefact.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scenes/popup.xml" type="PackedScene"></ext_resource>
+	<ext_resource path="res://gfx/btn_right.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/return.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/btn_up.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/turn_icon.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scenes/player.xml" type="PackedScene"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="112">
+			<string_array  len="127">
 				<string> "world" </string>
 				<string> "Node2D" </string>
 				<string> "_import_path" </string>
@@ -43,6 +49,8 @@
 				<string> "scale" </string>
 				<string> "retry" </string>
 				<string> "TextureButton" </string>
+				<string> "anchor/left" </string>
+				<string> "anchor/right" </string>
 				<string> "margin/left" </string>
 				<string> "margin/right" </string>
 				<string> "margin/bottom" </string>
@@ -99,8 +107,22 @@
 				<string> "box" </string>
 				<string> "flower" </string>
 				<string> "artefact" </string>
+				<string> "turns" </string>
 				<string> "popup" </string>
 				<string> "Control" </string>
+				<string> "touch_buttons" </string>
+				<string> "left" </string>
+				<string> "TouchScreenButton" </string>
+				<string> "normal" </string>
+				<string> "pressed" </string>
+				<string> "bitmask" </string>
+				<string> "passby_press" </string>
+				<string> "action" </string>
+				<string> "visibility_mode" </string>
+				<string> "down" </string>
+				<string> "up" </string>
+				<string> "right" </string>
+				<string> "bomb" </string>
 				<string> "music" </string>
 				<string> "StreamPlayer" </string>
 				<string> "stream/stream" </string>
@@ -126,7 +148,6 @@
 				<string> "default/reverb_send" </string>
 				<string> "default/chorus_send" </string>
 				<string> "retry_level" </string>
-				<string> "pressed" </string>
 				<string> "back_to_menu" </string>
 			</string_array>
 			<string> "version" </string>
@@ -134,9 +155,9 @@
 			<string> "conn_count" </string>
 			<int> 2 </int>
 			<string> "node_count" </string>
-			<int> 23 </int>
+			<int> 32 </int>
 			<string> "variants" </string>
-			<array  len="56" shared="false">
+			<array  len="74" shared="false">
 				<node_path> "" </node_path>
 				<bool> True </bool>
 				<real> 1 </real>
@@ -151,7 +172,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 7 </int>
+							<int> 0 </int>
 							<string> "sources" </string>
 							<array  len="8" shared="false">
 								<string> "res://scripts/level_holder.gd" </string>
@@ -171,13 +192,13 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 1.108032 </real>
+							<real> 5.162309 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
 							<string> "snap_grid" </string>
-							<bool> True </bool>
+							<bool> False </bool>
 							<string> "snap_rotation_offset" </string>
 							<real> 0 </real>
 							<string> "snap_show_grid" </string>
@@ -185,7 +206,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -307.321, -74.8674 </vector2>
+							<vector2> -94.7986, 5.63989 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -315,12 +336,12 @@
 							<bool> False </bool>
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
-							<string> "zoom" </string>
-							<real> 4.204739 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
+							<string> "zoom" </string>
+							<real> 4.204739 </real>
 							<string> "snap_rotation_offset" </string>
 							<real> 0 </real>
 							<string> "snap_grid" </string>
@@ -336,12 +357,10 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
-							<string> "deflight_rot_y" </string>
-							<real> 0.628319 </real>
-							<string> "zfar" </string>
-							<real> 500 </real>
 							<string> "fov" </string>
 							<real> 45 </real>
+							<string> "zfar" </string>
+							<real> 500 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -409,6 +428,8 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
+							<string> "deflight_rot_y" </string>
+							<real> 0.628319 </real>
 							<string> "default_light" </string>
 							<bool> True </bool>
 							<string> "viewport_mode" </string>
@@ -437,16 +458,14 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "Script" </string>
 				</dictionary>
-				<real> 896 </real>
-				<real> 960 </real>
-				<real> 64 </real>
+				<real> 200 </real>
+				<real> 100 </real>
 				<bool> False </bool>
 				<int> 2 </int>
 				<resource  resource_type="Texture" path="res://gfx/return.png">  </resource>
-				<resource name=""></resource>				<vector2> 0.64, 0.64 </vector2>
-				<color> 1, 1, 1, 1 </color>
-				<real> 1024 </real>
+				<resource name=""></resource>				<color> 1, 1, 1, 1 </color>
 				<resource  resource_type="Texture" path="res://gfx/menuGrid.png">  </resource>
+				<vector2> 32, 96 </vector2>
 				<dictionary  shared="false">
 					<string> "_editor_collapsed" </string>
 					<bool> True </bool>
@@ -478,8 +497,16 @@
 				<vector2> 0.75, 0.75 </vector2>
 				<resource  resource_type="Texture" path="res://gfx/flower.png">  </resource>
 				<vector2> 416, 32 </vector2>
+				<dictionary  shared="false">
+					<string> "_editor_collapsed" </string>
+					<bool> True </bool>
+				</dictionary>
 				<vector2> 0.25, 0.25 </vector2>
 				<resource  resource_type="Texture" path="res://gfx/artefact.png">  </resource>
+				<vector2> 0.15, 0.15 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/turn_icon.png">  </resource>
+				<real> 75 </real>
+				<string> "0" </string>
 				<resource  resource_type="PackedScene" path="res://scenes/popup.xml">  </resource>
 				<dictionary  shared="false">
 					<string> "_edit_lock_" </string>
@@ -492,12 +519,12 @@
 							<bool> False </bool>
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
-							<string> "snap_relative" </string>
-							<bool> False </bool>
 							<string> "zoom" </string>
 							<real> 2.050546 </real>
 							<string> "snap_step" </string>
 							<vector2> 10, 10 </vector2>
+							<string> "snap_relative" </string>
+							<bool> False </bool>
 							<string> "snap_rotation_offset" </string>
 							<real> 0 </real>
 							<string> "snap_grid" </string>
@@ -513,6 +540,12 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
+							<string> "deflight_rot_y" </string>
+							<real> 0.628319 </real>
+							<string> "zfar" </string>
+							<real> 500 </real>
+							<string> "fov" </string>
+							<real> 45 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -580,12 +613,6 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
-							<string> "zfar" </string>
-							<real> 500 </real>
-							<string> "deflight_rot_y" </string>
-							<real> 0.628319 </real>
-							<string> "fov" </string>
-							<real> 45 </real>
 							<string> "default_light" </string>
 							<bool> True </bool>
 							<string> "viewport_mode" </string>
@@ -614,6 +641,21 @@
 					<string> "__editor_plugin_screen__" </string>
 					<string> "2D" </string>
 				</dictionary>
+				<vector2> 824, 568 </vector2>
+				<vector2> -90, 0 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/btn_left.png">  </resource>
+				<string> "btn_left" </string>
+				<vector2> 0, 90 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/btn_down.png">  </resource>
+				<string> "btn_down" </string>
+				<vector2> 0, -90 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/btn_up.png">  </resource>
+				<string> "btn_up" </string>
+				<vector2> 90, 0 </vector2>
+				<resource  resource_type="Texture" path="res://gfx/btn_right.png">  </resource>
+				<string> "btn_right" </string>
+				<resource  resource_type="Texture" path="res://gfx/btn_bomb.png">  </resource>
+				<string> "place_bomb" </string>
 				<resource  resource_type="AudioStream" path="res://audio/music_2.ogg">  </resource>
 				<real> -10 </real>
 				<int> 10 </int>
@@ -621,9 +663,9 @@
 				<nil>  </nil>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="931"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 1, 13, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 14, 9, 15, 2, 0, 0, 0, 1, 16, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 10, 8, 5, 9, 6, 10, 7, 11, 1, 0, 2, 0, 18, 17, 11, 3, 2, 0, 7, 12, 12, 13, 0, 0, 0, 1, 19, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 0, 4, 0, 20, 20, -1, 5, 2, 0, 21, 7, 22, 4, 23, 5, 24, 6, 0, 5, 0, 26, 25, -1, 29, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 14, 28, 15, 29, 16, 30, 0, 31, 0, 32, 0, 33, 0, 34, 17, 35, 17, 36, 18, 37, 18, 38, 2, 39, 17, 40, 17, 41, 17, 42, 17, 43, 19, 44, 20, 45, 20, 46, 20, 47, 20, 48, 20, 49, 21, 50, 22, 0, 5, 0, 26, 51, -1, 29, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 15, 28, 23, 29, 16, 30, 0, 31, 0, 32, 0, 33, 0, 34, 17, 35, 1, 36, 18, 37, 18, 38, 2, 39, 17, 40, 17, 41, 17, 42, 17, 43, 24, 44, 20, 45, 20, 46, 20, 47, 20, 48, 20, 49, 21, 50, 22, 0, 5, 0, 1, 52, -1, 11, 2, 0, 3, 17, 4, 2, 5, 2, 6, 3, 7, 10, 8, 5, 9, 6, 10, 7, 11, 1, 12, 25, 0, 8, 0, 53, 53, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 26, 10, 7, 11, 1, 54, 27, 55, 1, 22, 4, 56, 17, 57, 17, 58, 3, 59, 3, 60, 7, 61, 22, 62, 17, 63, 28, 0, 8, 0, 64, 64, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 29, 65, 30, 28, 31, 29, 32, 30, 0, 31, 0, 32, 0, 33, 0, 34, 1, 35, 1, 36, 18, 38, 2, 66, 33, 67, 5, 68, 2, 69, 2, 70, 2, 71, 5, 72, 17, 73, 17, 74, 34, 75, 7, 76, 3, 77, 17, 78, 17, 79, 35, 0, 5, 0, 1, 80, -1, 11, 2, 0, 3, 17, 4, 2, 5, 2, 6, 3, 7, 36, 8, 5, 9, 6, 10, 7, 11, 1, 12, 37, 0, 11, 0, 53, 53, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 26, 10, 7, 11, 1, 54, 38, 55, 1, 22, 4, 56, 17, 57, 17, 58, 3, 59, 3, 60, 7, 61, 22, 62, 17, 63, 28, 0, 11, 0, 64, 64, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 39, 65, 30, 28, 40, 29, 32, 30, 0, 31, 0, 32, 0, 33, 0, 34, 1, 35, 1, 36, 18, 38, 2, 66, 33, 67, 5, 68, 2, 69, 2, 70, 2, 71, 5, 72, 17, 73, 17, 74, 41, 75, 7, 76, 3, 77, 17, 78, 17, 79, 35, 0, 5, 0, 1, 81, -1, 11, 2, 0, 3, 17, 4, 2, 5, 2, 6, 3, 7, 42, 8, 5, 9, 6, 10, 7, 11, 1, 12, 43, 0, 14, 0, 53, 53, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 44, 10, 7, 11, 1, 54, 45, 55, 1, 22, 4, 56, 17, 57, 17, 58, 3, 59, 3, 60, 7, 61, 22, 62, 17, 63, 28, 0, 14, 0, 64, 64, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 39, 65, 30, 28, 40, 29, 32, 30, 0, 31, 0, 32, 0, 33, 0, 34, 1, 35, 1, 36, 18, 38, 2, 66, 33, 67, 5, 68, 2, 69, 2, 70, 2, 71, 5, 72, 17, 73, 17, 74, 34, 75, 7, 76, 3, 77, 17, 78, 17, 79, 35, 0, 5, 0, 1, 82, -1, 10, 2, 0, 3, 17, 4, 2, 5, 2, 6, 3, 7, 46, 8, 5, 9, 6, 10, 7, 11, 1, 0, 17, 0, 53, 53, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 47, 10, 7, 11, 1, 54, 48, 55, 1, 22, 4, 56, 17, 57, 17, 58, 3, 59, 3, 60, 7, 61, 22, 62, 17, 63, 28, 0, 17, 0, 64, 64, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 39, 65, 30, 28, 40, 29, 32, 30, 0, 31, 0, 32, 0, 33, 0, 34, 1, 35, 1, 36, 18, 38, 2, 66, 33, 67, 5, 68, 2, 69, 2, 70, 2, 71, 5, 72, 17, 73, 17, 74, 34, 75, 7, 76, 3, 77, 17, 78, 17, 79, 35, 0, 5, 0, 84, 83, 49, 3, 2, 0, 3, 17, 12, 50, 0, 0, 0, 86, 85, -1, 7, 2, 0, 87, 51, 88, 1, 89, 1, 90, 52, 91, 1, 92, 17, 0, 0, 0, 94, 93, -1, 15, 2, 0, 95, 53, 96, 54, 97, 5, 98, 2, 99, 5, 100, 5, 101, 5, 102, 55, 103, 55, 104, 55, 105, 55, 106, 18, 107, 5, 108, 5, 0 </int_array>
+			<int_array  len="1306"> 				-1, -1, 1, 0, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 0, 0, 0, 1, 13, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 14, 9, 15, 2, 0, 0, 0, 1, 16, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 10, 8, 5, 9, 6, 10, 7, 11, 1, 0, 2, 0, 18, 17, 11, 3, 2, 0, 7, 12, 12, 13, 0, 0, 0, 1, 19, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 0, 4, 0, 20, 20, -1, 5, 2, 0, 21, 7, 22, 4, 23, 5, 24, 6, 0, 5, 0, 26, 25, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 3, 28, 3, 29, 14, 30, 15, 31, 15, 32, 0, 33, 0, 34, 0, 35, 0, 36, 16, 37, 16, 38, 17, 39, 17, 40, 2, 41, 16, 42, 16, 43, 16, 44, 16, 45, 18, 46, 19, 47, 19, 48, 19, 49, 19, 50, 19, 51, 6, 52, 20, 0, 5, 0, 26, 53, -1, 30, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 27, 3, 28, 3, 29, 15, 31, 15, 32, 0, 33, 0, 34, 0, 35, 0, 36, 16, 37, 1, 38, 17, 39, 17, 40, 2, 41, 16, 42, 16, 43, 16, 44, 16, 45, 21, 46, 19, 47, 19, 48, 19, 49, 19, 50, 19, 51, 6, 52, 20, 0, 5, 0, 1, 54, -1, 11, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 22, 8, 5, 9, 6, 10, 7, 11, 1, 12, 23, 0, 8, 0, 55, 55, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 24, 10, 7, 11, 1, 56, 25, 57, 1, 22, 4, 58, 16, 59, 16, 60, 3, 61, 3, 62, 7, 63, 20, 64, 16, 65, 26, 0, 8, 0, 66, 66, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 29, 27, 67, 28, 30, 29, 31, 30, 32, 0, 33, 0, 34, 0, 35, 0, 36, 1, 37, 1, 38, 17, 40, 2, 68, 31, 69, 5, 70, 2, 71, 2, 72, 2, 73, 5, 74, 16, 75, 16, 76, 32, 77, 7, 78, 3, 79, 16, 80, 16, 81, 33, 0, 5, 0, 1, 82, -1, 11, 2, 0, 3, 16, 4, 2, 5, 2, 6, 3, 7, 34, 8, 5, 9, 6, 10, 7, 11, 1, 12, 35, 0, 11, 0, 55, 55, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 24, 10, 7, 11, 1, 56, 36, 57, 1, 22, 4, 58, 16, 59, 16, 60, 3, 61, 3, 62, 7, 63, 20, 64, 16, 65, 26, 0, 11, 0, 66, 66, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 29, 37, 67, 28, 30, 38, 31, 30, 32, 0, 33, 0, 34, 0, 35, 0, 36, 1, 37, 1, 38, 17, 40, 2, 68, 31, 69, 5, 70, 2, 71, 2, 72, 2, 73, 5, 74, 16, 75, 16, 76, 39, 77, 7, 78, 3, 79, 16, 80, 16, 81, 33, 0, 5, 0, 1, 83, -1, 11, 2, 0, 3, 16, 4, 2, 5, 2, 6, 3, 7, 40, 8, 5, 9, 6, 10, 7, 11, 1, 12, 41, 0, 14, 0, 55, 55, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 42, 10, 7, 11, 1, 56, 43, 57, 1, 22, 4, 58, 16, 59, 16, 60, 3, 61, 3, 62, 7, 63, 20, 64, 16, 65, 26, 0, 14, 0, 66, 66, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 29, 37, 67, 28, 30, 38, 31, 30, 32, 0, 33, 0, 34, 0, 35, 0, 36, 1, 37, 1, 38, 17, 40, 2, 68, 31, 69, 5, 70, 2, 71, 2, 72, 2, 73, 5, 74, 16, 75, 16, 76, 32, 77, 7, 78, 3, 79, 16, 80, 16, 81, 33, 0, 5, 0, 1, 84, -1, 11, 2, 0, 3, 16, 4, 2, 5, 2, 6, 3, 7, 44, 8, 5, 9, 6, 10, 7, 11, 1, 12, 45, 0, 17, 0, 55, 55, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 46, 10, 7, 11, 1, 56, 47, 57, 1, 22, 4, 58, 16, 59, 16, 60, 3, 61, 3, 62, 7, 63, 20, 64, 16, 65, 26, 0, 17, 0, 66, 66, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 29, 37, 67, 28, 30, 38, 31, 30, 32, 0, 33, 0, 34, 0, 35, 0, 36, 1, 37, 1, 38, 17, 40, 2, 68, 31, 69, 5, 70, 2, 71, 2, 72, 2, 73, 5, 74, 16, 75, 16, 76, 32, 77, 7, 78, 3, 79, 16, 80, 16, 81, 33, 0, 5, 0, 1, 85, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 10, 8, 5, 9, 6, 10, 7, 11, 1, 0, 20, 0, 55, 55, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 48, 10, 7, 11, 1, 56, 49, 57, 1, 22, 4, 58, 16, 59, 16, 60, 3, 61, 3, 62, 7, 63, 20, 64, 16, 65, 26, 0, 20, 0, 66, 66, -1, 31, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 29, 27, 67, 28, 30, 50, 31, 30, 32, 0, 33, 0, 34, 0, 35, 0, 36, 1, 37, 1, 38, 17, 40, 2, 68, 31, 69, 5, 70, 2, 71, 2, 72, 2, 73, 5, 74, 16, 75, 16, 76, 51, 77, 3, 78, 3, 79, 16, 80, 16, 81, 33, 0, 5, 0, 87, 86, 52, 3, 2, 0, 3, 16, 12, 53, 0, 5, 0, 1, 88, -1, 10, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 54, 8, 5, 9, 6, 10, 7, 11, 1, 0, 24, 0, 90, 89, -1, 16, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 55, 8, 5, 9, 6, 10, 7, 11, 1, 91, 56, 92, 19, 93, 19, 94, 16, 95, 57, 96, 3, 0, 24, 0, 90, 97, -1, 16, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 58, 8, 5, 9, 6, 10, 7, 11, 1, 91, 59, 92, 19, 93, 19, 94, 16, 95, 60, 96, 3, 0, 24, 0, 90, 98, -1, 16, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 61, 8, 5, 9, 6, 10, 7, 11, 1, 91, 62, 92, 19, 93, 19, 94, 16, 95, 63, 96, 3, 0, 24, 0, 90, 99, -1, 16, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 64, 8, 5, 9, 6, 10, 7, 11, 1, 91, 65, 92, 19, 93, 19, 94, 16, 95, 66, 96, 3, 0, 24, 0, 90, 100, -1, 16, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 91, 67, 92, 19, 93, 19, 94, 16, 95, 68, 96, 3, 0, 0, 0, 102, 101, -1, 7, 2, 0, 103, 69, 104, 1, 105, 1, 106, 70, 107, 1, 108, 16, 0, 0, 0, 110, 109, -1, 15, 2, 0, 111, 71, 112, 72, 113, 5, 114, 2, 115, 5, 116, 5, 117, 5, 118, 73, 119, 73, 120, 73, 121, 73, 122, 17, 123, 5, 124, 5, 0 </int_array>
 			<string> "conns" </string>
-			<int_array  len="12"> 				6, 1, 110, 109, 2, 0, 7, 1, 110, 111, 2, 0 </int_array>
+			<int_array  len="12"> 				6, 1, 92, 125, 2, 0, 7, 1, 92, 126, 2, 0 </int_array>
 		</dictionary>
 
 	</main_resource>

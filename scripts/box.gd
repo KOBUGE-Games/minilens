@@ -151,6 +151,7 @@ func _fixed_process(delta):
 					if (Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right")) && collider_left.movement == 0:# the player doesn't move, and is pressing right, and doesn't fall
 						movement = 64 # Both we and the player move 64 px left
 						collider_left.movement = 64
+						get_node("../../../level_holder").turn()
 						sample_player.play("box_hit", false)
 			else:
 				collider_left = ""
@@ -162,6 +163,7 @@ func _fixed_process(delta):
 					if (Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left")) && collider_right.movement == 0:# the player doesn't move, and is pressing left, and doesn't fall
 						movement = -64
 						collider_right.movement = -64
+						get_node("../../../level_holder").turn()
 						sample_player.play("box_hit", false)
 			else:
 				collider_right = ""

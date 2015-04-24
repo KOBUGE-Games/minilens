@@ -16,6 +16,7 @@ var viewport # The viewport
 var my_pos = Vector2(0,0) # The current position of the start screen
 var current_target = "start" # The screen we are currently on
 var JS # SUTjoystick module
+var pack_levels = [] # how many levels does each pack have
 
 func snake_case_to_Name(var string):
 	var split = string.split("_")
@@ -47,34 +48,43 @@ func _ready():
 	var splashes = []
 	while(!f.eof_reached()):
 		splashes.append(f.get_line())
-	print()
-	var random = int(rand_seed(OS.get_unix_time())[1] % splashes.size())
-	print(random)
+	var random = int(abs(rand_seed(OS.get_unix_time())[1])) % splashes.size()
 	splash.set_text(splashes[random])
+	f.close() # Close splashes.txt
+	# Packs
+	f.open("res://levels/packs.txt", File.READ)
+	while(!f.eof_reached()):
+		var line = f.get_line().split(" ")
+		if(line.size() >= 2):
+			select_pack.add_item(snake_case_to_Name(line[0]))
+			pack_folders.append(line[0])
+			pack_levels.append(int(line[1]))
+	
 	# Using the Diectory class to list all folders, so we can add the packs to the menu
-	var diraccess = Directory.new()
+	#var diraccess = Directory.new()
 	# check 2 paths - 1. bundled levels, 2. created later using map editor
-	var dir_paths = ["res://levels/"] # res://levels (bundled)
-	dir_paths.append(Globals.globalize_path(dir_paths[0])) # C:/.../levels (disk)
-	select_pack.add_item("Tutorial")
-	pack_folders.append("tutorial")
-	var i = 0 # the id of the number
-	for path in dir_paths:
-		diraccess.open(path)
-		diraccess.list_dir_begin()
-		var name = diraccess.get_next()
-		while name:
-			if diraccess.current_is_dir():
-				if name != "." and name != ".." and name != "tutorial":
-					pack_folders.append(name)
-					if path.begins_with("res://"): # bundled
-						select_pack.add_item(snake_case_to_Name(name))
-						packs_included.append(name)
-					else: # made with map editor
-						if !name in packs_included:
-							select_pack.add_item(snake_case_to_Name(name))
-			name = diraccess.get_next()
-		diraccess.list_dir_end()
+	#var dir_paths = ["res://levels/"] # res://levels (bundled)
+	#dir_paths.append(Globals.globalize_path(dir_paths[0])) # C:/.../levels (disk)
+	#select_pack.add_item("Tutorial")
+	#pack_folders.append("tutorial")
+	#var i = 0 # the id of the number
+	#for path in dir_paths:
+	#	print(diraccess.open(path))
+	#	diraccess.list_dir_begin()
+	#	var name = diraccess.get_next()
+	#	while name:
+	#		if diraccess.current_is_dir():
+	#			if name != "." and name != ".." and name != "tutorial":
+	#				pack_folders.append(name)
+	#				print("res://levels/",name)
+	#				if path.begins_with("res://"): # bundled
+	#					select_pack.add_item(snake_case_to_Name(name))
+	#					packs_included.append(name)
+	#				#else: # made with map editor
+	#				#	if !name in packs_included:
+	#				#		select_pack.add_item(snake_case_to_Name(name))
+	#		name = diraccess.get_next()
+	#	diraccess.list_dir_end()
 	_on_opt_pack_item_selected(0)#Update level list
 	#populating options
 	var current_options = global.read_options()
@@ -129,15 +139,18 @@ func _on_opt_pack_item_selected( ID ):
 				level_names[int(line[0])] = line[1] #and record the result
 	f.close()
 	#Using the Directory class to list all files
-	var diraccess = Directory.new()
-	if diraccess.open(str("res://levels/", pack)) != 0: # pack is not bundled
-		diraccess.open(Globals.globalize_path(str("res://levels/", pack))) # load from disk
-	diraccess.list_dir_begin()
-	var name = diraccess.get_next()
-	var i = 0 #The number of the current level
-	while name:
-		if !diraccess.current_is_dir():
-			if name.substr(0,5) == "level":# the file starts with "level"
+	#var diraccess = Directory.new()
+	#diraccess.open(str("res://levels/", pack))
+	#if diraccess.open(str("res://levels/", pack)) != 0: # pack is not bundled
+	#	diraccess.open(Globals.globalize_path(str("res://levels/", pack))) # load from disk
+	#diraccess.list_dir_begin()
+	#var name = diraccess.get_next()
+	#var i = 0 #The number of the current level
+	#while name:
+	#	print("res://levels/",pack,name)
+	#	if !diraccess.current_is_dir():
+	#		if name.substr(0,5) == "level":# the file starts with "level"
+	for i in range(0,pack_levels[select_pack.get_selected()]):
 				var new_instance = level_btn_scene.instance() # an instance of the level button
 				if(level_names.has(i+1)):
 					new_instance.set_title(level_names[i+1]) # When we have a name for that level, we use it
@@ -150,8 +163,8 @@ func _on_opt_pack_item_selected( ID ):
 				new_instance.set_pos(Vector2(level_btn_size.x * row_pos + level_btn_margin_x, level_btn_size.y * col_pos)) # then both of them used to make the final pos
 				level_list.add_child(new_instance) # At last we add it to the list
 				i = i + 1
-		name = diraccess.get_next()
-	diraccess.list_dir_end()
+	#	name = diraccess.get_next()
+	#diraccess.list_dir_end()
 
 func level_btn_clicked(var id): # When any level button is clicked
 	level_selected = id

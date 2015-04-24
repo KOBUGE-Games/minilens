@@ -9,7 +9,7 @@ The game is won by destroying all Radioactive Barrels and collecting surviving f
 
 The drawback is that Minilens can't jump.
 
-Check out our website: <http://alketii.github.io/minilens/>
+Check out our website: <http://kobuge-games.github.io/minilens/>
 
 *Powered by Godot Engine*
 
