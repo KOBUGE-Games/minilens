@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="4" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
 	<ext_resource path="res://scenes/tiles.xml" type="TileSet"></ext_resource>
 	<ext_resource path="res://scenes/flower.xml" type="PackedScene"></ext_resource>
+	<ext_resource path="res://gfx/bg1.png" type="Texture"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
@@ -111,7 +111,7 @@
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
 							<string> "zoom" </string>
-							<real> 0.440127 </real>
+							<real> 0.323534 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
@@ -125,7 +125,7 @@
 							<string> "snap_offset" </string>
 							<vector2> 0, 0 </vector2>
 							<string> "ofs" </string>
-							<vector2> -393.437, -181.49 </vector2>
+							<vector2> -69.6227, -248.847 </vector2>
 							<string> "snap_rotation" </string>
 							<bool> False </bool>
 						</dictionary>
@@ -239,7 +239,7 @@
 				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
 				<int> 2 </int>
 				<bool> False </bool>
-				<int_array  len="158"> 					131078, 4, 131079, 0, 131080, 3, 262151, 4, 262152, 0, 262153, 0, 262154, 0, 262155, 0, 262157, 0, 327686, 1, 393218, 4, 393219, 0, 393220, 0, 393221, 3, 393222, 1, 393225, 1, 393226, 4, 393227, 0, 393228, 0, 393229, 0, 393230, 3, 393231, 1, 393232, 0, 458758, 1, 458761, 1, 458767, 1, 524294, 4, 524295, 0, 524296, 0, 524297, 3, 524299, 1, 524301, 1, 524303, 4, 524304, 3, 524305, 1, 589835, 1, 589837, 1, 589841, 1, 655361, 4, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 3, 655377, 1, 720910, 0, 720913, 4, 720914, 3, 786447, 0, 851984, 0, 983039, 2, 917504, 2, 917505, 2, 917506, 2, 917507, 2, 917508, 2, 917509, 2, 917510, 2, 917511, 2, 917512, 2, 917513, 2, 917514, 2, 917515, 2, 917516, 2, 917517, 2, 917518, 2, 917519, 2, 917520, 2, 917521, 2, 917522, 2, 917523, 2, 917524, 2 </int_array>
+				<int_array  len="164"> 					131078, 4, 131079, 0, 131080, 3, 262151, 4, 262152, 0, 262153, 0, 262154, 0, 262155, 3, 262157, 7, 327686, 1, 393218, 4, 393219, 0, 393220, 0, 393221, 3, 393222, 1, 393225, 1, 393226, 4, 393227, 0, 393228, 0, 393229, 0, 393230, 3, 393231, 1, 393232, 7, 458758, 1, 458761, 1, 458767, 1, 524294, 4, 524295, 0, 524296, 0, 524297, 3, 524299, 1, 524301, 1, 524303, 4, 524304, 3, 524305, 1, 589835, 1, 589837, 1, 589841, 1, 655361, 4, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 3, 655377, 1, 720909, 9, 720910, 11, 720913, 4, 720914, 3, 786446, 9, 786447, 11, 851983, 9, 851984, 11, 983039, 2, 917504, 2, 917505, 2, 917506, 2, 917507, 2, 917508, 2, 917509, 2, 917510, 2, 917511, 2, 917512, 2, 917513, 2, 917514, 2, 917515, 2, 917516, 2, 917517, 2, 917518, 2, 917519, 2, 917520, 2, 917521, 2, 917522, 2, 917523, 2, 917524, 2 </int_array>
 				<vector2> 448, 0 </vector2>
 				<vector2> 3.2, 3.2 </vector2>
 				<int> -1 </int>
@@ -282,16 +282,16 @@
 							<bool> False </bool>
 							<string> "snap_rotation_step" </string>
 							<real> 0.261799 </real>
+							<string> "zoom" </string>
+							<real> 2.78951 </real>
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "snap_relative" </string>
 							<bool> False </bool>
-							<string> "zoom" </string>
-							<real> 2.78951 </real>
-							<string> "snap_rotation_offset" </string>
-							<real> 0 </real>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
+							<string> "snap_rotation_offset" </string>
+							<real> 0 </real>
 							<string> "snap_show_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -303,10 +303,12 @@
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
-							<string> "fov" </string>
-							<real> 45 </real>
+							<string> "deflight_rot_y" </string>
+							<real> 0.628319 </real>
 							<string> "zfar" </string>
 							<real> 500 </real>
+							<string> "fov" </string>
+							<real> 45 </real>
 							<string> "viewports" </string>
 							<array  len="4" shared="false">
 								<dictionary  shared="false">
@@ -374,24 +376,22 @@
 									<vector3> 0, 0, 0 </vector3>
 								</dictionary>
 							</array>
-							<string> "deflight_rot_y" </string>
-							<real> 0.628319 </real>
-							<string> "default_light" </string>
-							<bool> True </bool>
 							<string> "viewport_mode" </string>
 							<int> 1 </int>
+							<string> "default_light" </string>
+							<bool> True </bool>
 							<string> "ambient_light_color" </string>
 							<color> 0.15, 0.15, 0.15, 1 </color>
 							<string> "show_grid" </string>
 							<bool> True </bool>
-							<string> "znear" </string>
-							<real> 0.1 </real>
 							<string> "show_origin" </string>
 							<bool> True </bool>
-							<string> "deflight_rot_x" </string>
-							<real> 0.942478 </real>
+							<string> "znear" </string>
+							<real> 0.1 </real>
 							<string> "default_srgb" </string>
 							<bool> False </bool>
+							<string> "deflight_rot_x" </string>
+							<real> 0.942478 </real>
 						</dictionary>
 					</dictionary>
 					<string> "__editor_run_settings__" </string>
