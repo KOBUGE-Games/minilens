@@ -94,6 +94,7 @@ func read_options():
 		f.close()
 		f.open("user://options.txt",File.WRITE)
 		f.store_line("fullscreen:0")
+		f.store_line("music:1")
 		f.close()
 		var err = f.open("user://options.txt",File.READ)
 	if(!err):

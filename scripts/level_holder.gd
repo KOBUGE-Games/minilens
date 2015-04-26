@@ -55,11 +55,6 @@ func load_level(var pack, var level): # Load level N from pack P
 	while(tilemap.get_cell(tile_map_acid_x_end, tile_map_acid_y) == 2 && tile_map_acid_x_end < 3000):
 		tile_map_acid_x_end += 1
 	window_resize()
-	# TODO
-	#var new_stream = AudioStreamOGGVorbis.new()
-	#new_stream.set_file(musics[1])
-	#get_node("../music").set_stream(new_stream)
-	get_node("../music").play()
 
 func window_resize():
 	var new_size = viewport.get_size_override()
@@ -163,6 +158,14 @@ func _ready():
 	set_process(true)
 	viewport.connect("size_changed",self,"window_resize")
 	JS.emulate_mouse(false) # Turn off mouse emulation in-game
+	if(bool(int(get_node("/root/global").read_options()["music"]))):
+		# TODO
+		#var new_stream = AudioStreamOGGVorbis.new()
+		#new_stream.set_file(musics[1])
+		#get_node("../music").set_stream(new_stream)
+		get_node("../music").play()
+	else:
+		get_node("../music").stop()
 
 func _process(delta): # Move the acid
 	acid_animation_pos = acid_animation_pos + delta
