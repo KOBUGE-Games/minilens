@@ -90,12 +90,14 @@ func _ready():
 	var current_options = global.read_options()
 	for i in current_options:
 		set_option(i,current_options[i]) # remeber last values
-	var fullscreen_opt = options.get_node("fullscreen/opt")
-	fullscreen_opt.add_item("Off")
-	fullscreen_opt.add_item("On")
+	var bool_opts = ["fullscreen", "music"]
+	for cur_opt_name in bool_opts:
+		var cur_opt = options.get_node(str(cur_opt_name, "/opt"))
+		cur_opt.add_item("Off")
+		cur_opt.add_item("On")
+		if(current_options.has(cur_opt_name)):
+			cur_opt.select(current_options[cur_opt_name])
 	JS.emulate_mouse(true) # enable gamepad mouse emulation for menus
-	if(current_options.has("fullscreen")):
-		fullscreen_opt.select(current_options["fullscreen"])
 	#prepare to move thing when the aspect ratio changes
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
@@ -212,11 +214,18 @@ func quit():
 
 func _on_options_change(var ID, var setting):
 	var current_options = global.read_options()
-	if(setting == "fullscreen"):
-		current_options["fullscreen"] = get_node("options/fullscreen/opt").get_selected()
-		set_option("fullscreen",current_options["fullscreen"])
+	current_options[setting] = get_node(str("options/", setting, "/opt")).get_selected()
+	set_option(setting,current_options[setting])
+
 	global.save_options(current_options)
 
 func set_option(var setting, var value):
 	if(setting == "fullscreen"):
 		OS.set_window_fullscreen(bool(int(value)))
+	elif(setting == "music"):
+		var bool_music = bool(int(value))
+		var music_node = get_node("music")
+		if(bool_music):
+			music_node.play()
+		else:
+			music_node.stop()

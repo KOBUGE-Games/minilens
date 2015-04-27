@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="Theme" subresource_count="35" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://gfx/theme/button_pressed.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/button_normal.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/button_hover.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/grey_boxTick.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/button_focus.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/button_hover.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/grey_panel.png" type="Texture"></ext_resource>
-	<ext_resource path="res://gfx/theme/grey_circle.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/button_pressed.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/red_panel.png" type="Texture"></ext_resource>
 	<ext_resource path="res://gfx/theme/open_.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/button_normal.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/grey_circle.png" type="Texture"></ext_resource>
+	<ext_resource path="res://gfx/theme/grey_panel.png" type="Texture"></ext_resource>
 	<ext_resource path="res://fonts/papercut.fnt" type="Font"></ext_resource>
 	<resource type="ImageTexture" path="local://1">
 		<int name="flags"> 4 </int>
