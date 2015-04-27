@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="4" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://scripts/artefact.gd" type="Script"></ext_resource>
 	<ext_resource path="res://gfx/artefact.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scripts/artefact.gd" type="Script"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 32, 32 </vector2>
@@ -10,7 +10,7 @@
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
-			<string_array  len="56">
+			<string_array  len="52">
 				<string> "box" </string>
 				<string> "KinematicBody2D" </string>
 				<string> "_import_path" </string>
@@ -29,10 +29,6 @@
 				<string> "shapes/0/transform" </string>
 				<string> "shapes/0/trigger" </string>
 				<string> "layers" </string>
-				<string> "collide_with/static" </string>
-				<string> "collide_with/kinematic" </string>
-				<string> "collide_with/rigid" </string>
-				<string> "collide_with/character" </string>
 				<string> "collision/margin" </string>
 				<string> "script/script" </string>
 				<string> "__meta__" </string>
@@ -86,7 +82,7 @@
 				<int> 0 </int>
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
-				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
 				<real> 0.08 </real>
 				<resource  resource_type="Script" path="res://scripts/artefact.gd">  </resource>
 				<dictionary  shared="false">
@@ -95,7 +91,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 2 </int>
+							<int> 0 </int>
 							<string> "sources" </string>
 							<array  len="3" shared="false">
 								<string> "res://scripts/box.gd" </string>
@@ -229,7 +225,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
 				<int> 1000 </int>
 				<int> 2 </int>
@@ -248,7 +244,7 @@
 				<vector2> -64, 0 </vector2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="405"> 				-1, -1, 1, 0, -1, 27, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 8, 19, 8, 20, 8, 21, 8, 22, 11, 23, 12, 24, 13, 25, 1, 26, 14, 27, 15, 28, 3, 0, 0, 0, 29, 29, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 16, 10, 7, 11, 1, 30, 17, 31, 1, 32, 4, 33, 8, 34, 8, 35, 3, 36, 3, 37, 7, 38, 18, 39, 8, 40, 19, 0, 0, 0, 41, 41, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 42, 9, 43, 8, 0, 0, 0, 45, 44, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 20, 48, 3, 0, 0, 0, 45, 49, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 21, 48, 3, 0, 0, 0, 45, 50, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 22, 48, 3, 0, 0, 0, 45, 51, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 23, 48, 3, 0, 0, 0, 45, 52, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 24, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0, 0, 0, 45, 53, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 26, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0, 0, 0, 45, 54, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 27, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0, 0, 0, 45, 55, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 28, 8, 5, 9, 6, 10, 7, 11, 1, 46, 1, 47, 25, 48, 3, 0 </int_array>
+			<int_array  len="397"> 				-1, -1, 1, 0, -1, 23, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 1, 17, 3, 18, 11, 19, 12, 20, 13, 21, 1, 22, 14, 23, 15, 24, 3, 0, 0, 0, 25, 25, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 16, 10, 7, 11, 1, 26, 17, 27, 1, 28, 4, 29, 8, 30, 8, 31, 3, 32, 3, 33, 7, 34, 18, 35, 8, 36, 19, 0, 0, 0, 37, 37, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 38, 9, 39, 1, 0, 0, 0, 41, 40, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 20, 44, 3, 0, 0, 0, 41, 45, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 21, 44, 3, 0, 0, 0, 41, 46, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 22, 44, 3, 0, 0, 0, 41, 47, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 23, 44, 3, 0, 0, 0, 41, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 24, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 25, 44, 3, 0, 0, 0, 41, 49, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 26, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 25, 44, 3, 0, 0, 0, 41, 50, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 27, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 25, 44, 3, 0, 0, 0, 41, 51, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 28, 8, 5, 9, 6, 10, 7, 11, 1, 42, 1, 43, 25, 44, 3, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="0"> 				 </int_array>
 		</dictionary>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="5" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://scripts/breakable_ground.gd" type="Script"></ext_resource>
 	<ext_resource path="res://gfx/breakable.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scripts/breakable_ground.gd" type="Script"></ext_resource>
 	<resource type="RectangleShape2D" path="local://1">
 		<real name="custom_solver_bias"> 0 </real>
 		<vector2 name="extents"> 32, 32 </vector2>
@@ -125,7 +125,7 @@
 				<int> 0 </int>
 				<bool> False </bool>
 				<resource  resource_type="Shape2D" path="local://1">  </resource>
-				<matrix32> 1, 0, 0, 1, 0, 0 </matrix32>
+				<matrix32> 1, -0, 0, 1, 0, 0 </matrix32>
 				<resource  resource_type="Script" path="res://scripts/breakable_ground.gd">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_states__" </string>
@@ -266,7 +266,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 				</dictionary>
 				<vector2> 0, -8 </vector2>
 				<resource  resource_type="Texture" path="res://gfx/breakable.png">  </resource>
@@ -280,7 +280,7 @@
 				<vector2> 0, -32 </vector2>
 			</array>
 			<string> "nodes" </string>
-			<int_array  len="189"> 				-1, -1, 1, 0, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 8, 17, 3, 18, 4, 19, 5, 20, 2, 21, 5, 22, 11, 23, 12, 0, 0, 0, 24, 24, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 13, 8, 5, 9, 6, 10, 7, 11, 1, 25, 14, 26, 1, 27, 4, 28, 8, 29, 8, 30, 3, 31, 3, 32, 7, 33, 15, 34, 8, 35, 16, 0, 1, 0, 36, 36, -1, 9, 2, 0, 37, 3, 38, 5, 39, 17, 40, 18, 41, 1, 42, 2, 43, 19, 44, 20, 0, 0, 0, 45, 45, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 9, 47, 8, 0, 0, 0, 49, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 7, 11, 1, 50, 1, 51, 21, 52, 3, 0 </int_array>
+			<int_array  len="189"> 				-1, -1, 1, 0, -1, 22, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 12, 8, 13, 3, 14, 9, 15, 10, 16, 1, 17, 3, 18, 4, 19, 5, 20, 2, 21, 5, 22, 11, 23, 12, 0, 0, 0, 24, 24, -1, 21, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 13, 8, 5, 9, 6, 10, 7, 11, 1, 25, 14, 26, 1, 27, 4, 28, 8, 29, 8, 30, 3, 31, 3, 32, 7, 33, 15, 34, 8, 35, 16, 0, 1, 0, 36, 36, -1, 9, 2, 0, 37, 3, 38, 5, 39, 17, 40, 18, 41, 1, 42, 2, 43, 19, 44, 20, 0, 0, 0, 45, 45, -1, 12, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 4, 8, 5, 9, 6, 10, 7, 11, 1, 46, 9, 47, 1, 0, 0, 0, 49, 48, -1, 13, 2, 0, 3, 1, 4, 2, 5, 2, 6, 3, 7, 21, 8, 5, 9, 6, 10, 7, 11, 1, 50, 1, 51, 21, 52, 3, 0 </int_array>
 			<string> "conns" </string>
 			<int_array  len="6"> 				2, 0, 54, 53, 2, 0 </int_array>
 		</dictionary>
