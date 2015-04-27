@@ -88,6 +88,7 @@ func set_reached_level(var pack, var value):
 	f.close()
 
 func read_options():
+	var data = {"fullscreen":"0", "music":"1"}
 	var f = File.new()
 	var err = f.open("user://options.txt",File.READ)
 	if(err): # If the file doesn't exist, we try to write to it first
@@ -98,15 +99,13 @@ func read_options():
 		f.close()
 		var err = f.open("user://options.txt",File.READ)
 	if(!err):
-		var data = {}
 		var next_line = f.get_line()
 		while(!f.eof_reached()): # We read line by line
 			var parse = next_line.split(":")
 			data[parse[0]] = parse[1]
 			next_line = f.get_line()
-		return data
 	f.close()
-	return {}
+	return data
 func save_options(data):
 	var f = File.new()
 	var err = f.open("user://options.txt",File.WRITE)
