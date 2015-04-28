@@ -27,7 +27,7 @@ export var TILE_COLLECT = 2
 export var TILE_SINK = 2 
 export var TILE_LADDER = 1
 var is_goal = true # Do we have to remove the box from the list of goals?
-var can_move_in = 5 # We freese te box for the first few frames
+var can_move_in = 5 # We freese the box for the first few frames
 #some classes (e.g. other scripts)
 var box_class = get_script()
 var player_class = preload("res://scripts/player.gd")
@@ -61,6 +61,7 @@ func destroy(var by): # Called whenever the box is destroyed
 
 func stop_move():
 	movement = 0
+	can_move_in = 5
 
 func _fixed_process(delta):
 	if(can_move_in > 0):

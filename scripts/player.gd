@@ -24,6 +24,7 @@ var falling = false # Are we falling?
 
 var movement = 0 # How much do we have to move? (+ for right)
 var movement_up = 0 # How much do we have to move vertically? (+ for down)
+var can_move_in = 5 # We freese the player for the first few frames
 var move_left = false # Can we move left/right/up/down
 var move_right = false
 var move_up = false
@@ -97,8 +98,13 @@ func check_orientation():# Check if the current orientation matches the movement
 func stop_move():
 	movement = 0
 	movement_up = 0
+	falling = false
+	can_move_in = 5
 
 func logic():
+	if(can_move_in > 0):
+		can_move_in = can_move_in - 1
+		return
 	# Get the current position in the tilemap, and round it
 	current_position = (get_pos())/64
 	current_position = Vector2(round(current_position.x), floor(current_position.y))
