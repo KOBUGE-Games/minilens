@@ -70,6 +70,7 @@ func _fixed_process(delta):
 		return
 	if movement == 0: # We aren't moveing right now
 		var current_position = get_pos()/64
+		current_position = Vector2(round(current_position.x), floor(current_position.y))
 		#fall
 		var check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
 		var check_overlap = tilemap.get_cell(current_position.x, current_position.y)
@@ -79,7 +80,7 @@ func _fixed_process(delta):
 			var collider_name = ray_bottom.get_collider().get_name()
 			if(collider_name.substr(0,6) == "flower"): # When we fall into a flower
 				move_down = true
-				ray_bottom.get_collider().destroy(goal_type)
+				ray_bottom.get_collider().destroy("flower")
 			elif collider_name.substr(0,11) == "bomb_pickup": # When we fall into a bomb
 				if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
 					if(ray_bottom.get_collider() extends box_class):
