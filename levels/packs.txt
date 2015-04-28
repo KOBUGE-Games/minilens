@@ -1,6 +1,6 @@
-botanica 3
+tutorial 9
 first_contact 8
-npack 5
+botanica 3
+seek_and_destroy 5
 spaceship 5
 special_surprise 3
-tutorial 9
