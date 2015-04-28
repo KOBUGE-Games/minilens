@@ -1,8 +1,6 @@
-tutorial 11
+tutorial 9
+first_contact 8
 botanica 3
-easy 3
-another_dimension 4
-despicable 5
-Ladder_Forever 2
-bomberbot 3
-nero 3
+seek_and_destroy 5
+spaceship 5
+special_surprise 3
