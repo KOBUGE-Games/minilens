@@ -27,6 +27,7 @@ export var TILE_COLLECT = 2
 export var TILE_SINK = 2 
 export var TILE_LADDER = 1
 var is_goal = true # Do we have to remove the box from the list of goals?
+var is_registered_as_goal = false # Did we add the box to the list of goals?
 var can_move_in = 5 # We freese the box for the first few frames
 #some classes (e.g. other scripts)
 var box_class = get_script()
@@ -66,8 +67,9 @@ func stop_move():
 func _fixed_process(delta):
 	if(can_move_in > 0):
 		can_move_in = can_move_in - 1
-		if(can_move_in <= 0 && moveable):
+		if(can_move_in <= 0 && moveable && !is_registered_as_goal):
 			get_node("../../../level_holder").goal_add(goal_type) # When we can move, we add a goal to the level
+			is_registered_as_goal = true # Prevent double-registering
 		return
 	if movement == 0: # We aren't moveing right now
 		var current_position = get_pos()/64
