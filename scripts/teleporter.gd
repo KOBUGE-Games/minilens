@@ -50,9 +50,9 @@ func _fixed_process(delta):
 		
 func _process(delta):
 	if(!show_locked):
-		c_rot += rot_speed * delta
-		if(c_rot > 360):
-			c_rot -= 360
-		if(c_rot < 0):
+		c_rot -= rot_speed * delta
+		if(c_rot < -360):
 			c_rot += 360
+		if(c_rot > 0):
+			c_rot -= 360
 		sprite.set_rot(c_rot);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <resource_file type="PackedScene" subresource_count="3" version="1.1" version_name="Godot Engine v1.1.beta1.custom_build">
-	<ext_resource path="res://scripts/teleporter.gd" type="Script"></ext_resource>
 	<ext_resource path="res://gfx/teleporter.png" type="Texture"></ext_resource>
+	<ext_resource path="res://scripts/teleporter.gd" type="Script"></ext_resource>
 	<main_resource>
 		<dictionary name="_bundled" shared="false">
 			<string> "names" </string>
@@ -203,7 +203,7 @@
 						<int> 0 </int>
 					</dictionary>
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 				</dictionary>
 				<string> "../teleporter" </string>
 				<resource  resource_type="Texture" path="res://gfx/teleporter.png">  </resource>
