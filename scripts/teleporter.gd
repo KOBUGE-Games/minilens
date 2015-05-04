@@ -26,6 +26,7 @@ func _fixed_process(delta):
 	lock_left = lock_left - delta
 	if(!to):
 		to = get_node(to_teleport_path)
+		return
 	if(ray_overlap.is_colliding() && ray_overlap.get_collider()): # We have to teleport something
 		if(!locked && !to.locked): # No locked teleports
 			var collider = ray_overlap.get_collider()

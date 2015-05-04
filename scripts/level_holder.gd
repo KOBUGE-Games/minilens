@@ -26,6 +26,7 @@ var has_music = true
 func load_level(var pack, var level): # Load level N from pack P
 	current_level = level
 	current_pack = pack
+	print(load(str("res://levels/", pack, "/level_", level, ".xml")))
 	level_scene = load(str("res://levels/", pack, "/level_", level, ".xml"))
 	# Remove every currently loaded level
 	for i in range(get_child_count()):

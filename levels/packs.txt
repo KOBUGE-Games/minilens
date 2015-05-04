@@ -3,4 +3,5 @@ first_contact 9
 botanica 6
 seek_and_destroy 5
 spaceship 5
-special_surprise 3
+special_surprise 4
+
