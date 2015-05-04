@@ -6,3 +6,4 @@
 6:FourReal?
 7:A Long Drop
 8:Get Up!
+9:Teleport around
