@@ -37,6 +37,7 @@ func load_level(var pack, var level): # Load level N from pack P
 	for type in goals_amount_by_type:
 		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# Get node like ../gui/CanvasLayer/<type>
 		goals_node.hide()
+	get_node("../gui/CanvasLayer/bombs").hide()
 	goals_amount_by_type = {}
 	add_child(level_node) # Add that node to the scene
 	player.set_pos(level_node.get_node("start").get_pos()) # Teleport the player to his new location
