@@ -1,6 +1,6 @@
 tutorial 9
-first_contact 8
-botanica 3
+first_contact 9
+botanica 5
 seek_and_destroy 5
 spaceship 5
 special_surprise 3
