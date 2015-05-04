@@ -38,22 +38,22 @@
 		<ul class="sidebar-nav">
 			<a id="menu-close" href="#" class="btn btn-link btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
 			<li class="sidebar-brand">
-				<a href="#top" onclick=$ ( "#menu-close").click();>KOBUGE games</a>
+				<a href="#top" class="menu-link">KOBUGE games</a>
 			</li>
 			<li>
-				<a href="#about" onclick=$ ( "#menu-close").click();>About</a>
+				<a href="#about" class="menu-link">About</a>
 			</li>
 			<li>
-				<a href="#team" onclick=$ ( "#menu-close").click();>The team</a>
+				<a href="#team" class="menu-link">The team</a>
 			</li>
 			<li>
-				<a href="#games" onclick=$ ( "#menu-close").click();>Games</a>
+				<a href="#games" class="menu-link">Games</a>
 			</li>
 			<li>
-				<a href="#faq" onclick=$ ( "#menu-close").click();>FAQ</a>
+				<a href="#faq" class="menu-link">FAQ</a>
 			</li>
 			<li>
-				<a href="#contact" onclick=$ ( "#menu-close").click();>Contact</a>
+				<a href="#contact" class="menu-link">Contact</a>
 			</li>
 		</ul>
 	</nav>
@@ -139,9 +139,10 @@
 									<i class="fa fa-plus fa-stack-1x text-primary"></i>
 								</span>
 								<h4>
-									<strong><a href="" class="white_link">Your name here</a></strong>
+									<strong><a href="" class="white_link">You</a></strong>
 								</h4>
 								<p>Join the team, to help great games happen!</p>
+								<a target="_blank" href="" class="btn btn-light">Find out more!</a>
 							</div>
 						</div>
 					</div>
@@ -168,17 +169,29 @@
 		</div>
 		<!-- /.container -->
 	</section>
-	<!-- Callout -->
-	<aside class="callout" style="background-image:url(./img/minilens.png);">
-		<div class="text-vertical-center">
-			<h1>Minilens
-				<small>- An short-level puzzle platformer</small><br/>
-			</h1>
-			<br/>
-			<a href="minilens.html" class="btn btn-primary">View Project</a>
-
+	<!-- Callouts -->
+	<div class="container-fluid">
+			<div class="row">
+				<a href="http://kobuge-games.github.io/minilens/">
+					<aside class="col-md-6 col-xs-12 callout" style="background-image:url(./img/minilens.png);">
+						<div class="text-vertical-center">
+							<h2>Minilens
+								<small>- An short-level puzzle platformer</small><br/>
+							</h2>
+						</div>
+					</aside>
+				</a>
+				<a href="https://github.com/KOBUGE-Games/multiball">
+					<aside class="col-md-6 col-xs-12 callout" style="background-image:url(./img/multiball.png);">
+						<div class="text-vertical-center">
+							<h2>Multiball
+								<small>- A WIP multiplayer game with balls</small><br/>
+							</h2>
+						</div>
+					</aside>
+				</a>
+			</div>
 		</div>
-	</aside>
 
 	<!-- Portfolio -->
 	<section id="faq" class="portfolio">
@@ -231,8 +244,8 @@
 			<div class="row">
 				<div class="col-lg-12 text-center">
 					<h3>Contact us!</h3>
-					<a href="#" class="btn btn-lg btn-light"><i class="fa fa-github"></i> through Github</a>
-					<a href="#" class="btn btn-lg btn-light"><i class="fa fa-question-circle"></i> through WHATEVER</a>
+					<a href="https://github.com/KOBUGE-Games" class="btn btn-lg btn-light"><i class="fa fa-github"></i> Github</a>
+					<a href="https://kiwiirc.com/client/irc.freenode.net/?nick=unnamed|?#kobuge" class="btn btn-lg btn-light"><i class="fa fa-comment"></i> IRC</a>
 				</div>
 			</div>
 		</div>
@@ -261,29 +274,28 @@
 
 	<!-- Custom Theme JavaScript -->
 	<script>
-		// Closes the sidebar menu
-		$("#menu-close").click(function(e) {
-			e.preventDefault();
-			$("#sidebar-wrapper").toggleClass("active");
-		});
-
-		// Opens the sidebar menu
-		$("#menu-toggle").click(function(e) {
-			e.preventDefault();
-			$("#sidebar-wrapper").toggleClass("active");
-		});
 
 		// Scrolls to the selected menu item on the page
 		$(function() {
+			// Closes the sidebar menu
+			$("#menu-close, .menu-link").click(function(e) {
+				e.preventDefault();
+				$("#sidebar-wrapper").removeClass("active");
+			});
+
+			// Opens the sidebar menu
+			$("#menu-toggle").click(function(e) {
+				e.preventDefault();
+				$("#sidebar-wrapper").addClass("active");
+			});
 			$('a[href*=#]:not([href=#])').click(function() {
 				if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
-
 					var target = $(this.hash);
 					target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 					if (target.length) {
 						$('html,body').animate({
 							scrollTop: target.offset().top
-						}, 1000);
+						}, 500);
 						return false;
 					}
 				}
