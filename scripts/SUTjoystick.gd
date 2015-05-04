@@ -19,7 +19,9 @@
 # The functions you will be interested in are:
 #   get_digital(name, player) - pass the digital state name you wish to poll and player number (optional). Returns 1/True or 0/False.
 #   get_analog(name, player) -  pass the analog state name you wish to poll and player number (optional). Returns float between 0 and 1.
+#   get_angle(name, player) -  pass the input name (leftstick, rightstick, or dpad) you wish to poll and player number (optional). Returns angle in radians, or null if no angle.
 # And to a lesser extent:
+#   set_deadzone(value, player) - pass the value (or null to disabe custom deadzones) and player number (optional) to set custom deadzones.
 #   get_device_name(player) - pass the player number (optional). Returns the name of the device assigned to the player.
 #   get_device_number(player) - pass the player number (optional). Returns the system device number assigned to the player.
 #   get_device_player(device) - pass the system device number. Returns the player number using the device.
@@ -31,11 +33,14 @@
 #
 # TODO:
 # Show common_name when a profile is loaded, rather than raw name
-# Enable the diagram on the mapper tool after editing a mapping, for testing purposes prior to upload.
-# Android / Ouya support - possibly only one map is needed?
+# Indicate in jstest GUI when a mapping exists and has been loaded
+# Enable the diagram on the mapper tool after editing a mapping, for testing purposes prior to submission
+# Submit directly inside app, since Windows has problems passing long URL strings (low priority)
+# Android / Ouya support (need Godot to provide device name first)
+# OSX support (need Godot to have joystick support first)
 # Detailed states and signals for digital inputs?
 # Pick up profiles in SUTjoystick GUI appdata dir? (could be problematic if users have old configs, but they could just regenerate them... would give the benefit of a global file for all games using this module)
-# Detect max deadzone during junk collection? limit it to 50% or something, as that's pretty high
+# Auto-detect max deadzone during junk collection? limit it to 50% or something, as that's pretty high
 # Add more axis and buttons to Raw tab
 # Somehow add a button to allow opening the map file directly in a text editor?
 # Allow tweaking a mapping somehow, before submitting
@@ -51,6 +56,48 @@ const supported_os = [
 	"x11",
 	"windows"
 ]
+
+# set this flag to false to suppress debugging text output
+var verbose = true
+# this variable is used to disable falling back to the default mapping for unrecognized devices
+var disable_fallback_map = false
+# this variable will reassign a device to the first empty player slot in the event that an earlier player slot opens up (device is disconnected)
+var reassign_active_devices = true
+
+# virtual mouse cursor variables
+var virtual_mouse_enabled = false
+var virtual_mouse_speed = 500 # pixels per second
+var virtual_mouse_pos = Vector2()
+var disable_mouse_warp = false # disable mouse pointer warping when enabling/disabling mouse emulation
+
+# this variable will hold the device id of whichever joystick is sending input
+var player_device = [-1, -1, -1, -1] # 4-player support max (could be extended if need be)
+# this variable holds the currently-active joystick mappings for each player
+var active_map = [null,null,null,null]
+# this is set at every input, allows to get input for any player
+var active_player = 1 # from 1 to 4
+# custom deadzone overrides
+var custom_deadzone = [-1, -1, -1, -1]
+# scale analog input values so they range from 0-1 instead of the actual value of the stick, which will register 0 up until the deadzone
+var scale_analog_values = true
+
+# these hold the axis and button states in analog and digital formats
+var analog_state = [
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0},
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0},
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0},
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0}
+]
+var digital_state = [
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0},
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0},
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0},
+	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0}
+]
+
+# mappings will be loaded first from user://, then from res://js_maps/, then from this array.
+# mappings are OS-specific, so they're loaded by the load_js_maps function.
+var js_maps = []
 
 const js_map_template = {
 	common_name = "", # product name as sold in stores
@@ -98,112 +145,8 @@ const js_map_template = {
 	}
 }
 
-# mappings will be loaded first from user://, then from res://js_maps/, then from this array.
-# mappings are OS-specific, so they're loaded by the load_js_maps function.
-var js_maps = []
-
-# set this flag to false to suppress debugging text output
-var verbose = true
-# this variable is used to disable falling back to the default mapping for unrecognized devices
-var disable_fallback_map = false
-# this variable will reassign a device to the first empty player slot in the event that an earlier player slot opens up (device is disconnected)
-var reassign_active_devices = true
-# this variable will hold the device id of whichever joystick is sending input
-var player_device = [-1, -1, -1, -1] # 4-player support max (could be extended if need be)
-# this variable holds the currently-active joystick mappings for each player
-var active_map = [null,null,null,null]
-# this is set at every input, allows to get input for any player
-var active_player = 1 # from 1 to 4
-# virtual mouse cursor variables
-var virtual_mouse_enabled = false
-var virtual_mouse_speed = 500 # pixels per second
-var virtual_mouse_pos = Vector2()
-var disable_mouse_warp = false # disable mouse pointer warping when enabling/disabling mouse emulation
-
-# these hold the axis and button states in analog and digital formats
-var analog_state = [
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0},
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0},
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0},
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,leftstick_hor=0,leftstick_ver=0,rightstick_hor=0,rightstick_ver=0,dpad_hor=0,dpad_ver=0}
-]
-var digital_state = [
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0},
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0},
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0},
-	{leftstick_up=0,leftstick_down=0,leftstick_left=0,leftstick_right=0,rightstick_up=0,rightstick_down=0,rightstick_left=0,rightstick_right=0,dpad_up=0,dpad_down=0,dpad_left=0,dpad_right=0,trig_left=0,trig_right=0,action_1=0,action_3=0,action_4=0,action_2=0,back=0,start=0,home=0,click_right=0,click_left=0,bump_left=0,bump_right=0}
-]
-
+# for mouse emulation, possibly other uses later
 var semaphore = {}
-
-func _init():
-	if not OS.get_name().to_lower() in supported_os:
-		print("[SUTjoystick]: operating system not currently supported")
-		return
-	load_js_maps()
-	Input.connect("joy_connection_changed",self,"_device_connection")
-	set_process_input(true)
-	print("[SUTjoystick]: module loaded")
-	return
-
-func emulate_mouse(enable, player=0):
-# toggle mouse emulation, with an optional player number
-	if enable:
-		virtual_mouse_enabled = true
-		set_process(true)
-		if !disable_mouse_warp:
-			virtual_mouse_pos = OS.get_window_size() / 2 # warp to middle of window
-		debug_print("mouse emulation enabled")
-	else:
-		virtual_mouse_enabled = false
-		set_process(false)
-		if !disable_mouse_warp:
-			Input.warp_mouse_pos(OS.get_window_size()) # warp cursor to bottom corner, out of view
-		debug_print("mouse emulation disabled")
-
-func load_js_maps():
-# this function loads platform-specific maps and fallbacks into the js_maps array
-# it runs once, at init time
-# if the fallback hasn't been disabled, the first entry in the array will be used.
-# if you don't want the js_maps directory in your project, you can add more json mappings to this array.
-	if OS.get_name().to_lower() == 'x11':
-		js_maps = [
-			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Fallback","deadzone":0.2,"flight_stick":false,"guitar":false,"md5":"882277bdf25efaeb8295e842ebcb3d11","name":"Fallback","os":"x11","special":false},
-			# add new Linux mappings here
-			{"axis":{"dpad_down":7,"dpad_left":-6,"dpad_right":6,"dpad_up":-7,"leftstick_down":3,"leftstick_left":-4,"leftstick_right":4,"leftstick_up":-3,"rightstick_down":2,"rightstick_left":-1,"rightstick_right":1,"rightstick_up":-2,"trig_left":null,"trig_right":null},"button":{"action_1":5,"action_2":6,"action_3":4,"action_4":7,"back":10,"bump_left":1,"bump_right":0,"click_left":3,"click_right":2,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":11,"trig_left":9,"trig_right":8},"common_name":"Thrustmaster T-Flight Hotas X Flight Stick","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"028eb3d1145466520cda0304dd6850d5","name":"Thrustmaster T.Flight Hotas X","os":"x11","special":false},
-			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":3,"action_4":0,"back":8,"blue":3,"bump_left":null,"bump_right":null,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"green":1,"home":12,"orange":4,"red":2,"start":9,"trig_left":null,"trig_right":null,"yellow":0},"common_name":"Guitar Hero 3 PS3 Guitar","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"12d6d31f37826c613975b1a13500c4a1","name":"Licensed by Sony Computer Entertainment Guitar Hero3 for PlayStation (R) 3","os":"x11","special":true},
-			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F510","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"1494e42f2ef3a43aed70f3eb6bae44cb","name":"Logitech Gamepad F510","os":"x11","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":-6},"button":{"action_1":0,"action_2":3,"action_3":1,"action_4":2,"back":16,"bump_left":4,"bump_right":5,"click_left":6,"click_right":7,"dpad_down":9,"dpad_left":10,"dpad_right":11,"dpad_up":8,"home":15,"start":14,"trig_left":12,"trig_right":13},"common_name":"OUYA Wireless Controller","deadzone":0.15,"flight_stick":false,"guitar":false,"md5":"2282b5deb46ec99a8012a79483878334","name":"OUYA Game Controller","os":"x11","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":null,"action_2":null,"action_3":null,"action_4":null,"back":null,"blue1":4,"blue2":9,"blue3":14,"blue4":19,"bump_left":null,"bump_right":null,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"green1":2,"green2":7,"green3":12,"green4":17,"home":null,"orange1":3,"orange2":8,"orange3":13,"orange4":18,"red1":0,"red2":5,"red3":10,"red4":15,"start":null,"trig_left":null,"trig_right":null,"yellow1":1,"yellow2":6,"yellow3":11,"yellow4":16},"common_name":"Buzz PS3 Controllers","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"2abaa9765204c75aec53a81ad6435f65","name":"Namtai Wbuzz","os":"x11","special":true},
-			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"blue":0,"bump_left":null,"bump_right":null,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"green":1,"home":12,"lead_indicator":6,"orange":4,"red":2,"start":9,"trig_left":null,"trig_right":null,"yellow":3},"common_name":"Rock Band PS3 Guitar","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"4d60d1bda12f2d3e294838aa47d60d81","name":"Licensed by Sony Computer Entertainment America Harmonix Guitar for PlayStation3","os":"x11","special":true},
-			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":6,"trig_right":5},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Microsoft Xbox 360 Controller (xboxdrv)","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"5d98694fae9bc456936c3141dc2df5d1","name":"Xbox Gamepad (userspace driver)","os":"x11","special":false},
-			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Rock Candy Wireless Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"62cb440051003f81e5ebfabcb634d0a5","name":"Performance Designed Products Rock Candy Wireless Gamepad for PS3","os":"x11","special":false},
-			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":null,"bump_right":null,"click_left":10,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Rapala Fishing Rod PS3 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"6d75b4dc963aa0b331fc4a24097ad168","name":"GuitarHero for Playstation (R) 3 GuitarHero for Playstation (R) 3","os":"x11","special":true},
-			{"axis":{"dpad_down":7,"dpad_left":-6,"dpad_right":6,"dpad_up":-7,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":null,"trig_right":null},"button":{"action_1":2,"action_2":1,"action_3":3,"action_4":0,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"SPEEDLINK Strike Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"7405f31b70f8002536e8771479cb1931","name":"DragonRise Inc.   Generic   USB  Joystick  ","os":"x11","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":-2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":2,"rightstick_down":-4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":0,"action_3":3,"action_4":2,"back":10,"bump_left":6,"bump_right":7,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":9,"trig_left":4,"trig_right":5},"common_name":"Nintendo Wii Classic Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"8ea7def47e5e821805253745eb48e773","name":"Nintendo Wii Remote Classic Controller","os":"x11","special":false},
-			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F310","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"8fd846f25dd3d37bc02dde759023cc27","name":"Logitech Gamepad F310","os":"x11","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":14,"action_2":13,"action_3":null,"action_4":null,"back":null,"bump_left":10,"bump_right":null,"click_left":1,"click_right":null,"dpad_down":6,"dpad_left":7,"dpad_right":5,"dpad_up":4,"home":16,"start":null,"trig_left":8,"trig_right":null},"common_name":"PlayStation Navigation Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"983a7856b9a6b0e406cf347b374357b1","name":"Sony Navigation Controller","os":"x11","special":false},
-			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":3,"action_2":4,"action_3":0,"action_4":1,"back":10,"bump_left":6,"bump_right":7,"click_left":2,"click_right":5,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":11,"trig_left":8,"trig_right":9},"common_name":"InterAct Hammerhead FX Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"98a74c9f896e219797038f079bbf3b72","name":"S.T.D. Interact Gaming Device","os":"x11","special":false},
-			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"Logitech Cordless RumblePad 2","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"ad549640d1dc4475e99322ab97aad5bc","name":"Logitech Logitech Cordless RumblePad 2","os":"x11","special":false},
-			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":6,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-6,"trig_left":4,"trig_right":5},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Sony DualShock 4 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"b3a3fcaa6e4b2ab4ef2652873401bb50","name":"Sony Computer Entertainment Wireless Controller","os":"x11","special":false},
-			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Microsoft Xbox 360 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"cfa4a29ff20eda298e1e9aae963a0cfa","name":"Microsoft X-Box 360 pad","os":"x11","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":13,"trig_right":14},"button":{"action_1":14,"action_2":13,"action_3":15,"action_4":12,"back":0,"bump_left":10,"bump_right":11,"click_left":1,"click_right":2,"dpad_down":6,"dpad_left":7,"dpad_right":5,"dpad_up":4,"home":16,"start":3,"trig_left":8,"trig_right":9},"common_name":"Sony DualShock 3 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"d13b8d6f46331f0e7ce5bac321b9e548","name":"Sony PLAYSTATION(R)3 Controller","os":"x11","special":false},
-			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Hori Gem Pad 3","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"e348a33709a2ed9b6ffa8e7055ef2e39","name":"HORI CO.,LTD  PAD A","os":"x11","special":false},
-			{"axis":{"dpad_down":2,"dpad_left":-1,"dpad_right":1,"dpad_up":-2,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":0,"action_2":1,"action_3":3,"action_4":4,"back":null,"bump_left":6,"bump_right":7,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":8,"trig_left":5,"trig_right":2},"common_name":"SLS Sega Saturn USB Control Pad (Cypress)","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"e374509322a147b7564531b1dfe528a0","name":"CYPRESS USB Gamepad","os":"x11","special":false},
-			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Wireless Gamepad F710","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"eab2a984c7e3a7d63145da4b85e354f6","name":"Logitech Gamepad F710","os":"x11","special":false},
-			{"axis":{"dpad_down":5,"dpad_left":6,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"Logitech Dual Action Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"fb062fb595f4a8dc6514de3711715cfc","name":"Logitech Logitech Dual Action","os":"x11","special":false},
-		]
-	elif OS.get_name().to_lower() == 'windows':
-		js_maps = [
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Fallback","deadzone":0.2,"flight_stick":false,"guitar":false,"md5":"882277bdf25efaeb8295e842ebcb3d11","name":"Fallback","os":"windows","special":false},
-			# add new Windows mappings here
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"Logitech Dual Action Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"1cf550ea7d99812211fa396b7a6cd14d","name":"Logitech Dual Action USB","os":"windows","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F510","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"5a56109c103985cd58cb632aba7ab21a","name":"Controller (Gamepad F510)","os":"windows","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Generic Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"6600671ba26e978aae43536af123b683","name":"Microsoft PC-joystick driver","os":"windows","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Wireless Gamepad F710","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"ad7479fc125ad9464261f219b46ce088","name":"Controller (Gamepad F710)","os":"windows","special":false},
-			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F310","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"dd91fa3cdc97ee58bfe45f2f417a444f","name":"Controller (Gamepad F310)","os":"windows","special":false},
-		]
-	return
 
 
 ################################################################################
@@ -264,6 +207,14 @@ func get_digital(name, player=0):
 		player = active_player
 	return digital_state[player-1][name]
 
+func get_angle(name, player=0):
+# return the angle of the given input (leftstick, rightstick, dpad) in degrees, or null if no angle
+	var x = get_analog(name+"_hor", player)
+	var y = get_analog(name+"_ver", player)
+	if x == 0 and y == 0:
+		return
+	var angle = atan2(-x, -y)
+	return angle
 
 func get_analog(name, player=0):
 # pass an axis name and optional player number and get back the value
@@ -333,8 +284,112 @@ func deregister_player(player=0):
 		active_map = [null,null,null,null]
 		debug_print("deregistering all devices.")
 
+
+func emulate_mouse(enable, player=0):
+# toggle mouse emulation, with an optional player number
+	if enable:
+		virtual_mouse_enabled = true
+		set_process(true)
+		if !disable_mouse_warp:
+			virtual_mouse_pos = OS.get_window_size() / 2 # warp to middle of window
+		debug_print("mouse emulation enabled")
+	else:
+		virtual_mouse_enabled = false
+		set_process(false)
+		if !disable_mouse_warp:
+			Input.warp_mouse_pos(OS.get_window_size()) # warp cursor to bottom corner, out of view
+		debug_print("mouse emulation disabled")
+
+
+func set_deadzone(value=-1, player=0):
+# pass a value and player number to set a custom deadzone that will override what is configured in the mapping
+# it goes by player number, rather than device, and can be changed at any point
+# if a player number is not passed, it will apply to all players
+# if value is >= 1, it will be interpreted as a percentage
+# calling without a value (or a negative value) will remove the custom deadzone
+	var msg = "set to " + str(value)
+	if value == null or value < 0:
+		value = -1
+		msg = "cleared"
+	elif value >= 1:
+		value *= .01
+		msg = "set to " + str(value)
+	if player:
+		debug_print("custom deadzone " + msg + " for player " + str(player))
+		custom_deadzone[player-1] = value
+	else:
+		debug_print("custom deadzone " + msg + " globally")
+		for player in range(0,4):
+			custom_deadzone[player] = value
+
+
 # END OF PUBLIC FUNCTIONS
 ################################################################################
+
+
+func _init():
+	if not OS.get_name().to_lower() in supported_os:
+		print("[SUTjoystick]: operating system not currently supported")
+		return
+	load_js_maps()
+	Input.connect("joy_connection_changed",self,"_device_connection")
+	set_process_input(true)
+	print("[SUTjoystick]: module loaded")
+	return
+
+
+func load_js_maps():
+# this function loads platform-specific maps and fallbacks into the js_maps array
+# it runs once, at init time
+# if the fallback hasn't been disabled, the first entry in the array will be used.
+# if you don't want the js_maps directory in your project, you can add more json mappings to this array.
+	if OS.get_name().to_lower() == 'x11':
+		js_maps = [
+			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Fallback","deadzone":0.2,"flight_stick":false,"guitar":false,"md5":"882277bdf25efaeb8295e842ebcb3d11","name":"Fallback","os":"x11","special":false},
+			# add new Linux mappings here
+			{"axis":{"dpad_down":7,"dpad_left":-6,"dpad_right":6,"dpad_up":-7,"leftstick_down":3,"leftstick_left":-4,"leftstick_right":4,"leftstick_up":-3,"rightstick_down":2,"rightstick_left":-1,"rightstick_right":1,"rightstick_up":-2,"trig_left":null,"trig_right":null},"button":{"action_1":5,"action_2":6,"action_3":4,"action_4":7,"back":10,"bump_left":1,"bump_right":0,"click_left":3,"click_right":2,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":11,"trig_left":9,"trig_right":8},"common_name":"Thrustmaster T-Flight Hotas X Flight Stick","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"028eb3d1145466520cda0304dd6850d5","name":"Thrustmaster T.Flight Hotas X","os":"x11","special":false},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":3,"action_4":0,"back":8,"blue":3,"bump_left":null,"bump_right":null,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"green":1,"home":12,"orange":4,"red":2,"start":9,"trig_left":null,"trig_right":null,"yellow":0},"common_name":"Guitar Hero 3 PS3 Guitar","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"12d6d31f37826c613975b1a13500c4a1","name":"Licensed by Sony Computer Entertainment Guitar Hero3 for PlayStation (R) 3","os":"x11","special":true},
+			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F510","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"1494e42f2ef3a43aed70f3eb6bae44cb","name":"Logitech Gamepad F510","os":"x11","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":-6},"button":{"action_1":0,"action_2":3,"action_3":1,"action_4":2,"back":16,"bump_left":4,"bump_right":5,"click_left":6,"click_right":7,"dpad_down":9,"dpad_left":10,"dpad_right":11,"dpad_up":8,"home":15,"start":14,"trig_left":12,"trig_right":13},"common_name":"OUYA Wireless Controller","deadzone":0.15,"flight_stick":false,"guitar":false,"md5":"2282b5deb46ec99a8012a79483878334","name":"OUYA Game Controller","os":"x11","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":null,"action_2":null,"action_3":null,"action_4":null,"back":null,"blue1":4,"blue2":9,"blue3":14,"blue4":19,"bump_left":null,"bump_right":null,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"green1":2,"green2":7,"green3":12,"green4":17,"home":null,"orange1":3,"orange2":8,"orange3":13,"orange4":18,"red1":0,"red2":5,"red3":10,"red4":15,"start":null,"trig_left":null,"trig_right":null,"yellow1":1,"yellow2":6,"yellow3":11,"yellow4":16},"common_name":"Buzz PS3 Controllers","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"2abaa9765204c75aec53a81ad6435f65","name":"Namtai Wbuzz","os":"x11","special":true},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"blue":0,"bump_left":null,"bump_right":null,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"green":1,"home":12,"lead_indicator":6,"orange":4,"red":2,"start":9,"trig_left":null,"trig_right":null,"yellow":3},"common_name":"Rock Band PS3 Guitar","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"4d60d1bda12f2d3e294838aa47d60d81","name":"Licensed by Sony Computer Entertainment America Harmonix Guitar for PlayStation3","os":"x11","special":true},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":3,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-3,"trig_left":null,"trig_right":null},"button":{"action_1":2,"action_2":3,"action_3":0,"action_4":1,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"ASUS XitePad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"51dcc211864b6ef2d8f5d4707966eb30","name":"GreenAsia Inc.    USB Joystick     ","os":"x11","special":false},
+			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":6,"trig_right":5},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Microsoft Xbox 360 Controller (xboxdrv)","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"5d98694fae9bc456936c3141dc2df5d1","name":"Xbox Gamepad (userspace driver)","os":"x11","special":false},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Rock Candy Wireless Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"62cb440051003f81e5ebfabcb634d0a5","name":"Performance Designed Products Rock Candy Wireless Gamepad for PS3","os":"x11","special":false},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":null,"bump_right":null,"click_left":10,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Rapala Fishing Rod PS3 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"6d75b4dc963aa0b331fc4a24097ad168","name":"GuitarHero for Playstation (R) 3 GuitarHero for Playstation (R) 3","os":"x11","special":true},
+			{"axis":{"dpad_down":7,"dpad_left":-6,"dpad_right":6,"dpad_up":-7,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":null,"trig_right":null},"button":{"action_1":2,"action_2":1,"action_3":3,"action_4":0,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"SPEEDLINK Strike Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"7405f31b70f8002536e8771479cb1931","name":"DragonRise Inc.   Generic   USB  Joystick  ","os":"x11","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":-2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":2,"rightstick_down":-4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":0,"action_3":3,"action_4":2,"back":10,"bump_left":6,"bump_right":7,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":9,"trig_left":4,"trig_right":5},"common_name":"Nintendo Wii Classic Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"8ea7def47e5e821805253745eb48e773","name":"Nintendo Wii Remote Classic Controller","os":"x11","special":false},
+			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F310","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"8fd846f25dd3d37bc02dde759023cc27","name":"Logitech Gamepad F310","os":"x11","special":false},
+			{"axis":{"dpad_down":7,"dpad_left":-7,"dpad_right":6,"dpad_up":-7,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":null,"trig_right":null},"button":{"action_1":0,"action_2":1,"action_3":3,"action_4":4,"back":2,"bump_left":6,"bump_right":7,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":5,"start":8,"trig_left":9,"trig_right":10},"common_name":"Logitech WingMan Cordless Gamepad","deadzone":0.15,"flight_stick":false,"guitar":false,"md5":"930f35c3a3545ba3df30d43dedff93d5","name":"Logitech WingMan Cordless Gamepad","os":"x11","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":14,"action_2":13,"action_3":null,"action_4":null,"back":null,"bump_left":10,"bump_right":null,"click_left":1,"click_right":null,"dpad_down":6,"dpad_left":7,"dpad_right":5,"dpad_up":4,"home":16,"start":null,"trig_left":8,"trig_right":null},"common_name":"PlayStation Navigation Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"983a7856b9a6b0e406cf347b374357b1","name":"Sony Navigation Controller","os":"x11","special":false},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":3,"action_2":4,"action_3":0,"action_4":1,"back":10,"bump_left":6,"bump_right":7,"click_left":2,"click_right":5,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":11,"trig_left":8,"trig_right":9},"common_name":"InterAct Hammerhead FX Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"98a74c9f896e219797038f079bbf3b72","name":"S.T.D. Interact Gaming Device","os":"x11","special":false},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"Logitech Cordless RumblePad 2","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"ad549640d1dc4475e99322ab97aad5bc","name":"Logitech Logitech Cordless RumblePad 2","os":"x11","special":false},
+			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":6,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-6,"trig_left":4,"trig_right":5},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Sony DualShock 4 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"b3a3fcaa6e4b2ab4ef2652873401bb50","name":"Sony Computer Entertainment Wireless Controller","os":"x11","special":false},
+			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Microsoft Xbox 360 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"cfa4a29ff20eda298e1e9aae963a0cfa","name":"Microsoft X-Box 360 pad","os":"x11","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":13,"trig_right":14},"button":{"action_1":14,"action_2":13,"action_3":15,"action_4":12,"back":0,"bump_left":10,"bump_right":11,"click_left":1,"click_right":2,"dpad_down":6,"dpad_left":7,"dpad_right":5,"dpad_up":4,"home":16,"start":3,"trig_left":8,"trig_right":9},"common_name":"Sony DualShock 3 Controller","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"d13b8d6f46331f0e7ce5bac321b9e548","name":"Sony PLAYSTATION(R)3 Controller","os":"x11","special":false},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":12,"start":9,"trig_left":6,"trig_right":7},"common_name":"Hori Gem Pad 3","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"e348a33709a2ed9b6ffa8e7055ef2e39","name":"HORI CO.,LTD  PAD A","os":"x11","special":false},
+			{"axis":{"dpad_down":2,"dpad_left":-1,"dpad_right":1,"dpad_up":-2,"leftstick_down":null,"leftstick_left":null,"leftstick_right":null,"leftstick_up":null,"rightstick_down":null,"rightstick_left":null,"rightstick_right":null,"rightstick_up":null,"trig_left":null,"trig_right":null},"button":{"action_1":0,"action_2":1,"action_3":3,"action_4":4,"back":null,"bump_left":6,"bump_right":7,"click_left":null,"click_right":null,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":8,"trig_left":5,"trig_right":2},"common_name":"SLS Sega Saturn USB Control Pad (Cypress)","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"e374509322a147b7564531b1dfe528a0","name":"CYPRESS USB Gamepad","os":"x11","special":false},
+			{"axis":{"dpad_down":8,"dpad_left":-7,"dpad_right":7,"dpad_up":-8,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-5,"trig_left":3,"trig_right":6},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":9,"click_right":10,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":8,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Wireless Gamepad F710","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"eab2a984c7e3a7d63145da4b85e354f6","name":"Logitech Gamepad F710","os":"x11","special":false},
+			{"axis":{"dpad_down":6,"dpad_left":-5,"dpad_right":5,"dpad_up":-6,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"Logitech Dual Action Gamepad","deadzone":0.05,"flight_stick":false,"guitar":false,"md5":"fb062fb595f4a8dc6514de3711715cfc","name":"Logitech Logitech Dual Action","os":"x11","special":false},
+		]
+	elif OS.get_name().to_lower() == 'windows':
+		js_maps = [
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Fallback","deadzone":0.2,"flight_stick":false,"guitar":false,"md5":"882277bdf25efaeb8295e842ebcb3d11","name":"Fallback","os":"windows","special":false},
+			# add new Windows mappings here
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"SPEEDLINK XEOX Pro Analog Gamepad (Xinput)","deadzone":0.06,"flight_stick":false,"guitar":false,"md5":"13cd059d8e11f5fd835cd6ea8ca2d294","name":"Controller (XEOX Gamepad)","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"Logitech Dual Action Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"1cf550ea7d99812211fa396b7a6cd14d","name":"Logitech Dual Action USB","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-6,"rightstick_right":6,"rightstick_up":-5,"trig_left":3,"trig_right":4},"button":{"action_1":0,"action_2":3,"action_3":1,"action_4":2,"back":16,"bump_left":4,"bump_right":5,"click_left":6,"click_right":7,"dpad_down":9,"dpad_left":10,"dpad_right":11,"dpad_up":8,"home":15,"start":14,"trig_left":12,"trig_right":13},"common_name":"OUYA Wireless Controller","deadzone":0.15,"flight_stick":false,"guitar":false,"md5":"2282b5deb46ec99a8012a79483878334","name":"OUYA Game Controller","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":3,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-3,"trig_left":null,"trig_right":null},"button":{"action_1":2,"action_2":3,"action_3":0,"action_4":1,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"ASUS XitePad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"490432ba3130ba6c84ce48c93b41cae8","name":"PC TWIN SHOCK","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Controller #XBOX 360 For Windows#","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"4ca24f9ab550e3bfd1cc810bd5407389","name":"Controller #XBOX 360 For Windows#","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F510","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"5a56109c103985cd58cb632aba7ab21a","name":"Controller (Gamepad F510)","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Generic Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"6600671ba26e978aae43536af123b683","name":"Microsoft PC-joystick driver","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"SPEEDLINK XEOX Pro Analog Gamepad","deadzone":0.05,"flight_stick":false,"guitar":false,"md5":"6cff56117caa8635e7b902e8b9834b52","name":"XEOX Gamepad SL-6556-BK","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Wireless Gamepad F710","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"ad7479fc125ad9464261f219b46ce088","name":"Controller (Gamepad F710)","os":"windows","special":false},
+			{"axis":{"dpad_down":2,"dpad_left":null,"dpad_right":null,"dpad_up":-2,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-3,"rightstick_right":3,"rightstick_up":-4,"trig_left":null,"trig_right":null},"button":{"action_1":1,"action_2":2,"action_3":0,"action_4":3,"back":8,"bump_left":4,"bump_right":5,"click_left":10,"click_right":11,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":9,"trig_left":6,"trig_right":7},"common_name":"Logitech Dual Action Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"dc88655de00fe05f13e734ed885fa0f0","name":"Logitech Dual Action","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":4,"rightstick_left":-5,"rightstick_right":5,"rightstick_up":-4,"trig_left":3,"trig_right":-3},"button":{"action_1":0,"action_2":1,"action_3":2,"action_4":3,"back":6,"bump_left":4,"bump_right":5,"click_left":8,"click_right":9,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":null,"start":7,"trig_left":null,"trig_right":null},"common_name":"Logitech Gamepad F310","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"dd91fa3cdc97ee58bfe45f2f417a444f","name":"Controller (Gamepad F310)","os":"windows","special":false},
+			{"axis":{"dpad_down":null,"dpad_left":null,"dpad_right":null,"dpad_up":null,"leftstick_down":2,"leftstick_left":-1,"leftstick_right":1,"leftstick_up":-2,"rightstick_down":5,"rightstick_left":-4,"rightstick_right":4,"rightstick_up":-3,"trig_left":null,"trig_right":null},"button":{"action_1":0,"action_2":1,"action_3":3,"action_4":4,"back":2,"bump_left":6,"bump_right":7,"click_left":null,"click_right":null,"dpad_down":13,"dpad_left":14,"dpad_right":15,"dpad_up":12,"home":5,"start":8,"trig_left":9,"trig_right":10},"common_name":"WingMan Cordless Gamepad","deadzone":0.1,"flight_stick":false,"guitar":false,"md5":"f916ad081ca6e2ae04a4aca3e571f8cb","name":"WingMan Cordless Gamepad","os":"windows","special":false},
+		]
+	return
 
 
 func get_assign_player_device(evdev):
@@ -450,6 +505,19 @@ func _input(ev):
 				var mirror_axis = null # axis to zero, if any
 				var composite_axis = null # ver/hor/bal axis to simulate
 				var composite_val = 0
+				# set the deadzone to use, either custom by the app, or what is in the profile
+				var deadzone = active_map[player]["deadzone"]
+				if custom_deadzone[player] >= 0:
+					deadzone = custom_deadzone[player]
+				# massage the raw value into what we want (deadzone, scaling, etc)
+				if val < deadzone:
+					val = 0
+				# some devices never register a full 1 value, and it bothers me :P
+				elif val > 0.99:
+					val = 1
+				# allow scaling analog values to use the full 0-1 range, even if there is a deadzone
+				elif scale_analog_values and deadzone > 0:
+					val = ((val - deadzone) / (1 - deadzone))
 				# if it's a trigger, reverse the range to 0-1
 				if axis_name == 'trig_left':
 					# hacky workaround for stupid triggers...
@@ -492,24 +560,10 @@ func _input(ev):
 					composite_val = val
 				# set the composite axis state/value
 				if composite_axis != null:
-					if abs(composite_val) < active_map[player]["deadzone"]:
-						composite_val = 0
-					elif composite_val > 0.99:
-					# it bothers me to never see a 1... maybe add an option to disable this, or maybe it should check against 1-deadzone?
-						composite_val = 1
-					elif composite_val < -0.99:
-					# it bothers me to never see a 1... maybe add an option to disable this, or maybe it should check against 1-deadzone?
-						composite_val = -1
 					analog_state[player][composite_axis] = composite_val
-				# check if our analog value is in the deadzone
-				if val < active_map[player]["deadzone"]:
-					# if the axis was already zero, let's not change the active player for noisy devices
-					if analog_state[player][axis_name] == 0:
-						skip_active_player_update = true
-					val = 0
-				elif val > 0.99:
-				# it bothers me to never see a 1... maybe add an option to disable this, or maybe it should check against 1-deadzone?
-					val = 1
+				# if the axis was already zero, let's not change the active player for noisy devices later on
+				if analog_state[player][axis_name] == 0:
+					skip_active_player_update = true
 				# set the analog state/value
 				analog_state[player][axis_name] = val
 				
