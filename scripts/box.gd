@@ -29,10 +29,10 @@ export var TILE_LADDER = 1
 var is_goal = true # Do we have to remove the box from the list of goals?
 var is_registered_as_goal = false # Did we add the box to the list of goals?
 var can_move_in = 5 # We freese the box for the first few frames
+var holder
 #some classes (e.g. other scripts)
 var box_class = get_script()
 var player_class = preload("res://scripts/player.gd")
-var sample_player # The node that plays samples
 var JS # joystick support module
 var goal_type = "box" # The type of the goal
 
@@ -48,14 +48,14 @@ func _ready():
 	ray_check_left = get_node("ray_check_left")
 	ray_bottom.add_exception(self)
 	JS = get_node("/root/SUTjoystick")
-	sample_player = get_node("../../../sample")
+	holder = get_node("../../../level_holder")
 
 func destroy(var by): # Called whenever the box is destroyed
 	if(moveable && is_goal):
 		if(by == "bomb"): # When we were demolished by a bomb
-			get_node("../../../level_holder").goal_take(goal_type,1)
+			holder.goal_take(goal_type,1)
 		elif(by == "collect"):
-			get_node("../../../level_holder").goal_take(goal_type)
+			holder.goal_take(goal_type)
 		is_goal = 0
 	if(by != "acid" && by != "collect"): # When we weren't coroding
 		queue_free() # delete the box from the scene
@@ -68,7 +68,7 @@ func _fixed_process(delta):
 	if(can_move_in > 0):
 		can_move_in = can_move_in - 1
 		if(can_move_in <= 0 && moveable && !is_registered_as_goal):
-			get_node("../../../level_holder").goal_add(goal_type) # When we can move, we add a goal to the level
+			holder.goal_add(goal_type) # When we can move, we add a goal to the level
 			is_registered_as_goal = true # Prevent double-registering
 		return
 	if movement == 0: # We aren't moveing right now
@@ -96,16 +96,16 @@ func _fixed_process(delta):
 				move_down = false
 		else:
 			move_down = true
-		if(check_top == TILE_SINK):#When we have fallen through the acid
-			queue_free() # delete the box from the scene
+		if(check_top == TILE_SINK):# When we have fallen through the acid
+			queue_free() # Delete the box from the scene
 			if(is_goal): # No way to pass the level if we are still a goal..
-				get_node("../../../level_holder").level_impossible(0.1)
+				holder.level_impossible(0.1)
 		
 		#sinking
 		if(check_bottom == TILE_SINK):
 			if !sinking:
 				sinking = true
-				sample_player.play("sink", false)
+				holder.play_sample("sink")
 		elif(check_bottom == TILE_COLLECT):
 			if !sinking:
 				sinking = true
@@ -155,8 +155,8 @@ func _fixed_process(delta):
 					if (Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right")) && collider_left.movement == 0:# the player doesn't move, and is pressing right, and doesn't fall
 						movement = 64 # Both we and the player move 64 px left
 						collider_left.movement = 64
-						get_node("../../../level_holder").turn()
-						sample_player.play("box_hit", false)
+						holder.turn()
+						holder.play_sample("box_hit")
 			else:
 				collider_left = ""
 				
@@ -167,8 +167,8 @@ func _fixed_process(delta):
 					if (Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left")) && collider_right.movement == 0:# the player doesn't move, and is pressing left, and doesn't fall
 						movement = -64
 						collider_right.movement = -64
-						get_node("../../../level_holder").turn()
-						sample_player.play("box_hit", false)
+						holder.turn()
+						holder.play_sample("box_hit")
 			else:
 				collider_right = ""
 				

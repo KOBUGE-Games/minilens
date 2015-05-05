@@ -90,7 +90,7 @@ func _ready():
 	var current_options = global.read_options()
 	for i in current_options:
 		set_option(i,current_options[i]) # remeber last values
-	var bool_opts = ["fullscreen", "music"]
+	var bool_opts = ["fullscreen", "music", "sound"]
 	for cur_opt_name in bool_opts:
 		var cur_opt = options.get_node(str(cur_opt_name, "/opt"))
 		cur_opt.add_item("Off")

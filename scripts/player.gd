@@ -48,7 +48,7 @@ var box_class = preload("res://scripts/box.gd")
 var breakable_ground_class = preload("res://scripts/breakable_ground.gd")
 
 var JS # the SUTjoystick module
-var sample_player # The node that plays samples
+var level_holder # The node that holds the level
 
 func _ready():
 	# Find nodes
@@ -57,7 +57,7 @@ func _ready():
 	ray_check_bottom = get_node("ray_check_bottom")
 	ray_check_left = get_node("ray_check_left")
 	ray_overlap = get_node("ray_overlap")
-	sample_player = get_node("../../sample")
+	level_holder = get_node("../../level_holder")
 	
 	ray_overlap.add_exception(self)
 	
@@ -84,7 +84,7 @@ func level_load(var level_node):
 	set_fixed_process(true) # Lights on
 
 func destroy(var by): # Destroy the player
-	get_node("../../level_holder").prompt_retry_level()
+	level_holder.prompt_retry_level()
 	set_fixed_process(false) # Stop movement
 
 func play_anim():
@@ -149,11 +149,11 @@ func logic():
 	if ray_overlap.is_colliding() and ray_overlap.get_collider():
 		if ray_overlap.get_collider().get_name().substr(0,6) == "flower":
 			ray_overlap.get_collider().destroy("player")
-			sample_player.play("flower_pickup", false)
+			level_holder.play_sample("flower_pickup")
 		elif ray_overlap.get_collider().get_name().substr(0,11) == "bomb_pickup":
 			ray_overlap.get_collider().queue_free()
 			bombs = bombs + 1
-			sample_player.play("flower_pickup", false)
+			level_holder.play_sample("flower_pickup")
 			bomb_counter.get_node("Label").set_text(str(" x ", bombs))
 			bomb_counter.show()
 	
@@ -172,7 +172,7 @@ func logic():
 			move(Vector2(0,1))
 			if !sinking:
 				sinking = true
-				sample_player.play("sink", false)
+				level_holder.play_sample("sink")
 			if(check_bottom != TILE_ACID): # We passed through the acid
 				destroy("acid")
 			return
@@ -187,28 +187,28 @@ func logic():
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_right:
 			if Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right"):
 				movement = 64
-				get_node("../../level_holder").turn()
+				level_holder.turn()
 				return
 
 		#Should we move left?
 		if (!move_down || check_overlap == TILE_LADDER || check_bottom == TILE_LADDER) and move_left:
 			if Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left"):
 				movement = -64
-				get_node("../../level_holder").turn()
+				level_holder.turn()
 				return
 
 		#Should we climb up?
 		if check_overlap == TILE_LADDER && move_up:
 			if Input.is_action_pressed("btn_up") || JS.get_digital("leftstick_up") || JS.get_digital("dpad_up"):
 				movement_up = 64
-				get_node("../../level_holder").turn()
+				level_holder.turn()
 				return
 
 		#Should we climb down?
 		if (check_bottom == TILE_LADDER || check_overlap == TILE_LADDER) && move_down:
 			if Input.is_action_pressed("btn_down") || JS.get_digital("leftstick_down") || JS.get_digital("dpad_down"):
 				movement_up = -64
-				get_node("../../level_holder").turn()
+				level_holder.turn()
 				return
 
 		# Should we place a bomb
@@ -219,7 +219,7 @@ func logic():
 				tilemap.get_parent().add_child(new_bomb)
 				bombs = bombs - 1
 				bomb_counter.get_node("Label").set_text(str(" x ", bombs))
-				get_node("../../level_holder").turn()
+				level_holder.turn()
 				if(bombs == 0):
 					bomb_counter.hide()# Hide counter when no bombs are available
 			place_bomb_was_pressed = true

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<resource_file type="PackedScene" subresource_count="19" version="1.1" version_name="Godot Engine v1.1.rc1.custom_build">
+<resource_file type="PackedScene" subresource_count="19" version="1.1" version_name="Godot Engine v1.1.rc2.custom_build">
 	<ext_resource path="res://scripts/level_holder.gd" type="Script"></ext_resource>
 	<ext_resource path="res://scenes/player.xml" type="PackedScene"></ext_resource>
 	<ext_resource path="res://gfx/return.png" type="Texture"></ext_resource>
@@ -175,13 +175,13 @@
 				<int> 0 </int>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "2D" </string>
+					<string> "Script" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> 469.442, 394.965 </vector2>
+							<vector2> -442.129, -76.486 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -201,7 +201,7 @@
 							<string> "snap_step" </string>
 							<vector2> 64, 64 </vector2>
 							<string> "zoom" </string>
-							<real> 2.050543 </real>
+							<real> 0.66342 </real>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
@@ -298,7 +298,7 @@
 						<string> "Script" </string>
 						<dictionary  shared="false">
 							<string> "current" </string>
-							<int> 0 </int>
+							<int> 1 </int>
 							<string> "sources" </string>
 							<array  len="8" shared="false">
 								<string> "res://scripts/level_holder.gd" </string>
