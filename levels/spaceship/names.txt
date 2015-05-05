@@ -2,4 +2,6 @@
 2:Think Carefully
 3:Bigger
 4:On no! More Tricks
-5:Even Harder
+5:Now with teleports
+6:Even Harder
+
