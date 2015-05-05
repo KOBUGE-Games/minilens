@@ -96,7 +96,7 @@ func _ready():
 		cur_opt.add_item("Off")
 		cur_opt.add_item("On")
 		if(current_options.has(cur_opt_name)):
-			cur_opt.select(current_options[cur_opt_name])
+			cur_opt.select(int(current_options[cur_opt_name]))
 	JS.emulate_mouse(true) # enable gamepad mouse emulation for menus
 	#prepare to move thing when the aspect ratio changes
 	viewport.connect("size_changed",self,"window_resize")
