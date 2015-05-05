@@ -4,6 +4,6 @@
 4:Which way?
 5:Corrosive Tricks
 6:FourReal?
-7:A Long Drop
-8:Get Up!
+7:Get Up!
+8:A Long Drop
 9:Teleport around
