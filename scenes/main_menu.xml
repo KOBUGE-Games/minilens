@@ -35,31 +35,35 @@
 		<bool name="loop"> True </bool>
 		<real name="step"> 0.1 </real>
 		<string name="tracks/0/type"> "value" </string>
-		<node_path name="tracks/0/path"> "" </node_path>
+		<node_path name="tracks/0/path"> ".:transform/rot" </node_path>
 		<int name="tracks/0/interp"> 1 </int>
 		<dictionary name="tracks/0/keys" shared="false">
 			<string> "cont" </string>
 			<bool> True </bool>
 			<string> "times" </string>
-			<real_array  len="0"> 				 </real_array>
+			<real_array  len="2"> 				0, 0.5 </real_array>
 			<string> "transitions" </string>
-			<real_array  len="0"> 				 </real_array>
+			<real_array  len="2"> 				1, 1 </real_array>
 			<string> "values" </string>
-			<array  len="0" shared="false">
+			<array  len="2" shared="false">
+				<real> 19.200001 </real>
+				<real> 14.8 </real>
 			</array>
 		</dictionary>
 		<string name="tracks/1/type"> "value" </string>
-		<node_path name="tracks/1/path"> "" </node_path>
+		<node_path name="tracks/1/path"> ".:transform/scale" </node_path>
 		<int name="tracks/1/interp"> 1 </int>
 		<dictionary name="tracks/1/keys" shared="false">
 			<string> "cont" </string>
 			<bool> True </bool>
 			<string> "times" </string>
-			<real_array  len="0"> 				 </real_array>
+			<real_array  len="2"> 				0, 0.5 </real_array>
 			<string> "transitions" </string>
-			<real_array  len="0"> 				 </real_array>
+			<real_array  len="2"> 				1, 1 </real_array>
 			<string> "values" </string>
-			<array  len="0" shared="false">
+			<array  len="2" shared="false">
+				<vector2> 1.12, 1.12 </vector2>
+				<vector2> 0.95, 0.95 </vector2>
 			</array>
 		</dictionary>
 
@@ -212,13 +216,13 @@
 				<resource  resource_type="Script" path="res://scripts/main_menu.gd">  </resource>
 				<dictionary  shared="false">
 					<string> "__editor_plugin_screen__" </string>
-					<string> "Script" </string>
+					<string> "2D" </string>
 					<string> "__editor_plugin_states__" </string>
 					<dictionary  shared="false">
 						<string> "2D" </string>
 						<dictionary  shared="false">
 							<string> "ofs" </string>
-							<vector2> -1110.62, -21.9021 </vector2>
+							<vector2> 82.769, 106.851 </vector2>
 							<string> "snap_grid" </string>
 							<bool> True </bool>
 							<string> "snap_offset" </string>
@@ -238,7 +242,7 @@
 							<string> "snap_step" </string>
 							<vector2> 16, 16 </vector2>
 							<string> "zoom" </string>
-							<real> 1.360374 </real>
+							<real> 1.850618 </real>
 						</dictionary>
 						<string> "3D" </string>
 						<dictionary  shared="false">
@@ -399,8 +403,8 @@
 				<vector2> 0.75, 0.75 </vector2>
 				<resource  resource_type="Texture" path="res://gfx/godot_logo.png">  </resource>
 				<vector2> 679.212, 231.212 </vector2>
-				<real> 19.200001 </real>
-				<vector2> 1.12, 1.12 </vector2>
+				<real> 14.8 </real>
+				<vector2> 0.95, 0.95 </vector2>
 				<real> -167 </real>
 				<real> -16 </real>
 				<real> 147 </real>
