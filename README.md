@@ -11,6 +11,8 @@ The drawback is that Minilens can't jump.
 
 Check out our website: <http://kobuge-games.github.io/minilens/>
 
+www.kobuge.org
+
 *Powered by Godot Engine*
 
 Screenshot
