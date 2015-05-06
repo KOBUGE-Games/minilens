@@ -7,7 +7,7 @@ var to
 var sprite
 var locked = true
 var was_locked = false
-export var locked_timeout = 1
+export var locked_timeout = 1.0
 var lock_left = 0.1
 var show_locked = true
 var c_rot = 0.0

@@ -83,6 +83,7 @@ func _fixed_process(delta):
 			var collider_name = ray_bottom.get_collider().get_name()
 			if(collider_name.substr(0,6) == "flower"): # When we fall into a flower
 				move_down = true
+				holder.play_sample("flower_pickup")
 				ray_bottom.get_collider().destroy("flower")
 			elif collider_name.substr(0,11) == "bomb_pickup": # When we fall into a bomb
 				if ray_check_bottom.is_colliding() and ray_check_bottom.get_collider():
@@ -102,7 +103,7 @@ func _fixed_process(delta):
 				holder.level_impossible(0.1)
 		
 		#sinking
-		if(check_bottom == TILE_SINK):
+		if(check_bottom == TILE_SINK && move_down):
 			if !sinking:
 				sinking = true
 				holder.play_sample("sink")

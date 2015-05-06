@@ -98,7 +98,11 @@ func _ready():
 		if(current_options.has(cur_opt_name)):
 			cur_opt.select(int(current_options[cur_opt_name]))
 	JS.emulate_mouse(true) # enable gamepad mouse emulation for menus
-	#prepare to move thing when the aspect ratio changes
+	# Splash
+	if(global.is_first_load):
+		get_node("Splash/AnimationPlayer").play("SplashFade")
+	
+	# Prepare to move thing when the aspect ratio changes
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
 

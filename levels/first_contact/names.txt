@@ -7,3 +7,4 @@
 7:Get Up!
 8:A Long Drop
 9:Teleport around
+10:Hard Landing

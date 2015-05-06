@@ -7,6 +7,7 @@ var root
 var current_scene
 var orig_size
 var viewport
+var is_first_load = true
 
 func _ready():
 	root = get_tree().get_root()
@@ -32,6 +33,7 @@ func window_resize():
 	viewport.set_size_override(true, new_size)
 
 func load_scene(var path):
+	is_first_load = false # disable showing splashes
 	current_scene.queue_free() # Destroy the current scene
 	current_scene = load(path).instance()
 	root.add_child(current_scene) # And add the requested one
