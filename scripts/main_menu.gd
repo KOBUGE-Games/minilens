@@ -120,6 +120,8 @@ func window_resize():
 	if(scale > 1):
 		get_node("CanvasLayer").set_scale(Vector2(scale,scale))
 		get_node("CanvasLayer").set_offset(Vector2(0,-(scale*768-768)))
+		get_node("Splash").set_scale(Vector2(scale,scale))
+		get_node("Splash").set_offset(Vector2(0,-(scale*768-768)/2))
 	goto_target(current_target)
 
 func _on_opt_pack_item_selected( ID ):
