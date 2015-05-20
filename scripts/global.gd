@@ -8,6 +8,7 @@ var current_scene
 var orig_size
 var viewport
 var is_first_load = true
+var version = 1.2
 
 func _ready():
 	root = get_tree().get_root()
@@ -16,6 +17,7 @@ func _ready():
 	orig_size = Vector2(1024,768)
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
+	OS.set_window_title("Minilens - Version " + str(version))
 
 func window_resize():
 	var window_size = OS.get_window_size()
