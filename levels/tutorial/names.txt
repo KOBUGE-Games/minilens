@@ -1,9 +1,10 @@
 1:Hello Earth!
 2:Flowers
 3:Tricks
-4:Time for Bombs
-5:Stair Quirks
-6:Even More Tricks
-7:Static Boxes
-8:Blue Orbs
-9:The Fall
+4:Just bush a box over it!
+5:Time for Bombs
+6:Stair Quirks
+7:Even More Tricks
+8:Static Boxes
+9:Blue Orbs
+10:The Fall
