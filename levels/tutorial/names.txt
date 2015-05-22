@@ -1,7 +1,7 @@
 1:Hello Earth!
 2:Flowers
 3:Tricks
-4:Just bush a box over it!
+4:Just push a box over it!
 5:Time for Bombs
 6:Stair Quirks
 7:Even More Tricks
