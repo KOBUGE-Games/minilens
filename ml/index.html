@@ -139,6 +139,10 @@
                 background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
                 text-decoration: none;
             }
+            #pointerLock,#spanPointer{
+                display: none;
+            }
+
         </style>
 
     </head>
@@ -151,8 +155,8 @@
         <div class="emscripten" id="status">Downloading...</div>
 
         <span id='controls'>
-            <span><input type="checkbox" id="resize">Resize canvas</span>
-            <span><input type="checkbox" id="pointerLock" checked>Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;</span>
+            <span><input type="checkbox" id="resize">Resize canvas  &nbsp;&nbsp;&nbsp;</span>
+            <span id="spanPointer"><input type="checkbox" id="pointerLock">Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;</span>
             <span><input class="btn" type="button" value="Fullscreen" onclick="Module.requestFullScreen(document.getElementById('pointerLock').checked, 
                 document.getElementById('resize').checked)">
             </span>
