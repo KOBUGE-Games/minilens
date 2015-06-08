@@ -6,6 +6,7 @@
         <meta property="og:title" content="Minilens" /> 
         <title>Minilens - Free Puzzle Platform Game</title>
         <link rel="icon" href="image/icon.png">
+        <link rel="stylesheet" href="css/inserthtml.com.radios.css" />
         <style>
 
             body {
@@ -83,13 +84,16 @@
                 height: 20px;
                 width: 30px;
             }
-
+            #checkDiv{
+                width: 90px; 
+            }
             #controls {
                 display: inline-block;
                 float: right;
-                vertical-align: top;
+                vertical-align: middle;
                 margin-top: 30px;
                 margin-right: 20px;
+
             }
 
             #output {
@@ -147,21 +151,27 @@
 
     </head>
     <body>
-    <section class="page-header">
-        <a href="http://kobuge.org/">
-            <img src="image/tem_logo.png" alt="KOBUGE Games" style="width:250px;border:0;">
-        </a> 
-        <div class="spinner" id='spinner'></div>
-        <div class="emscripten" id="status">Downloading...</div>
 
-        <span id='controls'>
-            <span><input type="checkbox" id="resize">Resize canvas  &nbsp;&nbsp;&nbsp;</span>
-            <span id="spanPointer"><input type="checkbox" id="pointerLock">Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;</span>
-            <span><input class="btn" type="button" value="Fullscreen" onclick="Module.requestFullScreen(document.getElementById('pointerLock').checked, 
-                document.getElementById('resize').checked)">
+        <section class="page-header">
+            <a href="http://kobuge.org/">
+                <img src="image/tem_logo.png" alt="KOBUGE Games" style="width:250px;border:0;">
+            </a> 
+            <div class="spinner" id='spinner'></div>
+            <div class="emscripten" id="status">Downloading...</div>
+
+            <div id='controls'>
+                <input type="checkbox" id="checkbox-8-2"/><label for="checkbox-8-2" style="margin-right: 3px;top:9px;"></label>	
+                <label>Resize canvas &nbsp;&nbsp;&nbsp;</label>		       
+                <span><input class="btn" type="button" value="Fullscreen" onclick="Module.requestFullScreen(document.getElementById('pointerLock').checked, 
+                    document.getElementById('checkbox-8-2').checked)" style="margin-top: 10px; margin-bottom: 8px;">
+                </span>
+            </div>
+            <span id='controls'>
+                <span id="spanPointer">
+                    <input type="checkbox" id="pointerLock">Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;
+                </span>
             </span>
-        </span>
-    </section>        
+        </section>        
         <div class="emscripten">
             <progress value="0" max="100" id="progress" hidden=1></progress>
         </div>
