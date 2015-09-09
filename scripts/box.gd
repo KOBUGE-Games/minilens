@@ -1,6 +1,6 @@
 extends KinematicBody2D
-#This script is used for movable and static boxes/a
-var ray_check_top # rays to check for objects in each direction
+# This script is used for movable and static boxes/a
+var ray_check_top # Rays to check for objects in each direction
 var ray_check_right
 var ray_check_bottom
 var ray_bottom
@@ -18,9 +18,9 @@ var check_left = ""
 
 var sinking = false # Are we sinking?
 
-var tilemap # the Tilemap
+var tilemap # The Tilemap
 var movement = 0 # How much do we have to move? (+ for right)
-var move_right = false # can we move left/right
+var move_right = false # Can we move left/right
 var move_left = false
 export var moveable = true # Can we move, or is this box a static one
 export var TILE_COLLECT = 2 
@@ -30,15 +30,16 @@ var is_goal = true # Do we have to remove the box from the list of goals?
 var is_registered_as_goal = false # Did we add the box to the list of goals?
 var can_move_in = 5 # We freese the box for the first few frames
 var holder
-#some classes (e.g. other scripts)
+
+# Some classes (e.g. other scripts)
 var box_class = get_script()
 var player_class = preload("res://scripts/player.gd")
-var JS # joystick support module
+var JS # Joystick support module
 var goal_type = "box" # The type of the goal
 
 func _ready():
-	if(moveable):
-		set_fixed_process(true)
+	JS = get_node("/root/SUTjoystick")
+	
 	# Getting nodes
 	tilemap = get_node("../tilemap")
 	ray_check_top = get_node("ray_check_top")
@@ -47,10 +48,13 @@ func _ready():
 	ray_check_bottom = get_node("ray_check_bottom")
 	ray_check_left = get_node("ray_check_left")
 	ray_bottom.add_exception(self)
-	JS = get_node("/root/SUTjoystick")
+	
 	holder = get_node("../../../level_holder")
+	
+	if(moveable):
+		set_fixed_process(true)
 
-func destroy(var by): # Called whenever the box is destroyed
+func destroy(by): # Called whenever the box is destroyed
 	if(moveable && is_goal):
 		if(by == "bomb"): # When we were demolished by a bomb
 			holder.goal_take(goal_type,1)
@@ -58,7 +62,7 @@ func destroy(var by): # Called whenever the box is destroyed
 			holder.goal_take(goal_type)
 		is_goal = 0
 	if(by != "acid" && by != "collect"): # When we weren't coroding
-		queue_free() # delete the box from the scene
+		queue_free() # Delete the box from the scene
 
 func stop_move():
 	movement = 0
@@ -74,11 +78,11 @@ func _fixed_process(delta):
 	if movement == 0: # We aren't moveing right now
 		var current_position = get_pos()/64
 		current_position = Vector2(round(current_position.x), floor(current_position.y))
-		#fall
+		# Fall
 		var check_bottom = tilemap.get_cell(current_position.x, current_position.y + 1)
 		var check_overlap = tilemap.get_cell(current_position.x, current_position.y)
 		var check_top = tilemap.get_cell(current_position.x, current_position.y - 1)
-		var move_down # can we move down
+		var move_down # Can we move down
 		if ray_bottom.is_colliding() and ray_bottom.get_collider():
 			var collider_name = ray_bottom.get_collider().get_name()
 			if(collider_name.substr(0,6) == "flower"): # When we fall into a flower
@@ -97,12 +101,12 @@ func _fixed_process(delta):
 				move_down = false
 		else:
 			move_down = true
-		if(check_top == TILE_SINK):# When we have fallen through the acid
+		if(check_top == TILE_SINK): # When we have fallen through the acid
 			queue_free() # Delete the box from the scene
 			if(is_goal): # No way to pass the level if we are still a goal..
 				holder.level_impossible(0.1)
 		
-		#sinking
+		# Sinking
 		if(check_bottom == TILE_SINK && move_down):
 			if !sinking:
 				sinking = true
@@ -111,17 +115,18 @@ func _fixed_process(delta):
 			if !sinking:
 				sinking = true
 		
-		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_SINK && check_overlap != TILE_COLLECT: # we are able to fall
+		# Fall
+		if move_down && (check_bottom == -1 || check_bottom == TILE_LADDER) && check_overlap != TILE_SINK && check_overlap != TILE_COLLECT:
 			move(Vector2(0,4))
 		else:
-			#sink
-			if(((check_overlap == TILE_SINK || check_overlap == TILE_COLLECT) && move_down && (check_bottom == -1 || check_bottom == TILE_LADDER)) || (check_bottom == TILE_SINK || check_bottom == TILE_COLLECT) && move_down):# if we can sink
+			# Sink
+			if(((check_overlap == TILE_SINK || check_overlap == TILE_COLLECT) && move_down && (check_bottom == -1 || check_bottom == TILE_LADDER)) || (check_bottom == TILE_SINK || check_bottom == TILE_COLLECT) && move_down):
 				set_z(-1)
 				move(Vector2(0,1))
 			if(check_overlap == TILE_COLLECT):
 				destroy("collect")
 			
-			#check if we can move left
+			# Check if we can move left
 			var tm_left = tilemap.get_cell(current_position.x - 1, current_position.y)
 			if(tm_left != -1 && tm_left != TILE_LADDER && tm_left != TILE_SINK):
 				move_left = false
@@ -135,7 +140,7 @@ func _fixed_process(delta):
 				check_left = ""
 				move_left = true
 				
-			#check if we can move right
+			# Check if we can move right
 			var tm_right = tilemap.get_cell(current_position.x + 1, current_position.y)
 			if(tm_right != -1 && tm_right != TILE_LADDER && tm_right != TILE_SINK):
 				move_right = false
@@ -149,11 +154,12 @@ func _fixed_process(delta):
 				check_right = ""
 				move_right = true
 			
-			#Is the player pushing right?
+			# Is the player pushing right?
 			if ray_check_left.is_colliding() and move_right:
 				collider_left = ray_check_left.get_collider()
 				if collider_left and collider_left extends player_class && !collider_left.falling:
-					if (Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right")) && collider_left.movement == 0:# the player doesn't move, and is pressing right, and doesn't fall
+					if (Input.is_action_pressed("btn_right") || JS.get_digital("leftstick_right") || JS.get_digital("dpad_right")) && collider_left.movement == 0:
+					# The player doesn't move, and is pressing right, and doesn't fall
 						movement = 64 # Both we and the player move 64 px left
 						collider_left.movement = 64
 						holder.turn()
@@ -161,11 +167,12 @@ func _fixed_process(delta):
 			else:
 				collider_left = ""
 				
-			#Is the player pushing left?
+			# Is the player pushing left?
 			if ray_check_right.is_colliding() and move_left:
 				collider_right = ray_check_right.get_collider()
 				if collider_right and collider_right extends player_class && !collider_right.falling:
-					if (Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left")) && collider_right.movement == 0:# the player doesn't move, and is pressing left, and doesn't fall
+					if (Input.is_action_pressed("btn_left") || JS.get_digital("leftstick_left") || JS.get_digital("dpad_left")) && collider_right.movement == 0:
+					# The player doesn't move, and is pressing left, and doesn't fall
 						movement = -64
 						collider_right.movement = -64
 						holder.turn()
@@ -173,11 +180,11 @@ func _fixed_process(delta):
 			else:
 				collider_right = ""
 				
-	else:# When we are moving
+	else: # When we are moving
 		if movement > 0:
 			movement -= 4
-			move(Vector2(4,0))#Commit the move
+			move(Vector2(4,0)) # Commit the move
 		elif movement < 0:
 			movement += 4
-			move(Vector2(-4,0))#Commit the move
+			move(Vector2(-4,0)) # Commit the move
 

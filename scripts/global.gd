@@ -1,8 +1,8 @@
 extends Node
-#This script is used by others to:
-# 1. change the current scene
-# 2. Set/Get the amount of locked levels in a pack
-# 3. keep the aspect ratio
+# This script is used by others to:
+#  1. Change the current scene
+#  2. Set/Get the amount of locked levels in a pack
+#  3. Keep the aspect ratio
 var root
 var current_scene
 var orig_size
@@ -35,7 +35,7 @@ func window_resize():
 	viewport.set_size_override(true, new_size)
 
 func load_scene(var path):
-	is_first_load = false # disable showing splashes
+	is_first_load = false # Disable showing splashes
 	current_scene.queue_free() # Destroy the current scene
 	current_scene = load(path).instance()
 	root.add_child(current_scene) # And add the requested one
@@ -53,14 +53,15 @@ func get_reached_level(var pack):
 	var err = f.open_encrypted_with_pass("user://savedata.bin",File.READ,str("minilens",OS.get_unique_ID()))
 	if(!err):
 		var next_line = f.get_line()
-		while(!f.eof_reached()): #We read line by line until we find the needed one
+		while(!f.eof_reached()): # We read line by line until we find the needed one
 			var parse = next_line.split(" ")
 			if(parse[0] == pack):
-				f.close() # allways close files (just in case the engine doesn't)
+				f.close() # Allways close files (just in case the engine doesn't do it after the error)
 				return int(parse[1])
 			next_line = f.get_line()
-	f.close() # allways close files (just in case the engine doesn't)
-	return 1 # If we either haven't found our pack, or we failed to open the savedata, we just return one(e.g. first level)
+	
+	f.close() # Close the file after we are finished
+	return 1 # If we either haven't found the pack, or we failed to open the savedata, we just return one (e.g. first level)
 	
 func set_reached_level(var pack, var value):
 	var f = File.new()
@@ -80,13 +81,13 @@ func set_reached_level(var pack, var value):
 			data.append([parse[0],int(parse[1])])
 			if(parse[0] == pack):
 				found = true
-				data[data.size() - 1][1] = max(data[data.size() - 1][1], value) # if we reach the needed pack, we just set the amount we've read to value
+				data[data.size() - 1][1] = max(data[data.size() - 1][1], value) # If we reach the needed pack, we just set the amount we've read to value
 			next_line = f.get_line()
 		if(!found):
 			data.append([pack,value])
 		f.close()
 		var err = f.open_encrypted_with_pass("user://savedata.bin",File.WRITE,str("minilens",OS.get_unique_ID()))
-		if(!err):# then we rewrite everything
+		if(!err): # Then we rewrite everything
 			for line in data:
 				f.store_line(str(line[0]," ",line[1]))
 	f.close()

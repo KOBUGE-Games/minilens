@@ -1,7 +1,7 @@
 extends KinematicBody2D
 # Script that manages bombs
 
-var ray_check_top # rays to check for objects in each direction
+var ray_check_top # Rays to check for objects in each direction
 var ray_check_right
 var ray_check_bottom
 var ray_check_left
@@ -19,7 +19,7 @@ var seconds_left_to_explode = 2.2 # In how many seconds the bomb will explode?
 var dangerous = true # Has the bomb exploded already?
 
 func _ready():
-	# find nodes
+	# Find nodes
 	ray_check_top = get_node("ray_check_top")
 	ray_check_right = get_node("ray_check_right")
 	ray_check_bottom = get_node("ray_check_bottom")
@@ -33,27 +33,27 @@ func _fixed_process(delta):
 	seconds_left_to_explode = seconds_left_to_explode - delta # Decrease the timer
 	if seconds_left_to_explode <= 0 && dangerous: # EXPLODE!
 		get_node("../../../level_holder").play_sample("explode")
-		#check for objects left
+		# Check for objects left
 		if ray_check_left.is_colliding():
 			check_left = ray_check_left.get_collider()
 			if check_left.has_method("destroy"):
 				ray_check_left.get_collider().destroy("bomb")
-		#check for objects right
+		# Check for objects right
 		if ray_check_right.is_colliding():
 			check_right = ray_check_right.get_collider()
 			if check_right.has_method("destroy"):
 				ray_check_right.get_collider().destroy("bomb")
-		#check for objects top
+		# Check for objects top
 		if ray_check_top.is_colliding():
 			check_top = ray_check_top.get_collider()
 			if check_top.has_method("destroy"):
 				ray_check_top.get_collider().destroy("bomb")
-		#check for objects bottom
+		# Check for objects bottom
 		if ray_check_bottom.is_colliding():
 			check_bottom = ray_check_bottom.get_collider()
 			if check_bottom.has_method("destroy"):
 				ray_check_bottom.get_collider().destroy("bomb")
-		#check for objects that overlap (e.g. the player)
+		# Check for objects that overlap (e.g. the player)
 		if ray_overlap.is_colliding():
 			check_overlap = ray_overlap.get_collider()
 			if check_overlap.has_method("destroy"):

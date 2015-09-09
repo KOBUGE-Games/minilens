@@ -3,7 +3,7 @@ extends Node2D
 var level_scene # The scene containing the level
 var current_pack # The current pack/level
 var current_level
-var player # The player ofc
+var player # The player
 var level_node # The Node with the level
 var goals_left = 0 # The amount of goals left to be taken
 var goals_amount_by_type = {} # A Dictionary containing the STARTING amounts of different goals left to be taken
@@ -36,15 +36,17 @@ func load_level(var pack, var level): # Load level N from pack P
 	goals_left = 0 
 	goals_taken_by_type = {}
 	for type in goals_amount_by_type:
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# Get node like ../gui/CanvasLayer/<type>
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
 		goals_node.hide()
 	get_node("../gui/CanvasLayer/bombs").hide()
 	goals_amount_by_type = {}
 	add_child(level_node) # Add that node to the scene
 	player.set_pos(level_node.get_node("start").get_pos()) # Teleport the player to his new location
 	player.set_z(0)
-	turns = -1 # reset the number of turns
-	turn() # This will increase the number of turns by one, so will still have 0 turns...
+	
+	turns = -1 # Reset the number of turns
+	turn() # This will increase the number of turns by one, so will still have 0 turns... (the whole idea is to have the turn() function update the label)
+	
 	player.level_load(level_node) # Have the player prepare to play..
 	tileset = level_node.get_node("tilemap").get_tileset()
 	var tilemap = level_node.get_node("tilemap")
@@ -91,7 +93,7 @@ func retry_level(): # Retry the current level
 func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 	if(goals_amount_by_type.has(type)):
 		goals_taken_by_type[type] += 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# Get node like ../gui/CanvasLayer/<type>
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
 		if(goals_node):
 			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
 	time_until_popup = wait
@@ -101,7 +103,7 @@ func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 		# Try to open the next level
 		var f = File.new()
 		var err = f.open(str("res://levels/", current_pack, "/level_", int(current_level) + 1, ".xml"), f.READ)
-		if(err != 0):# If we are unable to open it, we show that no more levels are left in this pack instead of crashing
+		if(err != 0): # If we are unable to open it, we show that no more levels are left in this pack instead of crashing
 			btn2_action = 0 # Can't click "Next Level", because there is no level after that one
 			show_popup("Good job!",str("Level passed in ",turns," turns.\nThere are no more levels left in this pack. You can go to play some other pack, though."))
 		else:
@@ -112,7 +114,7 @@ func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 func goal_return(var type = "",var wait = 0): # Called when a goal is returned (e.g. when you push a artefact out of a force)
 	if(goals_amount_by_type.has(type)):
 		goals_taken_by_type[type] -= 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# Get node like ../gui/CanvasLayer/<type>
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
 		if(goals_node):
 			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
 	goals_left = goals_left + 1
@@ -132,13 +134,13 @@ func goal_add(var type=""): # Add one more goal
 	goals_left = goals_left + 1
 	if(goals_amount_by_type.has(type)):
 		goals_amount_by_type[type] += 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# get node like ../gui/CanvasLayer/<type>
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
 		if(goals_node):
 			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
 	elif(type != ""):
 		goals_taken_by_type[type] = 0
 		goals_amount_by_type[type] = 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type)# get node like ../gui/CanvasLayer/<type>
+		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
 		if(goals_node):
 			goals_node.show()
 			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
@@ -203,22 +205,22 @@ func _fixed_process(delta): # When we have to wait till the popup is shown
 		player.set_fixed_process(false)
 		popup.show()
 		set_fixed_process(false)
-		JS.emulate_mouse(true) # turn on mouse emulation for popups
+		JS.emulate_mouse(true) # Turn on mouse emulation for popups
 
 func hide_popup(): # Hide the popup
 	var popup = get_node("../gui/CanvasLayer/popup")
 	popup.hide()
 	
 
-func popup_btn1_pressed():# Actions for different popup buttons
-	JS.emulate_mouse(false) # turn off mouse emulation again	
+func popup_btn1_pressed(): # Actions for different popup buttons
+	JS.emulate_mouse(false) # Turn off mouse emulation again	
 	retry_level()
 	hide_popup()
 
 func popup_btn2_pressed():
 	if(btn2_action == 1):
 		btn2_action = 0 # No double clicking pls
-		JS.emulate_mouse(false) # turn off mouse emulation again	
+		JS.emulate_mouse(false) # Turn off mouse emulation again	
 		next_level()
 		hide_popup()
 	

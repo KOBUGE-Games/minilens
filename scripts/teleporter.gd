@@ -1,7 +1,7 @@
 
 extends KinematicBody2D
 
-var ray_overlap # the ray with which we are checking for overlap
+var ray_overlap # The ray with which we are checking for overlap
 export var to_teleport_path = "../teleporter"
 var to
 var sprite
@@ -42,15 +42,16 @@ func _fixed_process(delta):
 		locked = false # Unlock
 	show_locked = (locked || to.locked)
 	if(show_locked && !was_locked):
-		#lock
+		# Show as locked
 		sprite.set_region_rect(Rect2(64,0,64,64));
 	elif(!show_locked && was_locked):
-		#unlock
+		# Show as unlocked
 		sprite.set_region_rect(Rect2(0,0,64,64));
 	was_locked = show_locked
 		
 func _process(delta):
 	if(!show_locked):
+		# Rotating animation
 		c_rot -= rot_speed * delta
 		if(c_rot < -360):
 			c_rot += 360

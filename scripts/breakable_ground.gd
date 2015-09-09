@@ -1,9 +1,5 @@
 extends StaticBody2D
 
-# member variables here, example:
-# var a=2
-# var b="textvar"
-
 var player_class = preload("res://scripts/player.gd")
 var passed = false
 var destroyed = false
