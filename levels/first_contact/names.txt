@@ -1,10 +1,11 @@
-1:Symetry
-2:A Long Walk
-3:Simple Tricks
-4:Which way?
+1:A Long Walk
+2:Simple Tricks
+3:Which way?
+4:Get Up!
 5:Corrosive Tricks
 6:FourReal?
-7:Get Up!
-8:A Long Drop
-9:Teleport around
-10:Hard Landing
+7:Symmetry I
+8:Symmetry II
+9:A Long Drop
+10:Teleport around
+11:Hard Landing
