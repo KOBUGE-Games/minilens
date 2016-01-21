@@ -1,19 +1,15 @@
+Brought to you by:
 
-
-Authors
-    alketii - Project leader, code, gfx, level design
-    bojidar-bg - Code leader, level design
-    fry- - Graphics leader, code, level design
-
-Special thanks to:
-    Calinou
+    Alket Rexhepi
+    Bojidar Marinov
+    Johannes Danneker
+    Rémi Verschelde
+    
     Obani
+    Calinou
+    est31
     Kermer
     adolson
-    est31
 
-Kenney - http://kenney.nl - for the most graphical assets
-Michel Baradari - http://opengameart.org/content/2-high-quality-explosions - for explosion sounds
-Blender Foundation - http://opengameart.org/content/life-pickup-yo-frankie - for flower pickup sound
-
-and many others which we forgot.
+For more informations please visit
+http://kobuge-games.github.io/minilens/
