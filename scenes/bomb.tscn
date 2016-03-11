@@ -9,7 +9,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 32 )
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 
 length = 0.9
 loop = false
@@ -35,9 +35,8 @@ tracks/4/path = NodePath("Sprite:visibility/opacity")
 tracks/4/interp = 1
 tracks/4/keys = { "cont":true, "times":FloatArray( 0, 0.9 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=3]
 
-resource/name = "Loop"
 length = 0.5
 loop = true
 step = 0.1
@@ -74,7 +73,7 @@ colors = ColorArray( 1, 1, 1, 0, 0.351123, 0.0962784, 0, 0.585526, 0.599826, 0.4
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1
@@ -139,8 +138,8 @@ type_mask = 15
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/Explode = SubResource( 3 )
-anims/Loop = SubResource( 2 )
+anims/Explode = SubResource( 2 )
+anims/Loop = SubResource( 3 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

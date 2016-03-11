@@ -81,8 +81,6 @@ max_lines_visible = -1
 [node name="breakable_ground" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box" parent="." instance=ExtResource( 5 )]
 
@@ -93,7 +91,5 @@ collision/mask = 1
 [node name="bomb_pickup" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 64, 384 )
-collision/layers = 1
-collision/mask = 1
 
 

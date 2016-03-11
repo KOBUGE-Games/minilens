@@ -65,8 +65,6 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="bomb_pickup" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 960, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box28" parent="." instance=ExtResource( 4 )]
 
@@ -115,20 +113,13 @@ collision/mask = 1
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 3 )]
 
-collision/layers = 1
-collision/mask = 1
-
 [node name="bomb_pickup2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 704, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="bomb_pickup3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box33" parent="." instance=ExtResource( 5 )]
 

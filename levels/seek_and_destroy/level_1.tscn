@@ -74,8 +74,6 @@ collision/margin = 0.08
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 512, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box2" parent="." instance=ExtResource( 5 )]
 

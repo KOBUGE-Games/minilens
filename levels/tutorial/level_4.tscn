@@ -86,26 +86,18 @@ collision/mask = 1
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 192, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 576, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -64, 64 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 256, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box1" parent="." instance=ExtResource( 4 )]
 
@@ -116,7 +108,5 @@ collision/mask = 1
 [node name="flower4" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( -64, 576 )
-collision/layers = 1
-collision/mask = 1
 
 

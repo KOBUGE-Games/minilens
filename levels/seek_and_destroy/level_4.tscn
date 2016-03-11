@@ -66,14 +66,10 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="bomb_pickup" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 384, 128 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 384, 704 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box1" parent="." instance=ExtResource( 5 )]
 
@@ -89,20 +85,14 @@ collision/margin = 0.08
 [node name="flower1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 256, 256 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1152, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 768, 256 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box2" parent="." instance=ExtResource( 5 )]
 
@@ -118,20 +108,14 @@ collision/margin = 0.08
 [node name="flower4" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 512, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower5" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1024, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box3" parent="." instance=ExtResource( 5 )]
 
@@ -154,8 +138,6 @@ collision/mask = 1
 [node name="bomb_pickup3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 256 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box9" parent="." instance=ExtResource( 6 )]
 
@@ -203,14 +185,10 @@ collision/margin = 0.08
 [node name="flower6" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1024, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower7" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 896, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="tilemap1" type="TileMap" parent="."]
 

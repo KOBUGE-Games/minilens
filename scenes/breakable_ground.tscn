@@ -27,7 +27,7 @@ tracks/1/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatAr
 
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1

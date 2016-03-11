@@ -91,14 +91,10 @@ collision/mask = 1
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 768, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
@@ -108,8 +104,6 @@ collision/margin = 0.08
 [node name="flower1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896, 384 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 

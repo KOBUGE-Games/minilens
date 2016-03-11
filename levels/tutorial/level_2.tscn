@@ -105,8 +105,6 @@ max_lines_visible = -1
 [node name="flower" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 896, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="areas" type="Node2D" parent="."]
 
@@ -117,7 +115,7 @@ z/z = 10
 transform/pos = Vector2( 384, 448 )
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1.45522, -0, 0, 1, -30.5, 0 )
+shapes/0/transform = Matrix32( 1.45522, 0, 0, 1, -30.5, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -154,7 +152,7 @@ max_lines_visible = -1
 transform/pos = Vector2( 704, 448 )
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 35, 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 35, 3 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -190,7 +188,7 @@ max_lines_visible = -1
 transform/pos = Vector2( 832, 576 )
 input/pickable = true
 shapes/0/shape = SubResource( 3 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0

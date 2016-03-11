@@ -62,91 +62,61 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="flower" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 704, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 128, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1088, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 64, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower7" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower8" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower9" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 896, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower10" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1024, 704 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower11" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1152, 640 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower12" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1024, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower13" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 384, 256 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower14" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 256 )
-collision/layers = 1
-collision/mask = 1
 
 

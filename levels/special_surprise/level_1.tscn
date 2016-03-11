@@ -65,14 +65,10 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="bomb_pickup" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 896, 128 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 256, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box 2" parent="." instance=ExtResource( 5 )]
 
@@ -82,14 +78,10 @@ collision/margin = 0.08
 [node name="bomb_pickup1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 832, 128 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="bomb_pickup2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 128 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box3" parent="." instance=ExtResource( 5 )]
 
@@ -191,14 +183,10 @@ collision/margin = 0.08
 
 visibility/opacity = 0.3
 transform/pos = Vector2( 512, 128 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 704, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box159" parent="." instance=ExtResource( 5 )]
 
@@ -217,8 +205,6 @@ region_rect = Rect2( 16, 0, 64, 128 )
 [node name="flower3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 0, 640 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box160" parent="." instance=ExtResource( 5 )]
 

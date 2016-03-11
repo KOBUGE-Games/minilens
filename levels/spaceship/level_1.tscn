@@ -70,14 +70,10 @@ collision/mask = 1
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 896, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 256, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
@@ -100,25 +96,17 @@ collision/mask = 1
 [node name="bomb_pickup1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1152, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 64, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 128, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 192, 512 )
-collision/layers = 1
-collision/mask = 1
 
 

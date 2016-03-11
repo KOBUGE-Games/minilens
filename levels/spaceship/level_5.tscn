@@ -90,14 +90,10 @@ collision/mask = 1
 [node name="flower" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1024, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box4" parent="." instance=ExtResource( 3 )]
 
@@ -114,14 +110,10 @@ collision/mask = 1
 [node name="bomb_pickup" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1088, 640 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 192, 832 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="teleporter" parent="." instance=ExtResource( 7 )]
 
@@ -143,14 +135,10 @@ to_teleport_path = "../teleporter1"
 [node name="bomb_pickup3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1280, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1152, 256 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box6" parent="." instance=ExtResource( 3 )]
 

@@ -62,54 +62,37 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="flower" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 192, 128 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 64, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 192, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 192, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 384 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 576, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower7" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 832, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower8" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 960, 384 )
-collision/layers = 1
-collision/mask = 1
+
 

@@ -63,121 +63,81 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="flower" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 768 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 384, 768 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 512, 768 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 384, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 128, 0 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground4" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 640, 64 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="breakable_ground5" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 256, 64 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 384, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 320 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower7" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower8" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, 768 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower9" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 768 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower10" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 704 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower11" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 960 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower12" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 832 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower13" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 960 )
-collision/layers = 1
-collision/mask = 1
 
 

@@ -79,14 +79,10 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 192, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
@@ -190,7 +186,7 @@ max_lines_visible = -1
 transform/pos = Vector2( 640, 128 )
 input/pickable = true
 shapes/0/shape = SubResource( 2 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
