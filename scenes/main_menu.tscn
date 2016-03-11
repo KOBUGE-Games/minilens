@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=1]
 
-[ext_resource path="res://gfx/theme.xml" type="Theme" id=1]
+[ext_resource path="res://gfx/theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=2]
 [ext_resource path="res://gfx/main_menu_bg2.png" type="Texture" id=3]
 [ext_resource path="res://KOBUGE_Splash.png" type="Texture" id=4]

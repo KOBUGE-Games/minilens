@@ -6,7 +6,7 @@
 [ext_resource path="res://gfx/Player/player_body.png" type="Texture" id=4]
 [ext_resource path="res://gfx/Player/player_antenna.png" type="Texture" id=5]
 [ext_resource path="res://gfx/Player/player_eye.png" type="Texture" id=6]
-[ext_resource path="res://audio/samples.xml" type="SampleLibrary" id=7]
+[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -17,7 +17,7 @@ extents = Vector2( 32, 32 )
 
 frames = [ ExtResource( 2 ) ]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 
 length = 0.4
 loop = true
@@ -51,7 +51,7 @@ tracks/6/path = NodePath("Wheel_back/wheel_back_f:frame")
 tracks/6/interp = 1
 tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 
 length = 1.0
 loop = false
@@ -157,7 +157,7 @@ tracks/24/path = NodePath("Wheel_front/wheel_front_b:frame")
 tracks/24/interp = 1
 tracks/24/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 
 length = 0.3
 loop = true
@@ -191,7 +191,7 @@ tracks/6/path = NodePath("Wheel_front/wheel_front_b:frame")
 tracks/6/interp = 1
 tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 
 length = 2.0
 loop = true
@@ -225,7 +225,7 @@ tracks/6/path = NodePath("Wheel_front/wheel_front_b:frame")
 tracks/6/interp = 1
 tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
 
 length = 0.3
 loop = true
@@ -264,7 +264,7 @@ tracks/6/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":Floa
 transform/pos = Vector2( 416, 160 )
 input/pickable = false
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
 collision/layers = 1
 collision/mask = 1
@@ -428,11 +428,11 @@ frame = 3
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/climb = SubResource( 5 )
-anims/default position = SubResource( 6 )
-anims/fall = SubResource( 7 )
-anims/idle = SubResource( 3 )
-anims/walk = SubResource( 4 )
+anims/climb = SubResource( 3 )
+anims/defaultposition = SubResource( 4 )
+anims/fall = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/walk = SubResource( 7 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

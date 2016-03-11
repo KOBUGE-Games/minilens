@@ -1,0 +1,14 @@
+[gd_resource type="SampleLibrary" load_steps=5 format=1]
+
+[ext_resource path="res://audio/samples/box_hit.smp" type="Sample" id=1]
+[ext_resource path="res://audio/samples/explode.smp" type="Sample" id=2]
+[ext_resource path="res://audio/samples/flower_pickup.smp" type="Sample" id=3]
+[ext_resource path="res://audio/samples/sink.smp" type="Sample" id=4]
+
+[resource]
+
+samples/flower_pickup = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/explode = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
+samples/sink = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/box_hit = { "db":0.0, "pitch":1.0, "sample":ExtResource( 1 ) }
+

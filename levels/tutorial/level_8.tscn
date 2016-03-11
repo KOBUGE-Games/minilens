@@ -1,13 +1,13 @@
 [gd_scene load_steps=12 format=1]
 
 [ext_resource path="res://scripts/tutorial_level.gd" type="Script" id=1]
-[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=2]
+[ext_resource path="res://scenes/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
 [ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/box_static.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/box.tscn" type="PackedScene" id=7]
-[ext_resource path="res://gfx/theme.xml" type="Theme" id=8]
+[ext_resource path="res://gfx/theme.tres" type="Theme" id=8]
 [ext_resource path="res://fonts/papercut.fnt" type="Font" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
