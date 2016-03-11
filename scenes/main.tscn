@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=1]
+[gd_scene load_steps=21 format=1]
 
 [ext_resource path="res://scripts/level_holder.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=2]
@@ -13,12 +13,13 @@
 [ext_resource path="res://scenes/popup.tscn" type="PackedScene" id=11]
 [ext_resource path="res://gfx/btn_arrow.png" type="Texture" id=12]
 [ext_resource path="res://gfx/btn_bomb.png" type="Texture" id=13]
-[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=14]
-[ext_resource path="res://audio/music_1.ogg" type="AudioStream" id=15]
-[ext_resource path="res://audio/music_2.ogg" type="AudioStream" id=16]
-[ext_resource path="res://audio/music_3.ogg" type="AudioStream" id=17]
-[ext_resource path="res://audio/music_4.ogg" type="AudioStream" id=18]
-[ext_resource path="res://audio/music_5.ogg" type="AudioStream" id=19]
+[ext_resource path="res://gfx/btn_alpha.png" type="Texture" id=14]
+[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=15]
+[ext_resource path="res://audio/music_1.ogg" type="AudioStream" id=16]
+[ext_resource path="res://audio/music_2.ogg" type="AudioStream" id=17]
+[ext_resource path="res://audio/music_3.ogg" type="AudioStream" id=18]
+[ext_resource path="res://audio/music_4.ogg" type="AudioStream" id=19]
+[ext_resource path="res://audio/music_5.ogg" type="AudioStream" id=20]
 
 [node name="world" type="Node2D"]
 
@@ -212,12 +213,15 @@ max_lines_visible = -1
 
 visibility/visible = false
 
-[node name="touch_buttons" type="Node2D" parent="gui/CanvasLayer"]
+[node name="touch_controls" type="Node2D" parent="gui/CanvasLayer"]
 
+[node name="buttons" type="Node2D" parent="gui/CanvasLayer/touch_controls"]
+
+visibility/visible = false
 transform/pos = Vector2( 824, 568 )
 transform/scale = Vector2( 1.35, 1.35 )
 
-[node name="left" type="TouchScreenButton" parent="gui/CanvasLayer/touch_buttons"]
+[node name="left" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/buttons"]
 
 transform/pos = Vector2( -80, 64 )
 transform/rot = 90.0
@@ -228,28 +232,7 @@ passby_press = false
 action = "btn_left"
 visibility_mode = 1
 
-[node name="down" type="TouchScreenButton" parent="gui/CanvasLayer/touch_buttons"]
-
-transform/pos = Vector2( 64, 144 )
-transform/rot = 180.0
-normal = ExtResource( 12 )
-pressed = null
-bitmask = null
-passby_press = false
-action = "btn_down"
-visibility_mode = 1
-
-[node name="up" type="TouchScreenButton" parent="gui/CanvasLayer/touch_buttons"]
-
-transform/pos = Vector2( 0, -80 )
-normal = ExtResource( 12 )
-pressed = null
-bitmask = null
-passby_press = false
-action = "btn_up"
-visibility_mode = 1
-
-[node name="right" type="TouchScreenButton" parent="gui/CanvasLayer/touch_buttons"]
+[node name="right" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/buttons"]
 
 transform/pos = Vector2( 144, 0 )
 transform/rot = -90.0
@@ -260,8 +243,84 @@ passby_press = false
 action = "btn_right"
 visibility_mode = 1
 
-[node name="bomb" type="TouchScreenButton" parent="gui/CanvasLayer/touch_buttons"]
+[node name="up" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/buttons"]
 
+transform/pos = Vector2( 0, -80 )
+normal = ExtResource( 12 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_up"
+visibility_mode = 1
+
+[node name="down" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/buttons"]
+
+transform/pos = Vector2( 64, 144 )
+transform/rot = -180.0
+normal = ExtResource( 12 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_down"
+visibility_mode = 1
+
+[node name="bomb" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/buttons"]
+
+normal = ExtResource( 13 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "place_bomb"
+visibility_mode = 1
+
+[node name="areas" type="Node2D" parent="gui/CanvasLayer/touch_controls"]
+
+[node name="left" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/areas"]
+
+transform/scale = Vector2( 140, 382 )
+normal = ExtResource( 14 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_left"
+visibility_mode = 1
+
+[node name="right" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/areas"]
+
+transform/pos = Vector2( 742, 0 )
+transform/scale = Vector2( 140, 382 )
+normal = ExtResource( 14 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_right"
+visibility_mode = 1
+
+[node name="up" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/areas"]
+
+transform/scale = Vector2( 510, 100 )
+normal = ExtResource( 14 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_up"
+visibility_mode = 1
+
+[node name="down" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/areas"]
+
+transform/pos = Vector2( 0, 566 )
+transform/scale = Vector2( 510, 100 )
+normal = ExtResource( 14 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_down"
+visibility_mode = 1
+
+[node name="bomb" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/areas"]
+
+transform/pos = Vector2( 839.573, 631.219 )
+transform/scale = Vector2( 1.35, 1.35 )
 normal = ExtResource( 13 )
 pressed = null
 bitmask = null
@@ -272,7 +331,7 @@ visibility_mode = 1
 [node name="sample" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = ExtResource( 14 )
+config/samples = ExtResource( 15 )
 default/volume_db = -7.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -290,7 +349,7 @@ default/chorus_send = 0.0
 
 [node name="1" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 15 )
+stream/stream = ExtResource( 16 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -2.0
@@ -301,7 +360,7 @@ stream/buffering_ms = 500
 
 [node name="2" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 16 )
+stream/stream = ExtResource( 17 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -9.0
@@ -312,7 +371,7 @@ stream/buffering_ms = 500
 
 [node name="3" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 17 )
+stream/stream = ExtResource( 18 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -2.0
@@ -323,7 +382,7 @@ stream/buffering_ms = 500
 
 [node name="4" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 18 )
+stream/stream = ExtResource( 19 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -6.0
@@ -334,7 +393,7 @@ stream/buffering_ms = 500
 
 [node name="5" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 19 )
+stream/stream = ExtResource( 20 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0

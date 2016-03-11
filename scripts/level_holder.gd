@@ -66,12 +66,34 @@ func load_level(var pack, var level): # Load level N from pack P
 	if(has_music):
 		var random = abs(rand_seed(OS.get_unix_time())[1]) % musics_node.get_child_count()
 		musics_node.get_child(random).play()
+	if(global.input_mode == global.INPUT_AREAS):
+		get_node("../gui/CanvasLayer/touch_controls/buttons").hide()
+		get_node("../gui/CanvasLayer/touch_controls/areas").show()
+	elif(global.input_mode == global.INPUT_BUTTONS):
+		get_node("../gui/CanvasLayer/touch_controls/buttons").show()
+		get_node("../gui/CanvasLayer/touch_controls/areas").hide()
 
 func window_resize():
 	var new_size = viewport.get_size_override()
 	var new_pos = Vector2((new_size.x-1024)/2,0)
 	get_node("../gui/CanvasLayer/popup").set_pos(Vector2(new_size.x/2-252,210))
-	get_node("../gui/CanvasLayer/touch_buttons").set_pos(Vector2(new_size.x-200,568))
+	if(global.input_mode == global.INPUT_AREAS):
+		var areas = get_node("../gui/CanvasLayer/touch_controls/areas")
+		var unit = Vector2(new_size.x/6, new_size.y/6)
+		var sides_scale = Vector2(unit.x/2,(new_size.y-2*unit.y)/2)
+		var updown_scale = Vector2((new_size.x-2*unit.x)/2,unit.y/2)
+		areas.get_node("left").set_pos(Vector2(0,unit.y))
+		areas.get_node("left").set_scale(sides_scale)
+		areas.get_node("right").set_pos(Vector2(new_size.x-unit.x,unit.y))
+		areas.get_node("right").set_scale(sides_scale)
+		areas.get_node("up").set_pos(Vector2(unit.x,0))
+		areas.get_node("up").set_scale(updown_scale)
+		areas.get_node("down").set_pos(Vector2(unit.x,new_size.y-unit.y))
+		areas.get_node("down").set_scale(updown_scale)
+		var bomb_size = areas.get_node("bomb").get_texture().get_size()*areas.get_node("bomb").get_scale()/2
+		areas.get_node("bomb").set_pos(Vector2(new_size.x-0.5*unit.x-bomb_size.x,new_size.y-0.5*unit.y-bomb_size.y))
+	elif(global.input_mode == global.INPUT_BUTTONS):
+		get_node("../gui/CanvasLayer/touch_controls/buttons").set_pos(Vector2(new_size.x-200,568))
 	var tilemap = level_node.get_node("tilemap")
 	for i in range(ceil(new_size.x/2/64)):
 		tilemap.set_cell(tile_map_acid_x_start - i, tile_map_acid_y, 2)

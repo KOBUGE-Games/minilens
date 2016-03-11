@@ -3,10 +3,15 @@ extends Node
 #  1. Change the current scene
 #  2. Set/Get the amount of locked levels in a pack
 #  3. Keep the aspect ratio
+
+const INPUT_AREAS = 0
+const INPUT_BUTTONS = 1
+
 var root
 var current_scene
 var orig_size
 var viewport
+var input_mode
 var is_first_load = true
 var version = 1.2
 
@@ -93,7 +98,7 @@ func set_reached_level(var pack, var value):
 	f.close()
 
 func read_options():
-	var data = {"fullscreen":"0", "music":"1", "sound":"1"}
+	var data = {"fullscreen":"0", "music":"1", "sound":"1", "input_mode":"0"}
 	var f = File.new()
 	var err = f.open("user://options.txt",File.READ)
 	if(err): # If the file doesn't exist, we try to write to it first
@@ -101,6 +106,7 @@ func read_options():
 		f.open("user://options.txt",File.WRITE)
 		f.store_line("fullscreen:0")
 		f.store_line("music:1")
+		f.store_line("input_mode:0")
 		f.close()
 		var err = f.open("user://options.txt",File.READ)
 	if(!err):
@@ -111,6 +117,7 @@ func read_options():
 			next_line = f.get_line()
 	f.close()
 	return data
+
 func save_options(data):
 	var f = File.new()
 	var err = f.open("user://options.txt",File.WRITE)

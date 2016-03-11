@@ -69,13 +69,20 @@ func _ready():
 	var current_options = global.read_options()
 	for i in current_options:
 		set_option(i,current_options[i]) # Remeber last values
-	var bool_opts = ["fullscreen", "music", "sound"]
+	var bool_opts = ["fullscreen", "music", "sound", "input_mode"]
 	for cur_opt_name in bool_opts:
 		var cur_opt = options.get_node(str(cur_opt_name, "/opt"))
-		cur_opt.add_item("Off")
-		cur_opt.add_item("On")
+		if(cur_opt_name == "input_mode"):
+			cur_opt.add_item("Touch areas", global.INPUT_AREAS)
+			cur_opt.add_item("Touch buttons", global.INPUT_BUTTONS)
+		else:
+			cur_opt.add_item("Off")
+			cur_opt.add_item("On")
 		if(current_options.has(cur_opt_name)):
 			cur_opt.select(int(current_options[cur_opt_name]))
+	# Hide touch input modes on non-touch-based platforms
+	if(OS.get_name() != "Android" and OS.get_name() != "iOS"):
+		options.get_node("input_mode").hide()
 	JS.emulate_mouse(true) # Enable gamepad mouse emulation for menus
 	
 	# Splash
@@ -208,3 +215,5 @@ func set_option(var setting, var value):
 			music_node.play()
 		else:
 			music_node.stop()
+	elif(setting == "input_mode"):
+		global.input_mode = bool(int(value))
