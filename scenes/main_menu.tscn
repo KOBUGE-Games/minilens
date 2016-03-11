@@ -1,0 +1,545 @@
+[gd_scene load_steps=14 format=1]
+
+[ext_resource path="res://gfx/theme.xml" type="Theme" id=1]
+[ext_resource path="res://scripts/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://gfx/main_menu_bg2.png" type="Texture" id=3]
+[ext_resource path="res://KOBUGE_Splash.png" type="Texture" id=4]
+[ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
+[ext_resource path="res://gfx/logo.png" type="Texture" id=6]
+[ext_resource path="res://gfx/godot_logo.png" type="Texture" id=7]
+[ext_resource path="res://KOBUGE_logo.png" type="Texture" id=8]
+[ext_resource path="res://scenes/level_select_btn.tscn" type="PackedScene" id=9]
+[ext_resource path="res://audio/main_menu.ogg" type="AudioStream" id=10]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "default"
+length = 8.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:region_rect")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 8 ), "transitions":FloatArray( 1, 1 ), "values":[ Rect2( 0, 0, 1024, 768 ), Rect2( 1024, 0, 1024, 768 ) ] }
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "SplashFade"
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("image:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1, 2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 1.0, 1.0, 0.0 ] }
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "loop"
+length = 1.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/rot")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ 15.0502, 19.2 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:transform/scale")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ] }
+
+[node name="Control" type="Control"]
+
+margin/right = 100.0
+margin/bottom = 40.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+script/script = ExtResource( 2 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+level_btn_size = Vector2( 146, 146 )
+level_btn_margin_x = 100.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 512, 384 )
+z/z = -99
+texture = ExtResource( 3 )
+region = true
+region_rect = Rect2( 0, 0, 1024, 768 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/background"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/default = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "default"
+
+[node name="Splash" type="CanvasLayer" parent="."]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="image" type="TextureFrame" parent="Splash"]
+
+visibility/opacity = 0.0
+margin/right = 1024.0
+margin/bottom = 768.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 1
+size_flags/vertical = 1
+texture = ExtResource( 4 )
+expand = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Splash"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/SplashFade = SubResource( 2 )
+playback/active = true
+playback/speed = 3.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="choose_level" type="Button" parent="."]
+
+margin/left = 512.0
+margin/top = 304.0
+margin/right = 688.0
+margin/bottom = 432.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "Play"
+flat = false
+
+[node name="change_options" type="Button" parent="."]
+
+margin/left = 304.0
+margin/top = 304.0
+margin/right = 480.0
+margin/bottom = 432.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "Options"
+flat = false
+
+[node name="goto_credits" type="Button" parent="."]
+
+margin/left = 304.0
+margin/top = 464.0
+margin/right = 480.0
+margin/bottom = 592.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "Credits"
+flat = false
+
+[node name="quit" type="Button" parent="."]
+
+margin/left = 512.0
+margin/top = 464.0
+margin/right = 688.0
+margin/bottom = 592.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "Exit"
+flat = false
+
+[node name="logo" type="Sprite" parent="."]
+
+transform/pos = Vector2( 498.4, 210.8 )
+transform/scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 6 )
+
+[node name="logo2" type="Sprite" parent="."]
+
+transform/pos = Vector2( 653.75, 675 )
+transform/scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 7 )
+
+[node name="logo3" type="Sprite" parent="."]
+
+transform/pos = Vector2( 329.5, 672 )
+transform/scale = Vector2( 0.703297, 0.703297 )
+texture = ExtResource( 8 )
+
+[node name="splash" type="Node2D" parent="."]
+
+transform/pos = Vector2( 807.212, 295.212 )
+transform/rot = 15.0502
+
+[node name="Label" type="Label" parent="splash"]
+
+margin/left = -167.0
+margin/top = -16.0
+margin/right = 147.0
+margin/bottom = 42.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+theme/theme = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 0.665668, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Some sample splash, that\'s soooooooooo long that you won\'t beleive!"
+align = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="splash"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/loop = SubResource( 3 )
+playback/active = true
+playback/speed = 0.2
+blend_times = [  ]
+autoplay = "loop"
+
+[node name="Label" type="Label" parent="."]
+
+margin/top = 736.0
+margin/right = 1024.0
+margin/bottom = 769.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Copyright (c) 2015-2016 KOBUGE Games - http://kobuge-games.github.io/minilens"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="level_selection" type="Control" parent="."]
+
+margin/left = 1024.0
+margin/right = 1024.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="sel_pack" type="Label" parent="level_selection"]
+
+margin/left = 96.0
+margin/top = 88.0
+margin/right = 246.0
+margin/bottom = 121.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Select Pack"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="opt_pack" type="OptionButton" parent="level_selection"]
+
+margin/left = 226.0
+margin/top = 78.0
+margin/right = 476.0
+margin/bottom = 119.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="level_list" type="Node2D" parent="level_selection"]
+
+transform/pos = Vector2( 0, 230 )
+
+[node name="level_select" parent="level_selection/level_list" instance=ExtResource( 9 )]
+
+transform/pos = Vector2( 176, 10 )
+
+[node name="back" type="Button" parent="level_selection"]
+
+margin/left = 8.0
+margin/top = 8.0
+margin/right = 94.0
+margin/bottom = 49.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "> Back"
+flat = false
+
+[node name="options" type="Control" parent="."]
+
+margin/left = -1024.0
+margin/bottom = 768.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="back" type="Button" parent="options"]
+
+margin/left = 928.0
+margin/top = 8.0
+margin/right = 1014.0
+margin/bottom = 49.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "Back <"
+flat = false
+
+[node name="fullscreen" type="Control" parent="options"]
+
+anchor/left = 3
+anchor/right = 3
+margin/left = 256.0
+margin/top = 64.0
+margin/right = -254.0
+margin/bottom = 114.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="text" type="Label" parent="options/fullscreen"]
+
+anchor/right = 3
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Fullscreen"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="opt" type="OptionButton" parent="options/fullscreen"]
+
+anchor/left = 3
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="music" type="Control" parent="options"]
+
+anchor/left = 3
+anchor/right = 3
+margin/left = 256.0
+margin/top = 128.0
+margin/right = -254.0
+margin/bottom = 178.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="text" type="Label" parent="options/music"]
+
+anchor/right = 3
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Music"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="opt" type="OptionButton" parent="options/music"]
+
+anchor/left = 3
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="sound" type="Control" parent="options"]
+
+anchor/left = 3
+anchor/right = 3
+margin/left = 256.0
+margin/top = 192.0
+margin/right = -254.0
+margin/bottom = 242.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="text" type="Label" parent="options/sound"]
+
+anchor/right = 3
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+text = "Sounds"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="opt" type="OptionButton" parent="options/sound"]
+
+anchor/left = 3
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+flat = false
+align = 0
+selected = -1
+items = [  ]
+
+[node name="credits" type="Control" parent="."]
+
+margin/top = 768.0
+margin/right = 1024.0
+margin/bottom = 1536.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="Label" type="Label" parent="credits"]
+
+anchor/right = 1
+anchor/bottom = 1
+margin/left = 24.0
+margin/top = 56.0
+margin/right = 24.0
+margin/bottom = 24.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "long. loadfajsdnfadkjsasdf a\ntext!! adsfdksfdsflnsfks\n===\nhehe! :D"
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="back" type="Button" parent="credits"]
+
+margin/left = 8.0
+margin/top = 8.0
+margin/right = 111.0
+margin/bottom = 49.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_fonts/font = ExtResource( 5 )
+toggle_mode = false
+text = "^ Back"
+flat = false
+
+[node name="music" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 10 )
+stream/play = false
+stream/loop = true
+stream/volume_db = -10.0
+stream/autoplay = false
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[connection signal="pressed" from="choose_level" to="." method="goto_levels"]
+
+[connection signal="pressed" from="change_options" to="." method="goto_options"]
+
+[connection signal="pressed" from="goto_credits" to="." method="goto_credits"]
+
+[connection signal="pressed" from="quit" to="." method="quit"]
+
+[connection signal="item_selected" from="level_selection/opt_pack" to="." method="_on_opt_pack_item_selected"]
+
+[connection signal="pressed" from="level_selection/back" to="." method="goto_start"]
+
+[connection signal="pressed" from="options/back" to="." method="goto_start"]
+
+[connection signal="item_selected" from="options/fullscreen/opt" to="." method="_on_options_change" binds= [ "fullscreen" ]]
+
+[connection signal="item_selected" from="options/music/opt" to="." method="_on_options_change" binds= [ "music" ]]
+
+[connection signal="item_selected" from="options/sound/opt" to="." method="_on_options_change" binds= [ "sound" ]]
+
+[connection signal="pressed" from="credits/back" to="." method="goto_start"]
+
+

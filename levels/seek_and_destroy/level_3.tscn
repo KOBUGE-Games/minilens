@@ -1,0 +1,139 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/box_static.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=5]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 65537, 1, 65538, 1, 65539, 1, 65540, 1, 65541, 1, 65542, 1, 65543, 1, 65544, 1, 65545, 1, 65546, 1, 65547, 1, 65548, 1, 65549, 1, 65550, 1, 131073, 1, 131086, 1, 196609, 1, 196622, 1, 262145, 1, 262155, 7, 262158, 1, 327681, 1, 327685, 7, 327694, 1, 393217, 1, 393224, 4, 393225, 3, 393230, 1, 393232, 1, 458753, 1, 458755, 7, 458766, 1, 458767, 4, 458768, 0, 458769, 0, 458770, 3, 524289, 1, 524302, 1, 589825, 1, 589826, 1, 589827, 1, 589828, 1, 589829, 1, 589830, 1, 589831, 1, 589832, 1, 589833, 1, 589834, 1, 589835, 1, 589836, 1, 589837, 1, 589838, 1, 655367, 7, 786427, 2, 786428, 2, 786429, 2, 786430, 2, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 720913, 2, 720914, 2, 720915, 2, 720916, 2, 720917, 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 448, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( -256, -256 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1344, 768 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="bomb_pickup" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 960, 0 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box28" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 640, 384 )
+collision/margin = 0.08
+
+[node name="box25" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 576, 320 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box26" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 576, 256 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box27" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 960, 384 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box29" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1088, 384 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box30" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 384, 256 )
+collision/margin = 0.08
+
+[node name="box31" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 256, 256 )
+collision/margin = 0.08
+
+[node name="box32" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 192, 384 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="bomb_pickup1" parent="." instance=ExtResource( 3 )]
+
+collision/layers = 1
+collision/mask = 1
+
+[node name="bomb_pickup2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 704, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="bomb_pickup3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 448, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box33" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1152, 384 )
+collision/layers = 1
+collision/mask = 1
+
+

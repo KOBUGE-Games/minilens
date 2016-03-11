@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://fonts/papercut.fnt" type="Font" id=3]
+[ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=6]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 393224, 9, 393225, 8, 458752, 1, 458753, 7, 458761, 10, 524288, 1, 524289, 9, 524290, 13, 524291, 0, 524292, 0, 524293, 0, 524294, 3, 524297, 10, 589824, 1, 589833, 10, 655360, 4, 655361, 0, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 14, 655369, 8, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 192, 448 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 960, 768 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="Label" type="Label" parent="."]
+
+margin/left = -64.0
+margin/top = 288.0
+margin/right = 511.0
+margin/bottom = 321.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
+text = "If I could just get to that bomb..."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="breakable_ground" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 448, 512 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 448, 448 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="bomb_pickup" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 64, 384 )
+collision/layers = 1
+collision/mask = 1
+
+

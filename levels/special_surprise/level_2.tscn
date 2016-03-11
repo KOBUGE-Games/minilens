@@ -1,0 +1,120 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/box_static.tscn" type="PackedScene" id=6]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+visibility/opacity = 0.25
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 262151, 1, 262152, 0, 262153, 0, 262154, 3, 327687, 1, 393223, 1, 393226, 4, 393227, 3, 393230, 1, 458756, 4, 458757, 0, 458759, 0, 458760, 0, 458761, 1, 458766, 1, 524297, 1, 524300, 4, 524301, 0, 589830, 0, 589831, 0, 589832, 0, 589833, 0, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
+
+[node name="tilemap1" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 393226, 4, 393227, 3, 458756, 4, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 3, 524300, 4, 524301, 0, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 256, 2.18279e-11 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, 3.8147e-06 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 960, 768 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="box" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 640, 320 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 768, 448 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 896, 576 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box 2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 896, 512 )
+collision/margin = 0.08
+
+[node name="flower1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 896, 384 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 256, -1152 )
+collision/layers = 1
+collision/mask = 1
+
+

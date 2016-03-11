@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/box_static.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=7]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -720894, 1, -655358, 4, -655357, 0, -655356, 0, -655355, 3, -524282, 4, -524281, 0, -524280, 0, -524279, 3, -393210, 7, -393208, 4, -393207, 3, 8, 1, 9, 4, 10, 3, 65544, 1, 131080, 1, 131081, 4, 131082, 0, 131083, 3, 196616, 1, 262152, 1, 262153, 4, 262154, 0, 262155, 0, 262156, 3, 327688, 1, 393224, 1, 393228, 1, 393230, 1, 393231, 7, 458760, 1, 458762, 4, 458763, 0, 458764, 0, 458765, 0, 458766, 3, 524290, 4, 524291, 0, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 448, 448 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -896 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 960, 768 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="box" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 384, -576 )
+collision/margin = 0.08
+
+[node name="box1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 320, -704 )
+collision/margin = 0.08
+
+[node name="teleporter" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 256, 448 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter1"
+
+[node name="teleporter1" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 192, -768 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter2"
+
+[node name="box2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 640, -64 )
+collision/margin = 0.08
+
+[node name="box3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 640, 384 )
+collision/margin = 0.08
+
+[node name="teleporter2" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 576, -448 )
+collision/margin = 0.08
+
+[node name="box 2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 320, -448 )
+collision/margin = 0.08
+
+[node name="breakable_ground" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 448, -384 )
+
+[node name="bomb_pickup" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 576, -576 )
+
+[node name="teleporter3" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 960, 320 )
+collision/margin = 0.08
+
+

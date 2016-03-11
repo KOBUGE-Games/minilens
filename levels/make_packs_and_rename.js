@@ -24,8 +24,8 @@ else
 				if(files[f].search("level") != -1)
 				{
 					idx = idx + 1;
-					console.log("./" + packs[i] + "/" + files[f] + "->" + "./" + packs[i] + "/level_" + idx + ".xml" );
-					fs.renameSync("./" + packs[i] + "/" + files[f], "./" + packs[i] + "/level_" + idx + ".xml");
+					console.log("./" + packs[i] + "/" + files[f] + "->" + "./" + packs[i] + "/level_" + idx + ".tscn" );
+					fs.renameSync("./" + packs[i] + "/" + files[f], "./" + packs[i] + "/level_" + idx + ".tscn");
 				}
 			}
 			packs_file += packs[i] + " " + idx + "\n";

@@ -1,0 +1,152 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=3]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 131078, 4, 131079, 0, 131080, 3, 262151, 4, 262152, 0, 262153, 0, 262154, 0, 262155, 3, 262157, 7, 327686, 1, 393218, 4, 393219, 0, 393220, 0, 393221, 3, 393222, 1, 393225, 1, 393226, 4, 393227, 0, 393228, 0, 393229, 0, 393230, 3, 393231, 1, 393232, 7, 458758, 1, 458761, 1, 458767, 1, 524294, 4, 524295, 0, 524296, 0, 524297, 3, 524299, 1, 524301, 1, 524303, 4, 524304, 3, 524305, 1, 589835, 1, 589837, 1, 589841, 1, 655361, 4, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 0, 655369, 0, 655370, 0, 655371, 0, 655372, 0, 655373, 3, 655377, 1, 720909, 9, 720910, 11, 720913, 4, 720914, 3, 786446, 9, 786447, 11, 851983, 9, 851984, 11, 983039, 2, 917504, 2, 917505, 2, 917506, 2, 917507, 2, 917508, 2, 917509, 2, 917510, 2, 917511, 2, 917512, 2, 917513, 2, 917514, 2, 917515, 2, 917516, 2, 917517, 2, 917518, 2, 917519, 2, 917520, 2, 917521, 2, 917522, 2, 917523, 2, 917524, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 448, 0 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1216, 960 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="flower" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 448, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 704, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 320 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 640, 320 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1088, 320 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 64, 512 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower6" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 512, 448 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower7" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 640, 512 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower8" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 512 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower9" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 896, 512 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower10" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1024, 704 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower11" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1152, 640 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower12" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1024, 448 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower13" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 384, 256 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower14" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 256 )
+collision/layers = 1
+collision/mask = 1
+
+

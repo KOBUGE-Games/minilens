@@ -1,0 +1,478 @@
+[gd_scene load_steps=15 format=1]
+
+[ext_resource path="res://scripts/player.gd" type="Script" id=1]
+[ext_resource path="res://gfx/Player/player1.png" type="Texture" id=2]
+[ext_resource path="res://gfx/Player/player_wheels.png" type="Texture" id=3]
+[ext_resource path="res://gfx/Player/player_body.png" type="Texture" id=4]
+[ext_resource path="res://gfx/Player/player_antenna.png" type="Texture" id=5]
+[ext_resource path="res://gfx/Player/player_eye.png" type="Texture" id=6]
+[ext_resource path="res://audio/samples.xml" type="SampleLibrary" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+frames = [ ExtResource( 2 ) ]
+
+[sub_resource type="Animation" id=5]
+
+length = 0.4
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Antenna:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Antenna:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -16.1991 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, -6 ), Vector2( 0, 4 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Wheel_front/wheel_front_b:frame")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Wheel_front/wheel_front_f:frame")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Wheel_back/wheel_back_f:frame")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+
+[sub_resource type="Animation" id=6]
+
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, 0 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body/Eye_r:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -14, -11 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Eye_r:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Wheel_front:transform/pos")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, 0 ) ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Wheel_front:transform/rot")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Wheel_front/wheel_front_f:transform/pos")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -1, 22 ) ] }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Wheel_front/wheel_front_f:transform/rot")
+tracks/7/interp = 1
+tracks/7/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Wheel_back/wheel_back_f:transform/pos")
+tracks/8/interp = 1
+tracks/8/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -20, 22 ) ] }
+tracks/9/type = "value"
+tracks/9/path = NodePath("Wheel_back/wheel_back_f:transform/rot")
+tracks/9/interp = 1
+tracks/9/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Wheel_front/wheel_front_b:transform/pos")
+tracks/10/interp = 1
+tracks/10/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 22, 22 ) ] }
+tracks/11/type = "value"
+tracks/11/path = NodePath("Wheel_front/wheel_front_b:transform/rot")
+tracks/11/interp = 1
+tracks/11/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/12/type = "value"
+tracks/12/path = NodePath("Body/Antenna/joint:transform/pos")
+tracks/12/interp = 1
+tracks/12/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -9.49999, -11 ) ] }
+tracks/13/type = "value"
+tracks/13/path = NodePath("Body/Antenna/joint:transform/rot")
+tracks/13/interp = 1
+tracks/13/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/14/type = "value"
+tracks/14/path = NodePath("Wheel_back/wheel_back_b:transform/pos")
+tracks/14/interp = 1
+tracks/14/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 3, 22 ) ] }
+tracks/15/type = "value"
+tracks/15/path = NodePath("Wheel_back/wheel_back_b:transform/rot")
+tracks/15/interp = 1
+tracks/15/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/16/type = "value"
+tracks/16/path = NodePath("Body/Eye_l:transform/pos")
+tracks/16/interp = 1
+tracks/16/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -24, -11 ) ] }
+tracks/17/type = "value"
+tracks/17/path = NodePath("Body/Eye_l:transform/rot")
+tracks/17/interp = 1
+tracks/17/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/18/type = "value"
+tracks/18/path = NodePath("Body/Antenna:transform/pos")
+tracks/18/interp = 1
+tracks/18/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -17, -18 ) ] }
+tracks/19/type = "value"
+tracks/19/path = NodePath("Body/Antenna:transform/rot")
+tracks/19/interp = 1
+tracks/19/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/20/type = "value"
+tracks/20/path = NodePath("Body:transform/pos")
+tracks/20/interp = 1
+tracks/20/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, 0 ) ] }
+tracks/21/type = "value"
+tracks/21/path = NodePath("Body:transform/rot")
+tracks/21/interp = 1
+tracks/21/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/22/type = "value"
+tracks/22/path = NodePath("Wheel_back/wheel_back_f:frame")
+tracks/22/interp = 1
+tracks/22/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/23/type = "value"
+tracks/23/path = NodePath("Wheel_front/wheel_front_f:frame")
+tracks/23/interp = 1
+tracks/23/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/24/type = "value"
+tracks/24/path = NodePath("Wheel_front/wheel_front_b:frame")
+tracks/24/interp = 1
+tracks/24/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+
+[sub_resource type="Animation" id=7]
+
+length = 0.3
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Antenna:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Antenna:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -19.0544 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, -1 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Wheel_back/wheel_back_f:frame")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Wheel_front/wheel_front_f:frame")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Wheel_front/wheel_front_b:frame")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+
+[sub_resource type="Animation" id=3]
+
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body/Antenna:transform/pos")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1.00094 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body/Antenna:transform/rot")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":true, "times":FloatArray( 0, 1.00094 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -16.1991 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:transform/pos")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 3 ) ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body:transform/rot")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Wheel_back/wheel_back_f:frame")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Wheel_front/wheel_front_f:frame")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Wheel_front/wheel_front_b:frame")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+
+[sub_resource type="Animation" id=4]
+
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wheel_front/wheel_front_f:frame")
+tracks/0/interp = 1
+tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 3, 4, 5 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wheel_front/wheel_front_b:frame")
+tracks/1/interp = 1
+tracks/1/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 3, 4, 5 ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Wheel_back/wheel_back_f:frame")
+tracks/2/interp = 1
+tracks/2/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0, 1, 2 ] }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body/Antenna:transform/pos")
+tracks/3/interp = 1
+tracks/3/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Antenna:transform/rot")
+tracks/4/interp = 1
+tracks/4/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -4.39145 ] }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body:transform/pos")
+tracks/5/interp = 1
+tracks/5/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 1 ) ] }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Body:transform/rot")
+tracks/6/interp = 1
+tracks/6/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+
+[node name="player" type="KinematicBody2D"]
+
+transform/pos = Vector2( 416, 160 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+TILE_LADDER = 1
+TILE_ACID = 2
+
+[node name="ray_top" type="RayCast2D" parent="."]
+
+enabled = true
+cast_to = Vector2( 0, -32 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_right" type="RayCast2D" parent="."]
+
+enabled = true
+cast_to = Vector2( 32, 0 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_bottom" type="RayCast2D" parent="."]
+
+enabled = true
+cast_to = Vector2( 0, 32 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_left" type="RayCast2D" parent="."]
+
+enabled = true
+cast_to = Vector2( -32, 0 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_check_top" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_check_right" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 64, 0 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_check_bottom" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 0, 64 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_check_left" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( -64, 0 )
+enabled = true
+cast_to = Vector2( 0, 8 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_overlap" type="RayCast2D" parent="."]
+
+enabled = true
+cast_to = Vector2( 0, 8 )
+layer_mask = 1
+type_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = -1
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+visibility/visible = false
+frames = SubResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="SpriteGroup" type="Node2D" parent="."]
+
+[node name="Wheel_back" type="Node2D" parent="SpriteGroup"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="wheel_back_f" type="Sprite" parent="SpriteGroup/Wheel_back"]
+
+transform/pos = Vector2( -20, 22 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+
+[node name="wheel_back_b" type="Sprite" parent="SpriteGroup/Wheel_back"]
+
+transform/pos = Vector2( 3, 22 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+
+[node name="Body" type="Sprite" parent="SpriteGroup"]
+
+transform/pos = Vector2( 0, -1 )
+texture = ExtResource( 4 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="Antenna" type="Sprite" parent="SpriteGroup/Body"]
+
+transform/pos = Vector2( -17, -18 )
+transform/rot = -8.09956
+texture = ExtResource( 5 )
+offset = Vector2( -4, -6 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="joint" type="Node2D" parent="SpriteGroup/Body/Antenna"]
+
+transform/pos = Vector2( -9.49999, -11 )
+transform/scale = Vector2( 0.109375, 0.09375 )
+__meta__ = { "_edit_bone_":true }
+
+[node name="Eye_l" type="Sprite" parent="SpriteGroup/Body"]
+
+transform/pos = Vector2( -24, -11 )
+texture = ExtResource( 6 )
+
+[node name="Eye_r" type="Sprite" parent="SpriteGroup/Body"]
+
+transform/pos = Vector2( -14, -11 )
+texture = ExtResource( 6 )
+
+[node name="Wheel_front" type="Node2D" parent="SpriteGroup"]
+
+__meta__ = { "_editor_collapsed":true }
+
+[node name="wheel_front_f" type="Sprite" parent="SpriteGroup/Wheel_front"]
+
+transform/pos = Vector2( -1, 22 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 3
+
+[node name="wheel_front_b" type="Sprite" parent="SpriteGroup/Wheel_front"]
+
+transform/pos = Vector2( 22, 22 )
+texture = ExtResource( 3 )
+vframes = 2
+hframes = 3
+frame = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SpriteGroup"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/climb = SubResource( 5 )
+anims/default position = SubResource( 6 )
+anims/fall = SubResource( 7 )
+anims/idle = SubResource( 3 )
+anims/walk = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit/left = 0
+limit/top = 0
+limit/right = 10000000
+limit/bottom = 10000000
+drag_margin/h_enabled = true
+drag_margin/v_enabled = true
+smoothing/enable = false
+smoothing/speed = 5.0
+drag_margin/left = 0.2
+drag_margin/top = 0.2
+drag_margin/right = 0.2
+drag_margin/bottom = 0.2
+__meta__ = { "_edit_lock_":true }
+
+[node name="sample" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = ExtResource( 7 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 0.0
+default/filter/resonance = 0.0
+default/filter/gain = 0.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+

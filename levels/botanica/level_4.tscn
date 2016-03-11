@@ -1,0 +1,201 @@
+[gd_scene load_steps=6 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=5]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( -131064, 1, -131063, 4, -131062, 0, -131061, 0, -131060, 3, -65528, 1, 9, 1, 65544, 1, 65546, 7, 131074, 4, 131075, 0, 131076, 0, 131077, 3, 131081, 1, 131082, 10, 131083, 1, 131092, 7, 131093, 1, 196616, 1, 196618, 10, 196619, 1, 196629, 1, 262145, 4, 262146, 0, 262147, 0, 262148, 0, 262149, 0, 262150, 3, 262152, 4, 262153, 14, 262154, 5, 262155, 11, 262157, 4, 262158, 0, 262159, 0, 262160, 0, 262161, 0, 262162, 0, 262163, 3, 262165, 1, 262166, 7, 327701, 1, 393237, 1, 458758, 4, 458759, 0, 458760, 3, 458766, 4, 458767, 0, 458768, 0, 458769, 0, 458770, 3, 458773, 4, 458774, 0, 458775, 3, 458777, 4, 458778, 0, 458779, 3, 524298, 4, 524299, 0, 524300, 3, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 720913, 2, 720914, 2, 720915, 2, 720916, 2, 720917, 2, 720918, 2, 720919, 2, 720920, 2, 720921, 2, 720922, 2, 720923, 2, 720924, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 256, 2.18279e-11 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -320 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1728, 768 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="flower" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 320, 64 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="teleporter" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 512, 384 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter1"
+
+[node name="teleporter1" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 896, 384 )
+collision/margin = 0.08
+
+[node name="teleporter2" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1472, 384 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter3"
+
+[node name="teleporter3" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1152, 384 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter2"
+
+[node name="flower1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 64 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 256, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 384, 384 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 576, 64 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 512, 0 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower6" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 640, 0 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower7" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 704, 64 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower8" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, -192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower9" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 704, 448 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower10" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1024, 384 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower11" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1280, 64 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower13" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1472, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower14" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 832, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower15" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1024, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower16" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1216, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="breakable_ground" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 448, 256 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="breakable_ground2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1536, 448 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="breakable_ground1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 768, 256 )
+collision/layers = 1
+collision/mask = 1
+
+

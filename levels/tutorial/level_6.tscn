@@ -1,0 +1,173 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://scripts/tutorial_level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=2]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=4]
+[ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
+[ext_resource path="res://gfx/radioactive.png" type="Texture" id=6]
+[ext_resource path="res://gfx/Player/player1.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 96, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 196612, 4, 196613, 0, 196614, 0, 196615, 0, 196616, 0, 196617, 0, 196618, 0, 196619, 0, 196620, 0, 196621, 3, 262146, 4, 262147, 3, 327690, 1, 393216, 4, 393217, 0, 393218, 0, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 0, 393228, 0, 393229, 0, 393230, 3, 786430, 2, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 720913, 2 )
+
+[node name="box" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 128, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 128 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 256, 64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 4 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( -64, 0 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1024, 704 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="Label" type="Label" parent="."]
+
+margin/left = 288.0
+margin/top = 32.0
+margin/right = 707.0
+margin/bottom = 65.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
+text = "How can that ladder be used\?..."
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="areas" type="Node2D" parent="."]
+
+[node name="hints" type="Area2D" parent="areas"]
+
+transform/pos = Vector2( 640, 320 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, -0, 0, 1, -96, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/hints"]
+
+transform/pos = Vector2( -96, 0 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = -1
+
+[node name="hints" type="Node2D" parent="areas/hints"]
+
+visibility/opacity = 0.5
+
+[node name="box" type="Sprite" parent="areas/hints/hints"]
+
+transform/pos = Vector2( 64, 0 )
+texture = ExtResource( 6 )
+
+[node name="player" type="Sprite" parent="areas/hints/hints"]
+
+transform/pos = Vector2( 0, -64 )
+texture = ExtResource( 7 )
+flip_h = true
+
+[node name="player1" type="Sprite" parent="areas/hints/hints"]
+
+visibility/opacity = 0.3
+texture = ExtResource( 7 )
+flip_h = true
+
+[node name="player2" type="Sprite" parent="areas/hints/hints"]
+
+visibility/opacity = 0.6
+transform/pos = Vector2( 0, -32 )
+texture = ExtResource( 7 )
+flip_h = true
+
+[node name="check" type="Area2D" parent="areas"]
+
+transform/pos = Vector2( 832, 320 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, -0, 0, 1, 3, 3 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/check"]
+
+transform/pos = Vector2( 3, 3 )
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = -1
+
+

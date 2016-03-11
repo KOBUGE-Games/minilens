@@ -1,0 +1,164 @@
+[gd_scene load_steps=8 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=7]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 196611, 4, 196612, 0, 196613, 3, 196614, 1, 196616, 7, 196618, 4, 196619, 0, 196620, 3, 196621, 1, 196624, 4, 196625, 0, 196626, 0, 196627, 3, 196628, 1, 196630, 4, 196631, 3, 262148, 9, 262149, 5, 262150, 13, 262151, 14, 262152, 5, 262153, 5, 262154, 5, 262155, 8, 262157, 1, 262164, 1, 327693, 4, 327694, 3, 327695, 1, 327700, 1, 393230, 10, 393231, 1, 393236, 1, 458768, 7, 458772, 1, 524293, 1, 524299, 1, 524302, 4, 524303, 14, 524304, 8, 524306, 4, 524307, 3, 524308, 1, 589826, 4, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 3, 589834, 4, 589835, 0, 589836, 0, 589837, 14, 589838, 5, 589839, 8, 589844, 1, 655380, 1, 720897, 1, 720903, 4, 720904, 0, 720905, 0, 720906, 0, 720907, 3, 720909, 4, 720910, 0, 720911, 0, 720912, 3, 720914, 4, 720915, 3, 720916, 1, 720917, 4, 720918, 0, 720919, 3, 786452, 1, 851987, 4, 851988, 0, 851989, 0, 851990, 3, 917504, 2, 917505, 2, 917506, 2, 917507, 2, 917508, 2, 917509, 2, 917510, 2, 917511, 2, 917512, 2, 917513, 2, 917514, 2, 917515, 2, 917516, 2, 917517, 2, 917518, 2, 917519, 2, 917520, 2, 917521, 2, 917522, 2, 917523, 2, 917524, 2, 917525, 2, 917526, 2, 917527, 2, 917528, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 256, 384 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1536, 960 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="box" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 512, 512 )
+collision/margin = 0.08
+
+[node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 256, 128 )
+
+[node name="flower" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1472, 128 )
+
+[node name="box1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 384, 512 )
+collision/margin = 0.08
+
+[node name="box2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 512 )
+collision/margin = 0.08
+
+[node name="teleporter" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 704, 640 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter1"
+
+[node name="teleporter1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1024, 320 )
+collision/margin = 0.08
+
+[node name="breakable_ground" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1088, 704 )
+
+[node name="breakable_ground1" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1344, 192 )
+
+[node name="box3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1088, 640 )
+collision/margin = 0.08
+
+[node name="box4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1472, 640 )
+collision/margin = 0.08
+
+[node name="teleporter2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1344, 768 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter3"
+
+[node name="teleporter3" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 128, 704 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter2"
+
+[node name="flower1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1152, 448 )
+
+[node name="flower2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1088, 128 )
+
+[node name="flower3" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 960, 256 )
+
+[node name="flower4" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 832, 640 )
+
+[node name="flower5" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 128, 512 )
+
+[node name="box5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 704, 128 )
+collision/margin = 0.08
+
+[node name="box6" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 512, 128 )
+collision/margin = 0.08
+
+[node name="bomb_pickup1" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 448, 640 )
+
+

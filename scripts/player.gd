@@ -31,7 +31,7 @@ var move_up = false
 var move_down = false
 
 var place_bomb_was_pressed = false # Did we press space the last frame?
-var bomb = preload("res://scenes/bomb.xml") # The bomb scene
+var bomb = preload("res://scenes/bomb.tscn") # The bomb scene
 var bombs = 0 # How much bombs do we have left
 
 var tilemap # The Tilemap

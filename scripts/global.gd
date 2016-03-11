@@ -41,7 +41,7 @@ func load_scene(var path):
 	root.add_child(current_scene) # And add the requested one
 	
 func load_level(var pack, var level):
-	load_scene("res://scenes/main.xml")
+	load_scene("res://scenes/main.tscn")
 	current_scene.get_node("level_holder").load_level(pack, level)
 	
 # The format of saves is like:

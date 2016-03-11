@@ -1,0 +1,223 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://scripts/tutorial_level.gd" type="Script" id=1]
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=2]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/box_static.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://gfx/theme.xml" type="Theme" id=8]
+[ext_resource path="res://fonts/papercut.fnt" type="Font" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 64, 64 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32, 32 )
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 65540, 1, 131077, 1, 196613, 1, 196617, 1, 196620, 4, 196621, 3, 262148, 4, 262150, 0, 262152, 0, 262154, 0, 262155, 3, 393218, 4, 393219, 0, 393220, 0, 393221, 0, 393222, 0, 393223, 0, 393224, 0, 393225, 0, 393226, 0, 393227, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 512, 64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 3 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 960, 768 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 448, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 192, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box 2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 256, 192 )
+collision/margin = 0.08
+
+[node name="box3" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 256, 128 )
+collision/margin = 0.08
+
+[node name="box4" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 192, 128 )
+collision/margin = 0.08
+
+[node name="box5" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 320, 256 )
+collision/margin = 0.08
+
+[node name="box6" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 448, 256 )
+collision/margin = 0.08
+
+[node name="box7" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 576, 256 )
+collision/margin = 0.08
+
+[node name="box8" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 128, 320 )
+collision/margin = 0.08
+
+[node name="box" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 640, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="areas" type="Node2D" parent="."]
+
+[node name="explanation" type="Area2D" parent="areas"]
+
+transform/pos = Vector2( 512, 192 )
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/explanation"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = -1
+
+[node name="Label" type="Label" parent="areas/explanation"]
+
+margin/left = -160.0
+margin/top = -160.0
+margin/right = 224.0
+margin/bottom = -85.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+theme/theme = ExtResource( 8 )
+text = "See those wooden boxes\?\nThey block your way, but you\ncan destroy them with a bomb"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Label1" type="Label" parent="areas/explanation"]
+
+margin/left = -352.0
+margin/top = -32.0
+margin/right = -160.0
+margin/bottom = 32.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+theme/theme = ExtResource( 8 )
+custom_colors/font_color = Color( 1, 0.118736, 0.118736, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Destroy\nme!"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="check" type="Area2D" parent="areas"]
+
+transform/pos = Vector2( 640, 128 )
+input/pickable = true
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, -0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="areas/check"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = -1
+
+[node name="Label" type="Label" parent="."]
+
+margin/left = 288.0
+margin/top = 7.0
+margin/right = 707.0
+margin/bottom = 32.0
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 9 )
+custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
+text = "More types of objects!"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+

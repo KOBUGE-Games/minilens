@@ -2,7 +2,7 @@ extends Control
 # This script drives the main menu
 var select_pack    # The OptionButton for selecting packs
 var target         # When moveing the view, where do we want to go?
-var level_btn_scene = preload("res://scenes/level_select_btn.xml") # The Level selecion button in a scene
+var level_btn_scene = preload("res://scenes/level_select_btn.tscn") # The level selection button in a scene
 var level_list     # The node that contains all level buttons
 export var level_btn_size = Vector2(100,100) # The size+margin of every level selecion button
 export var level_btn_margin_x = 212.0 # The size+margin of every level selecion button

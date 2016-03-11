@@ -27,7 +27,7 @@ var has_sounds = true
 func load_level(var pack, var level): # Load level N from pack P
 	current_level = level
 	current_pack = pack
-	level_scene = load(str("res://levels/", pack, "/level_", level, ".xml"))
+	level_scene = load(str("res://levels/", pack, "/level_", level, ".tscn"))
 	# Remove every currently loaded level
 	for i in range(get_child_count()):
 		get_child(i).queue_free()
@@ -102,7 +102,7 @@ func goal_take(var type = "",var wait = 0): # Called when a goal is taken
 		global.set_reached_level(current_pack, current_level + 1)
 		# Try to open the next level
 		var f = File.new()
-		var err = f.open(str("res://levels/", current_pack, "/level_", int(current_level) + 1, ".xml"), f.READ)
+		var err = f.open(str("res://levels/", current_pack, "/level_", int(current_level) + 1, ".tscn"), f.READ)
 		if(err != 0): # If we are unable to open it, we show that no more levels are left in this pack instead of crashing
 			btn2_action = 0 # Can't click "Next Level", because there is no level after that one
 			show_popup("Good job!",str("Level passed in ",turns," turns.\nThere are no more levels left in this pack. You can go to play some other pack, though."))
@@ -186,7 +186,7 @@ func _process(delta): # Move the acid
 	tileset.tile_set_region(2, Rect2(64-64*acid_animation_pos/acid_animation_time,0,64,64))
 
 func back_to_menu(): # Jump back to the main menu
-	global.load_scene("res://scenes/main_menu.xml")
+	global.load_scene("res://scenes/main_menu.tscn")
 
 func show_popup(var title, var text): # Show a popup with some title, and some text
 	var popup = get_node("../gui/CanvasLayer/popup")

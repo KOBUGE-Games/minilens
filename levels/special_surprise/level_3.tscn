@@ -1,0 +1,121 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://scenes/tiles.xml" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/box_static.tscn" type="PackedScene" id=6]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+visibility/opacity = 0.2
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 262147, 4, 262148, 0, 262149, 2, 262150, 2, 262151, 0, 262152, 3, 262154, 4, 262155, 0, 262156, 3, 327685, 0, 327686, 0, 458755, 4, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 3, 524301, 1, 589837, 1, 655373, 1, 655374, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 5, 851967, 2, 786432, 2, 786433, 2, 786434, 2, 786435, 2, 786436, 2, 786437, 2, 786438, 2, 786439, 2, 786440, 2, 786441, 2, 786442, 2, 786443, 2, 786444, 2, 786445, 2, 786446, 2, 786447, 2, 786448, 2 )
+
+[node name="tilemap1" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 262147, 4, 262148, 0, 262149, 2, 262150, 2, 262151, 0, 262152, 3, 262154, 4, 262155, 0, 262156, 3, 327684, 9, 327685, 5, 327686, 5, 327687, 5, 327688, 8, 458755, 4, 458756, 0, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 0, 458762, 3, 655373, 0, 786431, 2, 720896, 0, 720897, 0, 720898, 0, 720899, 0, 720900, 0, 720901, 0, 720902, 0, 720903, 0, 720904, 0, 720905, 0, 720906, 0, 720907, 0, 720908, 0, 720909, 5, 720910, 2, 720911, 2, 720912, 2 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 192, 128 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 960, 768 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="box" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 256, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 704, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="flower" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 832, 448 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box 2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 576, 256 )
+collision/margin = 0.08
+
+[node name="box1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 256, 192 )
+collision/layers = 1
+collision/mask = 1
+
+[node name="box2" parent="." instance=ExtResource( 3 )]
+
+visibility/opacity = 0.3
+transform/pos = Vector2( 256, 384 )
+collision/layers = 1
+collision/mask = 1
+
+
