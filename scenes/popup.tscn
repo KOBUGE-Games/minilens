@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://gfx/theme.tres" type="Theme" id=1]
+[ext_resource path="res://shared/theme.tres" type="Theme" id=1]
 [ext_resource path="res://gfx/popup_bg.png" type="Texture" id=2]
 [ext_resource path="res://gfx/theme/green_panel.png" type="Texture" id=3]
 [ext_resource path="res://fonts/papercut.fnt" type="Font" id=4]

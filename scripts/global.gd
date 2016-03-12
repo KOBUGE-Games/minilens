@@ -16,13 +16,14 @@ var is_first_load = true
 var version = 1.2
 
 func _ready():
+	randomize()
 	root = get_tree().get_root()
 	viewport = get_viewport()
 	current_scene = root.get_child(root.get_child_count()-1)
 	orig_size = Vector2(1024,768)
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
-	OS.set_window_title("Minilens - Version " + str(version))
+	OS.set_window_title(str("Minilens - Version ", version))
 
 func window_resize():
 	var window_size = OS.get_window_size()
@@ -47,6 +48,7 @@ func load_scene(var path):
 	
 func load_level(var pack, var level):
 	load_scene("res://scenes/main.tscn")
+	print(current_scene.get_name())
 	current_scene.get_node("level_holder").load_level(pack, level)
 	
 # The format of saves is like:

@@ -5,7 +5,7 @@
 [ext_resource path="res://gfx/return.png" type="Texture" id=3]
 [ext_resource path="res://gfx/menuGrid.png" type="Texture" id=4]
 [ext_resource path="res://gfx/bomb.png" type="Texture" id=5]
-[ext_resource path="res://gfx/theme.tres" type="Theme" id=6]
+[ext_resource path="res://shared/theme.tres" type="Theme" id=6]
 [ext_resource path="res://gfx/radioactive.png" type="Texture" id=7]
 [ext_resource path="res://gfx/flower.png" type="Texture" id=8]
 [ext_resource path="res://gfx/artefact.png" type="Texture" id=9]
@@ -215,11 +215,14 @@ visibility/visible = false
 
 [node name="touch_controls" type="Node2D" parent="gui/CanvasLayer"]
 
+__meta__ = { "_editor_collapsed":true }
+
 [node name="buttons" type="Node2D" parent="gui/CanvasLayer/touch_controls"]
 
 visibility/visible = false
 transform/pos = Vector2( 824, 568 )
 transform/scale = Vector2( 1.35, 1.35 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="left" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/buttons"]
 
@@ -274,6 +277,8 @@ action = "place_bomb"
 visibility_mode = 1
 
 [node name="areas" type="Node2D" parent="gui/CanvasLayer/touch_controls"]
+
+__meta__ = { "_editor_collapsed":true }
 
 [node name="left" type="TouchScreenButton" parent="gui/CanvasLayer/touch_controls/areas"]
 

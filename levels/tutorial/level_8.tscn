@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/box_static.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/box.tscn" type="PackedScene" id=7]
-[ext_resource path="res://gfx/theme.tres" type="Theme" id=8]
+[ext_resource path="res://shared/theme.tres" type="Theme" id=8]
 [ext_resource path="res://fonts/papercut.fnt" type="Font" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]

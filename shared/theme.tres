@@ -1,0 +1,218 @@
+[gd_resource type="Theme" load_steps=22 format=1]
+
+[ext_resource path="res://fonts/papercut.fnt" type="Font" id=1]
+[ext_resource path="res://gfx/theme/button_disabled.png" type="Texture" id=2]
+[ext_resource path="res://gfx/theme/button_focus.png" type="Texture" id=3]
+[ext_resource path="res://gfx/theme/button_hover.png" type="Texture" id=4]
+[ext_resource path="res://gfx/theme/button_normal.png" type="Texture" id=5]
+[ext_resource path="res://gfx/theme/button_pressed.png" type="Texture" id=6]
+[ext_resource path="res://gfx/theme/open_.png" type="Texture" id=7]
+[ext_resource path="res://gfx/theme/grey_panel.png" type="Texture" id=8]
+[ext_resource path="res://gfx/theme/grey_boxTick.png" type="Texture" id=9]
+[ext_resource path="res://gfx/theme/grey_circle.png" type="Texture" id=10]
+[ext_resource path="res://gfx/theme/red_panel.png" type="Texture" id=11]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 2 )
+margin/left = 8.0
+margin/right = 8.0
+margin/top = 8.0
+margin/bottom = 16.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=12]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 3 )
+margin/left = 8.0
+margin/right = 8.0
+margin/top = 8.0
+margin/bottom = 16.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=13]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 4 )
+margin/left = 8.0
+margin/right = 8.0
+margin/top = 8.0
+margin/bottom = 16.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=14]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 5 )
+margin/left = 8.0
+margin/right = 8.0
+margin/top = 8.0
+margin/bottom = 16.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=15]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 6 )
+margin/left = 8.0
+margin/right = 8.0
+margin/top = 8.0
+margin/bottom = 16.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=16]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 8 )
+margin/left = 8.0
+margin/right = 8.0
+margin/top = 8.0
+margin/bottom = 8.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="ImageTexture" id=17]
+
+flags = 4
+image = Image( 8, 8, 0, RGBA, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 220, 220, 220, 222, 220, 220, 220, 222, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+size = Vector2( 8, 8 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="StyleBoxTexture" id=22]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = ExtResource( 11 )
+margin/left = 8.0
+margin/right = 8.0
+margin/top = 8.0
+margin/bottom = 8.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[sub_resource type="ImageTexture" id=20]
+
+flags = 4
+image = Image( 8, 8, 0, RGBA, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 115, 155, 170, 179, 206, 220, 225, 179, 206, 220, 225, 179, 206, 220, 225, 179, 206, 220, 225, 179, 206, 220, 225, 179, 206, 220, 225, 179, 115, 155, 170, 179, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
+size = Vector2( 8, 8 )
+storage = 0
+lossy_quality = 0.7
+
+[sub_resource type="StyleBoxTexture" id=21]
+
+content_margin/left = -1.0
+content_margin/right = -1.0
+content_margin/top = -1.0
+content_margin/bottom = -1.0
+texture = SubResource( 20 )
+margin/left = 3.0
+margin/right = 3.0
+margin/top = 3.0
+margin/bottom = 3.0
+expand_margin/left = 0.0
+expand_margin/right = 0.0
+expand_margin/top = 0.0
+expand_margin/bottom = 0.0
+draw_center = true
+
+[resource]
+
+default_font = ExtResource( 1 )
+Button/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+Button/colors/font_color_disabled = Color( 0, 0, 0, 0.2 )
+Button/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = SubResource( 3 )
+Button/styles/focus = SubResource( 12 )
+Button/styles/hover = SubResource( 13 )
+Button/styles/normal = SubResource( 14 )
+Button/styles/pressed = SubResource( 15 )
+Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+Label/constants/shadow_as_outline = 0
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/fonts/font = ExtResource( 1 )
+OptionButton/colors/font_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+OptionButton/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+OptionButton/colors/font_color_hover = Color( 0.941176, 0.941176, 0.941176, 1 )
+OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+OptionButton/constants/arrow_margin = 12
+OptionButton/constants/hseparation = 2
+OptionButton/fonts/font = ExtResource( 1 )
+OptionButton/icons/arrow = ExtResource( 7 )
+OptionButton/styles/disabled = SubResource( 3 )
+OptionButton/styles/focus = SubResource( 12 )
+OptionButton/styles/hover = SubResource( 13 )
+OptionButton/styles/normal = SubResource( 14 )
+OptionButton/styles/pressed = SubResource( 15 )
+Panel/styles/panel = SubResource( 16 )
+Panel/styles/panelf = SubResource( 16 )
+Panel/styles/panelnc = SubResource( 16 )
+PopupMenu/colors/font_color = Color( 0.0976562, 0.0976562, 0.0976562, 1 )
+PopupMenu/colors/font_color_accel = Color( 0.242188, 0.242188, 0.242188, 0.8 )
+PopupMenu/colors/font_color_disabled = Color( 0.421875, 0.421875, 0.421875, 0.8 )
+PopupMenu/colors/font_color_hover = Color( 0.136719, 0.136719, 0.136719, 1 )
+PopupMenu/constants/hseparation = 4
+PopupMenu/constants/vseparation = 8
+PopupMenu/fonts/font = ExtResource( 1 )
+PopupMenu/icons/checked = ExtResource( 9 )
+PopupMenu/icons/submenu = SubResource( 17 )
+PopupMenu/icons/unchecked = ExtResource( 10 )
+PopupMenu/styles/hover = SubResource( 22 )
+PopupMenu/styles/panel = SubResource( 16 )
+PopupMenu/styles/panel_disabled = SubResource( 16 )
+PopupMenu/styles/separator = SubResource( 21 )
+PopupPanel/styles/panel = SubResource( 16 )
+

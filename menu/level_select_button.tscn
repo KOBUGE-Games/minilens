@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://shared/theme.tres" type="Theme" id=1]
+[ext_resource path="res://gfx/level_select_rect.png" type="Texture" id=2]
+[ext_resource path="res://menu/level_select_button.gd" type="Script" id=3]
+[ext_resource path="res://fonts/paper_cut_large_bold.fnt" type="Font" id=4]
+[ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
+[ext_resource path="res://gfx/locked.png" type="Texture" id=6]
+
+[node name="level_select_button" type="TextureButton"]
+
+margin/right = 40.0
+margin/bottom = 40.0
+rect/min_size = Vector2( 100, 100 )
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+theme/theme = ExtResource( 1 )
+toggle_mode = false
+textures/normal = ExtResource( 2 )
+script/script = ExtResource( 3 )
+
+[node name="number" type="Label" parent="."]
+
+visibility/opacity = 0.3
+anchor/right = 1
+anchor/bottom = 1
+margin/bottom = -15.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "12"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="label" type="Label" parent="."]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.232748, 0.265563, 0.237643, 1 )
+text = "Long, longer, longest"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lock" type="TextureFrame" parent="."]
+
+visibility/visible = false
+visibility/opacity = 0.5
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+texture = ExtResource( 6 )
+
+

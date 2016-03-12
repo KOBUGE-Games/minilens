@@ -208,7 +208,7 @@ func _process(delta): # Move the acid
 	tileset.tile_set_region(2, Rect2(64-64*acid_animation_pos/acid_animation_time,0,64,64))
 
 func back_to_menu(): # Jump back to the main menu
-	global.load_scene("res://scenes/main_menu.tscn")
+	global.load_scene("res://menu/menu.tscn")
 
 func show_popup(var title, var text): # Show a popup with some title, and some text
 	var popup = get_node("../gui/CanvasLayer/popup")
