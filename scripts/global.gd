@@ -4,9 +4,6 @@ extends Node
 #  2. Set/Get the amount of locked levels in a pack
 #  3. Keep the aspect ratio
 
-const INPUT_AREAS = 0
-const INPUT_BUTTONS = 1
-
 var root
 var current_scene
 var orig_size
@@ -47,7 +44,7 @@ func load_scene(var path):
 	root.add_child(current_scene) # And add the requested one
 	
 func load_level(var pack, var level):
-	load_scene("res://scenes/main.tscn")
+	load_scene("res://main/main.tscn")
 	print(current_scene.get_name())
 	current_scene.get_node("level_holder").load_level(pack, level)
 	
@@ -97,33 +94,4 @@ func set_reached_level(var pack, var value):
 		if(!err): # Then we rewrite everything
 			for line in data:
 				f.store_line(str(line[0]," ",line[1]))
-	f.close()
-
-func read_options():
-	var data = {"fullscreen":"0", "music":"1", "sound":"1", "input_mode":"0"}
-	var f = File.new()
-	var err = f.open("user://options.txt",File.READ)
-	if(err): # If the file doesn't exist, we try to write to it first
-		f.close()
-		f.open("user://options.txt",File.WRITE)
-		f.store_line("fullscreen:0")
-		f.store_line("music:1")
-		f.store_line("input_mode:0")
-		f.close()
-		var err = f.open("user://options.txt",File.READ)
-	if(!err):
-		var next_line = f.get_line()
-		while(!f.eof_reached()): # We read line by line
-			var parse = next_line.split(":")
-			data[parse[0]] = parse[1]
-			next_line = f.get_line()
-	f.close()
-	return data
-
-func save_options(data):
-	var f = File.new()
-	var err = f.open("user://options.txt",File.WRITE)
-	if(!err):
-		for i in data:
-			f.store_line(str(i,":",data[i]))
 	f.close()

@@ -18,7 +18,25 @@ func get_file_lines(path):
 			while !file.eof_reached():
 				file_lines_cache[path].push_back(file.get_line())
 	
-	return file_lines_cache[path] # Return from cache, since we are now sure the entry exists 
+	return file_lines_cache[path] # Return from cache, since we are now sure the entry exists
+
+func set_file_lines(path, lines):
+	"""Update the array of the lines of the file at `path`"""
+	
+	var file = File.new()
+	var error = file.open(path, File.WRITE)
+	
+	if error != OK:
+		return error # Don't save to file_lines_cache, so that it would still be a valid representation of the real file
+	else:
+		file_lines_cache[path] = Array(lines) # We write to the cache
+		
+		for line in file_lines_cache[path]:
+			file.store_line(line)
+		
+	file.close()
+	
+	return OK
 
 func get_file_contents(path):
 	"""Returns a string of the whole contents of the file at `path`"""
@@ -35,3 +53,8 @@ func get_file_contents(path):
 			buffer = str(buffer, "\n", line)
 	
 	return buffer
+
+func set_file_contents(path, buffer):
+	"""Update the whole contents of the file at `path`"""
+	
+	return set_file_lines(path, buffer.split("\n"))

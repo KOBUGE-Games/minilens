@@ -1,251 +1,153 @@
+
 extends Node2D
-# This script serves to hold the levels, and to manage them
+
+signal counters_changed()
+
+export var acid_animation_time = 1.0 # The speed of the acid animation
+
 var level_scene # The scene containing the level
+var level_node # The Node with the level
+var level_tileset = TileSet.new() # The Tileset
 var current_pack # The current pack/level
 var current_level
-var player # The player
-var level_node # The Node with the level
-var goals_left = 0 # The amount of goals left to be taken
-var goals_amount_by_type = {} # A Dictionary containing the STARTING amounts of different goals left to be taken
-var goals_taken_by_type = {} # A Dictionary containing the TAKEN amounts of different goals
-var global # The global node (serves like a library, see global.gd)
-var JS # The SUTjoystick module
-var btn2_action = 0 # Can we move left, when we press the secound button
-var time_until_popup = 0 # How much time should we wait 
-export var acid_animation_time = 1.0 # The speed of the acid animation
-var acid_animation_pos = 0.0 # The current pos of the animation (0-1)
-var tileset = TileSet.new() # The Tileset
-var viewport # The Viewport
-var tile_map_acid_y # When we extend the tilemap, we need to know on which Y we should place the acid
-var tile_map_acid_x_start # When we extend the tilemap, we need to know on which Y we should place the acid
-var tile_map_acid_x_end # When we extend the tilemap, we need to know on which Y we should place the acid
-var sample_player
-var turns = 0 # How many turns passed from the start
-var has_music = true
-var has_sounds = true
 
-func load_level(var pack, var level): # Load level N from pack P
+var goals_left = 0 # The amount of goals left to be taken
+var goals_total = {} # The starting amounts of different goals left to be taken
+var goals_taken = {} # The taken amounts of different goals
+
+var acid_animation_pos = 0.0 # The current pos of the animation (0-1)
+var tile_map_acid_y # The Y coordinate of the acid sea
+var tile_map_acid_x_start # The start of the acid sea on X
+var tile_map_acid_x_end # The end of the acid sea on X
+
+var turns = 0 # How many turns passed from the start
+
+onready var sample_player = get_node("../sample_player")
+onready var music = get_node("../music")
+onready var gui = get_node("../gui")
+onready var player = get_node("../player_holder/player")
+onready var global = get_node("/root/global")
+
+onready var raw_packs = FileManager.get_file_lines("res://levels/packs.txt")
+
+func _ready():
+	set_process(true)
+	get_node("/root").connect("size_changed",self,"window_resize")
+
+func _process(delta): # Move the acid
+	acid_animation_pos = acid_animation_pos + delta
+	if(acid_animation_pos > acid_animation_time):
+		acid_animation_pos = acid_animation_pos - acid_animation_time
+	level_tileset.tile_set_region(2, Rect2(64-64*acid_animation_pos/acid_animation_time,0,64,64))
+
+func load_level(pack, level): # Load level from pack
 	current_level = level
 	current_pack = pack
 	level_scene = load(str("res://levels/", pack, "/level_", level, ".tscn"))
+	
 	# Remove every currently loaded level
-	for i in range(get_child_count()):
-		get_child(i).queue_free()
-	level_node = level_scene.instance() # Instance the new level
+	for node in get_children():
+		node.queue_free()
+	
 	# Reset the counters
-	goals_left = 0 
-	goals_taken_by_type = {}
-	for type in goals_amount_by_type:
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
-		goals_node.hide()
-	get_node("../gui/CanvasLayer/bombs").hide()
-	goals_amount_by_type = {}
-	add_child(level_node) # Add that node to the scene
-	player.set_pos(level_node.get_node("start").get_pos()) # Teleport the player to his new location
+	turns = 0
+	goals_left = 0
+	goals_taken = {}
+	goals_total = {}
+	emit_signal("counters_changed")
+	
+	# Create the new level
+	level_node = level_scene.instance()
+	add_child(level_node)
+	
+	# Prepare the player
+	player.set_pos(level_node.get_node("start").get_pos())
 	player.set_z(0)
+	player.level_load(level_node)
 	
-	turns = -1 # Reset the number of turns
-	turn() # This will increase the number of turns by one, so will still have 0 turns... (the whole idea is to have the turn() function update the label)
-	
-	player.level_load(level_node) # Have the player prepare to play..
-	tileset = level_node.get_node("tilemap").get_tileset()
+	# Compute useful info about the tiles
+	level_tileset = level_node.get_node("tilemap").get_tileset()
 	var tilemap = level_node.get_node("tilemap")
+	
 	tile_map_acid_y = 0
 	tile_map_acid_x_start = 2
 	tile_map_acid_x_end = 1
-	while(tilemap.get_cell(0,tile_map_acid_y) != 2 && tile_map_acid_y < 3000):
+	
+	while(tilemap.get_cell(0, tile_map_acid_y) != 2 && tile_map_acid_y < 3000):
 		tile_map_acid_y += 1
+	
 	while(tilemap.get_cell(tile_map_acid_x_start, tile_map_acid_y) == 2 && tile_map_acid_x_start > -100):
 		tile_map_acid_x_start -= 1
+	
 	while(tilemap.get_cell(tile_map_acid_x_end, tile_map_acid_y) == 2 && tile_map_acid_x_end < 3000):
 		tile_map_acid_x_end += 1
+	
 	window_resize()
-	var musics_node = get_node("../music")
-	for i in range(musics_node.get_child_count()):
-		musics_node.get_child(i).stop()
-	if(has_music):
-		var random = abs(rand_seed(OS.get_unix_time())[1]) % musics_node.get_child_count()
-		musics_node.get_child(random).play()
-	if(global.input_mode == global.INPUT_AREAS):
-		get_node("../gui/CanvasLayer/touch_controls/buttons").hide()
-		get_node("../gui/CanvasLayer/touch_controls/areas").show()
-	elif(global.input_mode == global.INPUT_BUTTONS):
-		get_node("../gui/CanvasLayer/touch_controls/buttons").show()
-		get_node("../gui/CanvasLayer/touch_controls/areas").hide()
+	
+	music.play_random_music()
 
 func window_resize():
-	var new_size = viewport.get_size_override()
-	var new_pos = Vector2((new_size.x-1024)/2,0)
-	get_node("../gui/CanvasLayer/popup").set_pos(Vector2(new_size.x/2-252,210))
-	if(global.input_mode == global.INPUT_AREAS):
-		var areas = get_node("../gui/CanvasLayer/touch_controls/areas")
-		var unit = Vector2(new_size.x/6, new_size.y/6)
-		var sides_scale = Vector2(unit.x/2,(new_size.y-2*unit.y)/2)
-		var updown_scale = Vector2((new_size.x-2*unit.x)/2,unit.y/2)
-		areas.get_node("left").set_pos(Vector2(0,unit.y))
-		areas.get_node("left").set_scale(sides_scale)
-		areas.get_node("right").set_pos(Vector2(new_size.x-unit.x,unit.y))
-		areas.get_node("right").set_scale(sides_scale)
-		areas.get_node("up").set_pos(Vector2(unit.x,0))
-		areas.get_node("up").set_scale(updown_scale)
-		areas.get_node("down").set_pos(Vector2(unit.x,new_size.y-unit.y))
-		areas.get_node("down").set_scale(updown_scale)
-		var bomb_size = areas.get_node("bomb").get_texture().get_size()*areas.get_node("bomb").get_scale()/2
-		areas.get_node("bomb").set_pos(Vector2(new_size.x-0.5*unit.x-bomb_size.x,new_size.y-0.5*unit.y-bomb_size.y))
-	elif(global.input_mode == global.INPUT_BUTTONS):
-		get_node("../gui/CanvasLayer/touch_controls/buttons").set_pos(Vector2(new_size.x-200,568))
+	var new_size = get_node("/root").get_size_override()
 	var tilemap = level_node.get_node("tilemap")
 	for i in range(ceil(new_size.x/2/64)):
 		tilemap.set_cell(tile_map_acid_x_start - i, tile_map_acid_y, 2)
 		tilemap.set_cell(tile_map_acid_x_end + i, tile_map_acid_y, 2)
 	var scale = new_size.x/1024
 	if(scale > 1):
-		get_node("../gui/CanvasLayer/popup/popup_bg").set_scale(Vector2(scale,scale))
 		level_node.get_node("CanvasLayer").set_scale(Vector2(scale,scale))
 		level_node.get_node("CanvasLayer").set_offset(Vector2(32*scale,32-(scale - 1)*768/2))
 	player.get_node("Camera2D").force_update_scroll()
 
-func turn():
+func goal_add(type = ""): # Add one more goal
+	if goals_total.has(type):
+		goals_total[type] += 1
+	elif type != "":
+		goals_taken[type] = 0
+		goals_total[type] = 1
+	
+	goals_left = goals_left + 1
+	
+	emit_signal("counters_changed")
+
+func goal_take(type = "", wait = 0): # Called when a goal is taken
+	if goals_total.has(type):
+		goals_taken[type] += 1
+	
+	goals_left = goals_left - 1
+	
+	if goals_left == 0:
+		global.set_reached_level(current_pack, current_level + 1)
+		
+		# Check if there are more levels
+		for raw_pack in raw_packs:
+			var line_parts = raw_pack.split(" ")
+			if line_parts.size() >= 2:
+				if line_parts[0] == current_pack:
+					print(int(line_parts[1]), int(current_level) + 1)
+					gui.prompt_finsh_level(turns, int(line_parts[1]) >= int(current_level) + 1)
+					break
+	
+	emit_signal("counters_changed")
+
+func goal_return(type = "", wait = 0): # Called when a goal is returned (e.g. when you push a artefact out of a force)
+	if(goals_total.has(type)):
+		goals_taken[type] -= 1
+	
+	goals_left = goals_left + 1
+	
+	emit_signal("counters_changed")
+
+func play_sample(name):
+	if SettingsManager.read_settings().sound:
+		sample_player.play(name)
+
+func turn(): # Increment turns
 	turns += 1
-	get_node("../gui/CanvasLayer/turns/Label").set_text(str(turns))
+	emit_signal("counters_changed")
 
 func retry_level(): # Retry the current level
 	load_level(current_pack, current_level)
 
-func goal_take(var type = "",var wait = 0): # Called when a goal is taken
-	if(goals_amount_by_type.has(type)):
-		goals_taken_by_type[type] += 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
-		if(goals_node):
-			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
-	time_until_popup = wait
-	goals_left = goals_left - 1
-	if(goals_left == 0): # No more goals ;(
-		global.set_reached_level(current_pack, current_level + 1)
-		# Try to open the next level
-		var f = File.new()
-		var err = f.open(str("res://levels/", current_pack, "/level_", int(current_level) + 1, ".tscn"), f.READ)
-		if(err != 0): # If we are unable to open it, we show that no more levels are left in this pack instead of crashing
-			btn2_action = 0 # Can't click "Next Level", because there is no level after that one
-			show_popup("Good job!",str("Level passed in ",turns," turns.\nThere are no more levels left in this pack. You can go to play some other pack, though."))
-		else:
-			btn2_action = 1 # Can click "Next Level"
-			show_popup("Good job!",str("Level passed in ",turns," turns."))
-		f.close()
-		
-func goal_return(var type = "",var wait = 0): # Called when a goal is returned (e.g. when you push a artefact out of a force)
-	if(goals_amount_by_type.has(type)):
-		goals_taken_by_type[type] -= 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
-		if(goals_node):
-			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
-	goals_left = goals_left + 1
-
-func prompt_retry_level(): # Called when the robot dies
-	btn2_action = 0
-	show_popup("You died","Your robot was destroyed!\n Do you want to try again?")
-
-func level_impossible(var wait = 0): # Called when the level is impossible
-	btn2_action = 0
-	time_until_popup = wait
-	show_popup("Impossible","It seems that it is impossible to pass that level!\n Do you want to try again?")
 func next_level(): # Go to the next level
+	print("!")
 	load_level(current_pack, int(current_level) + 1)
-
-func goal_add(var type=""): # Add one more goal
-	goals_left = goals_left + 1
-	if(goals_amount_by_type.has(type)):
-		goals_amount_by_type[type] += 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
-		if(goals_node):
-			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
-	elif(type != ""):
-		goals_taken_by_type[type] = 0
-		goals_amount_by_type[type] = 1
-		var goals_node = get_node("../gui/CanvasLayer/").get_node(type) # Get node like ../gui/CanvasLayer/<type>
-		if(goals_node):
-			goals_node.show()
-			goals_node.get_node("Label").set_text(str(goals_taken_by_type[type]," / ",goals_amount_by_type[type]))
-
-func play_sample(var name):
-	if(has_sounds):
-		sample_player.play(name, false)
-
-func _input(event):
-	if JS.get_digital("back") || (event.is_action("retry") && event.is_pressed() && !event.is_echo()):
-		popup_btn1_pressed()
-	if JS.get_digital("action_3") || (event.is_action("next_level") && event.is_pressed() && !event.is_echo()):
-		popup_btn2_pressed()
-	if JS.get_digital("start") || (event.is_action("to_menu") && event.is_pressed() && !event.is_echo()):
-		popup_btn3_pressed()
-
-func _ready():
-	# Find nodes
-	global = get_node("/root/global")
-	JS = get_node("/root/SUTjoystick")
-	player = get_node("../player_holder/player")
-	viewport = get_viewport()
-	sample_player = get_node("../sample")
-	# Removes the focus from the retry button
-	get_node("../gui/CanvasLayer/retry").set_focus_mode(Control.FOCUS_NONE)
-	# Connect the popup buttons
-	get_node("../gui/CanvasLayer/popup/body/btn1").connect("pressed", self, "popup_btn1_pressed")
-	get_node("../gui/CanvasLayer/popup/body/btn2").connect("pressed", self, "popup_btn2_pressed")
-	get_node("../gui/CanvasLayer/popup/body/btn3").connect("pressed", self, "popup_btn3_pressed")
-	set_process_input(true)
-	set_process(true)
-	viewport.connect("size_changed",self,"window_resize")
-	JS.emulate_mouse(false) # Turn off mouse emulation in-game
-	# Music and sounds
-	var options = get_node("/root/global").read_options()
-	has_music = bool(int(options["music"]))
-	has_sounds = bool(int(options["sound"]))
-
-func _process(delta): # Move the acid
-	acid_animation_pos = acid_animation_pos + delta
-	if(acid_animation_pos > acid_animation_time):
-		acid_animation_pos = acid_animation_pos - acid_animation_time
-	tileset.tile_set_region(2, Rect2(64-64*acid_animation_pos/acid_animation_time,0,64,64))
-
-func back_to_menu(): # Jump back to the main menu
-	global.load_scene("res://menu/menu.tscn")
-
-func show_popup(var title, var text): # Show a popup with some title, and some text
-	var popup = get_node("../gui/CanvasLayer/popup")
-	popup.get_node("header/title").set_text(title)
-	popup.get_node("body/text").set_text(text)
-	if(btn2_action == 1):
-		popup.get_node("body/btn2").set_disabled(false)
-	else:
-		popup.get_node("body/btn2").set_disabled(true)
-	set_fixed_process(true)
-
-func _fixed_process(delta): # When we have to wait till the popup is shown
-	time_until_popup = time_until_popup - delta
-	if(time_until_popup <= 0):
-		var popup = get_node("../gui/CanvasLayer/popup")
-		player.set_fixed_process(false)
-		popup.show()
-		set_fixed_process(false)
-		JS.emulate_mouse(true) # Turn on mouse emulation for popups
-
-func hide_popup(): # Hide the popup
-	var popup = get_node("../gui/CanvasLayer/popup")
-	popup.hide()
-	
-
-func popup_btn1_pressed(): # Actions for different popup buttons
-	JS.emulate_mouse(false) # Turn off mouse emulation again	
-	retry_level()
-	hide_popup()
-
-func popup_btn2_pressed():
-	if(btn2_action == 1):
-		btn2_action = 0 # No double clicking pls
-		JS.emulate_mouse(false) # Turn off mouse emulation again	
-		next_level()
-		hide_popup()
-	
-func popup_btn3_pressed():
-	back_to_menu()
-	hide_popup()

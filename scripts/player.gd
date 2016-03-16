@@ -42,8 +42,6 @@ export var TILE_ACID = 2
 var old_anim # The new and the old animations
 var new_anim
 
-var bomb_counter # The node counting the bombs
-
 # Some classes (e.g. other scripts)
 var box_class = preload("res://scripts/box.gd")
 var breakable_ground_class = preload("res://scripts/breakable_ground.gd")
@@ -62,8 +60,6 @@ func _ready():
 	
 	ray_overlap.add_exception(self)
 	
-	bomb_counter = get_node("../../gui/CanvasLayer/bombs")
-
 	JS = get_node("/root/SUTjoystick")
 
 func level_load(var level_node):
@@ -85,7 +81,7 @@ func level_load(var level_node):
 	set_fixed_process(true) # Start thinking!
 
 func destroy(var by): # Destroy the player
-	level_holder.prompt_retry_level()
+	level_holder.gui.prompt_retry_level()
 	set_fixed_process(false) # Stop movement
 
 func play_anim():
@@ -155,8 +151,7 @@ func logic():
 			ray_overlap.get_collider().queue_free()
 			bombs = bombs + 1
 			level_holder.play_sample("flower_pickup")
-			bomb_counter.get_node("Label").set_text(str(" x ", bombs))
-			bomb_counter.show()
+			level_holder.emit_signal("counters_changed")
 	
 	# Check if we have to fall
 	if move_down && check_bottom != TILE_LADDER && check_overlap != TILE_LADDER:
@@ -219,10 +214,8 @@ func logic():
 				new_bomb.set_pos(get_pos())
 				tilemap.get_parent().add_child(new_bomb)
 				bombs = bombs - 1
-				bomb_counter.get_node("Label").set_text(str(" x ", bombs))
+				level_holder.emit_signal("counters_changed")
 				level_holder.turn()
-				if(bombs == 0):
-					bomb_counter.hide() # Hide counter when no bombs are available
 			place_bomb_was_pressed = true
 		else:
 			place_bomb_was_pressed = false

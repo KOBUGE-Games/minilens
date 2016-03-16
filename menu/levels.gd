@@ -71,7 +71,7 @@ func pack_selected(id):
 		
 		new_button.connect("pressed", self, "start_level", [pack.name, id])
 		
-		if(level_names.has(id)):
+		if level_names.has(id):
 			new_button.set_text(level_names[id])
 		else:
 			new_button.set_text(str("Level ", id)) # When we don't have a name for that level, we just write "Level N"

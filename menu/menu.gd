@@ -27,7 +27,7 @@ func _ready():
 			node.get_node("back").connect("pressed", self, "go_to_target", ["start"])
 	
 	# Splash fadeout
-	if(global.is_first_load):
+	if global.is_first_load:
 		get_node("initial_splash/animation_player").play("SplashFade")
 	
 	# Prepare to move thing when the aspect ratio changes
@@ -52,7 +52,7 @@ func reposition_screens():
 	credits.set_margin(MARGIN_BOTTOM, -size.y)
 	
 	var scale = size.x/1024
-	if(scale > 1):
+	if scale > 1:
 		get_node("background_layer").set_scale(Vector2(scale,scale))
 		get_node("background_layer").set_offset(Vector2(0,-(scale*768-768)))
 		get_node("initial_splash").set_scale(Vector2(scale,scale))
