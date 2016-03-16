@@ -12,21 +12,29 @@ onready var player = get_node("../player_holder/player")
 onready var JS = get_node("/root/SUTjoystick")
 
 func _ready():
+	var nodes_left = get_node("popup/popup_node/body/container").get_children()
+	
 	# Removes the focus from the buttons
 	for button in get_node("top_left_buttons").get_children():
 		if button extends Control:
 			button.set_focus_mode(Control.FOCUS_NONE)
 			
 			if button extends BaseButton:
-				button.connect("pressed", self, "popup_button_pressed", [button.get_name()])
+				nodes_left.push_back(button)
 	
 	# Removes the focus from the buttons
-	for button in get_node("popup/body").get_children():
+	while nodes_left.size() > 0:
+		var button = nodes_left[nodes_left.size() - 1]
+		nodes_left.pop_back()
 		if button extends BaseButton:
 			button.connect("pressed", self, "popup_button_pressed", [button.get_name()])
+		else:
+			for i in button.get_children():
+				nodes_left.push_back(i)
 	
 	# Show some of the touch buttons depending on settings
 	var input_mode = SettingsManager.read_settings().input_mode
+	get_node("touch_controls").set_hidden(!OS.has_touchscreen_ui_hint())
 	get_node("touch_controls/areas").set_hidden(input_mode != SettingsManager.INPUT_AREAS)
 	get_node("touch_controls/buttons").set_hidden(input_mode != SettingsManager.INPUT_BUTTONS)
 	
@@ -35,7 +43,6 @@ func _ready():
 	
 	# Subscribe to various notifications
 	level_holder.connect("counters_changed", self, "update_counters")
-	get_node("/root").connect("size_changed", self, "window_resize")
 	set_process_input(true)
 
 func _input(event):
@@ -57,36 +64,6 @@ func update_counters():
 			label.set_text(str(level_holder.goals_taken[goal_type], " / ", level_holder.goals_total[goal_type]))
 		else:
 			get_node("counters/resources").get_node(goal_type).hide()
-
-func window_resize():
-	var new_size = get_node("/root").get_size_override()
-	
-	popup.set_pos(Vector2(new_size.x/2-252,210))
-	
-	if !get_node("touch_controls/areas").is_hidden():
-		var areas = get_node("touch_controls/areas")
-		var unit = Vector2(new_size.x/6, new_size.y/6)
-		var sides_scale = Vector2(unit.x/2,(new_size.y-2*unit.y)/2)
-		var updown_scale = Vector2((new_size.x-2*unit.x)/2,unit.y/2)
-		
-		areas.get_node("left").set_pos(Vector2(0,unit.y))
-		areas.get_node("left").set_scale(sides_scale)
-		areas.get_node("right").set_pos(Vector2(new_size.x-unit.x,unit.y))
-		areas.get_node("right").set_scale(sides_scale)
-		areas.get_node("up").set_pos(Vector2(unit.x,0))
-		areas.get_node("up").set_scale(updown_scale)
-		areas.get_node("down").set_pos(Vector2(unit.x,new_size.y-unit.y))
-		areas.get_node("down").set_scale(updown_scale)
-		
-		var bomb_size = areas.get_node("bomb").get_texture().get_size()*areas.get_node("bomb").get_scale()/2
-		areas.get_node("bomb").set_pos(Vector2(new_size.x-0.5*unit.x-bomb_size.x,new_size.y-0.5*unit.y-bomb_size.y))
-	
-	elif !get_node("touch_controls/buttons").is_hidden():
-		get_node("touch_controls/buttons").set_pos(Vector2(new_size.x-200,568))
-	
-	var scale = new_size.x/1024
-	if(scale > 1):
-		get_node("../gui/CanvasLayer/popup/popup_bg").set_scale(Vector2(scale,scale))
 
 func prompt_retry_level(wait = 0): # Called when the robot dies
 	allow_next_level = false
@@ -118,9 +95,9 @@ func show_popup(title, text, wait): # Show a popup with title and text, after so
 func _show_popup(title, text): # Show a popup with title and text
 	JS.emulate_mouse(true)
 	
-	popup.get_node("header/title").set_text(title)
-	popup.get_node("body/text").set_text(text)
-	popup.get_node("body/next").set_disabled(!allow_next_level)
+	popup.get_node("popup_node/header/title").set_text(title)
+	popup.get_node("popup_node/body/container/text").set_text(text)
+	popup.get_node("popup_node/body/container/level_buttons/next").set_hidden(!allow_next_level)
 	
 	popup.show()
 

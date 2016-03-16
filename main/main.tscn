@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=1]
+[gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://main/gui.gd" type="Script" id=1]
 [ext_resource path="res://gfx/return.png" type="Texture" id=2]
@@ -12,16 +12,17 @@
 [ext_resource path="res://gfx/btn_arrow.png" type="Texture" id=10]
 [ext_resource path="res://gfx/btn_bomb.png" type="Texture" id=11]
 [ext_resource path="res://gfx/btn_alpha.png" type="Texture" id=12]
-[ext_resource path="res://main/popup.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scripts/level_holder.gd" type="Script" id=14]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=15]
-[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=16]
-[ext_resource path="res://main/music.gd" type="Script" id=17]
-[ext_resource path="res://audio/music_1.ogg" type="AudioStream" id=18]
-[ext_resource path="res://audio/music_2.ogg" type="AudioStream" id=19]
-[ext_resource path="res://audio/music_3.ogg" type="AudioStream" id=20]
-[ext_resource path="res://audio/music_4.ogg" type="AudioStream" id=21]
-[ext_resource path="res://audio/music_5.ogg" type="AudioStream" id=22]
+[ext_resource path="res://main/resize_to_parent.gd" type="Script" id=13]
+[ext_resource path="res://main/popup.tscn" type="PackedScene" id=14]
+[ext_resource path="res://main/level_holder.gd" type="Script" id=15]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=16]
+[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=17]
+[ext_resource path="res://main/music.gd" type="Script" id=18]
+[ext_resource path="res://audio/music_1.ogg" type="AudioStream" id=19]
+[ext_resource path="res://audio/music_2.ogg" type="AudioStream" id=20]
+[ext_resource path="res://audio/music_3.ogg" type="AudioStream" id=21]
+[ext_resource path="res://audio/music_4.ogg" type="AudioStream" id=22]
+[ext_resource path="res://audio/music_5.ogg" type="AudioStream" id=23]
 
 [node name="world" type="Node2D"]
 
@@ -83,6 +84,7 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 alignment = 0
+__meta__ = { "_editor_collapsed":true }
 
 [node name="resources" type="HBoxContainer" parent="gui/counters"]
 
@@ -93,6 +95,7 @@ focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
 alignment = 0
+__meta__ = { "_editor_collapsed":true }
 
 [node name="turns" type="HBoxContainer" parent="gui/counters/resources"]
 
@@ -104,7 +107,6 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 alignment = 0
-__meta__ = { "_editor_collapsed":true }
 
 [node name="texture" type="TextureFrame" parent="gui/counters/resources/turns"]
 
@@ -306,20 +308,88 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
-[node name="touch_controls" type="Node2D" parent="gui"]
+[node name="touch_controls" type="Control" parent="gui"]
 
-__meta__ = { "_editor_collapsed":true }
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
 
-[node name="buttons" type="Node2D" parent="gui/touch_controls"]
+[node name="buttons" type="GridContainer" parent="gui/touch_controls"]
 
 visibility/visible = false
-transform/pos = Vector2( 824, 568 )
-transform/scale = Vector2( 1.35, 1.35 )
+anchor/left = 1
+anchor/top = 1
+anchor/right = 1
+anchor/bottom = 1
+margin/left = 224.0
+margin/top = 224.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_constants/vseparation = 16
+custom_constants/hseparation = 16
+columns = 3
 __meta__ = { "_editor_collapsed":true }
 
-[node name="left" type="TouchScreenButton" parent="gui/touch_controls/buttons"]
+[node name="hole-up-left" type="Control" parent="gui/touch_controls/buttons"]
 
-transform/pos = Vector2( -80, 64 )
+margin/right = 64.0
+margin/bottom = 64.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="up" type="Control" parent="gui/touch_controls/buttons"]
+
+margin/left = 80.0
+margin/right = 144.0
+margin/bottom = 64.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/up"]
+
+normal = ExtResource( 10 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_left"
+visibility_mode = 1
+
+[node name="hole-up-right" type="Control" parent="gui/touch_controls/buttons"]
+
+margin/left = 160.0
+margin/right = 224.0
+margin/bottom = 64.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="left" type="Control" parent="gui/touch_controls/buttons"]
+
+margin/top = 80.0
+margin/right = 64.0
+margin/bottom = 144.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/left"]
+
+transform/pos = Vector2( 0, 64 )
 transform/rot = 90.0
 normal = ExtResource( 10 )
 pressed = null
@@ -328,39 +398,20 @@ passby_press = false
 action = "btn_left"
 visibility_mode = 1
 
-[node name="right" type="TouchScreenButton" parent="gui/touch_controls/buttons"]
+[node name="bomb" type="Control" parent="gui/touch_controls/buttons"]
 
-transform/pos = Vector2( 144, 0 )
-transform/rot = -90.0
-normal = ExtResource( 10 )
-pressed = null
-bitmask = null
-passby_press = false
-action = "btn_right"
-visibility_mode = 1
+margin/left = 80.0
+margin/top = 80.0
+margin/right = 144.0
+margin/bottom = 144.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
 
-[node name="up" type="TouchScreenButton" parent="gui/touch_controls/buttons"]
-
-transform/pos = Vector2( 0, -80 )
-normal = ExtResource( 10 )
-pressed = null
-bitmask = null
-passby_press = false
-action = "btn_up"
-visibility_mode = 1
-
-[node name="down" type="TouchScreenButton" parent="gui/touch_controls/buttons"]
-
-transform/pos = Vector2( 64, 144 )
-transform/rot = -180.0
-normal = ExtResource( 10 )
-pressed = null
-bitmask = null
-passby_press = false
-action = "btn_down"
-visibility_mode = 1
-
-[node name="bomb" type="TouchScreenButton" parent="gui/touch_controls/buttons"]
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/bomb"]
 
 normal = ExtResource( 11 )
 pressed = null
@@ -369,62 +420,300 @@ passby_press = false
 action = "place_bomb"
 visibility_mode = 1
 
-[node name="areas" type="Node2D" parent="gui/touch_controls"]
+[node name="right" type="Control" parent="gui/touch_controls/buttons"]
 
+margin/left = 160.0
+margin/top = 80.0
+margin/right = 224.0
+margin/bottom = 144.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
 __meta__ = { "_editor_collapsed":true }
 
-[node name="left" type="TouchScreenButton" parent="gui/touch_controls/areas"]
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/right"]
 
-transform/scale = Vector2( 140, 382 )
-normal = ExtResource( 12 )
+transform/pos = Vector2( 64, 0 )
+transform/rot = 270.0
+normal = ExtResource( 10 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "btn_left"
 visibility_mode = 1
 
-[node name="right" type="TouchScreenButton" parent="gui/touch_controls/areas"]
+[node name="hole-down-left" type="Control" parent="gui/touch_controls/buttons"]
 
-transform/pos = Vector2( 742, 0 )
-transform/scale = Vector2( 140, 382 )
-normal = ExtResource( 12 )
+margin/top = 160.0
+margin/right = 64.0
+margin/bottom = 224.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="down" type="Control" parent="gui/touch_controls/buttons"]
+
+margin/left = 80.0
+margin/top = 160.0
+margin/right = 144.0
+margin/bottom = 224.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/down"]
+
+transform/pos = Vector2( 64, 64 )
+transform/rot = 180.0
+normal = ExtResource( 10 )
 pressed = null
 bitmask = null
 passby_press = false
-action = "btn_right"
+action = "btn_left"
 visibility_mode = 1
 
-[node name="up" type="TouchScreenButton" parent="gui/touch_controls/areas"]
+[node name="hole-down-right" type="Control" parent="gui/touch_controls/buttons"]
 
-transform/scale = Vector2( 510, 100 )
+margin/left = 160.0
+margin/top = 160.0
+margin/right = 224.0
+margin/bottom = 224.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+
+[node name="areas" type="Control" parent="gui/touch_controls"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
+
+[node name="sides" type="VBoxContainer" parent="gui/touch_controls/areas"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+custom_constants/separation = 0
+alignment = 0
+
+[node name="up" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
+
+margin/right = 1024.0
+margin/bottom = 128.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+custom_constants/separation = 0
+alignment = 0
+
+[node name="hole-up-left" type="Control" parent="gui/touch_controls/areas/sides/up"]
+
+margin/right = 170.0
+margin/bottom = 128.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+
+[node name="up" type="Control" parent="gui/touch_controls/areas/sides/up"]
+
+margin/left = 170.0
+margin/right = 852.0
+margin/bottom = 128.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+size_flags/stretch_ratio = 4.0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/up/up"]
+
+transform/pos = Vector2( 2.03252e-05, 3.8147e-06 )
+transform/scale = Vector2( 341, 64 )
 normal = ExtResource( 12 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "btn_up"
 visibility_mode = 1
+script/script = ExtResource( 13 )
+centered = false
 
-[node name="down" type="TouchScreenButton" parent="gui/touch_controls/areas"]
+[node name="hole-up-right" type="Control" parent="gui/touch_controls/areas/sides/up"]
 
-transform/pos = Vector2( 0, 566 )
-transform/scale = Vector2( 510, 100 )
+margin/left = 852.0
+margin/right = 1024.0
+margin/bottom = 128.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+
+[node name="center" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
+
+margin/top = 128.0
+margin/right = 1024.0
+margin/bottom = 640.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+size_flags/stretch_ratio = 4.0
+custom_constants/separation = 0
+alignment = 0
+
+[node name="left" type="Control" parent="gui/touch_controls/areas/sides/center"]
+
+margin/right = 170.0
+margin/bottom = 512.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/left"]
+
+transform/pos = Vector2( 5.06639e-06, 512 )
+transform/rot = 90.0
+transform/scale = Vector2( 256, 85 )
+normal = ExtResource( 12 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_left"
+visibility_mode = 1
+script/script = ExtResource( 13 )
+centered = false
+
+[node name="hole-center" type="Control" parent="gui/touch_controls/areas/sides/center"]
+
+margin/left = 170.0
+margin/right = 852.0
+margin/bottom = 512.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+size_flags/stretch_ratio = 4.0
+
+[node name="right" type="Control" parent="gui/touch_controls/areas/sides/center"]
+
+margin/left = 852.0
+margin/right = 1024.0
+margin/bottom = 512.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/right"]
+
+transform/pos = Vector2( 172, 4.57764e-05 )
+transform/rot = -90.0
+transform/scale = Vector2( 256, 86 )
+normal = ExtResource( 12 )
+pressed = null
+bitmask = null
+passby_press = false
+action = "btn_right"
+visibility_mode = 1
+script/script = ExtResource( 13 )
+centered = false
+
+[node name="down" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
+
+margin/top = 640.0
+margin/right = 1024.0
+margin/bottom = 768.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 3
+size_flags/vertical = 3
+custom_constants/separation = 0
+alignment = 0
+
+[node name="hole-down-left" type="Control" parent="gui/touch_controls/areas/sides/down"]
+
+margin/right = 170.0
+margin/bottom = 128.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+
+[node name="down" type="Control" parent="gui/touch_controls/areas/sides/down"]
+
+margin/left = 170.0
+margin/right = 852.0
+margin/bottom = 128.0
+rect/min_size = Vector2( 64, 64 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+size_flags/stretch_ratio = 4.0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/down/down"]
+
+transform/pos = Vector2( 682, 128 )
+transform/rot = -180.0
+transform/scale = Vector2( 341, 64 )
 normal = ExtResource( 12 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "btn_down"
 visibility_mode = 1
+script/script = ExtResource( 13 )
+centered = false
 
-[node name="bomb" type="TouchScreenButton" parent="gui/touch_controls/areas"]
+[node name="bomb" type="Control" parent="gui/touch_controls/areas/sides/down"]
 
-transform/pos = Vector2( 839.573, 631.219 )
-transform/scale = Vector2( 1.35, 1.35 )
+margin/left = 852.0
+margin/right = 1024.0
+margin/bottom = 128.0
+rect/min_size = Vector2( 70, 70 )
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 3
+size_flags/vertical = 3
+__meta__ = { "_editor_collapsed":true }
+
+[node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/down/bomb"]
+
+transform/pos = Vector2( 6, 6 )
 normal = ExtResource( 11 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "place_bomb"
 visibility_mode = 1
+
+[node name="popup" parent="gui" instance=ExtResource( 14 )]
+
+visibility/visible = false
 
 [node name="timer" type="Timer" parent="gui"]
 
@@ -433,20 +722,16 @@ wait_time = 1.0
 one_shot = true
 autostart = false
 
-[node name="popup" parent="gui" instance=ExtResource( 13 )]
-
-visibility/visible = false
-
 [node name="level_holder" type="Node2D" parent="."]
 
-script/script = ExtResource( 14 )
+script/script = ExtResource( 15 )
 acid_animation_time = 1.0
 
 [node name="player_holder" type="Node2D" parent="."]
 
 transform/pos = Vector2( 32, 32 )
 
-[node name="player" parent="player_holder" instance=ExtResource( 15 )]
+[node name="player" parent="player_holder" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 477.49, 345.785 )
 collision/margin = 0.08
@@ -454,7 +739,7 @@ collision/margin = 0.08
 [node name="sample_player" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = ExtResource( 16 )
+config/samples = ExtResource( 17 )
 default/volume_db = -7.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -470,11 +755,11 @@ default/chorus_send = 0.0
 
 [node name="music" type="Node" parent="."]
 
-script/script = ExtResource( 17 )
+script/script = ExtResource( 18 )
 
 [node name="1" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 18 )
+stream/stream = ExtResource( 19 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -2.0
@@ -485,7 +770,7 @@ stream/buffering_ms = 500
 
 [node name="2" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 19 )
+stream/stream = ExtResource( 20 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -9.0
@@ -496,7 +781,7 @@ stream/buffering_ms = 500
 
 [node name="3" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 20 )
+stream/stream = ExtResource( 21 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -2.0
@@ -507,7 +792,7 @@ stream/buffering_ms = 500
 
 [node name="4" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 21 )
+stream/stream = ExtResource( 22 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -6.0
@@ -518,7 +803,7 @@ stream/buffering_ms = 500
 
 [node name="5" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 22 )
+stream/stream = ExtResource( 23 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
