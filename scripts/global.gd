@@ -21,6 +21,13 @@ func _ready():
 	viewport.connect("size_changed",self,"window_resize")
 	window_resize()
 	OS.set_window_title(str("Minilens - Version ", version))
+	
+	""" # DEBUG
+	set_fixed_process(true)
+func _fixed_process(delta):
+	load_level("spaceship", 7)
+	set_fixed_process(false)
+	"""
 
 func window_resize():
 	var window_size = OS.get_window_size()
