@@ -13,7 +13,6 @@ onready var packs = []
 onready var packs_option_button = get_node("items/select_pack/option_button")
 
 onready var level_list = get_node("items/levels")
-onready var global = get_node("/root/global")
 
 func _ready():
 	level_list.connect("resized", self, "recalulate_grid_columns")
@@ -57,7 +56,7 @@ func pack_selected(id):
 		if line_parts[0] != "" && line_parts.size() == 2:
 			level_names[int(line_parts[0])] = line_parts[1]
 	
-	var locked_level_count = global.get_reached_level(pack.name) # Get the number of locked levels
+	var locked_level_count = SaveManager.get_reached_level(pack.name) # Get the number of locked levels
 	
 	# Remove old level selection buttons
 	for node in level_list.get_children():
@@ -89,8 +88,5 @@ func snake_case_to_name(var string):
 var target = []
 func start_level(var pack, var id):
 	target = [pack, id]
-	set_fixed_process(true)
-
-func _fixed_process(delta): # TODO, those things should work without _fixed_process... somehow
-	global.load_level(target[0], target[1])
-	set_fixed_process(false)
+	
+	ScenesManager.load_level(target[0], target[1])

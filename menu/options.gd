@@ -41,7 +41,6 @@ func option_item_selected(var ID, var setting):
 	SettingsManager.save_settings(current_options)
 
 func set_option(var setting, var value):
-	print(value)
 	if setting == "fullscreen":
 		OS.set_window_fullscreen(bool(int(value)))
 	elif setting == "music":

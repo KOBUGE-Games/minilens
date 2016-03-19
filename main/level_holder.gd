@@ -26,7 +26,6 @@ onready var sample_player = get_node("../sample_player")
 onready var music = get_node("../music")
 onready var gui = get_node("../gui")
 onready var player = get_node("../player_holder/player")
-onready var global = get_node("/root/global")
 
 onready var raw_packs = FileManager.get_file_lines("res://levels/packs.txt")
 
@@ -116,14 +115,13 @@ func goal_take(type = "", wait = 0): # Called when a goal is taken
 	goals_left = goals_left - 1
 	
 	if goals_left == 0:
-		global.set_reached_level(current_pack, current_level + 1)
+		SaveManager.set_reached_level(current_pack, current_level + 1)
 		
 		# Check if there are more levels
 		for raw_pack in raw_packs:
 			var line_parts = raw_pack.split(" ")
 			if line_parts.size() >= 2:
 				if line_parts[0] == current_pack:
-					print(int(line_parts[1]), int(current_level) + 1)
 					gui.prompt_finsh_level(turns, int(line_parts[1]) >= int(current_level) + 1)
 					break
 	
@@ -149,5 +147,4 @@ func retry_level(): # Retry the current level
 	load_level(current_pack, current_level)
 
 func next_level(): # Go to the next level
-	print("!")
 	load_level(current_pack, int(current_level) + 1)

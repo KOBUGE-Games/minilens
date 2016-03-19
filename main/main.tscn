@@ -1,18 +1,18 @@
 [gd_scene load_steps=24 format=1]
 
 [ext_resource path="res://main/gui.gd" type="Script" id=1]
-[ext_resource path="res://gfx/return.png" type="Texture" id=2]
-[ext_resource path="res://gfx/menuGrid.png" type="Texture" id=3]
-[ext_resource path="res://gfx/turn_icon.png" type="Texture" id=4]
-[ext_resource path="res://shared/theme.tres" type="Theme" id=5]
-[ext_resource path="res://gfx/radioactive.png" type="Texture" id=6]
-[ext_resource path="res://gfx/flower.png" type="Texture" id=7]
-[ext_resource path="res://gfx/artefact.png" type="Texture" id=8]
-[ext_resource path="res://gfx/bomb.png" type="Texture" id=9]
-[ext_resource path="res://gfx/btn_arrow.png" type="Texture" id=10]
-[ext_resource path="res://gfx/btn_bomb.png" type="Texture" id=11]
-[ext_resource path="res://gfx/btn_alpha.png" type="Texture" id=12]
-[ext_resource path="res://main/resize_to_parent.gd" type="Script" id=13]
+[ext_resource path="res://gfx/turn_icon.png" type="Texture" id=2]
+[ext_resource path="res://shared/theme.tres" type="Theme" id=3]
+[ext_resource path="res://gfx/radioactive.png" type="Texture" id=4]
+[ext_resource path="res://gfx/flower.png" type="Texture" id=5]
+[ext_resource path="res://gfx/artefact.png" type="Texture" id=6]
+[ext_resource path="res://gfx/bomb.png" type="Texture" id=7]
+[ext_resource path="res://gfx/btn_arrow.png" type="Texture" id=8]
+[ext_resource path="res://gfx/btn_bomb.png" type="Texture" id=9]
+[ext_resource path="res://gfx/btn_alpha.png" type="Texture" id=10]
+[ext_resource path="res://main/resize_to_parent.gd" type="Script" id=11]
+[ext_resource path="res://gfx/return.png" type="Texture" id=12]
+[ext_resource path="res://gfx/menuGrid.png" type="Texture" id=13]
 [ext_resource path="res://main/popup.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/level_holder.gd" type="Script" id=15]
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=16]
@@ -35,42 +35,6 @@ offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
 script/script = ExtResource( 1 )
-
-[node name="top_left_buttons" type="HBoxContainer" parent="gui"]
-
-anchor/left = 1
-anchor/right = 1
-margin/left = 204.0
-margin/bottom = 100.0
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-alignment = 0
-__meta__ = { "_editor_collapsed":true }
-
-[node name="retry" type="TextureButton" parent="gui/top_left_buttons"]
-
-margin/right = 100.0
-margin/bottom = 100.0
-focus/ignore_mouse = false
-focus/stop_mouse = false
-size_flags/horizontal = 2
-size_flags/vertical = 2
-toggle_mode = false
-textures/normal = ExtResource( 2 )
-
-[node name="menu" type="TextureButton" parent="gui/top_left_buttons"]
-
-margin/left = 104.0
-margin/right = 204.0
-margin/bottom = 100.0
-focus/ignore_mouse = false
-focus/stop_mouse = true
-size_flags/horizontal = 2
-size_flags/vertical = 2
-toggle_mode = false
-textures/normal = ExtResource( 3 )
 
 [node name="counters" type="VBoxContainer" parent="gui"]
 
@@ -117,7 +81,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
-texture = ExtResource( 4 )
+texture = ExtResource( 2 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/turns"]
@@ -130,7 +94,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 3 )
 text = "0"
 align = 1
 valign = 1
@@ -160,7 +124,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
-texture = ExtResource( 6 )
+texture = ExtResource( 4 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/box"]
@@ -173,7 +137,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 3 )
 text = "1 / 2"
 align = 1
 valign = 1
@@ -203,7 +167,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/flower"]
@@ -216,7 +180,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 3 )
 text = "1 / 2"
 align = 1
 valign = 1
@@ -246,7 +210,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
-texture = ExtResource( 8 )
+texture = ExtResource( 6 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/artefact"]
@@ -259,7 +223,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 3 )
 text = "1 / 2"
 align = 1
 valign = 1
@@ -288,7 +252,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
-texture = ExtResource( 9 )
+texture = ExtResource( 7 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/bomb"]
@@ -301,7 +265,7 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
-theme/theme = ExtResource( 5 )
+theme/theme = ExtResource( 3 )
 text = " x 0"
 valign = 1
 percent_visible = 1.0
@@ -312,10 +276,11 @@ max_lines_visible = -1
 
 anchor/right = 1
 anchor/bottom = 1
-focus/ignore_mouse = false
-focus/stop_mouse = true
+focus/ignore_mouse = true
+focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+__meta__ = { "_editor_collapsed":true }
 
 [node name="buttons" type="GridContainer" parent="gui/touch_controls"]
 
@@ -358,7 +323,7 @@ __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/up"]
 
-normal = ExtResource( 10 )
+normal = ExtResource( 8 )
 pressed = null
 bitmask = null
 passby_press = false
@@ -391,7 +356,7 @@ __meta__ = { "_editor_collapsed":true }
 
 transform/pos = Vector2( 0, 64 )
 transform/rot = 90.0
-normal = ExtResource( 10 )
+normal = ExtResource( 8 )
 pressed = null
 bitmask = null
 passby_press = false
@@ -413,7 +378,7 @@ __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/bomb"]
 
-normal = ExtResource( 11 )
+normal = ExtResource( 9 )
 pressed = null
 bitmask = null
 passby_press = false
@@ -437,7 +402,7 @@ __meta__ = { "_editor_collapsed":true }
 
 transform/pos = Vector2( 64, 0 )
 transform/rot = 270.0
-normal = ExtResource( 10 )
+normal = ExtResource( 8 )
 pressed = null
 bitmask = null
 passby_press = false
@@ -471,7 +436,7 @@ __meta__ = { "_editor_collapsed":true }
 
 transform/pos = Vector2( 64, 64 )
 transform/rot = 180.0
-normal = ExtResource( 10 )
+normal = ExtResource( 8 )
 pressed = null
 bitmask = null
 passby_press = false
@@ -547,13 +512,13 @@ __meta__ = { "_editor_collapsed":true }
 
 transform/pos = Vector2( 2.03252e-05, 3.8147e-06 )
 transform/scale = Vector2( 341, 64 )
-normal = ExtResource( 12 )
+normal = ExtResource( 10 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "btn_up"
 visibility_mode = 1
-script/script = ExtResource( 13 )
+script/script = ExtResource( 11 )
 centered = false
 
 [node name="hole-up-right" type="Control" parent="gui/touch_controls/areas/sides/up"]
@@ -595,13 +560,13 @@ __meta__ = { "_editor_collapsed":true }
 transform/pos = Vector2( 5.06639e-06, 512 )
 transform/rot = 90.0
 transform/scale = Vector2( 256, 85 )
-normal = ExtResource( 12 )
+normal = ExtResource( 10 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "btn_left"
 visibility_mode = 1
-script/script = ExtResource( 13 )
+script/script = ExtResource( 11 )
 centered = false
 
 [node name="hole-center" type="Control" parent="gui/touch_controls/areas/sides/center"]
@@ -632,13 +597,13 @@ __meta__ = { "_editor_collapsed":true }
 transform/pos = Vector2( 172, 4.57764e-05 )
 transform/rot = -90.0
 transform/scale = Vector2( 256, 86 )
-normal = ExtResource( 12 )
+normal = ExtResource( 10 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "btn_right"
 visibility_mode = 1
-script/script = ExtResource( 13 )
+script/script = ExtResource( 11 )
 centered = false
 
 [node name="down" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
@@ -680,13 +645,13 @@ __meta__ = { "_editor_collapsed":true }
 transform/pos = Vector2( 682, 128 )
 transform/rot = -180.0
 transform/scale = Vector2( 341, 64 )
-normal = ExtResource( 12 )
+normal = ExtResource( 10 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "btn_down"
 visibility_mode = 1
-script/script = ExtResource( 13 )
+script/script = ExtResource( 11 )
 centered = false
 
 [node name="bomb" type="Control" parent="gui/touch_controls/areas/sides/down"]
@@ -704,12 +669,48 @@ __meta__ = { "_editor_collapsed":true }
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/down/bomb"]
 
 transform/pos = Vector2( 6, 6 )
-normal = ExtResource( 11 )
+normal = ExtResource( 9 )
 pressed = null
 bitmask = null
 passby_press = false
 action = "place_bomb"
 visibility_mode = 1
+
+[node name="top_left_buttons" type="HBoxContainer" parent="gui"]
+
+anchor/left = 1
+anchor/right = 1
+margin/left = 204.0
+margin/bottom = 100.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+alignment = 0
+__meta__ = { "_editor_collapsed":true }
+
+[node name="retry" type="TextureButton" parent="gui/top_left_buttons"]
+
+margin/right = 100.0
+margin/bottom = 100.0
+focus/ignore_mouse = false
+focus/stop_mouse = false
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+textures/normal = ExtResource( 12 )
+
+[node name="menu" type="TextureButton" parent="gui/top_left_buttons"]
+
+margin/left = 104.0
+margin/right = 204.0
+margin/bottom = 100.0
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+toggle_mode = false
+textures/normal = ExtResource( 13 )
 
 [node name="popup" parent="gui" instance=ExtResource( 14 )]
 

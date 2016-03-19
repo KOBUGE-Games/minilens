@@ -10,7 +10,6 @@ onready var levels = get_node("levels")
 onready var options = get_node("options")
 onready var credits = get_node("credits")
 onready var tween = get_node("tween")
-onready var global = get_node("/root/global")
 
 func _ready():
 	# Main menu buttons
@@ -27,7 +26,7 @@ func _ready():
 			node.get_node("back").connect("pressed", self, "go_to_target", ["start"])
 	
 	# Splash fadeout
-	if global.is_first_load:
+	if ScenesManager.is_first_load:
 		get_node("initial_splash/animation_player").play("SplashFade")
 	
 	# Prepare to move thing when the aspect ratio changes
@@ -70,8 +69,9 @@ func go_to_target(var screen = "start"):
 	var distance = current_coordinates.distance_to(target_coordinates)
 	var time = distance/screen_move_speed
 	
-	tween.interpolate_property(self, "rect/pos", current_coordinates, -target_coordinates, time, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
-	tween.start()
+	if time > 0:
+		tween.interpolate_property(self, "rect/pos", current_coordinates, -target_coordinates, time, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
+		tween.start()
 
 func quit():
 	get_tree().quit() # Exit the game

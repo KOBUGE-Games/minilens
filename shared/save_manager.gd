@@ -1,48 +1,33 @@
 
 extends Node
 
-const INPUT_AREAS = 0
-const INPUT_BUTTONS = 1
+const DATA_DELIMITER = " "
 
-const default_settings = {
-	fullscreen = false,
-	music = true, 
-	sound = true,
-	input_mode = INPUT_AREAS
-}
-const DATA_DELIMITER = ":"
+var save_path = "user://savedata.bin"
 
-var options_path = "user://options.txt"
+func _ready():
+	FileManager.set_file_password(save_path, str("minilens", OS.get_unique_ID())) # Set the password
 
-func read_settings():
-	# Read the file
-	var settings_lines = FileManager.get_file_lines(options_path)
+func get_reached_level(pack):
+	var save_lines = FileManager.get_file_lines(save_path) # Read the file
 	
-	if settings_lines.size() == 0: # Either no data was stored, or the file wasn't there, save first
-		save_settings(default_settings)
-		settings_lines = FileManager.get_file_lines(options_path)
-	
-	var data = default_settings
-	
-	
-	for line in settings_lines:
+	for line in save_lines:
 		var line_parts = line.split(DATA_DELIMITER)
-		if line_parts.size() >= 2 and default_settings.has(line_parts[0]):
-			var data_type = typeof(default_settings[line_parts[0]])
-			if data_type == TYPE_BOOL:
-				data[line_parts[0]] = (line_parts[1] == str(true))
-			else:
-				data[line_parts[0]] = convert(line_parts[1], data_type)
+		if line_parts.size() >= 2:
+			if line_parts[0] == pack:
+				return int(line_parts[1])
 	
-	return data
+	return 1 # If we either haven't found the pack, or we failed to open the savedata, we just return one (e.g. first level)
 
-func save_settings(data):
+func set_reached_level(pack, value):
+	var current_save_lines = FileManager.get_file_lines(save_path)
+	var future_save_lines = []
 	
-	var lines = []
-	for setting in default_settings:
-		var data_line = default_settings[setting]
-		if data.has(setting):
-			data_line = data[setting]
-		lines.push_back(str(setting, DATA_DELIMITER, data_line))
+	for line in current_save_lines:
+		var line_parts = line.split(DATA_DELIMITER)
+		if line_parts.size() >= 2 and line_parts[0] == pack:
+			future_save_lines.push_back(str(pack, DATA_DELIMITER, value))
+		else:
+			future_save_lines.push_back(line)
 	
-	FileManager.set_file_lines(options_path, lines)
+	FileManager.set_file_lines(save_path, future_save_lines)

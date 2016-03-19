@@ -2,13 +2,23 @@
 extends Node
 
 var file_lines_cache = {}
+var file_passwords = {}
+
+func _open_file_wrapper(file, path, flag): # Private
+	if file_passwords.has(path):
+		return file.open_encrypted_with_pass(path, flag, file_passwords[path])
+	else:
+		return file.open(path, flag)
+
+func set_file_password(path, password):
+	file_passwords[path] = password
 
 func get_file_lines(path):
 	"""Returns an array of the lines of the file at `path`"""
 	
 	if !file_lines_cache.has(path): # Nothing in cache, we have to read the file anew
 		var file = File.new()
-		var error = file.open(path, File.READ)
+		var error = _open_file_wrapper(file, path, File.READ)
 		
 		if error != OK:
 			return [] # Don't save to file_lines_cache, so that we would retry the next time
@@ -24,7 +34,7 @@ func set_file_lines(path, lines):
 	"""Update the array of the lines of the file at `path`"""
 	
 	var file = File.new()
-	var error = file.open(path, File.WRITE)
+	var error = _open_file_wrapper(file, path, File.WRITE)
 	
 	if error != OK:
 		return error # Don't save to file_lines_cache, so that it would still be a valid representation of the real file

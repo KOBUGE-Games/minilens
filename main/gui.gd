@@ -105,14 +105,13 @@ func popup_button_pressed(name): # Actions for different popup buttons
 	if name == "retry":
 		level_holder.retry_level()
 	elif name == "next":
-		print(allow_next_level)
 		if allow_next_level:
 			allow_next_level = false
 			level_holder.next_level()
 		else:
 			return
 	elif name == "menu":
-		get_node("/root/global").load_scene("res://menu/menu.tscn")
+		ScenesManager.load_scene("res://menu/menu.tscn")
 	
 	JS.emulate_mouse(false)
 	hide_popup()
