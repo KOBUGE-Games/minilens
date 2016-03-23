@@ -15,7 +15,7 @@
 [ext_resource path="res://gfx/menuGrid.png" type="Texture" id=13]
 [ext_resource path="res://main/popup.tscn" type="PackedScene" id=14]
 [ext_resource path="res://main/level_holder.gd" type="Script" id=15]
-[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=16]
+[ext_resource path="res://entities/player.tscn" type="PackedScene" id=16]
 [ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=17]
 [ext_resource path="res://main/music.gd" type="Script" id=18]
 [ext_resource path="res://audio/music_1.ogg" type="AudioStream" id=19]
@@ -734,8 +734,7 @@ transform/pos = Vector2( 32, 32 )
 
 [node name="player" parent="player_holder" instance=ExtResource( 16 )]
 
-transform/pos = Vector2( 477.49, 345.785 )
-collision/margin = 0.08
+transform/pos = Vector2( 228.814, 197.081 )
 
 [node name="sample_player" type="SamplePlayer" parent="."]
 

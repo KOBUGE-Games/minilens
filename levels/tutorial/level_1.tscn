@@ -3,9 +3,9 @@
 [ext_resource path="res://scripts/tutorial_level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
-[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
-[ext_resource path="res://shared/theme.tres" type="Theme" id=6]
+[ext_resource path="res://fonts/papercut.fnt" type="Font" id=4]
+[ext_resource path="res://shared/theme.tres" type="Theme" id=5]
+[ext_resource path="res://entities/box.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -20,7 +20,7 @@ extents = Vector2( 128, 64 )
 [sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 64 )
+extents = Vector2( 34, 64 )
 
 [node name="level" type="Node2D"]
 
@@ -77,22 +77,16 @@ transform/scale = Vector2( 3.2, 3.2 )
 transform/pos = Vector2( 960, 768 )
 transform/scale = Vector2( 3.2, 3.2 )
 
-[node name="box" parent="." instance=ExtResource( 4 )]
-
-transform/pos = Vector2( 448, 448 )
-collision/layers = 1
-collision/mask = 1
-
 [node name="Label" type="Label" parent="."]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
 margin/left = 160.0
 margin/top = 224.0
 margin/right = 735.0
 margin/bottom = 257.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
 text = "Push the Radioactive Barrel to Acid Lake ... leave none ..."
 percent_visible = 1.0
@@ -102,6 +96,7 @@ max_lines_visible = -1
 [node name="areas" type="Node2D" parent="."]
 
 z/z = 2
+__meta__ = { "_editor_collapsed":true }
 
 [node name="Keys" type="Area2D" parent="areas"]
 
@@ -123,14 +118,14 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/Keys"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+theme/theme = ExtResource( 5 )
 margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
 margin/bottom = -71.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 6 )
 text = "Move with W, A, S and D\nor the arrow keys"
 align = 1
 valign = 1
@@ -158,14 +153,14 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/Push"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+theme/theme = ExtResource( 5 )
 margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
 margin/bottom = -46.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 6 )
 text = "Push that box \nby moving right"
 align = 1
 valign = 1
@@ -189,23 +184,27 @@ angular_damp = 1.0
 
 shape = SubResource( 3 )
 trigger = false
-_update_shape_index = -1
+_update_shape_index = 0
 
 [node name="Label" type="Label" parent="areas/Fall"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+theme/theme = ExtResource( 5 )
 margin/left = -64.0
 margin/top = -64.0
 margin/right = 256.0
 margin/bottom = 36.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 6 )
 text = "Let it fall in\nthe acid, but\nbe sure not to\njump with it!"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+
+[node name="box" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 448, 448 )
 
 

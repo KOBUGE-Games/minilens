@@ -4,7 +4,7 @@ extends Node2D
 var areas = [] # An array with the different area nodes
 var areas_fade_dir = {} # A dictionary in which we will store all ongoing and stopped animations
 var fade_time = 1 # Time (in sec) for the area to fade in
-var player_class = preload("res://scripts/player.gd") # The class of the player (so we can check if the player is the body tat we are touching)
+var player_class = preload("res://entities/player.gd") # The class of the player (so we can check if the player is the body tat we are touching)
 var pos_reached = 0 # How many help messages have we shown?
 
 func _ready():

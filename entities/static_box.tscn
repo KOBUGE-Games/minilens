@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://entities/entity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/radioactive.png" type="Texture" id=2]
+
+[node name="static" instance=ExtResource( 1 )]
+
+collision/margin = 0.08
+fall = false
+fall_though_ladders = false
+destroy_after_acid = false
+pushable = false
+goal = ""
+
+[node name="sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+

@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/entity.gd" type="Script" id=1]
+[ext_resource path="res://gfx/boxCrate_double.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31, 31 )
+
+[node name="entity" type="KinematicBody2D"]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+collision/layers = 3
+collision/mask = 1
+collision/margin = 0.08
+script/script = ExtResource( 1 )
+__meta__ = { "__editor_plugin_screen__":"Script" }
+fall = true
+fall_though_ladders = true
+destroy_after_acid = true
+pushable = true
+goal = ""
+score_goal_on_destroy = true
+movement_speed = Vector2( 200, 200 )
+tilemap_path = NodePath("../tilemap")
+level_holder_path = NodePath("../..")
+
+[node name="sprite" type="Sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="collision_shape" type="CollisionShape2D" parent="."]
+
+shape = SubResource( 1 )
+trigger = true
+_update_shape_index = 0
+
+[node name="ray_top" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 29, -64 )
+enabled = true
+cast_to = Vector2( -58, 0 )
+layer_mask = 2
+type_mask = 15
+
+[node name="ray_right" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( 64, 29 )
+enabled = true
+cast_to = Vector2( 0, -58 )
+layer_mask = 2
+type_mask = 15
+
+[node name="ray_bottom" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( -29, 64 )
+enabled = true
+cast_to = Vector2( 58, 0 )
+layer_mask = 2
+type_mask = 15
+
+[node name="ray_left" type="RayCast2D" parent="."]
+
+transform/pos = Vector2( -64, 29 )
+enabled = true
+cast_to = Vector2( 0, -58 )
+layer_mask = 2
+type_mask = 15
+
+[node name="ray_check_top" type="RayCast2D" parent="."]
+
+enabled = false
+cast_to = Vector2( 0, -29 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_check_right" type="RayCast2D" parent="."]
+
+enabled = false
+cast_to = Vector2( 29, 0 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_check_bottom" type="RayCast2D" parent="."]
+
+enabled = false
+cast_to = Vector2( 0, 29 )
+layer_mask = 1
+type_mask = 15
+
+[node name="ray_check_left" type="RayCast2D" parent="."]
+
+enabled = false
+cast_to = Vector2( -29, 0 )
+layer_mask = 1
+type_mask = 15
+
+

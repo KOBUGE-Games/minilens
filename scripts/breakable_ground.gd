@@ -1,6 +1,6 @@
 extends StaticBody2D
 
-var player_class = preload("res://scripts/player.gd")
+var player_class = preload("res://entities/player.gd")
 var passed = false
 var destroyed = false
 var delay = -1

@@ -95,7 +95,7 @@ func window_resize():
 	if(scale > 1):
 		level_node.get_node("CanvasLayer").set_scale(Vector2(scale,scale))
 		level_node.get_node("CanvasLayer").set_offset(Vector2(32*scale,32-(scale - 1)*768/2))
-	player.get_node("Camera2D").force_update_scroll()
+	player.camera.force_update_scroll()
 
 func goal_add(type = ""): # Add one more goal
 	if goals_total.has(type):

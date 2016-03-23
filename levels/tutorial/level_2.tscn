@@ -3,7 +3,7 @@
 [ext_resource path="res://scripts/tutorial_level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
-[ext_resource path="res://scenes/box.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
 [ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://shared/theme.tres" type="Theme" id=7]
@@ -82,18 +82,16 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="Label" type="Label" parent="."]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
 margin/left = 160.0
 margin/top = 224.0
 margin/right = 776.0
 margin/bottom = 257.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
 text = "Collect all flowers ... they\'re the only life left in this planet ..."
@@ -109,6 +107,7 @@ transform/pos = Vector2( 896, 576 )
 [node name="areas" type="Node2D" parent="."]
 
 z/z = 10
+__meta__ = { "_editor_collapsed":true }
 
 [node name="push" type="Area2D" parent="areas"]
 
@@ -132,14 +131,14 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/push"]
 
-margin/left = -160.0
-margin/top = -96.0
-margin/right = 224.0
-margin/bottom = -71.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 theme/theme = ExtResource( 7 )
+margin/left = -160.0
+margin/top = -96.0
+margin/right = 224.0
+margin/bottom = -71.0
 text = "Seems like we will have to push it...."
 align = 1
 valign = 1
@@ -168,14 +167,14 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/over"]
 
-margin/left = -96.0
-margin/top = -96.0
-margin/right = 160.0
-margin/bottom = -71.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 theme/theme = ExtResource( 7 )
+margin/left = -96.0
+margin/top = -96.0
+margin/right = 160.0
+margin/bottom = -71.0
 text = "Now fall on top of it"
 align = 1
 valign = 1
@@ -203,14 +202,14 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/flower"]
 
-margin/left = -64.0
-margin/top = -96.0
-margin/right = 192.0
-margin/bottom = -46.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 theme/theme = ExtResource( 7 )
+margin/left = -64.0
+margin/top = -96.0
+margin/right = 192.0
+margin/bottom = -46.0
 text = "Then collect that flower \nand push the barrel left"
 align = 1
 valign = 1
