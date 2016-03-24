@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=5]
 
@@ -68,13 +68,13 @@ transform/pos = Vector2( 448, 192 )
 [node name="teleporter" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 384 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, -128 )
-collision/margin = 0.08
+
 
 [node name="breakable_ground" parent="." instance=ExtResource( 5 )]
 

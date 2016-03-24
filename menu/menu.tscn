@@ -434,6 +434,10 @@ focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
 theme/theme = ExtResource( 1 )
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 script/script = ExtResource( 2 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
 screen_move_speed = 800.0
@@ -476,12 +480,14 @@ __meta__ = { "_editor_collapsed":true }
 [node name="image" type="TextureFrame" parent="initial_splash"]
 
 visibility/opacity = 0.0
-margin/right = 1024.0
-margin/bottom = 768.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 768.0
 texture = ExtResource( 4 )
 expand = true
 
@@ -505,44 +511,45 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 custom_constants/separation = 14
 alignment = 0
-__meta__ = { "_editor_collapsed":true }
 
 [node name="logo" type="TextureFrame" parent="main"]
 
-margin/left = 198.0
-margin/top = 23.0
-margin/right = 825.0
-margin/bottom = 176.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 1
 size_flags/vertical = 1
 size_flags/stretch_ratio = 2.0
+margin/left = 198.0
+margin/top = 23.0
+margin/right = 825.0
+margin/bottom = 176.0
 texture = ExtResource( 5 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="splash" type="Node2D" parent="main/logo"]
 
 transform/pos = Vector2( 618.213, 157.035 )
 transform/rot = 15.0502
 z/z = 4
-__meta__ = { "_editor_collapsed":true }
 
 [node name="label" type="Label" parent="main/logo/splash"]
 
-margin/left = -167.0
-margin/top = -16.0
-margin/right = 147.0
-margin/bottom = 42.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 theme/theme = SubResource( 27 )
+margin/left = -272.0
+margin/top = -42.0
+margin/right = 258.0
+margin/bottom = 16.0
 custom_colors/font_color = Color( 1, 0.665668, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "Some sample splash, that\'s soooooooooo long that you won\'t beleive!"
+text = "Some sample splash, https://github.com/KOBUGE-Games/minilens"
 align = 1
 autowrap = true
 percent_visible = 1.0
@@ -564,118 +571,126 @@ autoplay = "loop"
 
 [node name="buttons" type="GridContainer" parent="main"]
 
-margin/left = 312.0
-margin/top = 214.0
-margin/right = 712.0
-margin/bottom = 514.0
 rect/min_size = Vector2( 400, 300 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 1
 size_flags/vertical = 1
 size_flags/stretch_ratio = 3.0
+margin/left = 312.0
+margin/top = 214.0
+margin/right = 712.0
+margin/bottom = 514.0
 columns = 2
 __meta__ = { "_editor_collapsed":true }
 
 [node name="options" type="Button" parent="main/buttons"]
 
-margin/right = 211.0
-margin/bottom = 148.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 211.0
+margin/bottom = 148.0
 toggle_mode = false
 text = "Options"
 flat = false
 
 [node name="levels" type="Button" parent="main/buttons"]
 
-margin/left = 215.0
-margin/right = 399.0
-margin/bottom = 148.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 215.0
+margin/top = 0.0
+margin/right = 399.0
+margin/bottom = 148.0
 toggle_mode = false
 text = "Play"
 flat = false
 
 [node name="credits" type="Button" parent="main/buttons"]
 
-margin/top = 152.0
-margin/right = 211.0
-margin/bottom = 300.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 152.0
+margin/right = 211.0
+margin/bottom = 300.0
 toggle_mode = false
 text = "Credits"
 flat = false
 
 [node name="quit" type="Button" parent="main/buttons"]
 
-margin/left = 215.0
-margin/top = 152.0
-margin/right = 399.0
-margin/bottom = 300.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 215.0
+margin/top = 152.0
+margin/right = 399.0
+margin/bottom = 300.0
 toggle_mode = false
 text = "Exit"
 flat = false
 
 [node name="logos" type="HBoxContainer" parent="main"]
 
-margin/top = 578.0
-margin/right = 1024.0
-margin/bottom = 678.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 1
 size_flags/stretch_ratio = 2.0
+margin/left = 0.0
+margin/top = 578.0
+margin/right = 1024.0
+margin/bottom = 678.0
 alignment = 1
 __meta__ = { "_editor_collapsed":true }
 
 [node name="godot" type="TextureFrame" parent="main/logos"]
 
-margin/left = 255.0
-margin/right = 532.0
-margin/bottom = 100.0
 rect/min_size = Vector2( 277, 100 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
+margin/left = 255.0
+margin/top = 0.0
+margin/right = 532.0
+margin/bottom = 100.0
 texture = ExtResource( 17 )
 expand = true
 
 [node name="kobuge" type="TextureFrame" parent="main/logos"]
 
-margin/left = 536.0
-margin/right = 769.0
-margin/bottom = 100.0
 rect/min_size = Vector2( 233, 100 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 536.0
+margin/top = 0.0
+margin/right = 769.0
+margin/bottom = 100.0
 texture = ExtResource( 18 )
 expand = true
 
 [node name="copyright" type="Label" parent="main"]
 
-margin/top = 742.0
-margin/right = 1024.0
-margin/bottom = 767.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+margin/left = 0.0
+margin/top = 742.0
+margin/right = 1024.0
+margin/bottom = 767.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Copyright (c) 2015-2016 KOBUGE Games - http://kobuge-games.github.io/minilens"
 align = 1
@@ -688,12 +703,14 @@ max_lines_visible = -1
 
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 1024.0
-margin/right = -1024.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 1024.0
+margin/top = 0.0
+margin/right = -1024.0
+margin/bottom = 0.0
 script/script = ExtResource( 19 )
 packs_file_path = "res://levels/packs.txt"
 level_packs_dir_path = "res://levels"
@@ -702,14 +719,14 @@ level_select_button_scene = ExtResource( 20 )
 
 [node name="back" type="Button" parent="levels"]
 
-margin/left = 8.0
-margin/top = 8.0
-margin/right = 96.0
-margin/bottom = 53.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 8.0
+margin/top = 8.0
+margin/right = 96.0
+margin/bottom = 53.0
 custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "< Back"
@@ -719,35 +736,39 @@ flat = false
 
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 48.0
-margin/top = 61.0
-margin/right = 48.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 48.0
+margin/top = 61.0
+margin/right = 48.0
+margin/bottom = 0.0
 alignment = 0
 
 [node name="select_pack" type="HBoxContainer" parent="levels/items"]
 
-margin/right = 928.0
-margin/bottom = 49.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 928.0
+margin/bottom = 49.0
 custom_constants/separation = 12
 alignment = 1
 
 [node name="label" type="Label" parent="levels/items/select_pack"]
 
-margin/left = 275.0
-margin/right = 385.0
-margin/bottom = 49.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 275.0
+margin/top = 0.0
+margin/right = 385.0
+margin/bottom = 49.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Select Pack:"
@@ -758,14 +779,15 @@ max_lines_visible = -1
 
 [node name="option_button" type="OptionButton" parent="levels/items/select_pack"]
 
-margin/left = 397.0
-margin/right = 653.0
-margin/bottom = 49.0
 rect/min_size = Vector2( 256, 0 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 397.0
+margin/top = 0.0
+margin/right = 653.0
+margin/bottom = 49.0
 toggle_mode = false
 flat = false
 align = 0
@@ -774,19 +796,22 @@ items = [  ]
 
 [node name="levels" type="GridContainer" parent="levels/items"]
 
-margin/top = 53.0
-margin/right = 928.0
-margin/bottom = 707.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 53.0
+margin/right = 928.0
+margin/bottom = 707.0
 custom_constants/vseparation = 26
 custom_constants/hseparation = 26
 columns = 7
 
 [node name="level_select_button" parent="levels/items/levels" instance=ExtResource( 20 )]
 
+margin/left = 0.0
+margin/top = 0.0
 margin/right = 100.0
 margin/bottom = 100.0
 
@@ -794,12 +819,14 @@ margin/bottom = 100.0
 
 anchor/right = 1
 anchor/bottom = 1
-margin/left = -1024.0
-margin/right = 1024.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = -1024.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 0.0
 script/script = ExtResource( 21 )
 __meta__ = { "_editor_collapsed":true }
 
@@ -807,14 +834,14 @@ __meta__ = { "_editor_collapsed":true }
 
 anchor/left = 1
 anchor/right = 1
-margin/left = 96.0
-margin/top = 8.0
-margin/right = 8.0
-margin/bottom = 53.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 96.0
+margin/top = 8.0
+margin/right = 8.0
+margin/bottom = 53.0
 toggle_mode = false
 text = "Back >"
 flat = false
@@ -824,24 +851,27 @@ flat = false
 anchor/left = 3
 anchor/right = 3
 anchor/bottom = 1
-margin/left = 300.0
-margin/top = 61.0
-margin/right = -300.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 300.0
+margin/top = 61.0
+margin/right = -300.0
+margin/bottom = 0.0
 custom_constants/vseparation = 6
 columns = 2
 
 [node name="fullscreen_label" type="Label" parent="options/settings"]
 
-margin/right = 329.0
-margin/bottom = 49.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 329.0
+margin/bottom = 49.0
 text = "Fullscreen"
 align = 1
 valign = 1
@@ -851,13 +881,14 @@ max_lines_visible = -1
 
 [node name="fullscreen" type="OptionButton" parent="options/settings"]
 
-margin/left = 333.0
-margin/right = 599.0
-margin/bottom = 49.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
+margin/left = 333.0
+margin/top = 0.0
+margin/right = 599.0
+margin/bottom = 49.0
 toggle_mode = false
 flat = false
 align = 0
@@ -866,12 +897,13 @@ items = [  ]
 
 [node name="music_label" type="Label" parent="options/settings"]
 
-margin/top = 67.0
-margin/right = 329.0
-margin/bottom = 92.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
+margin/left = 0.0
+margin/top = 67.0
+margin/right = 329.0
+margin/bottom = 92.0
 text = "Music"
 align = 1
 valign = 1
@@ -881,14 +913,14 @@ max_lines_visible = -1
 
 [node name="music" type="OptionButton" parent="options/settings"]
 
-margin/left = 333.0
-margin/top = 55.0
-margin/right = 599.0
-margin/bottom = 104.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
+margin/left = 333.0
+margin/top = 55.0
+margin/right = 599.0
+margin/bottom = 104.0
 toggle_mode = false
 flat = false
 align = 0
@@ -897,12 +929,13 @@ items = [  ]
 
 [node name="sound_label" type="Label" parent="options/settings"]
 
-margin/top = 122.0
-margin/right = 329.0
-margin/bottom = 147.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
+margin/left = 0.0
+margin/top = 122.0
+margin/right = 329.0
+margin/bottom = 147.0
 text = "Sounds"
 align = 1
 valign = 1
@@ -912,14 +945,14 @@ max_lines_visible = -1
 
 [node name="sound" type="OptionButton" parent="options/settings"]
 
-margin/left = 333.0
-margin/top = 110.0
-margin/right = 599.0
-margin/bottom = 159.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
+margin/left = 333.0
+margin/top = 110.0
+margin/right = 599.0
+margin/bottom = 159.0
 toggle_mode = false
 flat = false
 align = 0
@@ -928,12 +961,13 @@ items = [  ]
 
 [node name="input_mode_label" type="Label" parent="options/settings"]
 
-margin/top = 177.0
-margin/right = 329.0
-margin/bottom = 202.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
+margin/left = 0.0
+margin/top = 177.0
+margin/right = 329.0
+margin/bottom = 202.0
 text = "Input"
 align = 1
 valign = 1
@@ -943,14 +977,14 @@ max_lines_visible = -1
 
 [node name="input_mode" type="OptionButton" parent="options/settings"]
 
-margin/left = 333.0
-margin/top = 165.0
-margin/right = 599.0
-margin/bottom = 214.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 2
+margin/left = 333.0
+margin/top = 165.0
+margin/right = 599.0
+margin/bottom = 214.0
 toggle_mode = false
 flat = false
 align = 0
@@ -961,23 +995,25 @@ items = [  ]
 
 anchor/right = 1
 anchor/bottom = 1
-margin/top = 768.0
-margin/bottom = -768.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 768.0
+margin/right = 0.0
+margin/bottom = -768.0
 
 [node name="back" type="Button" parent="credits"]
 
-margin/left = 8.0
-margin/top = 8.0
-margin/right = 96.0
-margin/bottom = 53.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 8.0
+margin/top = 8.0
+margin/right = 96.0
+margin/bottom = 53.0
 custom_fonts/font = ExtResource( 6 )
 toggle_mode = false
 text = "^ Back"
@@ -987,13 +1023,13 @@ flat = false
 
 anchor/right = 1
 anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
 margin/left = 24.0
 margin/top = 56.0
 margin/right = 24.0
 margin/bottom = 24.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "long. loadfajsdnfadkjsasdf a\ntext!! adsfdksfdsflnsfks\n===\nhehe! :D"

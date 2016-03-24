@@ -46,14 +46,12 @@ tile_data = IntArray( 196612, 4, 196613, 0, 196614, 0, 196615, 0, 196616, 0, 196
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 128, 192 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 128 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="start" type="Position2D" parent="."]
 

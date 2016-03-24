@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=3]
 
 [node name="level" type="Node2D"]
 
@@ -94,5 +94,3 @@ transform/pos = Vector2( 832, 320 )
 [node name="flower8" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 960, 384 )
-
-

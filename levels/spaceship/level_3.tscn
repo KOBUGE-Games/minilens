@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=5]
 
 [node name="level" type="Node2D"]
 
@@ -33,8 +33,7 @@ tile_data = IntArray( 65545, 1, 65547, 1, 131078, 4, 131079, 0, 131080, 3, 13108
 [node name="box" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 448, 64 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="start" type="Position2D" parent="."]
 
@@ -59,32 +58,27 @@ __meta__ = { "_edit_lock_":true }
 [node name="box1" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 512, 64 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box2" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 768, 64 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box3" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 896, 64 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box4" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 256, 512 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box5" parent="." instance=ExtResource( 2 )]
 
 transform/pos = Vector2( 768, 576 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="flower" parent="." instance=ExtResource( 4 )]
 

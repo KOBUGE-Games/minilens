@@ -5,8 +5,8 @@
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://shared/theme.tres" type="Theme" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -78,8 +78,7 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 768, 384 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="Label" type="Label" parent="."]
 
@@ -117,8 +116,7 @@ transform/pos = Vector2( 768, 512 )
 [node name="box1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 256, 256 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="areas" type="Node2D" parent="."]
 

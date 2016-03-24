@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://pickups/pickup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gfx/flower.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "bounce"
+length = 2.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:transform/rot")
+tracks/0/interp = 2
+tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ -45.0, 45.0 ] }
+
+[node name="flower" instance=ExtResource( 1 )]
+
+linear_damp = 0.1
+goal = "flower"
+pickable_by = 1
+
+[node name="sprite" parent="."]
+
+texture = ExtResource( 2 )
+
+[node name="animation_player" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/bounce = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = "bounce"
+
+

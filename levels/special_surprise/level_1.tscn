@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://gfx/terrain.png" type="Texture" id=6]
 
@@ -73,7 +73,7 @@ transform/pos = Vector2( 256, 512 )
 [node name="box 2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 128, 192 )
-collision/margin = 0.08
+
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 3 )]
 
@@ -86,98 +86,98 @@ transform/pos = Vector2( 768, 128 )
 [node name="box3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 256, 192 )
-collision/margin = 0.08
+
 
 [node name="box4" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 192 )
-collision/margin = 0.08
+
 
 [node name="box5" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 512, 192 )
-collision/margin = 0.08
+
 
 [node name="box6" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 640, 192 )
-collision/margin = 0.08
+
 
 [node name="box7" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 768, 192 )
-collision/margin = 0.08
+
 
 [node name="box9" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 320 )
-collision/margin = 0.08
+
 
 [node name="box10" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 704, 320 )
-collision/margin = 0.08
+
 
 [node name="box11" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 576, 320 )
-collision/margin = 0.08
+
 
 [node name="box12" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 448, 320 )
-collision/margin = 0.08
+
 
 [node name="box13" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 320, 320 )
-collision/margin = 0.08
+
 
 [node name="box14" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 192, 320 )
-collision/margin = 0.08
+
 
 [node name="box15" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 128, 448 )
-collision/margin = 0.08
+
 
 [node name="box15 2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 256, 448 )
-collision/margin = 0.08
+
 
 [node name="box15 3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 448 )
-collision/margin = 0.08
+
 
 [node name="box15 4" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 768, 448 )
-collision/margin = 0.08
+
 
 [node name="box15 5" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 768, 448 )
-collision/margin = 0.08
+
 
 [node name="box15 6" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 512, 448 )
-collision/margin = 0.08
+
 
 [node name="box15 7" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 640, 448 )
-collision/margin = 0.08
+
 
 [node name="box158" parent="." instance=ExtResource( 5 )]
 
 visibility/opacity = 0.3
 transform/pos = Vector2( 0, 576 )
-collision/margin = 0.08
+
 
 [node name="flower1" parent="." instance=ExtResource( 4 )]
 
@@ -191,7 +191,7 @@ transform/pos = Vector2( 704, 512 )
 [node name="box159" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 448, 512 )
-collision/margin = 0.08
+
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -209,6 +209,6 @@ transform/pos = Vector2( 0, 640 )
 [node name="box160" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 448, 512 )
-collision/margin = 0.08
+
 
 

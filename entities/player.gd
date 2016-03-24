@@ -1,10 +1,13 @@
 
 extends "entity.gd"
 
+const bomb_scene = preload("bomb.tscn")
+
 var current_animation = "idle"
 var old_animation = ""
 
 var bombs = 0
+var did_place_bomb = false
 
 onready var character = get_node("character")
 onready var animation_player = get_node("animation_player")
@@ -45,6 +48,7 @@ func level_load(level_node):
 
 func next_move():
 	current_animation = "idle"
+	var turn = false
 	
 	if tile_types.overlap == TileConfig.TILE_SINK:
 		destroy()
@@ -52,21 +56,48 @@ func next_move():
 	if Input.is_action_pressed("btn_right") and can_move_in_direction("right", false, true):
 		move_in_direction("right", false, true)
 		current_animation = "walk"
+		turn = true
 
-	if Input.is_action_pressed("btn_left") and can_move_in_direction("left", false, true):
+	elif Input.is_action_pressed("btn_left") and can_move_in_direction("left", false, true):
 		move_in_direction("left", false, true)
 		current_animation = "walk"
+		turn = true
 
-	if Input.is_action_pressed("btn_up") and can_move_in_direction("top", false, true) and tile_types["overlap"] == TileConfig.TILE_CLIMB:
-			move_in_direction("top", false, true)
-			current_animation = "climb"
+	elif Input.is_action_pressed("btn_up") and can_move_in_direction("top", false, true) and tile_types["overlap"] == TileConfig.TILE_CLIMB:
+		move_in_direction("top", false, true)
+		current_animation = "climb"
+		turn = true
 
-	if Input.is_action_pressed("btn_down") and can_move_in_direction("bottom", false, true) and tile_types["overlap"] == TileConfig.TILE_CLIMB:
+	elif Input.is_action_pressed("btn_down") and can_move_in_direction("bottom", false, true) \
+			and (tile_types["overlap"] == TileConfig.TILE_CLIMB or tile_types["bottom"] == TileConfig.TILE_CLIMB):
 		move_in_direction("bottom", false, true)
 		current_animation = "climb"
+		turn = true
+
+	elif Input.is_action_pressed("place_bomb") and bombs > 0:
+		if not did_place_bomb:
+			bombs -= 1
+			level_holder.emit_signal("counters_changed")
+			var bomb = bomb_scene.instance()
+			level_holder.level_node.add_child(bomb)
+			bomb.set_global_pos(get_global_pos())
+			level_holder.turn()
+		did_place_bomb = true
+	else:
+		did_place_bomb = false
 	
-	if movement != Vector2(0, 0):
-		level_holder.turn()
+	if turn:
+		if pause_frames <= 1:
+			level_holder.turn()
+	else:
+		movement = Vector2(0,0)
+
+func pickup(pickup):
+	if pickup.meta == "bomb":
+		bombs += 1
+		level_holder.emit_signal("counters_changed")
+		return true
+	return false
 
 func destroy():
 	level_holder.gui.prompt_retry_level()

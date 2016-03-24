@@ -93,8 +93,7 @@ max_lines_visible = -1
 [node name="box" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 128 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="areas" type="Node2D" parent="."]
 
@@ -173,12 +172,12 @@ max_lines_visible = -1
 [node name="teleporter" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 192, 448 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 448, 576 )
-collision/margin = 0.08
+
 
 

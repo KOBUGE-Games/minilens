@@ -73,30 +73,30 @@ type_mask = 15
 
 [node name="ray_check_top" type="RayCast2D" parent="."]
 
-enabled = false
+enabled = true
 cast_to = Vector2( 0, -29 )
-layer_mask = 1
+layer_mask = 2
 type_mask = 15
 
 [node name="ray_check_right" type="RayCast2D" parent="."]
 
-enabled = false
+enabled = true
 cast_to = Vector2( 29, 0 )
-layer_mask = 1
+layer_mask = 2
 type_mask = 15
 
 [node name="ray_check_bottom" type="RayCast2D" parent="."]
 
-enabled = false
+enabled = true
 cast_to = Vector2( 0, 29 )
-layer_mask = 1
+layer_mask = 2
 type_mask = 15
 
 [node name="ray_check_left" type="RayCast2D" parent="."]
 
-enabled = false
+enabled = true
 cast_to = Vector2( -29, 0 )
-layer_mask = 1
+layer_mask = 2
 type_mask = 15
 
 

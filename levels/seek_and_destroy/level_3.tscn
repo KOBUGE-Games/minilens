@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=5]
 
@@ -65,6 +65,7 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="bomb_pickup" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 960, 0 )
+linear_damp = 0.1
 
 [node name="box28" parent="." instance=ExtResource( 4 )]
 
@@ -74,26 +75,22 @@ collision/margin = 0.08
 [node name="box25" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 576, 320 )
-collision/layers = 1
-collision/mask = 1
+collision/margin = 0.08
 
 [node name="box26" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 576, 256 )
-collision/layers = 1
-collision/mask = 1
+collision/margin = 0.08
 
 [node name="box27" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 960, 384 )
-collision/layers = 1
-collision/mask = 1
+collision/margin = 0.08
 
 [node name="box29" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1088, 384 )
-collision/layers = 1
-collision/mask = 1
+collision/margin = 0.08
 
 [node name="box30" parent="." instance=ExtResource( 4 )]
 
@@ -108,23 +105,25 @@ collision/margin = 0.08
 [node name="box32" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 192, 384 )
-collision/layers = 1
-collision/mask = 1
+collision/margin = 0.08
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 3 )]
+
+linear_damp = 0.1
 
 [node name="bomb_pickup2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 704, 192 )
+linear_damp = 0.1
 
 [node name="bomb_pickup3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 192 )
+linear_damp = 0.1
 
 [node name="box33" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1152, 384 )
-collision/layers = 1
-collision/mask = 1
+collision/margin = 0.08
 
 

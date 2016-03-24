@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=6]
 
@@ -74,13 +74,10 @@ transform/pos = Vector2( 384, 704 )
 [node name="box1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 768, 448 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box7" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 704, 576 )
-collision/margin = 0.08
 
 [node name="flower1" parent="." instance=ExtResource( 4 )]
 
@@ -97,13 +94,10 @@ transform/pos = Vector2( 768, 256 )
 [node name="box2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 768, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box8" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 640, 576 )
-collision/margin = 0.08
 
 [node name="flower4" parent="." instance=ExtResource( 4 )]
 
@@ -120,20 +114,14 @@ transform/pos = Vector2( 1024, 192 )
 [node name="box3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 704, 512 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box4" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 1088, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box5" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 960, 192 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="bomb_pickup3" parent="." instance=ExtResource( 3 )]
 
@@ -142,45 +130,34 @@ transform/pos = Vector2( 640, 256 )
 [node name="box9" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 768, 512 )
-collision/margin = 0.08
 
 [node name="box10" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 768, 640 )
-collision/margin = 0.08
 
 [node name="box6" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 640 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box11" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 832, 704 )
-collision/margin = 0.08
 
 [node name="box12" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 896, 640 )
-collision/margin = 0.08
 
 [node name="box13" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box14" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896, 576 )
-collision/layers = 1
-collision/mask = 1
 
 [node name="box15" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 896, 448 )
-collision/margin = 0.08
 
 [node name="flower6" parent="." instance=ExtResource( 4 )]
 
@@ -210,5 +187,3 @@ collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( 65533, 1, 65535, 1, 1, 1, 3, 1, 8, 1, 9, 1, 10, 1, 11, 1, 12, 1, 131069, 1, 131071, 1, 65537, 1, 65539, 1, 65544, 1, 65548, 1, 196605, 1, 196607, 1, 131072, 1, 131073, 1, 131075, 1, 131076, 1, 131077, 1, 131078, 1, 131079, 1, 131080, 1, 131084, 1, 262138, 4, 262139, 0, 262140, 0, 262141, 1, 262143, 1, 196609, 1, 196611, 1, 196616, 1, 196617, 4, 196618, 1, 196619, 3, 196620, 1, 327677, 1, 327679, 1, 262145, 1, 262147, 1, 262152, 1, 262156, 1, 393213, 1, 393215, 1, 327681, 1, 327683, 1, 327688, 1, 327689, 1, 327690, 1, 327691, 1, 327692, 1, 458749, 1, 458751, 1, 393217, 1, 393219, 1, 393225, 1, 524285, 1, 524287, 1, 458753, 1, 458755, 1, 458761, 1, 589821, 1, 589822, 1, 589823, 1, 524289, 1, 524290, 1, 524291, 1, 524295, 1, 655357, 1, 655359, 1, 589825, 1, 589827, 1, 720893, 1, 720895, 1, 655361, 1, 655363, 1, 720896, 7, 1048569, 2, 1048570, 2, 1048571, 2, 1048572, 2, 1048573, 2, 1048574, 2, 1048575, 2, 983040, 2, 983041, 2, 983042, 2, 983043, 2, 983044, 2, 983045, 2, 983046, 2, 983047, 2, 983048, 2, 983049, 2, 983050, 2, 983051, 2, 983052, 2, 983053, 2, 983054, 2, 983055, 2 )
-
-

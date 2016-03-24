@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=5]
 
@@ -69,158 +69,142 @@ transform/pos = Vector2( 192, 0 )
 [node name="box3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 512, 448 )
-collision/margin = 0.08
+
 
 [node name="box4" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 576, 384 )
-collision/margin = 0.08
+
 
 [node name="box1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 512, 384 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 576, 320 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box5" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 512, 192 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box6" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 256 )
-collision/margin = 0.08
+
 
 [node name="box7" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 576, 256 )
-collision/margin = 0.08
+
 
 [node name="box8" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 512, 256 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box9" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 320, 384 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box10" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 320 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box11" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 384, 384 )
-collision/margin = 0.08
+
 
 [node name="box12" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 512 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box13" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 448 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box14" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 512, 320 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box15" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 448, 384 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box16" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 448 )
-collision/margin = 0.08
+
 
 [node name="box17" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 320, 448 )
-collision/margin = 0.08
+
 
 [node name="box18" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 256, 512 )
-collision/margin = 0.08
+
 
 [node name="box19" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 576, 512 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box20" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 256, 448 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box21" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 192, 512 )
-collision/margin = 0.08
+
 
 [node name="box22" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 704, 448 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box23" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 704, 384 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box24" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 704, 512 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box26" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 640, 320 )
-collision/margin = 0.08
+
 
 [node name="box27" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 640, 384 )
-collision/margin = 0.08
+
 
 [node name="box28" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 768, 448 )
-collision/margin = 0.08
+
 
 [node name="box25" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 512 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 3 )]
 

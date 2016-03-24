@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=6]
 
 [node name="level" type="Node2D"]
@@ -65,7 +65,7 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 448 )
-collision/margin = 0.08
+
 
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
@@ -78,17 +78,17 @@ transform/pos = Vector2( 256, 704 )
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 512, 640 )
-collision/margin = 0.08
+
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 448 )
-collision/margin = 0.08
+
 
 [node name="box3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 512 )
-collision/margin = 0.08
+
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
 

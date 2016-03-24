@@ -4,6 +4,7 @@ extends CanvasLayer
 const GOAL_TYPES = ["box", "flower", "artefact"]
 
 var allow_next_level = false
+var popup_running = false
 
 onready var timer = get_node("timer")
 onready var popup = get_node("popup")
@@ -66,24 +67,29 @@ func update_counters():
 			get_node("counters/resources").get_node(goal_type).hide()
 
 func prompt_retry_level(wait = 0): # Called when the robot dies
-	allow_next_level = false
-	show_popup("You died", "Your robot was destroyed!\n Do you want to try again?", wait)
+	if not popup_running or allow_next_level:
+		allow_next_level = false
+		show_popup("You died", "Your robot was destroyed!\n Do you want to try again?", wait)
 
 func prompt_impossible_level(wait = 0): # Called when the level is impossible
-	allow_next_level = false
-	show_popup("Impossible", "It seems that it is impossible to pass this level!\nDo you want to try again?", wait)
+	if not popup_running or allow_next_level:
+		allow_next_level = false
+		show_popup("Impossible", "It seems that it is impossible to pass this level!\nDo you want to try again?", wait)
 
 func prompt_finsh_level(turns = 1, has_more_levels = true, wait = 0): # Called when the level is passed
-	allow_next_level = has_more_levels
-	
-	var body_text = str("Level passed in ", turns, " turns.")
-	if !has_more_levels:
-		body_text = str(body_text, "\nThere are no more levels left in this pack. You can go to play some other pack, though.")
-	
-	show_popup("Good job!", body_text, wait)
+	if not popup_running:
+		allow_next_level = has_more_levels
+		
+		var body_text = str("Level passed in ", turns, " turns.")
+		if !has_more_levels:
+			body_text = str(body_text, "\nThere are no more levels left in this pack. You can go to play some other pack, though.")
+		
+		show_popup("Good job!", body_text, wait)
 
 func show_popup(title, text, wait): # Show a popup with title and text, after some time
-	if wait:
+	popup_running = true
+	timer.disconnect("timeout", self, "_show_popup")
+	if wait > 0:
 		timer.set_wait_time(wait)
 		timer.connect("timeout", self, "_show_popup", [
 			title, text
@@ -117,4 +123,5 @@ func popup_button_pressed(name): # Actions for different popup buttons
 	hide_popup()
 
 func hide_popup(): # Hide the popup
+	popup_running = false
 	popup.hide()

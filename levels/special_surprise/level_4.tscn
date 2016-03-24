@@ -6,7 +6,7 @@
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=7]
 
 [node name="level" type="Node2D"]
 
@@ -75,30 +75,28 @@ transform/pos = Vector2( 384, 128 )
 
 visibility/opacity = 0.3
 transform/pos = Vector2( 576, 320 )
-collision/margin = 0.08
+
 
 [node name="teleporter" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 704, 384 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter1"
 
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 448, 512 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 832, 448 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="teleporter1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 704, 512 )
-collision/margin = 0.08
+
 
 [node name="breakable_ground 2" parent="." instance=ExtResource( 3 )]
 
@@ -114,18 +112,18 @@ transform/pos = Vector2( 256, 256 )
 
 visibility/opacity = 0.2
 transform/pos = Vector2( 832, 704 )
-collision/margin = 0.08
+
 
 [node name="box2" parent="." instance=ExtResource( 4 )]
 
 visibility/opacity = 0.2
 transform/pos = Vector2( 896, 704 )
-collision/margin = 0.08
+
 
 [node name="box4" parent="." instance=ExtResource( 4 )]
 
 visibility/opacity = 0.2
 transform/pos = Vector2( 960, 704 )
-collision/margin = 0.08
+
 
 

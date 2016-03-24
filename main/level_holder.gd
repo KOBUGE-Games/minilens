@@ -14,6 +14,7 @@ var current_level
 var goals_left = 0 # The amount of goals left to be taken
 var goals_total = {} # The starting amounts of different goals left to be taken
 var goals_taken = {} # The taken amounts of different goals
+var goal_wait = 0
 
 var acid_animation_pos = 0.0 # The current pos of the animation (0-1)
 var tile_map_acid_y # The Y coordinate of the acid sea
@@ -108,7 +109,7 @@ func goal_add(type = ""): # Add one more goal
 	
 	emit_signal("counters_changed")
 
-func goal_take(type = "", wait = 0): # Called when a goal is taken
+func goal_take(type = ""): # Called when a goal is taken
 	if goals_total.has(type):
 		goals_taken[type] += 1
 	
@@ -122,18 +123,21 @@ func goal_take(type = "", wait = 0): # Called when a goal is taken
 			var line_parts = raw_pack.split(" ")
 			if line_parts.size() >= 2:
 				if line_parts[0] == current_pack:
-					gui.prompt_finsh_level(turns, int(line_parts[1]) >= int(current_level) + 1)
+					gui.prompt_finsh_level(turns, int(line_parts[1]) >= int(current_level) + 1, goal_wait - OS.get_unix_time())
 					break
 	
 	emit_signal("counters_changed")
 
-func goal_return(type = "", wait = 0): # Called when a goal is returned (e.g. when you push a artefact out of a force)
+func goal_return(type = ""): # Called when a goal is returned (e.g. when you push a artefact out of a force)
 	if(goals_total.has(type)):
 		goals_taken[type] -= 1
 	
 	goals_left = goals_left + 1
 	
 	emit_signal("counters_changed")
+
+func set_goal_wait(time = 0):
+	goal_wait  = time + OS.get_unix_time()
 
 func play_sample(name):
 	if SettingsManager.read_settings().sound:

@@ -3,8 +3,8 @@
 [ext_resource path="res://scripts/tutorial_level.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://shared/theme.tres" type="Theme" id=8]
@@ -87,43 +87,42 @@ transform/pos = Vector2( 192, 192 )
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 192 )
-collision/margin = 0.08
+
 
 [node name="box3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 128 )
-collision/margin = 0.08
+
 
 [node name="box4" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 192, 128 )
-collision/margin = 0.08
+
 
 [node name="box5" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 320, 256 )
-collision/margin = 0.08
+
 
 [node name="box6" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 448, 256 )
-collision/margin = 0.08
+
 
 [node name="box7" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 256 )
-collision/margin = 0.08
+
 
 [node name="box8" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 128, 320 )
-collision/margin = 0.08
+
 
 [node name="box" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 640, 192 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="areas" type="Node2D" parent="."]
 

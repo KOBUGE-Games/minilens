@@ -32,6 +32,7 @@ var movement_original = Vector2(0, 0)
 var movement_check_collision = ""
 var speed_multiplier = 1
 var pause_frames = 0
+var wait_frames = 3
 
 onready var tilemap = get_node(tilemap_path)
 onready var level_holder = get_node(level_holder_path)
@@ -60,6 +61,10 @@ func _ready():
 	set_fixed_process(true)
 
 func _fixed_process(delta):
+	if wait_frames > 0:
+		wait_frames -= 1
+		return
+	
 	if movement.length_squared() > 0 and pause_frames <= 0:
 		#printt(get_name(), movement_check_collision, movement)
 		if movement_check_collision != "":
@@ -130,6 +135,7 @@ func next_move(): # Virtual
 func destroy(): # Virtual
 	if score_goal_on_destroy and goal != "":
 		level_holder.goal_take(goal)
+		goal = ""
 	queue_free()
 
 func can_move_in_direction(direction, collide_with_climb = false, attempt_push = false, hard_check = false):
@@ -153,9 +159,11 @@ func can_move_in_direction(direction, collide_with_climb = false, attempt_push =
 			#	printt(direction, ray_status[direction].movement, (tile_directions[direction]), ray_status[direction].movement.dot(tile_directions[direction]))
 		else:
 			return false
+	
 	return true
 
 func can_be_pushed_in_direction(direction):
+	update_status()
 	if !pushable or movement.length_squared() > 0.01:
 		return false
 	if !can_move_in_direction(direction, !fall_though_ladders, false):
@@ -167,8 +175,10 @@ func move_in_direction(direction, collide_with_climb = false, attempt_push = fal
 		return false
 	movement = tile_directions[direction] * TILE_SIZE
 	
-	if continious_collision:
+	if continious_collision and can_move_in_direction(direction, collide_with_climb, false, true):
 		movement_check_collision = direction
+	else:
+		movement_check_collision = ""
 	
 	if attempt_push and ray_status[direction] != null and ray_status[direction].get("movement") != null:
 		ray_status[direction].push_in_direction(direction)

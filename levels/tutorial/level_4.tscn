@@ -4,7 +4,7 @@
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
 [ext_resource path="res://fonts/papercut.fnt" type="Font" id=3]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
 
 [node name="level" type="Node2D"]
 
@@ -80,8 +80,7 @@ max_lines_visible = -1
 [node name="box" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 512 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
@@ -102,8 +101,7 @@ transform/pos = Vector2( 256, 0 )
 [node name="box1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 64, 384 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="flower4" parent="." instance=ExtResource( 5 )]
 

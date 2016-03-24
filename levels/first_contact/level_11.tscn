@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=7]
 
@@ -66,7 +66,7 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 512 )
-collision/margin = 0.08
+
 
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
@@ -79,23 +79,23 @@ transform/pos = Vector2( 1472, 128 )
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 384, 512 )
-collision/margin = 0.08
+
 
 [node name="box2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 512 )
-collision/margin = 0.08
+
 
 [node name="teleporter" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 704, 640 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1024, 320 )
-collision/margin = 0.08
+
 
 [node name="breakable_ground" parent="." instance=ExtResource( 7 )]
 
@@ -108,23 +108,23 @@ transform/pos = Vector2( 1344, 192 )
 [node name="box3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1088, 640 )
-collision/margin = 0.08
+
 
 [node name="box4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1472, 640 )
-collision/margin = 0.08
+
 
 [node name="teleporter2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1344, 768 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter3"
 
 [node name="teleporter3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 128, 704 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter2"
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
@@ -150,12 +150,12 @@ transform/pos = Vector2( 128, 512 )
 [node name="box5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 704, 128 )
-collision/margin = 0.08
+
 
 [node name="box6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 128 )
-collision/margin = 0.08
+
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 4 )]
 

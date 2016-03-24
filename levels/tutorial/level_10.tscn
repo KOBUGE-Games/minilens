@@ -5,7 +5,7 @@
 [ext_resource path="res://fonts/papercut.fnt" type="Font" id=3]
 [ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=6]
 
 [node name="level" type="Node2D"]
 
@@ -85,8 +85,7 @@ transform/pos = Vector2( 448, 512 )
 [node name="box" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 448, 448 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="bomb_pickup" parent="." instance=ExtResource( 6 )]
 

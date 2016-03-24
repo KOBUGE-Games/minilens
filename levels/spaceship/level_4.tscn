@@ -3,8 +3,8 @@
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/bomb_pickup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=6]
 
 [node name="level" type="Node2D"]
@@ -65,8 +65,7 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, 256 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
@@ -79,97 +78,92 @@ transform/pos = Vector2( 192, 128 )
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 320 )
-collision/margin = 0.08
+
 
 [node name="box3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 320, 320 )
-collision/margin = 0.08
+
 
 [node name="box4" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 320, 192 )
-collision/margin = 0.08
+
 
 [node name="box5" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 384, 192 )
-collision/margin = 0.08
+
 
 [node name="box6" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 448, 192 )
-collision/margin = 0.08
+
 
 [node name="box7" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 512, 192 )
-collision/margin = 0.08
+
 
 [node name="box8" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 192 )
-collision/margin = 0.08
+
 
 [node name="box9" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 256 )
-collision/margin = 0.08
+
 
 [node name="box10" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 320 )
-collision/margin = 0.08
+
 
 [node name="box11" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 640, 320 )
-collision/margin = 0.08
+
 
 [node name="box12" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 448 )
-collision/margin = 0.08
+
 
 [node name="box13" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 640, 448 )
-collision/margin = 0.08
+
 
 [node name="box14" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 768, 256 )
-collision/margin = 0.08
+
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 256 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 320 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box15" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 128 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box16" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 128 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="box17" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 576, 128 )
-collision/layers = 1
-collision/mask = 1
+
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 4 )]
 

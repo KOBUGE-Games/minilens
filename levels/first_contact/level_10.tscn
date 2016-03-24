@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/flower.tscn" type="PackedScene" id=3]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=5]
 
@@ -68,101 +68,101 @@ transform/pos = Vector2( 512, 832 )
 [node name="teleporter" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 384, 64 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter6"
 
 [node name="teleporter1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 640, 320 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter9"
 
 [node name="teleporter2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 640, 64 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter8"
 
 [node name="teleporter3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 768, 64 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter11"
 
 [node name="teleporter4" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 896, 64 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter7"
 
 [node name="teleporter5" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 64 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter10"
 
 [node name="teleporter6" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 704, 192 )
-collision/margin = 0.08
+
 
 [node name="teleporter7" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 192, 192 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter4"
 
 [node name="teleporter8" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 512, 320 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter2"
 
 [node name="teleporter9" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 384, 320 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter10" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 320, 192 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter5"
 
 [node name="teleporter11" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 832, 192 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter3"
 
 [node name="teleporter12" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 704, 448 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter5"
 
 [node name="teleporter13" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 320, 448 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter14"
 
 [node name="teleporter14" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 256, 320 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter13"
 
 [node name="teleporter15" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 704 )
-collision/margin = 0.08
+
 to_teleport_path = "../teleporter8"
 
 [node name="box" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 448, 448 )
-collision/margin = 0.08
+
 
 
