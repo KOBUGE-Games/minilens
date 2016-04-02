@@ -18,6 +18,7 @@ func _ready():
 
 func destroy():
 	if not exploded:
+		exploded = true
 		animation_player.play("explode")
 		
 		level_holder.set_goal_wait(seconds_after_explode)
@@ -26,7 +27,8 @@ func destroy():
 			if ray_status[direction] != null and ray_status[direction].has_method("destroy"):
 				ray_status[direction].destroy()
 		
-		exploded = true
+		set_layer_mask(0)
+		set_collision_mask(0)
 
 func check_free():
 	if exploded:

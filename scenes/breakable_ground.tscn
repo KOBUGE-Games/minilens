@@ -29,7 +29,7 @@ input/pickable = false
 shapes/0/shape = SubResource( 1 )
 shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
 shapes/0/trigger = true
-collision/layers = 1
+collision/layers = 2
 collision/mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
@@ -65,7 +65,7 @@ _update_shape_index = -1
 transform/pos = Vector2( 0, -32 )
 enabled = true
 cast_to = Vector2( 0, -32 )
-layer_mask = 1
+layer_mask = 2
 type_mask = 15
 
 [connection signal="finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]

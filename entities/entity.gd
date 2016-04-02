@@ -27,12 +27,14 @@ var tile_directions = {
 var tile_types = {}
 var ray_status = {}
 
+var is_moving = false
 var movement = Vector2(0, 0)
 var movement_original = Vector2(0, 0)
 var movement_check_collision = ""
 var speed_multiplier = 1
 var pause_frames = 0
 var wait_frames = 3
+var push_direction = ""
 
 onready var tilemap = get_node(tilemap_path)
 onready var level_holder = get_node(level_holder_path)
@@ -65,7 +67,7 @@ func _fixed_process(delta):
 		wait_frames -= 1
 		return
 	
-	if movement.length_squared() > 0 and pause_frames <= 0:
+	if is_moving and pause_frames <= 0:
 		#printt(get_name(), movement_check_collision, movement)
 		if movement_check_collision != "":
 			update_ray_status()
@@ -75,6 +77,7 @@ func _fixed_process(delta):
 				movement = Vector2(0, 0)
 				movement_original = Vector2(0, 0)
 				movement_check_collision = ""
+				is_moving = false
 		
 		var speed = movement_speed * delta * speed_multiplier
 		if movement.length_squared() > speed.length_squared():
@@ -84,13 +87,17 @@ func _fixed_process(delta):
 		else:
 			move(movement)
 			movement = Vector2(0, 0)
+			is_moving = false
 			pause_frames = 3 # This way we would do the logic twice, in case the order of execution is important
 	else:
+		set_pos(get_pos().snapped(TILE_SIZE))
 		update_status()
 		movement_check_collision = ""
+		movement = Vector2(0, 0)
 		if !auto_move():
 			next_move()
 		movement_original = movement
+		is_moving = movement.length_squared() > 0.001
 	pause_frames -= 1
 
 func update_status():
@@ -112,19 +119,25 @@ func update_ray_status():
 
 func auto_move():
 	speed_multiplier = 1
-	if pause_frames == 1:
+	var old_push_direction = ""
+	if pause_frames <= 1:
 		set_z(0)
+		old_push_direction = push_direction
+	push_direction = ""
 	if fall and destroy_after_acid and tile_types.top == TileConfig.TILE_SINK:
 		emit_signal("auto_move_done", "sink")
 		destroy()
 	elif fall and can_move_in_direction("bottom", !fall_though_ladders) and (fall_though_ladders or tile_types.overlap != TileConfig.TILE_CLIMB):
 		movement = TILE_SIZE * tile_directions.bottom
-		if (tile_types.bottom == TileConfig.TILE_SINK or tile_types.overlap == TileConfig.TILE_SINK):
+		if tile_types.bottom == TileConfig.TILE_SINK or tile_types.overlap == TileConfig.TILE_SINK:
 			speed_multiplier = 0.2
 			emit_signal("auto_move_done", "sink")
 			set_z(-1)
 		else:
 			emit_signal("auto_move_done", "fall")
+	elif old_push_direction != "":
+		movement = tile_directions[old_push_direction] * TILE_SIZE
+		movement_check_collision = old_push_direction
 	else:
 		return false
 	return true
@@ -138,6 +151,14 @@ func destroy(): # Virtual
 		goal = ""
 	queue_free()
 
+func is_moving():
+	return pause_frames <= 0 and is_moving
+
+func stop_movement():
+	movement = Vector2(0, 0)
+	is_moving = false
+	pause_frames = 3
+
 func can_move_in_direction(direction, collide_with_climb = false, attempt_push = false, hard_check = false):
 	if tile_types[direction] == TileConfig.TILE_SOLID:
 		return false
@@ -149,12 +170,14 @@ func can_move_in_direction(direction, collide_with_climb = false, attempt_push =
 	if ray_object != null:
 		# We can't use extends here, since get_script returns the finnal script of the object, not the current script.
 		if ray_object.get("movement") != null:
-			if ray_object.movement.length_squared() <= 0.1 \
-					or ray_object.movement.dot(tile_directions[direction]) < 0.1:
+			var dot = ray_object.movement.normalized().dot(tile_directions[direction])
+			if !ray_object.is_moving():
 				if attempt_push:
 					return ray_object.can_be_pushed_in_direction(direction)
 				else:
 					return false
+			elif ray_object.is_moving() and dot < 0.4:
+				return false # We don't even attempt to push moving objects
 			#else:
 			#	printt(direction, ray_status[direction].movement, (tile_directions[direction]), ray_status[direction].movement.dot(tile_directions[direction]))
 		else:
@@ -164,7 +187,7 @@ func can_move_in_direction(direction, collide_with_climb = false, attempt_push =
 
 func can_be_pushed_in_direction(direction):
 	update_status()
-	if !pushable or movement.length_squared() > 0.01:
+	if !pushable or is_moving:
 		return false
 	if !can_move_in_direction(direction, !fall_though_ladders, false):
 		return false
@@ -187,5 +210,5 @@ func move_in_direction(direction, collide_with_climb = false, attempt_push = fal
 func push_in_direction(direction):
 	if !can_be_pushed_in_direction(direction):
 		return false
-	movement = tile_directions[direction] * TILE_SIZE
-	movement_check_collision = direction
+	push_direction = direction
+	return true

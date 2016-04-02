@@ -37,7 +37,9 @@ func _ready():
 	var input_mode = SettingsManager.read_settings().input_mode
 	get_node("touch_controls").set_hidden(!OS.has_touchscreen_ui_hint())
 	get_node("touch_controls/areas").set_hidden(input_mode != SettingsManager.INPUT_AREAS)
+	get_node("touch_controls/areas").set_ignore_mouse(input_mode != SettingsManager.INPUT_AREAS)
 	get_node("touch_controls/buttons").set_hidden(input_mode != SettingsManager.INPUT_BUTTONS)
+	get_node("touch_controls/buttons").set_ignore_mouse(input_mode != SettingsManager.INPUT_BUTTONS)
 	
 	# Turn off mouse emulation in-game
 	JS.emulate_mouse(false)
@@ -100,6 +102,7 @@ func show_popup(title, text, wait): # Show a popup with title and text, after so
 
 func _show_popup(title, text): # Show a popup with title and text
 	JS.emulate_mouse(true)
+	get_tree().set_pause(true)
 	
 	popup.get_node("popup_node/header/title").set_text(title)
 	popup.get_node("popup_node/body/container/text").set_text(text)
@@ -124,4 +127,5 @@ func popup_button_pressed(name): # Actions for different popup buttons
 
 func hide_popup(): # Hide the popup
 	popup_running = false
+	get_tree().set_pause(false)
 	popup.hide()

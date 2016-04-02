@@ -30,6 +30,7 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="gui" type="CanvasLayer" parent="."]
 
+process/pause_mode = 2
 layer = 0
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -39,62 +40,68 @@ script/script = ExtResource( 1 )
 [node name="counters" type="VBoxContainer" parent="gui"]
 
 anchor/right = 1
-margin/left = 8.0
-margin/top = 8.0
-margin/right = 8.0
-margin/bottom = 68.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 8.0
+margin/top = 8.0
+margin/right = 8.0
+margin/bottom = 68.0
 alignment = 0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="resources" type="HBoxContainer" parent="gui/counters"]
 
-margin/right = 1008.0
-margin/bottom = 32.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1008.0
+margin/bottom = 32.0
 alignment = 0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="turns" type="HBoxContainer" parent="gui/counters/resources"]
 
-margin/right = 120.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 120, 32 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 120.0
+margin/bottom = 32.0
 alignment = 0
 
 [node name="texture" type="TextureFrame" parent="gui/counters/resources/turns"]
 
-margin/right = 32.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 32, 32 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
 texture = ExtResource( 2 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/turns"]
 
-margin/left = 36.0
-margin/top = 3.0
-margin/right = 120.0
-margin/bottom = 28.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
 theme/theme = ExtResource( 3 )
+margin/left = 36.0
+margin/top = 3.0
+margin/right = 120.0
+margin/bottom = 28.0
 text = "0"
 align = 1
 valign = 1
@@ -104,40 +111,43 @@ max_lines_visible = -1
 
 [node name="box" type="HBoxContainer" parent="gui/counters/resources"]
 
-margin/left = 124.0
-margin/right = 244.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 120, 32 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 124.0
+margin/top = 0.0
+margin/right = 244.0
+margin/bottom = 32.0
 alignment = 0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="texture" type="TextureFrame" parent="gui/counters/resources/box"]
 
-margin/right = 32.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 32, 32 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
 texture = ExtResource( 4 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/box"]
 
-margin/left = 36.0
-margin/top = 3.0
-margin/right = 120.0
-margin/bottom = 28.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
 theme/theme = ExtResource( 3 )
+margin/left = 36.0
+margin/top = 3.0
+margin/right = 120.0
+margin/bottom = 28.0
 text = "1 / 2"
 align = 1
 valign = 1
@@ -147,40 +157,43 @@ max_lines_visible = -1
 
 [node name="flower" type="HBoxContainer" parent="gui/counters/resources"]
 
-margin/left = 248.0
-margin/right = 368.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 120, 32 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 248.0
+margin/top = 0.0
+margin/right = 368.0
+margin/bottom = 32.0
 alignment = 0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="texture" type="TextureFrame" parent="gui/counters/resources/flower"]
 
-margin/right = 32.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 32, 32 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
 texture = ExtResource( 5 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/flower"]
 
-margin/left = 36.0
-margin/top = 3.0
-margin/right = 120.0
-margin/bottom = 28.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
 theme/theme = ExtResource( 3 )
+margin/left = 36.0
+margin/top = 3.0
+margin/right = 120.0
+margin/bottom = 28.0
 text = "1 / 2"
 align = 1
 valign = 1
@@ -190,40 +203,43 @@ max_lines_visible = -1
 
 [node name="artefact" type="HBoxContainer" parent="gui/counters/resources"]
 
-margin/left = 372.0
-margin/right = 492.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 120, 32 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 372.0
+margin/top = 0.0
+margin/right = 492.0
+margin/bottom = 32.0
 alignment = 0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="texture" type="TextureFrame" parent="gui/counters/resources/artefact"]
 
-margin/right = 32.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 32, 32 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
 texture = ExtResource( 6 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/resources/artefact"]
 
-margin/left = 36.0
-margin/top = 3.0
-margin/right = 120.0
-margin/bottom = 28.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
 theme/theme = ExtResource( 3 )
+margin/left = 36.0
+margin/top = 3.0
+margin/right = 120.0
+margin/bottom = 28.0
 text = "1 / 2"
 align = 1
 valign = 1
@@ -233,39 +249,42 @@ max_lines_visible = -1
 
 [node name="bomb" type="HBoxContainer" parent="gui/counters"]
 
-margin/top = 36.0
-margin/right = 1008.0
-margin/bottom = 68.0
 rect/min_size = Vector2( 120, 32 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 36.0
+margin/right = 1008.0
+margin/bottom = 68.0
 alignment = 0
 
 [node name="texture" type="TextureFrame" parent="gui/counters/bomb"]
 
-margin/right = 32.0
-margin/bottom = 32.0
 rect/min_size = Vector2( 32, 32 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 1
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 32.0
+margin/bottom = 32.0
 texture = ExtResource( 7 )
 expand = true
 
 [node name="label" type="Label" parent="gui/counters/bomb"]
 
-margin/left = 36.0
-margin/top = 3.0
-margin/right = 1008.0
-margin/bottom = 28.0
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 1
 theme/theme = ExtResource( 3 )
+margin/left = 36.0
+margin/top = 3.0
+margin/right = 1008.0
+margin/bottom = 28.0
 text = " x 0"
 valign = 1
 percent_visible = 1.0
@@ -280,6 +299,10 @@ focus/ignore_mouse = true
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="buttons" type="GridContainer" parent="gui/touch_controls"]
@@ -289,12 +312,14 @@ anchor/left = 1
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
-margin/left = 224.0
-margin/top = 224.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 224.0
+margin/top = 224.0
+margin/right = 0.0
+margin/bottom = 0.0
 custom_constants/vseparation = 16
 custom_constants/hseparation = 16
 columns = 3
@@ -302,23 +327,26 @@ __meta__ = { "_editor_collapsed":true }
 
 [node name="hole-up-left" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/right = 64.0
-margin/bottom = 64.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 64.0
+margin/bottom = 64.0
 
 [node name="up" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/left = 80.0
-margin/right = 144.0
-margin/bottom = 64.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 80.0
+margin/top = 0.0
+margin/right = 144.0
+margin/bottom = 64.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/up"]
@@ -332,24 +360,26 @@ visibility_mode = 1
 
 [node name="hole-up-right" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/left = 160.0
-margin/right = 224.0
-margin/bottom = 64.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 160.0
+margin/top = 0.0
+margin/right = 224.0
+margin/bottom = 64.0
 
 [node name="left" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/top = 80.0
-margin/right = 64.0
-margin/bottom = 144.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 80.0
+margin/right = 64.0
+margin/bottom = 144.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/left"]
@@ -365,15 +395,15 @@ visibility_mode = 1
 
 [node name="bomb" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/left = 80.0
-margin/top = 80.0
-margin/right = 144.0
-margin/bottom = 144.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 80.0
+margin/top = 80.0
+margin/right = 144.0
+margin/bottom = 144.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/bomb"]
@@ -387,15 +417,15 @@ visibility_mode = 1
 
 [node name="right" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/left = 160.0
-margin/top = 80.0
-margin/right = 224.0
-margin/bottom = 144.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 160.0
+margin/top = 80.0
+margin/right = 224.0
+margin/bottom = 144.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/right"]
@@ -411,25 +441,26 @@ visibility_mode = 1
 
 [node name="hole-down-left" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/top = 160.0
-margin/right = 64.0
-margin/bottom = 224.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 160.0
+margin/right = 64.0
+margin/bottom = 224.0
 
 [node name="down" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/left = 80.0
-margin/top = 160.0
-margin/right = 144.0
-margin/bottom = 224.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 80.0
+margin/top = 160.0
+margin/right = 144.0
+margin/bottom = 224.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/buttons/down"]
@@ -445,14 +476,14 @@ visibility_mode = 1
 
 [node name="hole-down-right" type="Control" parent="gui/touch_controls/buttons"]
 
-margin/left = 160.0
-margin/top = 160.0
-margin/right = 224.0
-margin/bottom = 224.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 160.0
+margin/top = 160.0
+margin/right = 224.0
+margin/bottom = 224.0
 
 [node name="areas" type="Control" parent="gui/touch_controls"]
 
@@ -462,6 +493,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="sides" type="VBoxContainer" parent="gui/touch_controls/areas"]
@@ -472,40 +507,49 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 custom_constants/separation = 0
 alignment = 0
 
 [node name="up" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
 
-margin/right = 1024.0
-margin/bottom = 128.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 128.0
 custom_constants/separation = 0
 alignment = 0
 
 [node name="hole-up-left" type="Control" parent="gui/touch_controls/areas/sides/up"]
 
-margin/right = 170.0
-margin/bottom = 128.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 170.0
+margin/bottom = 128.0
 
 [node name="up" type="Control" parent="gui/touch_controls/areas/sides/up"]
 
-margin/left = 170.0
-margin/right = 852.0
-margin/bottom = 128.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 size_flags/stretch_ratio = 4.0
+margin/left = 170.0
+margin/top = 0.0
+margin/right = 852.0
+margin/bottom = 128.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/up/up"]
@@ -523,36 +567,40 @@ centered = false
 
 [node name="hole-up-right" type="Control" parent="gui/touch_controls/areas/sides/up"]
 
-margin/left = 852.0
-margin/right = 1024.0
-margin/bottom = 128.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 852.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 128.0
 
 [node name="center" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
 
-margin/top = 128.0
-margin/right = 1024.0
-margin/bottom = 640.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
 size_flags/stretch_ratio = 4.0
+margin/left = 0.0
+margin/top = 128.0
+margin/right = 1024.0
+margin/bottom = 640.0
 custom_constants/separation = 0
 alignment = 0
 
 [node name="left" type="Control" parent="gui/touch_controls/areas/sides/center"]
 
-margin/right = 170.0
-margin/bottom = 512.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 170.0
+margin/bottom = 512.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/left"]
@@ -571,25 +619,27 @@ centered = false
 
 [node name="hole-center" type="Control" parent="gui/touch_controls/areas/sides/center"]
 
-margin/left = 170.0
-margin/right = 852.0
-margin/bottom = 512.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 size_flags/stretch_ratio = 4.0
+margin/left = 170.0
+margin/top = 0.0
+margin/right = 852.0
+margin/bottom = 512.0
 
 [node name="right" type="Control" parent="gui/touch_controls/areas/sides/center"]
 
-margin/left = 852.0
-margin/right = 1024.0
-margin/bottom = 512.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 852.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 512.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/right"]
@@ -608,36 +658,40 @@ centered = false
 
 [node name="down" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
 
-margin/top = 640.0
-margin/right = 1024.0
-margin/bottom = 768.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 640.0
+margin/right = 1024.0
+margin/bottom = 768.0
 custom_constants/separation = 0
 alignment = 0
 
 [node name="hole-down-left" type="Control" parent="gui/touch_controls/areas/sides/down"]
 
-margin/right = 170.0
-margin/bottom = 128.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 170.0
+margin/bottom = 128.0
 
 [node name="down" type="Control" parent="gui/touch_controls/areas/sides/down"]
 
-margin/left = 170.0
-margin/right = 852.0
-margin/bottom = 128.0
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
 size_flags/stretch_ratio = 4.0
+margin/left = 170.0
+margin/top = 0.0
+margin/right = 852.0
+margin/bottom = 128.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/down/down"]
@@ -656,14 +710,15 @@ centered = false
 
 [node name="bomb" type="Control" parent="gui/touch_controls/areas/sides/down"]
 
-margin/left = 852.0
-margin/right = 1024.0
-margin/bottom = 128.0
 rect/min_size = Vector2( 70, 70 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 3
 size_flags/vertical = 3
+margin/left = 852.0
+margin/top = 0.0
+margin/right = 1024.0
+margin/bottom = 128.0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/down/bomb"]
@@ -680,41 +735,50 @@ visibility_mode = 1
 
 anchor/left = 1
 anchor/right = 1
-margin/left = 204.0
-margin/bottom = 100.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 204.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 100.0
 alignment = 0
 __meta__ = { "_editor_collapsed":true }
 
 [node name="retry" type="TextureButton" parent="gui/top_left_buttons"]
 
-margin/right = 100.0
-margin/bottom = 100.0
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 100.0
+margin/bottom = 100.0
 toggle_mode = false
 textures/normal = ExtResource( 12 )
 
 [node name="menu" type="TextureButton" parent="gui/top_left_buttons"]
 
-margin/left = 104.0
-margin/right = 204.0
-margin/bottom = 100.0
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
+margin/left = 104.0
+margin/top = 0.0
+margin/right = 204.0
+margin/bottom = 100.0
 toggle_mode = false
 textures/normal = ExtResource( 13 )
 
 [node name="popup" parent="gui" instance=ExtResource( 14 )]
 
 visibility/visible = false
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 0.0
+margin/bottom = 0.0
 
 [node name="timer" type="Timer" parent="gui"]
 

@@ -36,8 +36,8 @@ func _fixed_process(delta):
 				to.locked = true
 				lock_left = locked_timeout
 				to.lock_left = to.locked_timeout
-				if(collider.has_method("stop_move")):
-					collider.stop_move()
+				if(collider.has_method("stop_movement")):
+					collider.stop_movement()
 	elif(lock_left < 0):
 		locked = false # Unlock
 	show_locked = (locked || to.locked)
