@@ -42,7 +42,7 @@ func save_settings(data):
 	for setting in default_settings:
 		var data_line = default_settings[setting]
 		if data.has(setting):
-			data_line = data[setting]
+			data_line = convert(data[setting], typeof(default_settings[setting]))
 		lines.push_back(str(setting, DATA_DELIMITER, data_line))
 	
 	FileManager.set_file_lines(options_path, lines)
