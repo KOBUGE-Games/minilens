@@ -3,6 +3,10 @@ extends KinematicBody2D
 
 const TileConfig = preload("./tile_config.gd")
 const TILE_SIZE = Vector2(64, 64)
+const AUTOMOVE_SOUNDS = {
+	push = "box_hit",
+	sink = "sink"
+}
 
 signal auto_move_done(type)
 
@@ -12,6 +16,7 @@ export(bool) var destroy_after_acid = true
 export(bool) var pushable = true
 export(String) var goal = ""
 export(bool) var score_goal_on_destroy = true
+export(bool) var automatic_sounds = true
 export(Vector2) var movement_speed = Vector2(200, 200)
 export(NodePath) var tilemap_path = @"../tilemap"
 export(NodePath) var level_holder_path = @"../.."
@@ -38,6 +43,7 @@ var push_direction = ""
 
 onready var tilemap = get_node(tilemap_path)
 onready var level_holder = get_node(level_holder_path)
+onready var positional_audio = get_node("positional_audio")
 onready var ray_nodes = {
 	top = get_node("ray_top"),
 	right = get_node("ray_right"),
@@ -60,6 +66,7 @@ func _ready():
 	if goal != "":
 		level_holder.goal_add(goal)
 	
+	connect("auto_move_done", self, "play_auto_move_sound")
 	set_fixed_process(true)
 
 func _fixed_process(delta):
@@ -138,9 +145,19 @@ func auto_move():
 	elif old_push_direction != "":
 		movement = tile_directions[old_push_direction] * TILE_SIZE
 		movement_check_collision = old_push_direction
+		emit_signal("auto_move_done", "push")
 	else:
 		return false
 	return true
+
+func play_auto_move_sound(type):
+	if pause_frames <= 1:
+		if automatic_sounds and AUTOMOVE_SOUNDS.has(type):
+			play_sound(AUTOMOVE_SOUNDS[type])
+
+func play_sound(name):
+	if SettingsManager.get_settings().sound:
+		positional_audio.play(name)
 
 func next_move(): # Virtual
 	pass

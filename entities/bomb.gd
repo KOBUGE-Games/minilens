@@ -20,6 +20,7 @@ func destroy():
 	if not exploded:
 		exploded = true
 		animation_player.play("explode")
+		play_sound("explode")
 		
 		level_holder.set_goal_wait(seconds_after_explode)
 		

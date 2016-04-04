@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://entities/entity.gd" type="Script" id=1]
 [ext_resource path="res://gfx/boxCrate_double.png" type="Texture" id=2]
+[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -25,6 +26,7 @@ destroy_after_acid = true
 pushable = true
 goal = ""
 score_goal_on_destroy = true
+automatic_sounds = true
 movement_speed = Vector2( 200, 200 )
 tilemap_path = NodePath("../tilemap")
 level_holder_path = NodePath("../..")
@@ -32,6 +34,17 @@ level_holder_path = NodePath("../..")
 [node name="sprite" type="Sprite" parent="."]
 
 texture = ExtResource( 2 )
+
+[node name="positional_audio" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 2
+config/samples = ExtResource( 3 )
+config/pitch_random = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]
 

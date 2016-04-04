@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=1]
+[gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://pickups/pickup.gd" type="Script" id=1]
 [ext_resource path="res://gfx/pickup_bomb.png" type="Texture" id=2]
+[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -21,6 +22,7 @@ angular_damp = 1.0
 script/script = ExtResource( 1 )
 goal = ""
 meta = ""
+play_sound = "flower_pickup"
 pickable_by = 0
 level_holder_path = NodePath("../..")
 
@@ -33,5 +35,23 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 trigger = false
 _update_shape_index = 0
+
+[node name="positional_audio" type="SamplePlayer2D" parent="."]
+
+params/volume_db = 0.0
+params/pitch_scale = 1.0
+params/attenuation/min_distance = 1.0
+params/attenuation/max_distance = 2048.0
+params/attenuation/distance_exp = 1.0
+config/polyphony = 1
+config/samples = ExtResource( 3 )
+config/pitch_random = 0.0
+
+[node name="destroy_timer" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = true
+autostart = false
 
 

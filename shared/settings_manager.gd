@@ -13,6 +13,7 @@ const default_settings = {
 const DATA_DELIMITER = ":"
 
 var options_path = "user://options.txt"
+var cache = default_settings
 
 func read_settings():
 	# Read the file
@@ -34,10 +35,13 @@ func read_settings():
 			else:
 				data[line_parts[0]] = convert(line_parts[1], data_type)
 	
+	cache = data
 	return data
 
+func get_settings():
+	return cache
+
 func save_settings(data):
-	
 	var lines = []
 	for setting in default_settings:
 		var data_line = default_settings[setting]
@@ -46,3 +50,4 @@ func save_settings(data):
 		lines.push_back(str(setting, DATA_DELIMITER, data_line))
 	
 	FileManager.set_file_lines(options_path, lines)
+	read_settings() # Updating cache

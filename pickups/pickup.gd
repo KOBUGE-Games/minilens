@@ -8,8 +8,11 @@ const PICK_ALL = 1
 
 export(String) var goal = ""
 export(String) var meta = ""
+export(String) var play_sound = ""
 export(int, "Player", "All entities") var pickable_by = 0
 export(NodePath) var level_holder_path = @"../.."
+
+var picked = false
 
 onready var level_holder = get_node(level_holder_path)
 
@@ -19,13 +22,19 @@ func _ready():
 	connect("body_enter", self, "_body_enter")
 
 func _body_enter(body):
-	if (pickable_by == PICK_PLAYER and body extends Player) or (pickable_by == PICK_ALL and body extends Entity):
+	if !picked and ((pickable_by == PICK_PLAYER and body extends Player) or (pickable_by == PICK_ALL and body extends Entity)):
+		picked = true
 		if goal != "":
 			level_holder.goal_take(goal)
 			goal = ""
 		if body.has_method("pickup"):
 			body.pickup(self)
+		if play_sound != "" and SettingsManager.get_settings().sound:
+			get_node("positional_audio").play(play_sound)
 		destroy()
 
 func destroy():
-	queue_free()
+	hide()
+	var timer = get_node("destroy_timer")
+	timer.connect("timeout", self, "queue_free")
+	timer.start()
