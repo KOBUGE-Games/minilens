@@ -1,7 +1,7 @@
 
 extends Reference
 
-const TILESET = preload("res://scenes/tiles.tres")
+const TILESET = preload("res://shared/tileset.tres")
 
 const TILE_EMPTY = 0
 const TILE_SOLID = 1

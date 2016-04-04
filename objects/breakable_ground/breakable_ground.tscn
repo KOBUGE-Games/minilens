@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=1]
 
-[ext_resource path="res://scripts/breakable_ground.gd" type="Script" id=1]
+[ext_resource path="res://objects/breakable_ground/breakable_ground.gd" type="Script" id=1]
 [ext_resource path="res://gfx/breakable.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -69,5 +69,3 @@ layer_mask = 2
 type_mask = 15
 
 [connection signal="finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
-
-

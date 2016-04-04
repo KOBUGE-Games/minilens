@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=1]
 
-[ext_resource path="res://scenes/tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://shared/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/breakable_ground.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/teleporter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://objects/breakable_ground/breakable_ground.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/teleporter/teleporter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
 
 [node name="level" type="Node2D"]

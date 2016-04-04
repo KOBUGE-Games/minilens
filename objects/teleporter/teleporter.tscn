@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://scripts/teleporter.gd" type="Script" id=1]
+[ext_resource path="res://objects/teleporter/teleporter.gd" type="Script" id=1]
 [ext_resource path="res://gfx/teleporter.png" type="Texture" id=2]
 
 [node name="teleporter" type="KinematicBody2D"]
@@ -28,5 +28,3 @@ enabled = true
 cast_to = Vector2( 0, 8 )
 layer_mask = 1
 type_mask = 15
-
-
