@@ -1,0 +1,194 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://shared/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://entities/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/breakable_ground/breakable_ground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/teleporter/teleporter.tscn" type="PackedScene" id=8]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 65546, 4, 65547, 0, 65548, 3, 65550, 4, 65551, 0, 65552, 3, 65554, 4, 65555, 0, 65556, 0, 65557, 0, 65558, 0, 65559, 0, 65560, 3, 65561, 1, 131081, 12, 131082, 5, 131083, 8, 131088, 10, 131091, 9, 131092, 5, 131093, 5, 131094, 5, 131095, 8, 131097, 1, 196620, 1, 196621, 4, 196622, 3, 196625, 7, 196633, 1, 262146, 4, 262147, 0, 262148, 0, 262149, 3, 262150, 1, 262152, 4, 262153, 0, 262154, 0, 262155, 0, 262156, 3, 262161, 9, 262162, 13, 262163, 3, 262165, 4, 262166, 0, 262167, 0, 262168, 0, 262169, 3, 327686, 1, 327690, 9, 327691, 5, 327692, 5, 327693, 13, 327694, 3, 327702, 9, 327703, 5, 327704, 5, 327705, 8, 393219, 1, 393220, 4, 393221, 0, 393222, 3, 393226, 9, 393227, 5, 393228, 8, 393239, 9, 393240, 5, 393241, 8, 458755, 1, 458761, 12, 458762, 5, 458763, 8, 458767, 7, 458769, 4, 458770, 0, 458771, 0, 458772, 0, 458773, 3, 458775, 9, 458776, 5, 458777, 8, 524291, 4, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 14, 524297, 5, 524298, 5, 524299, 8, 524311, 9, 524312, 5, 524313, 8, 589835, 10, 589840, 4, 589841, 3, 589842, 1, 589843, 4, 589844, 0, 589845, 3, 589848, 9, 589849, 5, 589850, 11, 655376, 9, 655377, 8, 655378, 1, 655384, 9, 655385, 5, 655386, 8, 720905, 4, 720906, 0, 720907, 0, 720908, 0, 720909, 3, 720910, 1, 720913, 9, 720914, 13, 720915, 0, 720916, 0, 720917, 0, 720918, 3, 720920, 9, 720921, 5, 720922, 8, 786442, 9, 786443, 5, 786444, 8, 786446, 1, 786456, 9, 786457, 8, 851979, 9, 851980, 5, 851981, 11, 851982, 1, 851983, 1, 851984, 4, 851985, 0, 851986, 3, 851987, 1, 851992, 9, 851993, 8, 917515, 10, 917518, 1, 917524, 4, 917525, 0, 917526, 0, 917527, 14, 917528, 5, 917529, 8, 983043, 4, 983044, 3, 983045, 1, 983048, 4, 983049, 3, 983050, 1, 983051, 10, 983053, 7, 983061, 9, 983062, 5, 983063, 5, 983064, 5, 983065, 8, 1048580, 9, 1048581, 13, 1048582, 0, 1048583, 14, 1048584, 5, 1048585, 8, 1048586, 1, 1048587, 10, 1048598, 9, 1048599, 5, 1048600, 8, 1114122, 1, 1114123, 10, 1114134, 9, 1114135, 5, 1114136, 8, 1179649, 7, 1179650, 1, 1179651, 4, 1179652, 0, 1179653, 0, 1179654, 0, 1179655, 0, 1179656, 0, 1179657, 0, 1179658, 14, 1179659, 8, 1179670, 9, 1179671, 5, 1179672, 8, 1245194, 9, 1245195, 5, 1245196, 11, 1245206, 9, 1245207, 8, 1310720, 2, 1310721, 2, 1310722, 2, 1310723, 2, 1310724, 2, 1310725, 2, 1310726, 2, 1310727, 2, 1310728, 2, 1310729, 2, 1310730, 2, 1310731, 2, 1310732, 2, 1310733, 2, 1310734, 2, 1310735, 2, 1310736, 2, 1310737, 2, 1310738, 2, 1310739, 2, 1310740, 2, 1310741, 2, 1310742, 2, 1310743, 2, 1310744, 2, 1310745, 2, 1310746, 2, 1310747, 2 )
+
+[node name="tilemap_overlay" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 4
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 1310730, 9, 1310731, 5, 1310732, 8, 1310741, 9, 1310742, 5, 1310743, 8, 1376266, 9, 1376267, 5, 1376268, 8, 1376277, 9, 1376278, 5, 1376279, 8 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1088, 128 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+__meta__ = { "_editor_collapsed":true }
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1792, 1344 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="box" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1344, 0 )
+collision/margin = 0.08
+
+[node name="breakable_ground" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1280, 256 )
+
+[node name="breakable_ground1" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1088, 64 )
+
+[node name="box1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1280, 384 )
+collision/margin = 0.08
+
+[node name="flower" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 896, 384 )
+linear_damp = 0.1
+
+[node name="box2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1280, 512 )
+collision/margin = 0.08
+
+[node name="breakable_ground2" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 1408, 832 )
+
+[node name="bomb" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 896, 448 )
+linear_damp = 0.1
+
+[node name="static" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 896, 832 )
+collision/margin = 0.08
+
+[node name="flower1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 832, 768 )
+linear_damp = 0.1
+
+[node name="flower2" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 768, 960 )
+linear_damp = 0.1
+
+[node name="box3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 0 )
+collision/margin = 0.08
+
+[node name="teleporter" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 640, -64 )
+collision/margin = 0.08
+to_teleport_path = "../teleporter1"
+
+[node name="teleporter1" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 640, 896 )
+collision/margin = 0.08
+
+[node name="box4" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 320, 448 )
+collision/margin = 0.08
+
+[node name="flower3" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 192, 192 )
+linear_damp = 0.1
+
+[node name="flower4" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 896, 256 )
+linear_damp = 0.1
+
+[node name="static1" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1024, 256 )
+collision/margin = 0.08
+
+[node name="box5" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1024, 192 )
+collision/margin = 0.08
+
+[node name="bomb1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 832, 256 )
+linear_damp = 0.1
+
+[node name="flower5" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 384, 960 )
+linear_damp = 0.1
+
+[node name="bomb2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 896, 512 )
+linear_damp = 0.1
+
+

@@ -1,7 +1,7 @@
 tutorial 10
 first_contact 10
 botanica 6
+spaceship 6
+home_sweet_home 3
 seek_and_destroy 5
-spaceship 7
-special_surprise 4
-
+special_surprise 5

@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://shared/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=3]
-[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=4]
-[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
-[ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=4]
+[ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=5]
+[ext_resource path="res://objects/breakable_ground/breakable_ground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/teleporter/teleporter.tscn" type="PackedScene" id=8]
 
 [node name="level" type="Node2D"]
 
@@ -33,7 +35,7 @@ tile_data = IntArray(  )
 
 [node name="start" type="Position2D" parent="."]
 
-transform/pos = Vector2( 256, 2.18279e-11 )
+transform/pos = Vector2( 192, 2.18279e-11 )
 transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -64,19 +66,30 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="box" parent="." instance=ExtResource( 3 )]
 
-transform/pos = Vector2( 64, 0 )
-collision/layers = 1
-collision/mask = 1
+collision/margin = 0.08
 
-[node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
+[node name="flower" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 0, 64 )
+linear_damp = 0.1
+
+[node name="static" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 64, 0 )
+collision/margin = 0.08
+
+[node name="breakable_ground" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 64, 64 )
+
+[node name="bomb" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 128, 0 )
+linear_damp = 0.1
 
-[node name="flower" parent="." instance=ExtResource( 5 )]
+[node name="teleporter" parent="." instance=ExtResource( 8 )]
 
-[node name="box 2" parent="." instance=ExtResource( 6 )]
-
-transform/pos = Vector2( 192, 0 )
+transform/pos = Vector2( 128, 64 )
 collision/margin = 0.08
 
 

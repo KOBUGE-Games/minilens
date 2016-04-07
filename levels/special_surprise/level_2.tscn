@@ -51,6 +51,25 @@ collision/mask = 1
 occluder/light_mask = 1
 tile_data = IntArray( 393226, 4, 393227, 3, 458756, 4, 458757, 0, 458758, 0, 458759, 0, 458760, 0, 458761, 3, 524300, 4, 524301, 0, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
 
+[node name="tilemap2" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 786430, 9, 786431, 11, 720912, 12, 720913, 8, 851966, 9, 851967, 5, 786432, 5, 786433, 5, 786434, 5, 786435, 5, 786436, 5, 786437, 5, 786438, 5, 786439, 5, 786440, 5, 786441, 5, 786442, 5, 786443, 5, 786444, 5, 786445, 5, 786446, 5, 786447, 5, 786448, 5, 786449, 8 )
+
 [node name="start" type="Position2D" parent="."]
 
 transform/pos = Vector2( 256, 2.18279e-11 )
@@ -85,28 +104,31 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 320 )
-
+collision/margin = 0.08
 
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 768, 448 )
+linear_damp = 0.1
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896, 576 )
+linear_damp = 0.1
 
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 896, 512 )
-
+collision/margin = 0.08
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896, 384 )
+linear_damp = 0.1
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, -1152 )
-
+collision/margin = 0.08
 
 
