@@ -13,13 +13,20 @@ export(int, "Player", "All entities") var pickable_by = 0
 export(NodePath) var level_holder_path = @"../.."
 
 var picked = false
+var pause_frames = 3
 
 onready var level_holder = get_node(level_holder_path)
 
 func _ready():
 	if goal != "":
 		level_holder.goal_add(goal)
-	connect("body_enter", self, "_body_enter")
+	set_fixed_process(true)
+
+func _fixed_process(delta):
+	pause_frames -= 1
+	if pause_frames < 0:
+		set_fixed_process(false)
+		connect("body_enter", self, "_body_enter")
 
 func _body_enter(body):
 	if !picked and ((pickable_by == PICK_PLAYER and body extends Player) or (pickable_by == PICK_ALL and body extends Entity)):

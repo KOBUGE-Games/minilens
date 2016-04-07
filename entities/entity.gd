@@ -127,19 +127,24 @@ func update_ray_status():
 func auto_move():
 	speed_multiplier = 1
 	var old_push_direction = ""
-	if pause_frames <= 1:
+	if tile_types.bottom == TileConfig.TILE_SINK or tile_types.overlap == TileConfig.TILE_SINK:
+		set_z(-1)
+	else:
 		set_z(0)
+	if pause_frames <= 1:
 		old_push_direction = push_direction
 	push_direction = ""
 	if fall and destroy_after_acid and tile_types.top == TileConfig.TILE_SINK:
-		emit_signal("auto_move_done", "sink")
+		emit_signal("auto_move_done", "sink_end")
 		destroy()
+	elif fall and destroy_after_acid and (!can_move_in_direction("bottom", !fall_though_ladders) and tile_types.overlap == TileConfig.TILE_SINK):
+		emit_signal("auto_move_done", "sink_end")
+		destroy_without_free()
 	elif fall and can_move_in_direction("bottom", !fall_though_ladders) and (fall_though_ladders or tile_types.overlap != TileConfig.TILE_CLIMB):
 		movement = TILE_SIZE * tile_directions.bottom
 		if tile_types.bottom == TileConfig.TILE_SINK or tile_types.overlap == TileConfig.TILE_SINK:
 			speed_multiplier = 0.2
 			emit_signal("auto_move_done", "sink")
-			set_z(-1)
 		else:
 			emit_signal("auto_move_done", "fall")
 	elif old_push_direction != "":
@@ -162,10 +167,12 @@ func play_sound(name):
 func next_move(): # Virtual
 	pass
 
-func destroy(): # Virtual
+func destroy_without_free(): # Virtual
 	if score_goal_on_destroy and goal != "":
 		level_holder.goal_take(goal)
 		goal = ""
+func destroy(): # Virtual
+	destroy_without_free()
 	queue_free()
 
 func is_moving():
