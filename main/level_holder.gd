@@ -54,7 +54,6 @@ func load_level(pack, level): # Load level from pack
 	goals_left = 0
 	goals_taken = {}
 	goals_total = {}
-	emit_signal("counters_changed")
 	
 	# Create the new level
 	level_node = level_scene.instance()
@@ -64,6 +63,7 @@ func load_level(pack, level): # Load level from pack
 	player.set_pos(level_node.get_node("start").get_pos())
 	player.set_z(0)
 	player.level_load(level_node)
+	emit_signal("counters_changed")
 	
 	# Compute useful info about the tiles
 	level_tileset = level_node.get_node("tilemap").get_tileset()
