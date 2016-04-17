@@ -1,29 +1,30 @@
-
 Did you know that minilens can't jump?
-Please, can you stop dropping me into the acid?
+Please, could you stop dropping me into the acid?
 Please contribute at github.com/KOBUGE-Games/minilens
 I guess all levels are passable!
-Aliens forgot about earths gravity!
-Did you try to make your robot flip upside down?
-I can't help you with any level outside of the tutorial.
+Aliens forgot about Earth's gravity!
+Have you ever tried making your robot flip upside down?
+I can't help you with any level outside of the tutorial pack.
 Stuck? Try the First Contact pack!
-Did you collect all the flowers?
+Did you collect all the flowers? It will soon be Motherboard's Day!
 Did you know that the robot falls because of gravity?
-Did you know that minilens were made by aliens?
+Did you know that the Minilens series was made by aliens?
 I guess that the only missing thing in this game is... apples!
 Maybe... you should just push it the other way?
 I like climbing up ladders... It is like... flying!
-Version 1.2
 (beep) Hi there! It's me, Minilens! (beep)
 This was a hardcoded splash, please ignore it for the moment.
 What? I can't just jump over there? I hate those developers...
-The cake is a lie. Or no, since robots don't eat.
-www.freenode.net #kobuge
-GPL3 free (libre) puzzle platformer
-Made with Godot engine!
-Made by KOBUGE Games!
+The cake is a lie. Or is it? Hard to know since robots don't eat.
+irc.freenode.net #kobuge
+GPLv3+ free (libre) puzzle platformer
+Proudly made with Godot engine!
+Brought to you by KOBUGE Games!
 Arguably the first libre game made with Godot engine!
 Winner of the Best KOBUGE Game Award 2015!
 Free as in free beer/sweets as well as in free speech!
 "Great demo!" -- some guy on the Godot forum
 "N°1 Godot game of all times!" -- reduz, main Godot developer
+"Hey, stop impersonating me, I never said that!" -- reduz, main Godot developer
+If only Minilens had a jetpack like this famous alpaca...
+I heard that Minilens is searching for the Holy Kumquat Flower of Hackerdom...
