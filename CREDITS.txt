@@ -4,12 +4,13 @@ Brought to you by:
     Bojidar Marinov
     Johannes Danneker
     Rémi Verschelde
-    
+
     Obani
     Calinou
     est31
     Kermer
     adolson
 
-For more informations please visit
-http://kobuge-games.github.io/minilens/
+For more informations, please visit
+http://kobuge-games.github.io/minilens
+https://github.com/KOBUGE-Games/minilens
