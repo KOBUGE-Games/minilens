@@ -12,9 +12,12 @@ func _ready():
 		get_config_property("version_patch"),
 		get_config_property("version_build")
 	]
-	var version = "%0.%1.%2-%3"
-	for i in range(version_parts.size()):
-		version = version.replace(str("%", i), str(version_parts[i]))
+	
+	var version = version_parts[0] + "." + version_parts[1]
+	if version_parts[2] != "0" and version_parts[2] != "":
+		version += "." + version_parts[2]
+	if version_parts[3] != "":
+		version += "-" + version_parts[3]
 	
 	OS.set_window_title(str("Minilens - Version ", version))
 	
