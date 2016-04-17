@@ -156,12 +156,16 @@ margin/top = 18.0
 margin/right = 825.0
 margin/bottom = 171.0
 texture = ExtResource( 5 )
+__meta__ = { "_editor_collapsed":true }
 
 [node name="splash" type="Node2D" parent="main/logo"]
 
 transform/pos = Vector2( 618.213, 157.035 )
 transform/rot = 15.0502
 z/z = 4
+script/script = ExtResource( 6 )
+__meta__ = { "_editor_collapsed":true }
+splashes_path = "res://splashes.txt"
 
 [node name="label" type="Label" parent="main/logo/splash"]
 
@@ -184,8 +188,6 @@ autowrap = true
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
-script/script = ExtResource( 6 )
-splashes_path = "res://splashes.txt"
 
 [node name="animation_player" type="AnimationPlayer" parent="main/logo/splash"]
 
@@ -197,6 +199,18 @@ playback/active = true
 playback/speed = 0.2
 blend_times = [  ]
 autoplay = "loop"
+
+[node name="splash_reload" type="TextureButton" parent="main/logo"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 403.0
+margin/top = 66.0
+margin/right = 464.0
+margin/bottom = 106.0
+toggle_mode = false
 
 [node name="buttons" type="GridContainer" parent="main"]
 
