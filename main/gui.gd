@@ -84,7 +84,7 @@ func prompt_finsh_level(turns = 1, has_more_levels = true, wait = 0): # Called w
 		
 		var body_text = str("Level passed in ", turns, " turns.")
 		if !has_more_levels:
-			body_text = str(body_text, "\nThere are no more levels left in this pack. You can go to play some other pack, though.")
+			body_text = str(body_text, "\nYou completed all the levels of this pack. Select another pack to play in the level selection menu.")
 		
 		show_popup("Good job!", body_text, wait)
 
