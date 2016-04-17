@@ -355,7 +355,7 @@ normal = ExtResource( 8 )
 pressed = null
 bitmask = null
 passby_press = false
-action = "btn_left"
+action = "btn_up"
 visibility_mode = 1
 
 [node name="hole-up-right" type="Control" parent="gui/touch_controls/buttons"]
@@ -436,7 +436,7 @@ normal = ExtResource( 8 )
 pressed = null
 bitmask = null
 passby_press = false
-action = "btn_left"
+action = "btn_right"
 visibility_mode = 1
 
 [node name="hole-down-left" type="Control" parent="gui/touch_controls/buttons"]
@@ -471,7 +471,7 @@ normal = ExtResource( 8 )
 pressed = null
 bitmask = null
 passby_press = false
-action = "btn_left"
+action = "btn_down"
 visibility_mode = 1
 
 [node name="hole-down-right" type="Control" parent="gui/touch_controls/buttons"]
