@@ -254,6 +254,7 @@ tracks/6/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":Floa
 
 script/script = ExtResource( 2 )
 fall_though_ladders = false
+tilemap_path = NodePath(".")
 level_holder_path = NodePath("../../level_holder")
 
 [node name="sprite" parent="."]
