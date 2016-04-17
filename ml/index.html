@@ -1,267 +1,376 @@
-<!doctype html>
-<html lang="en-us">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <meta property="og:title" content="Minilens" /> 
-        <title>Minilens - Free Puzzle Platform Game</title>
-        <link rel="icon" href="image/icon.png">
-        <link rel="stylesheet" href="css/inserthtml.com.radios.css" />
-        <style>
-
-            body {
-                font-family: arial;
-                margin: 0;
-                padding: none;
-                color: #fff;
-                text-align: center;
-                background-color: #159957;
-                background-image: linear-gradient(120deg, #155799, #159957); 
-
-            }
-
-            .emscripten { padding-right: 0; margin-left: auto; margin-right: auto; display: block; }
-            div.emscripten { text-align: center; }      
-            div.emscripten_border { border: 1px solid black; }
-            /* the canvas *must not* have any border or padding, or mouse coords will be wrong */
-            canvas.emscripten { border: 0px none; }
-
-            #emscripten_logo {
-                display: inline-block;
-                margin: 0;
-            }
-
-            .spinner {
-                height: 30px;
-                width: 30px;
-                margin: 0;
-                margin-top: 20px;
-                margin-left: 20px;
-                display: inline-block;
-                vertical-align: top;
-
-                -webkit-animation: rotation .8s linear infinite;
-                -moz-animation: rotation .8s linear infinite;
-                -o-animation: rotation .8s linear infinite;
-                animation: rotation 0.8s linear infinite;
-
-                border-left: 5px solid rgb(235, 235, 235);
-                border-right: 5px solid rgb(235, 235, 235);
-                border-bottom: 5px solid rgb(235, 235, 235);
-                border-top: 5px solid rgb(120, 120, 120);
-
-                border-radius: 100%;
-                background-color: rgb(189, 215, 46);
-            }
-
-            @-webkit-keyframes rotation {
-                from {-webkit-transform: rotate(0deg);}
-                to {-webkit-transform: rotate(360deg);}
-            }
-            @-moz-keyframes rotation {
-                from {-moz-transform: rotate(0deg);}
-                to {-moz-transform: rotate(360deg);}
-            }
-            @-o-keyframes rotation {
-                from {-o-transform: rotate(0deg);}
-                to {-o-transform: rotate(360deg);}
-            }
-            @keyframes rotation {
-                from {transform: rotate(0deg);}
-                to {transform: rotate(360deg);}
-            }
-
-            #status {
-                display: inline-block;
-                vertical-align: top;
-                margin-top: 30px;
-                margin-left: 20px;
-                font-weight: bold;
-                color: rgb(120, 120, 120);
-            }
-
-            #progress {
-                height: 20px;
-                width: 30px;
-            }
-            #checkDiv{
-                width: 90px; 
-            }
-            #controls {
-                display: inline-block;
-                float: right;
-                vertical-align: middle;
-                margin-top: 30px;
-                margin-right: 20px;
-
-            }
-
-            #output {
-                width: 100%;
-                height: 200px;
-                margin: 0 auto;
-                margin-top: 10px;
-                display: none;
-                background-color: black;
-                color: white;
-                font-family: 'Lucida Console', Monaco, monospace;
-                outline: none;
-            }
-            .emscripten_border{
-                background-color: #07272b;
-            }
-            a img {outline : none;}
-            a {
-                outline : none;
-                text-decoration: none;
-            }
-            .btn {
-                background: #3498db;
-                background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
-                background-image: -moz-linear-gradient(top, #3498db, #2980b9);
-                background-image: -ms-linear-gradient(top, #3498db, #2980b9);
-                background-image: -o-linear-gradient(top, #3498db, #2980b9);
-                background-image: linear-gradient(to bottom, #3498db, #2980b9);
-                -webkit-border-radius: 10;
-                -moz-border-radius: 10;
-                border-radius: 10px;
-                text-shadow: 0px 1px 0px #474647;
-                font-family: Arial;
-                color: #ffffff;
-                font-size: 20px;
-                padding: 10px 20px 10px 20px;
-                border: solid #1f628d 2px;
-                text-decoration: none;
-            }
-
-            .btn:hover {
-                background: #3cb0fd;
-                background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-                background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
-                text-decoration: none;
-            }
-            #pointerLock,#spanPointer{
-                display: none;
-            }
-
-        </style>
-
-    </head>
-    <body>
-
-        <section class="page-header">
-            <a href="http://kobuge.org/">
-                <img src="image/tem_logo.png" alt="KOBUGE Games" style="width:250px;border:0;">
-            </a> 
-            <div class="spinner" id='spinner'></div>
-            <div class="emscripten" id="status">Downloading...</div>
-
-            <div id='controls'>
-                <input type="checkbox" id="checkbox-8-2"/><label for="checkbox-8-2" style="margin-right: 3px;top:9px;"></label>	
-                <label>Resize canvas &nbsp;&nbsp;&nbsp;</label>		       
-                <span><input class="btn" type="button" value="Fullscreen" onclick="Module.requestFullScreen(document.getElementById('pointerLock').checked, 
-                    document.getElementById('checkbox-8-2').checked)" style="margin-top: 10px; margin-bottom: 8px;">
-                </span>
-            </div>
-            <span id='controls'>
-                <span id="spanPointer">
-                    <input type="checkbox" id="pointerLock">Lock/hide mouse pointer &nbsp;&nbsp;&nbsp;
-                </span>
-            </span>
-        </section>        
-        <div class="emscripten">
-            <progress value="0" max="100" id="progress" hidden=1></progress>
-        </div>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+	<meta charset="utf-8" />
+	<title>Minilens</title>
+	
+	<style type="text/css">
+		body {
+			margin: 0;
+			border: 0 none;
+			padding: 0;
+			text-align: center;
+			background-color: black;
+			font-family: arial,sans-serif;
+		}
 
 
-        <div class="emscripten_border">
-            <canvas class="emscripten" id="canvas" oncontextmenu="event.preventDefault()"></canvas>
-        </div>
-        <textarea id="output" rows="8"></textarea>
+		/* Godot Engine default theme style
+		 * ================================ */
 
-        <script type='text/javascript'>
-            var statusElement = document.getElementById('status');
-            var progressElement = document.getElementById('progress');
-            var spinnerElement = document.getElementById('spinner');
+		.godot {
+			color: #e0e0e0;
+			background-color: #3b3943;
+			background-image: linear-gradient(to bottom, #403e48, #35333c);
+			border: 1px solid #45434e;
+			box-shadow: 0 0 1px 1px #2f2d35;
+		}
 
-            var Module = {TOTAL_MEMORY:134217728,        preRun: [],
-                          postRun: [],
-                          print: (function() {
-                              var element = document.getElementById('output');
-                              if (element) element.value = ''; // clear browser cache
-                              return function(text) {
-                                  if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-                                  // These replacements are necessary if you render to raw HTML
-                                  //text = text.replace(/&/g, "&amp;");
-                                  //text = text.replace(/</g, "&lt;");
-                                  //text = text.replace(/>/g, "&gt;");
-                                  //text = text.replace('\n', '<br>', 'g');
-                                  console.log(text);
-                                  if (element) {
-                                      element.value += text + "\n";
-                                      element.scrollTop = element.scrollHeight; // focus on bottom
-                                  }
-                              };
-                          })(),
-                          printErr: function(text) {
-                              if (arguments.length > 1) text = Array.prototype.slice.call(arguments).join(' ');
-                              if (0) { // XXX disabled for safety typeof dump == 'function') {
-                                  dump(text + '\n'); // fast, straight to the real console
-                              } else {
-                                  console.error(text);
-                              }
-                          },
-                          canvas: (function() {
-                              var canvas = document.getElementById('canvas');
+		button.godot {
+			font-family: arial,sans-serif; /* override user agent style */
+			padding: 1px 5px;
+			background-color: #37353f;
+			background-image: linear-gradient(to bottom, #413e49, #3a3842);
+			border: 1px solid #514f5d;
+			border-radius: 1px;
+			box-shadow: 0 0 1px 1px #2a2930;
+		}
 
-                              // As a default initial behavior, pop up an alert when webgl context is lost. To make your
-                              // application robust, you may want to override this behavior before shipping!
-                              // See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
-                              canvas.addEventListener("webglcontextlost", function(e) { alert('WebGL context lost. You will need to reload the page.'); e.preventDefault(); }, false);
+		button.godot:hover {
+			color: #f0f0f0;
+			background-color: #44414e;
+			background-image: linear-gradient(to bottom, #494652, #423f4c);
+			border: 1px solid #5a5667;
+			box-shadow: 0 0 1px 1px #26252b;
+		}
 
-                              return canvas;
-                          })(),
-                          setStatus: function(text) {
-                              if (!Module.setStatus.last) Module.setStatus.last = { time: Date.now(), text: '' };
-                              if (text === Module.setStatus.text) return;
-                              var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
-                              var now = Date.now();
-                              if (m && now - Date.now() < 30) return; // if this is a progress update, skip it if too soon
-                              if (m) {
-                                  text = m[1];
-                                  progressElement.value = parseInt(m[2])*100;
-                                  progressElement.max = parseInt(m[4])*100;
-                                  progressElement.hidden = false;
-                                  spinnerElement.hidden = false;
-                              } else {
-                                  progressElement.value = null;
-                                  progressElement.max = null;
-                                  progressElement.hidden = true;
-                                  if (!text) spinnerElement.style.display = 'none';
-                              }
-                              statusElement.innerHTML = text;
-                          },
-                          totalDependencies: 0,
-                          monitorRunDependencies: function(left) {
-                              this.totalDependencies = Math.max(this.totalDependencies, left);
-                              Module.setStatus(left ? 'Preparing... (' + (this.totalDependencies-left) + '/' + this.totalDependencies + ')' : 'All downloads complete.');
-                          }
-                         };
-            Module.setStatus('Downloading...');
-            window.onerror = function(event) {
-                // TODO: do not warn on ok events like simulating an infinite loop or exitStatus
-                Module.setStatus('Exception thrown, see JavaScript console');
-                spinnerElement.style.display = 'none';
-                Module.setStatus = function(text) {
-                    if (text) Module.printErr('[post-exception status] ' + text);
-                };
-            };
-        </script>
-        <script async type="text/javascript" src="index.js"></script>
-        <script async type="text/javascript" src="index_filesystem.js"></script>
-    </body>
+		button.godot:active {
+			color: #fff;
+			background-color: #3e3b46;
+			background-image: linear-gradient(to bottom, #36343d, #413e49);
+			border: 1px solid #4f4c59;
+			box-shadow: 0 0 1px 1px #26252b;
+		}
+
+		button.godot:disabled {
+			color: rgba(230, 230, 230, 0.2);
+			background-color: #3d3d3d;
+			background-image: linear-gradient(to bottom, #434343, #393939);
+			border: 1px solid #474747;
+			box-shadow: 0 0 1px 1px #2d2b33;
+		}
+
+
+		/* Canvas / wrapper
+		 * ================ */
+
+		#container {
+			display: inline-block; /* scale with canvas */
+			vertical-align: top; /* prevent extra height */
+			position: relative; /* root for absolutely positioned overlay */
+			margin: 0;
+			border: 0 none;
+			padding: 0;
+			background-color: #111;
+		}
+
+		#canvas {
+			display: block;
+			margin: 0 auto;
+			/* canvas must have border and padding set to zero to
+			 * calculate cursor coordinates correctly */
+			border: 0 none;
+			padding: 0;
+		}
+
+
+		/* Status display
+		 * ============== */
+
+		#status-container {
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			/* don't consume click events - make children visible explicitly */
+			visibility: hidden;
+		}
+
+		#status {
+			visibility: visible;
+			padding: 4px 6px;
+		}
+
+
+		/* On-hover controls
+		 * ================= */
+
+		#controls {
+			visibility: hidden;
+			opacity: 0.0;
+			transition: opacity 500ms ease-in-out 200ms;
+			position: absolute;
+			right: 16px;
+			top: 16px;
+			padding: 3px 5px;
+			font-size: small;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+
+		#container:hover > #controls {
+			opacity: 1.0;
+			transition: opacity 60ms ease-in-out;
+		}
+
+		#controls > button,
+		#controls > label {
+			vertical-align: middle;
+			margin-left: 2px;
+			margin-right: 2px;
+		}
+
+		#controls > label > input[type="checkbox"] {
+			/* override user agent style */
+			margin-left: 0;
+		}
+
+		label > input {
+			vertical-align: middle;
+		}
+
+		#display-output { display: none; }
+
+
+		/* Debug output
+		 * ============ */
+
+		#output {
+			display: none;
+			margin: 6px auto;
+			border: 2px groove grey;
+			padding: 4px;
+			outline: none;
+			text-align: left;
+			white-space: pre-wrap;
+			font-size: small;
+			color: #eee;
+			background-color: black;
+			font-family: "Lucida Console", Monaco, monospace;
+		}
+
+
+		/* Export style include
+		 * ==================== */
+
+		
+	</style>
+</head>
+<body>
+	<div id="container">
+		<canvas id="canvas" width="1024" height="768" onclick="canvas.ownerDocument.defaultView.focus();" oncontextmenu="event.preventDefault();">
+			HTML5 canvas appears to be unsupported in the current browser.<br />Please try updating or use a different browser.
+		</canvas>
+		<div id="status-container">
+			<span id="status" class="godot" onclick="this.style.visibility='hidden';">Loading page...</span>
+		</div>
+		<div id="controls" class="godot">
+			<label id="display-output"><input id="output-toggle" type="checkbox" autocomplete="off" onchange="Presentation.setOutputVisible(this.checked);" />display output</label>
+			<!-- hidden until implemented
+			<label><input id="lock-cursor" type="checkbox" autocomplete="off" />lock cursor</label>
+			<label><input id="resize-canvas" type="checkbox" autocomplete="off" />resize canvas</label>
+			-->
+			<button id="fullscreen" class="godot" type="button" disabled="disabled" autocomplete="off" onclick="Presentation.goFullscreen();">fullscreen</button>
+		</div>
+	</div>
+	<!-- Firefox adds extra space to textarea, but shouldn't matter too much https://bugzilla.mozilla.org/show_bug.cgi?id=33654 -->
+	<textarea id="output" rows="10" cols="100" readonly="readonly" style="resize:none"></textarea>
+
+	<script type="text/javascript">//<![CDATA[
+		var Presentation = (function() {
+			var statusElement = document.getElementById("status");
+			var outputElement = document.getElementById("output");
+			var doneLoading = false;
+
+			function onLoaded() {
+				doneLoading = true;
+				var fullscreenButtonElement = document.getElementById("fullscreen");
+				fullscreenButtonElement.disabled = false;
+			}
+
+			var presentation = {
+				statusElement: statusElement,
+				outputElement: outputElement,
+				setOutputVisible: function setOutputVisible(visible) {
+					outputElement.style.display = (visible?"block":"none");
+				},
+				setStatusVisible: function setStatusVisible(visible) {
+					statusElement.style.visibility = (visible?"visible":"hidden");
+				},
+				setStatus: function setStatus(text) {
+					if (!text || text.length === 0) {
+						Presentation.setStatusVisible(false);
+						onLoaded();
+					} else {
+						Presentation.setStatusVisible(true);
+						statusElement.innerHTML = text;
+					}
+				},
+				goFullscreen: function goFullscreen() {
+					if (doneLoading) Module.requestFullScreen(false, false);
+				}
+			};
+
+			if (true) { // controls enabled
+				(function() {
+					var controlsElement = document.getElementById("controls");
+					controlsElement.style.visibility="visible";
+				})();
+			}
+
+			if (true) { // debugging enabled
+				(function() {
+					var outputToggleLabel = document.getElementById("display-output");
+					var outputToggle = document.getElementById("output-toggle");
+
+					outputElement.value = ""; // clear browser cache
+					outputElement.style.display = "block";
+					outputToggle.checked = true;
+					outputToggleLabel.style.display = "inline";
+
+					presentation.print = function print(text) {
+						if (outputElement.value.length !== 0)
+							outputElement.value += "\n";
+						outputElement.value += text;
+						outputElement.scrollTop = outputElement.scrollHeight; // focus on bottom
+					};
+				})();
+			}
+
+			return presentation;
+		})();
+
+		// Emscripten interface
+		var Module = (function() {
+			var print = (function() {
+				if (typeof Presentation.print === "function") {
+					return function print(text) {
+						if (arguments.length > 1)
+							text = Array.prototype.slice.call(arguments).join(" ");
+						console.log(text);
+						Presentation.print(text);
+					};
+				} else {
+					return function print(text) {
+						if (arguments.length > 1)
+							text = Array.prototype.slice.call(arguments).join(" ");
+						console.log(text);
+					};
+				}
+			})();
+
+			var canvas = (function() {
+				var canvasElement = document.getElementById("canvas");
+
+				// As a default initial behavior, pop up an alert when WebGL context is lost. To make your
+				// application robust, you may want to override this behavior before shipping!
+				// See http://www.khronos.org/registry/webgl/specs/latest/1.0/#5.15.2
+				canvasElement.addEventListener("webglcontextlost", function(e) { alert("WebGL context lost. Plase reload the page."); e.preventDefault(); }, false);
+
+				return canvasElement;
+			})();
+
+			var setStatus = (function() {
+				if (typeof Presentation.setStatus === "function")
+					return function setStatus(text) {
+						if (!Module.setStatus.last)
+							Module.setStatus.last = { time: Date.now(), text: "" };
+						if (text === Module.setStatus.text)
+							return;
+						var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+						var now = Date.now();
+						if (m) {
+							if (now - Date.now() < 30) // if this is a progress update, skip it if too soon
+								return;
+							text = m[1];
+						}
+						Presentation.setStatus(text);
+					};
+				else
+					return function setStatus(text) {
+						if (!Module.setStatus.last)
+							Module.setStatus.last = { time: Date.now(), text: "" };
+						if (text === Module.setStatus.text)
+							return;
+						var m = text.match(/([^(]+)\((\d+(\.\d+)?)\/(\d+)\)/);
+						var now = Date.now();
+						if (m) {
+							if (now - Date.now() < 30) // if this is a progress update, skip it if too soon
+								return;
+							text = m[1];
+						}
+					};
+			})();
+
+			return {
+				TOTAL_MEMORY: 268435456,
+				preRun: [],
+				postRun: [],
+				print: print,
+				printErr: function printErr(text) {
+					if (arguments.length > 1)
+						text = Array.prototype.slice.call(arguments).join(" ");
+					if (0) { // XXX disabled for safety `if (typeof dump == "function")`
+						dump(text + "\n"); // fast, straight to the real console
+					} else {
+						console.error(text);
+					}
+				},
+				canvas: canvas,
+				setStatus: setStatus,
+				totalDependencies: 0,
+				monitorRunDependencies: function monitorRunDependencies(left) {
+					this.totalDependencies = Math.max(this.totalDependencies, left);
+					Module.setStatus(left ? "Preparing... (" + (this.totalDependencies-left) + "/" + this.totalDependencies + ")" : "All downloads complete.");
+				}
+			};
+		})();
+
+		Presentation.setStatus("Downloading...");
+
+		window.onerror = function(event) {
+			// TODO: do not warn on ok events like simulating an infinite loop or exitStatus
+			Module.setStatus("Exception thrown, see JavaScript console");
+			Module.setStatus = function(text) {
+				if (text) Module.printErr("[post-exception status] " + text);
+			};
+		};
+	//]]></script>
+	<script type="text/javascript" src="minilensfs.js"></script>
+	<script>
+		(function() {
+			var memoryInitializer = "minilens.mem";
+			if (typeof Module.locateFile === "function") {
+				memoryInitializer = Module.locateFile(memoryInitializer);
+			} else if (Module.memoryInitializerPrefixURL) {
+				memoryInitializer = Module.memoryInitializerPrefixURL + memoryInitializer;
+			}
+			var xhr = Module.memoryInitializerRequest = new XMLHttpRequest();
+			xhr.open("GET", memoryInitializer, true);
+			xhr.responseType = "arraybuffer";
+			xhr.send(null);
+		})();
+
+		var script = document.createElement("script");
+		script.src = "minilens.js";
+		document.body.appendChild(script);
+	</script>
+</body>
 </html>
 
+ 
