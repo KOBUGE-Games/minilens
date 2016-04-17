@@ -206,10 +206,10 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 403.0
-margin/top = 66.0
-margin/right = 464.0
-margin/bottom = 106.0
+margin/left = 394.0
+margin/top = 64.0
+margin/right = 474.0
+margin/bottom = 110.0
 toggle_mode = false
 
 [node name="buttons" type="GridContainer" parent="main"]
