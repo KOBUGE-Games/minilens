@@ -10,7 +10,6 @@ onready var timer = get_node("timer")
 onready var popup = get_node("popup")
 onready var level_holder = get_node("../level_holder")
 onready var player = get_node("../player_holder/player")
-onready var JS = get_node("/root/SUTjoystick")
 
 func _ready():
 	var nodes_left = get_node("popup/popup_node/body/container").get_children()
@@ -41,19 +40,17 @@ func _ready():
 	get_node("touch_controls/buttons").set_hidden(input_mode != SettingsManager.INPUT_BUTTONS)
 	get_node("touch_controls/buttons").set_ignore_mouse(input_mode != SettingsManager.INPUT_BUTTONS)
 	
-	# Turn off mouse emulation in-game
-	JS.emulate_mouse(false)
 	
 	# Subscribe to various notifications
 	level_holder.connect("counters_changed", self, "update_counters")
 	set_process_input(true)
 
 func _input(event):
-	if JS.get_digital("back") || (event.is_action("retry") && event.is_pressed() && !event.is_echo()):
+	if event.is_action("retry") && event.is_pressed() && !event.is_echo():
 		popup_button_pressed("retry")
-	if JS.get_digital("action_3") || (event.is_action("next_level") && event.is_pressed() && !event.is_echo()):
+	if event.is_action("next_level") && event.is_pressed() && !event.is_echo():
 		popup_button_pressed("next")
-	if JS.get_digital("start") || (event.is_action("to_menu") && event.is_pressed() && !event.is_echo()):
+	if event.is_action("to_menu") && event.is_pressed() && !event.is_echo():
 		popup_button_pressed("menu")
 
 func update_counters():
@@ -101,7 +98,6 @@ func show_popup(title, text, wait): # Show a popup with title and text, after so
 		_show_popup(title, text)
 
 func _show_popup(title, text): # Show a popup with title and text
-	JS.emulate_mouse(true)
 	get_tree().set_pause(true)
 	
 	popup.get_node("popup_node/header/title").set_text(title)
@@ -122,7 +118,6 @@ func popup_button_pressed(name): # Actions for different popup buttons
 	elif name == "menu":
 		ScenesManager.load_scene("res://menu/menu.tscn")
 	
-	JS.emulate_mouse(false)
 	hide_popup()
 
 func hide_popup(): # Hide the popup
