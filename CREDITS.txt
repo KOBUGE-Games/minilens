@@ -11,6 +11,10 @@ Brought to you by:
     Kermer
     adolson
 
+Special thanks to:
+    Snabisch (some of the music) http://opengameart.org/users/snabisch
+    Kenney (GUI and icons) http://opengameart.org/users/kenney
+
 For more informations, please visit
 http://kobuge-games.github.io/minilens
 https://github.com/KOBUGE-Games/minilens
