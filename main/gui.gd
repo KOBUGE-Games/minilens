@@ -12,6 +12,8 @@ onready var level_holder = get_node("../level_holder")
 onready var player = get_node("../player_holder/player")
 
 func _ready():
+	ScreenManager.set_minimum_size(Vector2(0, 0))
+	
 	var nodes_left = get_node("popup/popup_node/body/container").get_children()
 	
 	# Removes the focus from the buttons

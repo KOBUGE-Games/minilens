@@ -88,6 +88,8 @@ func load_level(pack, level): # Load level from pack
 
 func window_resize():
 	var new_size = get_node("/root").get_size_override()
+	if !level_node:
+		return
 	var tilemap = level_node.get_node("tilemap")
 	for i in range(ceil(new_size.x/2/64)):
 		tilemap.set_cell(tile_map_acid_x_start - i, tile_map_acid_y, 2)

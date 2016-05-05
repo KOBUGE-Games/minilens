@@ -47,7 +47,7 @@ size_flags/vertical = 2
 margin/left = 8.0
 margin/top = 8.0
 margin/right = 8.0
-margin/bottom = 68.0
+margin/bottom = 76.0
 alignment = 0
 __meta__ = { "_editor_collapsed":true }
 
@@ -799,6 +799,7 @@ transform/pos = Vector2( 32, 32 )
 [node name="player" parent="player_holder" instance=ExtResource( 16 )]
 
 transform/pos = Vector2( 228.814, 197.081 )
+collision/margin = 0.08
 
 [node name="sample_player" type="SamplePlayer" parent="."]
 
