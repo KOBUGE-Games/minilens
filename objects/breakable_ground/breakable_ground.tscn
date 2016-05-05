@@ -15,11 +15,11 @@ length = 1.0
 loop = false
 step = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:transform/pos")
+tracks/0/path = NodePath("sprite:transform/pos")
 tracks/0/interp = 2
 tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.5, 1 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Vector2( 0, -8 ), Vector2( 0, 40 ), Vector2( 0, 56 ) ] }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:visibility/opacity")
+tracks/1/path = NodePath("sprite:visibility/opacity")
 tracks/1/interp = 2
 tracks/1/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
 
@@ -38,23 +38,12 @@ bounce = 0.0
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="sprite" type="Sprite" parent="."]
 
 transform/pos = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
-
-playback/process_mode = 1
-playback/default_blend_time = 0.0
-root/root = NodePath("..")
-anims/destroy = SubResource( 2 )
-playback/active = true
-playback/speed = 1.0
-blend_times = [  ]
-autoplay = ""
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="shape" type="CollisionShape2D" parent="."]
 
 shape = SubResource( 1 )
 trigger = true
@@ -68,4 +57,15 @@ cast_to = Vector2( 0, -32 )
 layer_mask = 2
 type_mask = 15
 
-[connection signal="finished" from="Sprite/AnimationPlayer" to="." method="_on_AnimationPlayer_finished"]
+[node name="animation_player" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/destroy = SubResource( 2 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+

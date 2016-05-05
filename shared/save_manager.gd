@@ -29,6 +29,7 @@ func set_reached_level(pack, value):
 		if line_parts.size() >= 2:
 			if line_parts[0] == pack:
 				reached_set = true
+				value = max(int(value), int(line_parts[1]))
 				future_save_lines.push_back(str(pack, DATA_DELIMITER, value))
 			else:
 				future_save_lines.push_back(line)
