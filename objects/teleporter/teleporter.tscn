@@ -25,6 +25,9 @@ region_rect = Rect2( 0, 0, 64, 64 )
 [node name="ray_overlap" type="RayCast2D" parent="."]
 
 enabled = true
+exclude_parent = true
 cast_to = Vector2( 0, 8 )
 layer_mask = 1
 type_mask = 15
+
+
