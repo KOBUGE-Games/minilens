@@ -3,7 +3,7 @@
 [ext_resource path="res://levels/tutorial_level.gd" type="Script" id=1]
 [ext_resource path="res://shared/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
-[ext_resource path="res://fonts/papercut.fnt" type="Font" id=4]
+[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=4]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=5]
 [ext_resource path="res://shared/theme.tres" type="Theme" id=6]
 [ext_resource path="res://objects/teleporter/teleporter.tscn" type="PackedScene" id=7]
@@ -41,7 +41,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 131074, 7, 131075, 1, 196610, 9, 196611, 13, 196612, 0, 196613, 0, 196614, 3, 393218, 7, 393222, 7, 458754, 10, 524290, 9, 524291, 13, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 3, 655361, 4, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
+tile_data = IntArray( 131074, 7, 131075, 1, 196610, 9, 196611, 13, 196612, 0, 196613, 0, 196614, 3, 262146, 10, 327682, 10, 393218, 10, 393222, 7, 458754, 10, 524290, 9, 524291, 13, 524292, 0, 524293, 0, 524294, 0, 524295, 0, 524296, 3, 655361, 4, 655362, 0, 655363, 0, 655364, 0, 655365, 0, 655366, 0, 655367, 0, 655368, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
 
 [node name="start" type="Position2D" parent="."]
 
@@ -75,13 +75,14 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="Label" type="Label" parent="."]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 160.0
 margin/top = 288.0
 margin/right = 735.0
 margin/bottom = 321.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
 text = "What is this\?"
@@ -93,7 +94,6 @@ max_lines_visible = -1
 [node name="box" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 128 )
-
 
 [node name="areas" type="Node2D" parent="."]
 
@@ -119,14 +119,15 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/Fall"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 6 )
 margin/left = -256.0
 margin/top = -64.0
 margin/right = 64.0
 margin/bottom = 64.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 6 )
 text = "Maybe you \nshould jump\?"
 align = 1
 valign = 1
@@ -154,14 +155,15 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/Aha"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 6 )
 margin/left = -160.0
 margin/top = -160.0
 margin/right = 160.0
 margin/bottom = -32.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 6 )
 text = "That looks like a teleporter!"
 align = 1
 valign = 1
@@ -172,12 +174,10 @@ max_lines_visible = -1
 [node name="teleporter" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 192, 448 )
-
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 448, 576 )
-
 
 

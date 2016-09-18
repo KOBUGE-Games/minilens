@@ -11,6 +11,26 @@
 transform/pos = Vector2( 32, 32 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
 
+[node name="background" type="TileMap" parent="."]
+
+visibility/opacity = 0.8
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 196612, 10, 262148, 10, 262155, 12, 262156, 5, 262157, 11, 458775, 12, 458776, 5, 458777, 8 )
+
 [node name="tilemap" type="TileMap" parent="."]
 
 transform/pos = Vector2( -32, -32 )
@@ -37,11 +57,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -68,24 +88,20 @@ transform/pos = Vector2( 320, 64 )
 [node name="teleporter" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 512, 384 )
-
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 896, 384 )
 
-
 [node name="teleporter2" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1472, 384 )
-
 to_teleport_path = "../teleporter3"
 
 [node name="teleporter3" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 1152, 384 )
-
 to_teleport_path = "../teleporter2"
 
 [node name="flower1" parent="." instance=ExtResource( 3 )]

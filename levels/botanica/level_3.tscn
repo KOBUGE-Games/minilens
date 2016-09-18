@@ -11,6 +11,26 @@
 transform/pos = Vector2( 32, 32 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
 
+[node name="background" type="TileMap" parent="."]
+
+visibility/opacity = 0.8
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 262147, 9, 262148, 5, 262149, 11, 262153, 12, 262154, 5, 262155, 11 )
+
 [node name="tilemap" type="TileMap" parent="."]
 
 transform/pos = Vector2( -32, -32 )
@@ -28,7 +48,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -65528, 4, -65527, 0, -65526, 0, -65525, 0, -65524, 0, -65523, 3, -65522, 1, 14, 1, 65550, 1, 131086, 1, 196622, 1, 262144, 4, 262145, 0, 262146, 0, 262147, 3, 262149, 4, 262150, 0, 262151, 0, 262152, 0, 262153, 3, 262155, 4, 262156, 0, 262157, 0, 262158, 3, 458755, 4, 458756, 0, 458757, 0, 458758, 3, 458759, 1, 458760, 4, 458761, 0, 458762, 0, 458763, 3, 524295, 1, 589830, 4, 589831, 3, 983039, 2, 917504, 2, 917505, 2, 917506, 2, 917507, 2, 917508, 2, 917509, 2, 917510, 2, 917511, 2, 917512, 2, 917513, 2, 917514, 2, 917515, 2, 917516, 2, 917517, 2, 917518, 2, 917519, 2 )
+tile_data = IntArray( -65528, 4, -65527, 0, -65526, 0, -65525, 0, -65524, 0, -65523, 3, -65522, 1, 9, 10, 14, 1, 65550, 1, 131086, 1, 196622, 1, 262144, 4, 262145, 0, 262146, 0, 262147, 3, 262149, 4, 262150, 0, 262151, 0, 262152, 0, 262153, 3, 262155, 4, 262156, 0, 262157, 0, 262158, 3, 458755, 4, 458756, 0, 458757, 0, 458758, 3, 458759, 1, 458760, 4, 458761, 0, 458762, 0, 458763, 3, 524295, 1, 524298, 9, 524299, 8, 589830, 4, 589831, 3, 983039, 2, 917504, 2, 917505, 2, 917506, 2, 917507, 2, 917508, 2, 917509, 2, 917510, 2, 917511, 2, 917512, 2, 917513, 2, 917514, 2, 917515, 2, 917516, 2, 917517, 2, 917518, 2, 917519, 2 )
 
 [node name="start" type="Position2D" parent="."]
 
@@ -37,11 +57,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -68,13 +88,11 @@ transform/pos = Vector2( 448, 192 )
 [node name="teleporter" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 384 )
-
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, -128 )
-
 
 [node name="breakable_ground" parent="." instance=ExtResource( 5 )]
 

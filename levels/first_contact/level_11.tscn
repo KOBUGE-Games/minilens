@@ -39,11 +39,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -67,7 +67,6 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 transform/pos = Vector2( 512, 512 )
 
-
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 256, 128 )
@@ -80,22 +79,18 @@ transform/pos = Vector2( 1472, 128 )
 
 transform/pos = Vector2( 384, 512 )
 
-
 [node name="box2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 512 )
 
-
 [node name="teleporter" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 704, 640 )
-
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1024, 320 )
-
 
 [node name="breakable_ground" parent="." instance=ExtResource( 7 )]
 
@@ -109,22 +104,18 @@ transform/pos = Vector2( 1344, 192 )
 
 transform/pos = Vector2( 1088, 640 )
 
-
 [node name="box4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1472, 640 )
 
-
 [node name="teleporter2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 1344, 768 )
-
 to_teleport_path = "../teleporter3"
 
 [node name="teleporter3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 128, 704 )
-
 to_teleport_path = "../teleporter2"
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
@@ -151,11 +142,9 @@ transform/pos = Vector2( 128, 512 )
 
 transform/pos = Vector2( 704, 128 )
 
-
 [node name="box6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 128 )
-
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 4 )]
 

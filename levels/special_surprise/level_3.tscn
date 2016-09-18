@@ -58,11 +58,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -85,47 +85,38 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, 192 )
-collision/margin = 0.08
 
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 704, 192 )
-linear_damp = 0.1
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 448 )
-linear_damp = 0.1
 
 [node name="box 2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 256 )
-collision/margin = 0.08
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 192, 128 )
-collision/margin = 0.08
 
 [node name="box2" parent="." instance=ExtResource( 3 )]
 
 visibility/opacity = 0.3
 transform/pos = Vector2( 256, 384 )
-collision/margin = 0.08
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 192, 64 )
-linear_damp = 0.1
 
 [node name="box3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 64 )
-collision/margin = 0.08
 
 [node name="box4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, 0 )
-collision/margin = 0.08
 
 

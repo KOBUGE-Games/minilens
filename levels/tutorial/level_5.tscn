@@ -4,7 +4,7 @@
 [ext_resource path="res://shared/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
+[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=5]
 [ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://shared/theme.tres" type="Theme" id=8]
@@ -25,6 +25,26 @@ transform/pos = Vector2( 32, 32 )
 script/script = ExtResource( 1 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
 
+[node name="background" type="TileMap" parent="."]
+
+visibility/opacity = 0.8
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 589831, 12, 589832, 5, 589833, 11 )
+
 [node name="tilemap" type="TileMap" parent="."]
 
 transform/pos = Vector2( -32, -32 )
@@ -42,7 +62,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 327683, 1, 327684, 7, 393219, 1, 393220, 9, 393221, 11, 458755, 1, 458760, 1, 458761, 4, 458762, 0, 458763, 0, 458764, 3, 524291, 1, 524296, 1, 589825, 4, 589826, 0, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 0, 589832, 1, 589833, 0, 589834, 0, 589835, 0, 589836, 0, 589837, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
+tile_data = IntArray( 327683, 1, 327684, 7, 393219, 1, 393220, 9, 393221, 11, 458755, 1, 458760, 1, 458761, 4, 458762, 0, 458763, 0, 458764, 3, 524291, 1, 524296, 1, 589825, 4, 589826, 0, 589827, 0, 589828, 0, 589829, 0, 589830, 0, 589831, 3, 589832, 1, 589833, 4, 589834, 0, 589835, 0, 589836, 0, 589837, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2 )
 
 [node name="start" type="Position2D" parent="."]
 
@@ -51,11 +71,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -79,16 +99,16 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 transform/pos = Vector2( 768, 384 )
 
-
 [node name="Label" type="Label" parent="."]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 288.0
 margin/top = 160.0
 margin/right = 707.0
 margin/bottom = 193.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
 text = "Space = Kaboom !!!"
@@ -117,7 +137,6 @@ transform/pos = Vector2( 768, 512 )
 
 transform/pos = Vector2( 256, 256 )
 
-
 [node name="areas" type="Node2D" parent="."]
 
 [node name="problem" type="Area2D" parent="areas"]
@@ -140,14 +159,15 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/problem"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 8 )
 margin/left = -32.0
 margin/top = -96.0
 margin/right = 243.0
 margin/bottom = 4.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 8 )
 text = "Some boxes, like the one\non the left, can\'t be pushed\ndown into the acid,\nbecause of the terrain..."
 align = 1
 valign = 1
@@ -175,14 +195,15 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/idea"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 8 )
 margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
 margin/bottom = -71.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 8 )
 text = "That\'s why you have BOMBS!\nThey have to be picked up,\nbefore you can use them..."
 align = 1
 valign = 1
@@ -192,14 +213,15 @@ max_lines_visible = -1
 
 [node name="Label1" type="Label" parent="areas/idea"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 8 )
 margin/left = 288.0
 margin/top = -57.0
 margin/right = 480.0
 margin/bottom = -32.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 8 )
 text = "Pick me!"
 align = 1
 valign = 1
@@ -227,14 +249,15 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/ladders"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 8 )
 margin/left = -160.0
 margin/top = 96.0
 margin/right = 160.0
 margin/bottom = 160.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 8 )
 text = "This is a ladder. While on it, you can\nmove up and down."
 align = 1
 valign = 1
@@ -262,14 +285,15 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/usage"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 8 )
 margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
 margin/bottom = -71.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 8 )
 text = "Now... if you press space,\nyou will place a bomb."
 align = 1
 valign = 1
@@ -279,14 +303,15 @@ max_lines_visible = -1
 
 [node name="Label1" type="Label" parent="areas/usage"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 8 )
 margin/left = -700.0
 margin/top = -288.0
 margin/right = -544.0
 margin/bottom = -224.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 8 )
 text = "Place me here!"
 align = 1
 valign = 1
@@ -314,14 +339,15 @@ _update_shape_index = -1
 
 [node name="Label" type="Label" parent="areas/run"]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+theme/theme = ExtResource( 8 )
 margin/left = -160.0
 margin/top = -160.0
 margin/right = 224.0
 margin/bottom = -60.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
-theme/theme = ExtResource( 8 )
 text = "After you\'ve placed the bomb,\nrun away so that your robot\nwill not be harmed."
 align = 1
 valign = 1

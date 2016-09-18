@@ -29,7 +29,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( -65532, 7, -65529, 1, -65526, 7, 4, 9, 5, 13, 6, 3, 7, 1, 8, 4, 9, 14, 10, 8, 65543, 1, 131079, 1, 196613, 1, 196615, 1, 196617, 1, 262149, 1, 262150, 4, 262151, 0, 262152, 3, 262153, 1, 327685, 1, 327689, 1, 393217, 4, 393218, 0, 393219, 0, 393220, 3, 393221, 1, 393225, 1, 393226, 4, 393227, 0, 393228, 0, 393229, 3, 458757, 4, 458758, 3, 458760, 4, 458761, 3, 655366, 4, 655367, 0, 655368, 3, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2 )
+tile_data = IntArray( -65532, 7, -65529, 1, -65526, 7, 4, 9, 5, 13, 6, 3, 7, 1, 8, 4, 9, 14, 10, 8, 65543, 1, 131079, 1, 196613, 1, 196615, 1, 196617, 1, 262149, 1, 262150, 4, 262151, 0, 262152, 3, 262153, 1, 327685, 1, 327689, 1, 393217, 4, 393218, 0, 393219, 0, 393220, 3, 393221, 1, 393225, 1, 393226, 4, 393227, 0, 393228, 0, 393229, 3, 458756, 9, 458757, 13, 458758, 3, 458760, 4, 458761, 0, 458762, 14, 458763, 8, 655366, 4, 655367, 0, 655368, 3, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2 )
 __meta__ = { "_edit_lock_":true }
 
 [node name="start" type="Position2D" parent="."]
@@ -39,11 +39,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -75,11 +75,9 @@ transform/pos = Vector2( 64, 320 )
 
 transform/pos = Vector2( 384, -64 )
 
-
 [node name="box7" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 512, 192 )
-
 
 [node name="flower1" parent="." instance=ExtResource( 4 )]
 
@@ -97,11 +95,9 @@ transform/pos = Vector2( 384, 128 )
 
 transform/pos = Vector2( 512, -64 )
 
-
 [node name="box8" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 384, 192 )
-
 
 [node name="flower4" parent="." instance=ExtResource( 4 )]
 

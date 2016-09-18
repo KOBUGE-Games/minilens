@@ -12,6 +12,26 @@
 transform/pos = Vector2( 32, 32 )
 __meta__ = { "__editor_plugin_screen__":"Script" }
 
+[node name="background" type="TileMap" parent="."]
+
+visibility/opacity = 0.8
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 196611, 1, 196623, 1, 262147, 1, 262158, 7, 262159, 1, 262160, 7, 262162, 7, 327683, 1, 327686, 4, 327687, 0, 327688, 3, 327691, 1, 327695, 1, 327698, 9, 327699, 11, 393217, 4, 393218, 12, 393219, 5, 393220, 11, 393223, 9, 393224, 8, 393227, 1, 393228, 4, 393229, 12, 393230, 5, 393231, 11, 393232, 3, 458759, 9, 458760, 8, 458763, 1, 458766, 1, 458771, 7, 524299, 1, 524302, 1, 524305, 4, 524306, 14, 524307, 8, 589835, 1, 655371, 1, 655376, 4, 655377, 3, 720907, 1, 720909, 4, 720910, 0, 720911, 14, 720912, 8, 786435, 4, 786436, 3, 786443, 4, 786444, 14, 786445, 5, 786446, 8, 917503, 2, 851968, 2, 851969, 2, 851970, 2, 851971, 2, 851972, 2, 851973, 2, 851974, 2, 851975, 2, 851976, 2, 851977, 2, 851978, 2, 851979, 2, 851980, 2, 851981, 2, 851982, 2, 851983, 2, 851984, 2, 851985, 2, 851986, 2, 851987, 2, 851988, 2, 851989, 2 )
+
 [node name="tilemap" type="TileMap" parent="."]
 
 transform/pos = Vector2( -32, -32 )
@@ -29,7 +49,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 196611, 1, 196623, 1, 262147, 1, 262158, 7, 262159, 1, 262160, 7, 262162, 7, 327683, 1, 327686, 4, 327687, 0, 327688, 3, 327691, 1, 327695, 1, 327698, 9, 327699, 11, 393217, 4, 393218, 3, 393219, 1, 393220, 7, 393223, 10, 393227, 1, 393228, 4, 393229, 0, 393230, 1, 393231, 0, 393232, 3, 458759, 9, 458760, 11, 458763, 1, 458766, 1, 458771, 7, 524299, 1, 524302, 1, 524305, 4, 524306, 14, 524307, 8, 589835, 1, 655371, 1, 655376, 4, 655377, 3, 720907, 1, 720909, 4, 720910, 0, 720911, 14, 720912, 8, 786435, 4, 786436, 3, 786443, 4, 786444, 14, 786445, 5, 786446, 8, 917503, 2, 851968, 2, 851969, 2, 851970, 2, 851971, 2, 851972, 2, 851973, 2, 851974, 2, 851975, 2, 851976, 2, 851977, 2, 851978, 2, 851979, 2, 851980, 2, 851981, 2, 851982, 2, 851983, 2, 851984, 2, 851985, 2, 851986, 2, 851987, 2, 851988, 2, 851989, 2 )
+tile_data = IntArray( 196611, 1, 196623, 1, 262147, 1, 262158, 7, 262159, 1, 262160, 7, 262162, 7, 327683, 1, 327686, 4, 327687, 0, 327688, 3, 327691, 1, 327695, 1, 327698, 9, 327699, 11, 393217, 4, 393218, 3, 393219, 1, 393220, 7, 393223, 10, 393227, 1, 393228, 4, 393229, 3, 393230, 1, 393231, 4, 393232, 3, 458759, 9, 458760, 11, 458763, 1, 458766, 1, 458771, 7, 524299, 1, 524302, 1, 524305, 4, 524306, 14, 524307, 8, 589835, 1, 655371, 1, 655376, 4, 655377, 3, 720907, 1, 720909, 4, 720910, 0, 720911, 14, 720912, 8, 786435, 4, 786436, 3, 786443, 4, 786444, 14, 786445, 5, 786446, 8, 917503, 2, 851968, 2, 851969, 2, 851970, 2, 851971, 2, 851972, 2, 851973, 2, 851974, 2, 851975, 2, 851976, 2, 851977, 2, 851978, 2, 851979, 2, 851980, 2, 851981, 2, 851982, 2, 851983, 2, 851984, 2, 851985, 2, 851986, 2, 851987, 2, 851988, 2, 851989, 2 )
 
 [node name="start" type="Position2D" parent="."]
 
@@ -38,11 +58,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -66,7 +86,6 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 transform/pos = Vector2( 256, 256 )
 
-
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 128, 128 )
@@ -79,91 +98,73 @@ transform/pos = Vector2( 192, 128 )
 
 transform/pos = Vector2( 256, 320 )
 
-
 [node name="box3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 320, 320 )
-
 
 [node name="box4" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 320, 192 )
 
-
 [node name="box5" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 384, 192 )
-
 
 [node name="box6" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 448, 192 )
 
-
 [node name="box7" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 512, 192 )
-
 
 [node name="box8" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 192 )
 
-
 [node name="box9" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 256 )
-
 
 [node name="box10" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 320 )
 
-
 [node name="box11" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 640, 320 )
-
 
 [node name="box12" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 576, 448 )
 
-
 [node name="box13" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 640, 448 )
-
 
 [node name="box14" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 768, 256 )
 
-
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 256 )
-
 
 [node name="box2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 320 )
 
-
 [node name="box15" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 128 )
-
 
 [node name="box16" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 128 )
 
-
 [node name="box17" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 576, 128 )
-
 
 [node name="bomb_pickup1" parent="." instance=ExtResource( 4 )]
 
