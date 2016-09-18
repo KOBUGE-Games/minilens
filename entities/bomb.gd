@@ -24,6 +24,8 @@ func destroy():
 		
 		level_holder.set_goal_wait(seconds_after_explode)
 		
+		get_node("../../../player_holder/player").get_node("screen_anims").play("Screenshake")
+		
 		for direction in ray_status:
 			if ray_status[direction] != null and ray_status[direction].has_method("destroy"):
 				ray_status[direction].destroy()

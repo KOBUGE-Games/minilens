@@ -11,5 +11,3 @@ score_goal_on_destroy = true
 [node name="sprite" parent="."]
 
 texture = ExtResource( 2 )
-
-

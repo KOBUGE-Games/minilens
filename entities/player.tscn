@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=1]
+[gd_scene load_steps=15 format=1]
 
 [ext_resource path="res://entities/entity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://entities/player.gd" type="Script" id=2]
@@ -16,31 +16,38 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/antenna:transform/pos")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/antenna:transform/rot")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -16.1991 ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, -16.9 ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("body:transform/pos")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, -6 ), Vector2( 0, 4 ) ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 0, -8 ), Vector2( 0, 6 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("body:transform/rot")
 tracks/3/interp = 1
-tracks/3/keys = { "cont":true, "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0.1, 0.3 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 0.0 ] }
 tracks/4/type = "value"
 tracks/4/path = NodePath("front_wheels/right:frame")
 tracks/4/interp = 1
-tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 tracks/5/type = "value"
 tracks/5/path = NodePath("front_wheels/left:frame")
 tracks/5/interp = 1
-tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/5/imported = false
+tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 tracks/6/type = "value"
 tracks/6/path = NodePath("back_wheels/left:frame")
 tracks/6/interp = 1
-tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/6/imported = false
+tracks/6/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 
 [sub_resource type="Animation" id=2]
 
@@ -50,103 +57,128 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:transform/pos")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, 0 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 0, 0 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:transform/rot")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("body/eye_right:transform/pos")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -14, -11 ) ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -14, -11 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("body/eye_right:transform/rot")
 tracks/3/interp = 1
-tracks/3/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/4/type = "value"
 tracks/4/path = NodePath("front_wheels:transform/pos")
 tracks/4/interp = 1
-tracks/4/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, 0 ) ] }
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 0, 0 ) ] }
 tracks/5/type = "value"
 tracks/5/path = NodePath("front_wheels:transform/rot")
 tracks/5/interp = 1
-tracks/5/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/5/imported = false
+tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/6/type = "value"
 tracks/6/path = NodePath("front_wheels/left:transform/pos")
 tracks/6/interp = 1
-tracks/6/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -1, 22 ) ] }
+tracks/6/imported = false
+tracks/6/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -1, 22 ) ] }
 tracks/7/type = "value"
 tracks/7/path = NodePath("front_wheels/left:transform/rot")
 tracks/7/interp = 1
-tracks/7/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/7/imported = false
+tracks/7/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/8/type = "value"
 tracks/8/path = NodePath("back_wheels/left:transform/pos")
 tracks/8/interp = 1
-tracks/8/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -20, 22 ) ] }
+tracks/8/imported = false
+tracks/8/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -20, 22 ) ] }
 tracks/9/type = "value"
 tracks/9/path = NodePath("back_wheels/left:transform/rot")
 tracks/9/interp = 1
-tracks/9/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/9/imported = false
+tracks/9/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/10/type = "value"
 tracks/10/path = NodePath("front_wheels/right:transform/pos")
 tracks/10/interp = 1
-tracks/10/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 22, 22 ) ] }
+tracks/10/imported = false
+tracks/10/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 22, 22 ) ] }
 tracks/11/type = "value"
 tracks/11/path = NodePath("front_wheels/right:transform/rot")
 tracks/11/interp = 1
-tracks/11/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/11/imported = false
+tracks/11/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/12/type = "value"
 tracks/12/path = NodePath("body/antenna/joint:transform/pos")
 tracks/12/interp = 1
-tracks/12/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -9.49999, -11 ) ] }
+tracks/12/imported = false
+tracks/12/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -9.49999, -11 ) ] }
 tracks/13/type = "value"
 tracks/13/path = NodePath("body/antenna/joint:transform/rot")
 tracks/13/interp = 1
-tracks/13/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/13/imported = false
+tracks/13/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/14/type = "value"
 tracks/14/path = NodePath("back_wheels/right:transform/pos")
 tracks/14/interp = 1
-tracks/14/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 3, 22 ) ] }
+tracks/14/imported = false
+tracks/14/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 3, 22 ) ] }
 tracks/15/type = "value"
 tracks/15/path = NodePath("back_wheels/right:transform/rot")
 tracks/15/interp = 1
-tracks/15/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/15/imported = false
+tracks/15/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/16/type = "value"
 tracks/16/path = NodePath("body/eye_left:transform/pos")
 tracks/16/interp = 1
-tracks/16/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -24, -11 ) ] }
+tracks/16/imported = false
+tracks/16/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -24, -11 ) ] }
 tracks/17/type = "value"
 tracks/17/path = NodePath("body/eye_left:transform/rot")
 tracks/17/interp = 1
-tracks/17/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/17/imported = false
+tracks/17/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/18/type = "value"
 tracks/18/path = NodePath("body/antenna:transform/pos")
 tracks/18/interp = 1
-tracks/18/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( -17, -18 ) ] }
+tracks/18/imported = false
+tracks/18/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( -17, -18 ) ] }
 tracks/19/type = "value"
 tracks/19/path = NodePath("body/antenna:transform/rot")
 tracks/19/interp = 1
-tracks/19/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/19/imported = false
+tracks/19/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/20/type = "value"
 tracks/20/path = NodePath("body:transform/pos")
 tracks/20/interp = 1
-tracks/20/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, 0 ) ] }
+tracks/20/imported = false
+tracks/20/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 0, 0 ) ] }
 tracks/21/type = "value"
 tracks/21/path = NodePath("body:transform/rot")
 tracks/21/interp = 1
-tracks/21/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/21/imported = false
+tracks/21/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/22/type = "value"
 tracks/22/path = NodePath("back_wheels/left:frame")
 tracks/22/interp = 1
-tracks/22/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/22/imported = false
+tracks/22/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 tracks/23/type = "value"
 tracks/23/path = NodePath("front_wheels/left:frame")
 tracks/23/interp = 1
-tracks/23/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/23/imported = false
+tracks/23/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 tracks/24/type = "value"
 tracks/24/path = NodePath("front_wheels/right:frame")
 tracks/24/interp = 1
-tracks/24/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/24/imported = false
+tracks/24/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 
 [sub_resource type="Animation" id=3]
 
@@ -156,31 +188,38 @@ step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/antenna:transform/pos")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/antenna:transform/rot")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -19.0544 ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, -40.0 ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("body:transform/pos")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ Vector2( 0, -1 ) ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ Vector2( 0, -1 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("body:transform/rot")
 tracks/3/interp = 1
-tracks/3/keys = { "cont":true, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0.0 ] }
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":0, "values":[ 0.0 ] }
 tracks/4/type = "value"
 tracks/4/path = NodePath("back_wheels/left:frame")
 tracks/4/interp = 1
-tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 tracks/5/type = "value"
 tracks/5/path = NodePath("front_wheels/left:frame")
 tracks/5/interp = 1
-tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/5/imported = false
+tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 tracks/6/type = "value"
 tracks/6/path = NodePath("front_wheels/right:frame")
 tracks/6/interp = 1
-tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/6/imported = false
+tracks/6/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 
 [sub_resource type="Animation" id=4]
 
@@ -190,31 +229,38 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("body/antenna:transform/pos")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 1.00094 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 1.00094 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("body/antenna:transform/rot")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0, 1.00094 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -16.1991 ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 0.5, 1 ), "update":0, "values":[ 10.0, -20.0 ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("body:transform/pos")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 3 ) ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 0.5, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( 0, 6 ) ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("body:transform/rot")
 tracks/3/interp = 1
-tracks/3/keys = { "cont":true, "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0, 1 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 0.0 ] }
 tracks/4/type = "value"
 tracks/4/path = NodePath("back_wheels/left:frame")
 tracks/4/interp = 1
-tracks/4/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 0 ] }
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 0 ] }
 tracks/5/type = "value"
 tracks/5/path = NodePath("front_wheels/left:frame")
 tracks/5/interp = 1
-tracks/5/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/5/imported = false
+tracks/5/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 tracks/6/type = "value"
 tracks/6/path = NodePath("front_wheels/right:frame")
 tracks/6/interp = 1
-tracks/6/keys = { "cont":false, "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "values":[ 3 ] }
+tracks/6/imported = false
+tracks/6/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
 
 [sub_resource type="Animation" id=5]
 
@@ -224,31 +270,62 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("front_wheels/left:frame")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 3, 4, 5 ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ 3, 4, 5 ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("front_wheels/right:frame")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 3, 4, 5 ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ 3, 4, 5 ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("back_wheels/left:frame")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":false, "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ 0, 1, 2 ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 0.1, 0.2 ), "transitions":FloatArray( 1, 1, 1 ), "update":1, "values":[ 0, 1, 2 ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("body/antenna:transform/pos")
 tracks/3/interp = 1
-tracks/3/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -17, -18 ), Vector2( -17, -18 ) ] }
 tracks/4/type = "value"
 tracks/4/path = NodePath("body/antenna:transform/rot")
 tracks/4/interp = 1
-tracks/4/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, -4.39145 ] }
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 0.5, 1 ), "update":0, "values":[ 5.0, -5.0 ] }
 tracks/5/type = "value"
 tracks/5/path = NodePath("body:transform/pos")
 tracks/5/interp = 1
-tracks/5/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 0, 0 ), Vector2( 0, 1 ) ] }
+tracks/5/imported = false
+tracks/5/keys = { "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 0, 0 ), Vector2( 0, 2 ) ] }
 tracks/6/type = "value"
 tracks/6/path = NodePath("body:transform/rot")
 tracks/6/interp = 1
-tracks/6/keys = { "cont":true, "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "values":[ 0.0, 0.0 ] }
+tracks/6/imported = false
+tracks/6/keys = { "times":FloatArray( 0, 0.15 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 0.0 ] }
+
+[sub_resource type="Animation" id=6]
+
+resource/name = "Screenshake"
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("camera:transform/rot")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.4 ), "transitions":FloatArray( 0.5, 2, 0.5, 1 ), "update":0, "values":[ -2.0, 2.0, -1.0, 0.0 ] }
+
+[sub_resource type="Animation" id=7]
+
+resource/name = "Teleport"
+length = 0.4
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("camera:transform/rot")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.2, 0.4 ), "transitions":FloatArray( 2, 0.5, 1 ), "update":0, "values":[ 0.0, 180.0, 360.0 ] }
 
 [node name="player" instance=ExtResource( 1 )]
 
@@ -262,30 +339,64 @@ level_holder_path = NodePath("../../level_holder")
 visibility/visible = false
 texture = ExtResource( 3 )
 
+[node name="ray_top" parent="."]
+
+exclude_parent = true
+
+[node name="ray_right" parent="."]
+
+exclude_parent = true
+
+[node name="ray_bottom" parent="."]
+
+exclude_parent = true
+
+[node name="ray_left" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_top" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_right" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_bottom" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_left" parent="."]
+
+exclude_parent = true
+
 [node name="camera" type="Camera2D" parent="."]
 
+transform/rot = 360.0
 anchor_mode = 1
-rotating = false
+rotating = true
 current = true
 zoom = Vector2( 1, 1 )
 limit/left = -10000000
 limit/top = -10000000
 limit/right = 10000000
 limit/bottom = 10000000
+limit/smoothed = true
 drag_margin/h_enabled = true
 drag_margin/v_enabled = true
-smoothing/enable = false
-smoothing/speed = 5.0
-drag_margin/left = 0.2
-drag_margin/top = 0.2
-drag_margin/right = 0.2
-drag_margin/bottom = 0.2
+smoothing/enable = true
+smoothing/speed = 2.0
+drag_margin/left = 0.1
+drag_margin/top = 0.1
+drag_margin/right = 0.1
+drag_margin/bottom = 0.1
 
 [node name="character" type="Node2D" parent="."]
 
 [node name="back_wheels" type="Node2D" parent="character"]
 
-__meta__ = { "_editor_collapsed":true }
+editor/display_folded = true
 
 [node name="left" type="Sprite" parent="character/back_wheels"]
 
@@ -303,17 +414,15 @@ hframes = 3
 
 [node name="body" type="Sprite" parent="character"]
 
-transform/pos = Vector2( 0, -1 )
 texture = ExtResource( 5 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="antenna" type="Sprite" parent="character/body"]
 
 transform/pos = Vector2( -17, -18 )
-transform/rot = -8.09955
+transform/rot = 10.0
 texture = ExtResource( 6 )
 offset = Vector2( -4, -6 )
-__meta__ = { "_edit_bone_":true, "_editor_collapsed":true }
+__meta__ = { "_edit_bone_":true }
 
 [node name="joint" type="Node2D" parent="character/body/antenna"]
 
@@ -363,5 +472,17 @@ playback/active = true
 playback/speed = 1.0
 blend_times = [  ]
 autoplay = "idle"
+
+[node name="screen_anims" type="AnimationPlayer" parent="."]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/Screenshake = SubResource( 6 )
+anims/Teleport = SubResource( 7 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 
