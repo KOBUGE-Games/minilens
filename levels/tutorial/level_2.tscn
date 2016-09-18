@@ -4,7 +4,7 @@
 [ext_resource path="res://shared/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=3]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fonts/papercut.fnt" type="Font" id=5]
+[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=5]
 [ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=6]
 [ext_resource path="res://shared/theme.tres" type="Theme" id=7]
 
@@ -46,7 +46,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 524292, 4, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 3, 655371, 4, 655372, 0, 655373, 0, 655374, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 720913, 2 )
+tile_data = IntArray( 524292, 4, 524293, 0, 524294, 0, 524295, 0, 524296, 0, 524297, 0, 524298, 0, 524299, 3, 589829, 9, 589830, 5, 589831, 5, 589832, 8, 655367, 10, 655371, 12, 655372, 13, 655373, 0, 655374, 3, 786431, 2, 720896, 2, 720897, 2, 720898, 2, 720899, 2, 720900, 2, 720901, 2, 720902, 2, 720903, 2, 720904, 2, 720905, 2, 720906, 2, 720907, 2, 720908, 2, 720909, 2, 720910, 2, 720911, 2, 720912, 2, 720913, 2 )
 
 [node name="start" type="Position2D" parent="."]
 
@@ -55,11 +55,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -88,6 +88,7 @@ transform/pos = Vector2( 448, 448 )
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 160.0
 margin/top = 224.0
 margin/right = 776.0
@@ -106,8 +107,8 @@ transform/pos = Vector2( 896, 576 )
 
 [node name="areas" type="Node2D" parent="."]
 
+editor/display_folded = true
 z/z = 10
-__meta__ = { "_editor_collapsed":true }
 
 [node name="push" type="Area2D" parent="areas"]
 
@@ -134,6 +135,7 @@ _update_shape_index = -1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 theme/theme = ExtResource( 7 )
 margin/left = -160.0
 margin/top = -96.0
@@ -170,6 +172,7 @@ _update_shape_index = -1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 theme/theme = ExtResource( 7 )
 margin/left = -96.0
 margin/top = -96.0
@@ -205,6 +208,7 @@ _update_shape_index = -1
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
+size_flags/vertical = 0
 theme/theme = ExtResource( 7 )
 margin/left = -64.0
 margin/top = -96.0

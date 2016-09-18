@@ -33,6 +33,8 @@ onready var raw_packs = FileManager.get_file_lines("res://levels/packs.txt")
 func _ready():
 	set_process(true)
 	get_node("/root").connect("size_changed",self,"window_resize")
+	
+	music.play_random_music()
 
 func _process(delta): # Move the acid
 	acid_animation_pos = acid_animation_pos + delta
@@ -83,8 +85,6 @@ func load_level(pack, level): # Load level from pack
 		tile_map_acid_x_end += 1
 	
 	window_resize()
-	
-	music.play_random_music()
 
 func window_resize():
 	var new_size = get_node("/root").get_size_override()

@@ -29,7 +29,7 @@ collision/bounce = 0.0
 collision/layers = 1
 collision/mask = 1
 occluder/light_mask = 1
-tile_data = IntArray( 393222, 4, 393223, 0, 393224, 0, 393225, 3, 458753, 1, 458754, 4, 458755, 3, 458758, 1, 458759, 1, 458760, 1, 458761, 1, 458764, 4, 458765, 3, 524290, 1, 524293, 7, 524298, 4, 524299, 3, 589827, 1, 655364, 1, 720896, 4, 720897, 3, 720901, 4, 720902, 0, 720903, 3, 786432, 2, 786433, 2, 786434, 2, 786435, 2, 786436, 2, 786437, 2, 786438, 2, 786439, 2, 786440, 2, 786441, 2, 786442, 2, 786443, 2, 786444, 2, 786445, 2, 786446, 2, 786447, 2 )
+tile_data = IntArray( 393222, 4, 393223, 0, 393224, 0, 393225, 3, 458754, 9, 458755, 11, 458758, 1, 458759, 1, 458760, 1, 458761, 1, 458764, 4, 458765, 3, 524290, 1, 524293, 7, 524298, 4, 524299, 14, 524300, 8, 589827, 1, 655364, 1, 720896, 4, 720897, 3, 720901, 4, 720902, 0, 720903, 3, 786432, 2, 786433, 2, 786434, 2, 786435, 2, 786436, 2, 786437, 2, 786438, 2, 786439, 2, 786440, 2, 786441, 2, 786442, 2, 786443, 2, 786444, 2, 786445, 2, 786446, 2, 786447, 2 )
 
 [node name="start" type="Position2D" parent="."]
 
@@ -38,11 +38,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -66,7 +66,6 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 transform/pos = Vector2( 640, 448 )
 
-
 [node name="bomb_pickup" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 384, 640 )
@@ -79,16 +78,13 @@ transform/pos = Vector2( 256, 704 )
 
 transform/pos = Vector2( 512, 640 )
 
-
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 448 )
 
-
 [node name="box3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 512 )
-
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
 

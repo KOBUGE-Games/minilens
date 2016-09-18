@@ -2,7 +2,7 @@
 
 [ext_resource path="res://shared/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
-[ext_resource path="res://fonts/papercut.fnt" type="Font" id=3]
+[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=3]
 [ext_resource path="res://entities/box.tscn" type="PackedScene" id=4]
 [ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
 
@@ -62,13 +62,14 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="Label" type="Label" parent="."]
 
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
 margin/left = 96.0
 margin/top = 608.0
 margin/right = 671.0
 margin/bottom = 641.0
-focus/ignore_mouse = true
-focus/stop_mouse = true
-size_flags/horizontal = 2
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
 text = "Just push a box over it!"
@@ -80,7 +81,6 @@ max_lines_visible = -1
 [node name="box" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 448, 512 )
-
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
@@ -101,7 +101,6 @@ transform/pos = Vector2( 256, 0 )
 [node name="box1" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 64, 384 )
-
 
 [node name="flower4" parent="." instance=ExtResource( 5 )]
 

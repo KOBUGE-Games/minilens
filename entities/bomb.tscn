@@ -7,8 +7,8 @@
 
 [sub_resource type="ColorRamp" id=1]
 
-offsets = FloatArray( 0, 0.1, 0.7, 1 )
-colors = ColorArray( 1, 1, 1, 0, 0.351123, 0.0962784, 0, 0.585526, 0.599826, 0.405306, 0.202686, 0.123543, 0, 0, 0, 0 )
+offsets = FloatArray( 0, 0.181287, 1 )
+colors = ColorArray( 0.5, 0.2, 0, 1, 0.7, 0.5, 0.2, 1, 0.34902, 0.269945, 0, 0 )
 
 [sub_resource type="Animation" id=2]
 
@@ -19,11 +19,18 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("sprite:transform/scale")
 tracks/0/interp = 2
-tracks/0/keys = { "cont":true, "times":FloatArray( 0, 0.25 ), "transitions":FloatArray( 1, 1 ), "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.25 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("sprite:modulate")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":true, "times":FloatArray( 0, 0.15, 0.35 ), "transitions":FloatArray( 1, 1, 1 ), "values":[ Color( 1, 1, 1, 1 ), Color( 0.90625, 0.191162, 0.191162, 1 ), Color( 0.9375, 0.420799, 0.168457, 1 ) ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.15, 0.35 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Color( 1, 1, 1, 1 ), Color( 0.8, 0.3, 0.2, 1 ), Color( 0.9375, 0.420799, 0.168457, 1 ) ] }
+tracks/2/type = "value"
+tracks/2/path = NodePath("sprite:transform/rot")
+tracks/2/interp = 1
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0, 0.25 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 20.0 ] }
 
 [sub_resource type="Animation" id=3]
 
@@ -34,23 +41,28 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("explosions/explosion_top:config/emitting")
 tracks/0/interp = 1
-tracks/0/keys = { "cont":false, "times":FloatArray( 0, 0.8 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
 tracks/1/type = "value"
 tracks/1/path = NodePath("explosions/explosion_right:config/emitting")
 tracks/1/interp = 1
-tracks/1/keys = { "cont":false, "times":FloatArray( 0, 0.8 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
 tracks/2/type = "value"
 tracks/2/path = NodePath("explosions/explosion_bottom:config/emitting")
 tracks/2/interp = 1
-tracks/2/keys = { "cont":false, "times":FloatArray( 0, 0.8 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/2/imported = false
+tracks/2/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
 tracks/3/type = "value"
 tracks/3/path = NodePath("explosions/explosion_left:config/emitting")
 tracks/3/interp = 1
-tracks/3/keys = { "cont":false, "times":FloatArray( 0, 0.8 ), "transitions":FloatArray( 1, 1 ), "values":[ true, false ] }
+tracks/3/imported = false
+tracks/3/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ true ] }
 tracks/4/type = "value"
 tracks/4/path = NodePath("sprite:visibility/opacity")
 tracks/4/interp = 1
-tracks/4/keys = { "cont":true, "times":FloatArray( 0, 0.9 ), "transitions":FloatArray( 1, 1 ), "values":[ 1.0, 0.0 ] }
+tracks/4/imported = false
+tracks/4/keys = { "times":FloatArray( 0, 0.9 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
 
 [node name="bomb" instance=ExtResource( 1 )]
 
@@ -63,6 +75,38 @@ seconds_after_explode = 1.2
 [node name="sprite" parent="."]
 
 texture = ExtResource( 3 )
+
+[node name="ray_top" parent="."]
+
+exclude_parent = true
+
+[node name="ray_right" parent="."]
+
+exclude_parent = true
+
+[node name="ray_bottom" parent="."]
+
+exclude_parent = true
+
+[node name="ray_left" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_top" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_right" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_bottom" parent="."]
+
+exclude_parent = true
+
+[node name="ray_check_left" parent="."]
+
+exclude_parent = true
 
 [node name="timer" type="Timer" parent="."]
 
@@ -78,9 +122,8 @@ autostart = false
 visibility/behind_parent = true
 visibility/blend_mode = 1
 config/amount = 16
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emit_timeout = 1.0
+config/lifetime = 0.5
+config/emit_timeout = 0.4
 config/emitting = false
 config/offset = Vector2( 0, -64 )
 config/half_extents = Vector2( 15, 15 )
@@ -89,14 +132,14 @@ config/explosiveness = 0.05
 config/texture = ExtResource( 4 )
 params/direction = 0.0
 params/spread = 180.0
-params/linear_velocity = 90.0
+params/linear_velocity = 100.0
 params/spin_velocity = 0.0
 params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 80.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
 params/radial_accel = 0.0
 params/tangential_accel = 0.0
-params/damping = 366.3
+params/damping = 0.0
 params/initial_angle = 1.0
 params/initial_size = 0.7
 params/final_size = 3.0
@@ -111,9 +154,8 @@ visibility/behind_parent = true
 visibility/blend_mode = 1
 transform/rot = 270.0
 config/amount = 16
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emit_timeout = 1.0
+config/lifetime = 0.5
+config/emit_timeout = 0.4
 config/emitting = false
 config/offset = Vector2( 0, -64 )
 config/half_extents = Vector2( 15, 15 )
@@ -122,14 +164,14 @@ config/explosiveness = 0.05
 config/texture = ExtResource( 4 )
 params/direction = 0.0
 params/spread = 180.0
-params/linear_velocity = 90.0
+params/linear_velocity = 100.0
 params/spin_velocity = 0.0
 params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 80.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
 params/radial_accel = 0.0
 params/tangential_accel = 0.0
-params/damping = 366.3
+params/damping = 0.0
 params/initial_angle = 1.0
 params/initial_size = 0.7
 params/final_size = 3.0
@@ -144,9 +186,8 @@ visibility/behind_parent = true
 visibility/blend_mode = 1
 transform/rot = 180.0
 config/amount = 16
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emit_timeout = 1.0
+config/lifetime = 0.5
+config/emit_timeout = 0.4
 config/emitting = false
 config/offset = Vector2( 0, -64 )
 config/half_extents = Vector2( 15, 15 )
@@ -155,14 +196,14 @@ config/explosiveness = 0.05
 config/texture = ExtResource( 4 )
 params/direction = 0.0
 params/spread = 180.0
-params/linear_velocity = 90.0
+params/linear_velocity = 100.0
 params/spin_velocity = 0.0
 params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 80.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
 params/radial_accel = 0.0
 params/tangential_accel = 0.0
-params/damping = 366.3
+params/damping = 0.0
 params/initial_angle = 1.0
 params/initial_size = 0.7
 params/final_size = 3.0
@@ -177,25 +218,24 @@ visibility/behind_parent = true
 visibility/blend_mode = 1
 transform/rot = 90.0
 config/amount = 16
-config/lifetime = 1.0
-config/time_scale = 2.0
-config/emit_timeout = 1.0
+config/lifetime = 0.5
+config/emit_timeout = 0.5
 config/emitting = false
 config/offset = Vector2( 0, -64 )
 config/half_extents = Vector2( 15, 15 )
 config/local_space = false
-config/explosiveness = 0.05
+config/explosiveness = 0.1
 config/texture = ExtResource( 4 )
 params/direction = 0.0
 params/spread = 180.0
-params/linear_velocity = 90.0
+params/linear_velocity = 100.0
 params/spin_velocity = 0.0
 params/orbit_velocity = 0.0
-params/gravity_direction = 180.0
-params/gravity_strength = 80.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
 params/radial_accel = 0.0
 params/tangential_accel = 0.0
-params/damping = 366.3
+params/damping = 0.0
 params/initial_angle = 1.0
 params/initial_size = 0.7
 params/final_size = 3.0

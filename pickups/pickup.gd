@@ -41,7 +41,8 @@ func _body_enter(body):
 		destroy()
 
 func destroy():
-	hide()
 	var timer = get_node("destroy_timer")
+	get_node("particles").set_emitting(true)
+	get_node("animation_player").play("destroy")
 	timer.connect("timeout", self, "queue_free")
 	timer.start()

@@ -1,6 +1,8 @@
 
 extends KinematicBody2D
 
+const player_class = preload("res://entities/player.gd")
+
 var ray_overlap # The ray with which we are checking for overlap
 export var to_teleport_path = "../teleporter"
 var to
@@ -30,6 +32,8 @@ func _fixed_process(delta):
 	if(ray_overlap.is_colliding() && ray_overlap.get_collider()): # We have to teleport something
 		if(!locked && !to.locked): # No locked teleports
 			var collider = ray_overlap.get_collider()
+			if(collider extends player_class):
+					collider.get_node("screen_anims").play("Teleport")
 			if(collider.has_method("set_pos")):
 				collider.set_pos(to.get_pos())
 				locked = true # Lock everything

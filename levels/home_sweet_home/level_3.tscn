@@ -59,11 +59,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -86,7 +86,6 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1344, 0 )
-collision/margin = 0.08
 
 [node name="breakable_ground" parent="." instance=ExtResource( 4 )]
 
@@ -99,17 +98,14 @@ transform/pos = Vector2( 1088, 64 )
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1280, 384 )
-collision/margin = 0.08
 
 [node name="flower" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896, 384 )
-linear_damp = 0.1
 
 [node name="box2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1280, 512 )
-collision/margin = 0.08
 
 [node name="breakable_ground2" parent="." instance=ExtResource( 4 )]
 
@@ -118,77 +114,62 @@ transform/pos = Vector2( 1408, 832 )
 [node name="bomb" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 896, 448 )
-linear_damp = 0.1
 
 [node name="static" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 896, 832 )
-collision/margin = 0.08
 
 [node name="flower1" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 832, 768 )
-linear_damp = 0.1
 
 [node name="flower2" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 768, 960 )
-linear_damp = 0.1
 
 [node name="box3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 768, 0 )
-collision/margin = 0.08
 
 [node name="teleporter" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 640, -64 )
-collision/margin = 0.08
 to_teleport_path = "../teleporter1"
 
 [node name="teleporter1" parent="." instance=ExtResource( 8 )]
 
 transform/pos = Vector2( 640, 896 )
-collision/margin = 0.08
 
 [node name="box4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 448 )
-collision/margin = 0.08
 
 [node name="flower3" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 192, 192 )
-linear_damp = 0.1
 
 [node name="flower4" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 896, 256 )
-linear_damp = 0.1
 
 [node name="static1" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 1024, 256 )
-collision/margin = 0.08
 
 [node name="box5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 1024, 192 )
-collision/margin = 0.08
 
 [node name="bomb1" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 832, 256 )
-linear_damp = 0.1
 
 [node name="flower5" parent="." instance=ExtResource( 5 )]
 
 transform/pos = Vector2( 384, 960 )
-linear_damp = 0.1
 
 [node name="bomb2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 896, 512 )
-linear_damp = 0.1
 
 

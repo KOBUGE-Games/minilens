@@ -13,6 +13,26 @@
 transform/pos = Vector2( 32, 32 )
 __meta__ = { "__editor_plugin_screen__":"2D" }
 
+[node name="background" type="TileMap" parent="."]
+
+visibility/opacity = 0.8
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 16
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 0.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 1769475, 5, 1769476, 5, 1769477, 5, 1769478, 5, 1769479, 5, 1769480, 5, 1769481, 5, 1769482, 5, 1835012, 5, 1835013, 5, 1835014, 5, 1835015, 5, 1835016, 5, 1835017, 5, 1835018, 8, 1900550, 10 )
+
 [node name="tilemap" type="TileMap" parent="."]
 
 transform/pos = Vector2( -32, -32 )
@@ -39,11 +59,11 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+editor/display_folded = true
 layer = -1
 offset = Vector2( 32, 32 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-__meta__ = { "_editor_collapsed":true }
 
 [node name="background" type="Sprite" parent="CanvasLayer"]
 
@@ -66,12 +86,10 @@ transform/scale = Vector2( 3.2, 3.2 )
 [node name="box" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 448, 256 )
-collision/margin = 0.08
 
 [node name="static" parent="." instance=ExtResource( 4 )]
 
 transform/pos = Vector2( 320, 1536 )
-collision/margin = 0.08
 
 [node name="breakable_ground" parent="." instance=ExtResource( 5 )]
 
@@ -80,47 +98,38 @@ transform/pos = Vector2( 448, 512 )
 [node name="flower" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 704 )
-linear_damp = 0.1
 
 [node name="bomb" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 448, 960 )
-linear_damp = 0.1
 
 [node name="box1" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 512 )
-collision/margin = 0.08
 
 [node name="box2" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 576, 832 )
-collision/margin = 0.08
 
 [node name="box3" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 640, 1216 )
-collision/margin = 0.08
 
 [node name="box4" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 256 )
-collision/margin = 0.08
 
 [node name="box5" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 256, 512 )
-collision/margin = 0.08
 
 [node name="box6" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 192, 832 )
-collision/margin = 0.08
 
 [node name="box7" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 128, 1216 )
-collision/margin = 0.08
 
 [node name="breakable_ground1" parent="." instance=ExtResource( 5 )]
 
@@ -129,36 +138,29 @@ transform/pos = Vector2( 384, 1280 )
 [node name="flower1" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 512, 704 )
-linear_damp = 0.1
 
 [node name="flower2" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 256, 1408 )
-linear_damp = 0.1
 
 [node name="bomb1" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 640, 1408 )
-linear_damp = 0.1
 
 [node name="flower3" parent="." instance=ExtResource( 6 )]
 
 transform/pos = Vector2( 384, 1408 )
-linear_damp = 0.1
 
 [node name="box8" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 512, 1728 )
-collision/margin = 0.08
 
 [node name="box9" parent="." instance=ExtResource( 3 )]
 
 transform/pos = Vector2( 320, 1728 )
-collision/margin = 0.08
 
 [node name="bomb2" parent="." instance=ExtResource( 7 )]
 
 transform/pos = Vector2( 448, 832 )
-linear_damp = 0.1
 
 

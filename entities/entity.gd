@@ -143,7 +143,7 @@ func auto_move():
 	elif fall and can_move_in_direction("bottom", !fall_though_ladders) and (fall_though_ladders or tile_types.overlap != TileConfig.TILE_CLIMB):
 		movement = TILE_SIZE * tile_directions.bottom
 		if tile_types.bottom == TileConfig.TILE_SINK or tile_types.overlap == TileConfig.TILE_SINK:
-			speed_multiplier = 0.2
+			speed_multiplier = 0.4
 			emit_signal("auto_move_done", "sink")
 		else:
 			emit_signal("auto_move_done", "fall")
@@ -162,7 +162,10 @@ func play_auto_move_sound(type):
 
 func play_sound(name):
 	if SettingsManager.get_settings().sound:
-		positional_audio.play(name)
+		if name == "box_hit":
+			positional_audio.play(str("box_hit", str(randi()%3 + 1)))
+		else:
+			positional_audio.play(name)
 
 func next_move(): # Virtual
 	pass

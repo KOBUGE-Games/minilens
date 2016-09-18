@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=22 format=1]
 
-[ext_resource path="res://fonts/papercut.fnt" type="Font" id=1]
+[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=1]
 [ext_resource path="res://gfx/theme/button_disabled.png" type="Texture" id=2]
 [ext_resource path="res://gfx/theme/button_focus.png" type="Texture" id=3]
 [ext_resource path="res://gfx/theme/button_hover.png" type="Texture" id=4]
@@ -27,6 +27,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=2]
@@ -44,6 +45,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=3]
@@ -61,6 +63,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=4]
@@ -78,6 +81,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=5]
@@ -95,6 +99,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="StyleBoxTexture" id=6]
@@ -112,6 +117,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="ImageTexture" id=7]
@@ -137,6 +143,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [sub_resource type="ImageTexture" id=9]
@@ -162,6 +169,7 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
+modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [resource]
