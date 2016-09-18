@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=6 format=1]
 
 [ext_resource path="res://pickups/pickup.gd" type="Script" id=1]
 [ext_resource path="res://gfx/pickup_bomb.png" type="Texture" id=2]
@@ -8,6 +8,11 @@
 
 custom_solver_bias = 0.0
 extents = Vector2( 31, 31 )
+
+[sub_resource type="ColorRamp" id=2]
+
+offsets = FloatArray( 0.0116959, 1 )
+colors = ColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="pickup" type="Area2D"]
 
@@ -53,5 +58,31 @@ process_mode = 1
 wait_time = 0.5
 one_shot = true
 autostart = false
+
+[node name="particles" type="Particles2D" parent="."]
+
+config/amount = 48
+config/lifetime = 0.3
+config/emit_timeout = 0.2
+config/emitting = false
+config/explosiveness = 0.4
+config/texture = ExtResource( 2 )
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 200.0
+params/spin_velocity = 10.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 9.8
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 0.6
+params/final_size = 0.2
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+color/color_ramp = SubResource( 2 )
 
 
