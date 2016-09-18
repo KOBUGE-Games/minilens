@@ -1,14 +1,18 @@
-[gd_resource type="SampleLibrary" load_steps=5 format=1]
+[gd_resource type="SampleLibrary" load_steps=7 format=1]
 
-[ext_resource path="res://audio/samples/box_hit.smp" type="Sample" id=1]
-[ext_resource path="res://audio/samples/explode.smp" type="Sample" id=2]
-[ext_resource path="res://audio/samples/flower_pickup.smp" type="Sample" id=3]
-[ext_resource path="res://audio/samples/sink.smp" type="Sample" id=4]
+[ext_resource path="res://audio/box_hit1.wav" type="Sample" id=1]
+[ext_resource path="res://audio/box_hit2.wav" type="Sample" id=2]
+[ext_resource path="res://audio/box_hit3.wav" type="Sample" id=3]
+[ext_resource path="res://audio/samples/explode.smp" type="Sample" id=4]
+[ext_resource path="res://audio/samples/flower_pickup.smp" type="Sample" id=5]
+[ext_resource path="res://audio/samples/sink.smp" type="Sample" id=6]
 
 [resource]
 
-samples/flower_pickup = { "db":0.0, "pitch":1.0, "sample":ExtResource( 3 ) }
-samples/explode = { "db":0.0, "pitch":1.0, "sample":ExtResource( 2 ) }
-samples/sink = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
-samples/box_hit = { "db":0.0, "pitch":1.0, "sample":ExtResource( 1 ) }
+samples/box_hit1 = { "db":5.0, "pitch":1.0, "sample":ExtResource( 1 ) }
+samples/box_hit2 = { "db":2.0, "pitch":1.0, "sample":ExtResource( 2 ) }
+samples/box_hit3 = { "db":2.0, "pitch":1.0, "sample":ExtResource( 3 ) }
+samples/explode = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/flower_pickup = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/sink = { "db":0.0, "pitch":1.0, "sample":ExtResource( 6 ) }
 
