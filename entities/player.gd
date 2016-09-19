@@ -33,13 +33,11 @@ func level_load(level_node):
 	
 	tilemap = level_node.get_node("tilemap") # Get the tilemap
 	
-	# Set the limis for the camera
+	# Set the limits for the camera
 	var top_left_pos = level_node.get_node("camera_start").get_pos()
 	var bottom_right_pos = level_node.get_node("camera_end").get_pos()
 	camera.set_limit(MARGIN_TOP, top_left_pos.y)
-	camera.set_limit(MARGIN_LEFT, min(top_left_pos.x,-9999))
 	camera.set_limit(MARGIN_BOTTOM, bottom_right_pos.y)
-	camera.set_limit(MARGIN_RIGHT, max(bottom_right_pos.x,9999))
 	
 	# Reset variables
 	bombs = 0

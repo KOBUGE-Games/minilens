@@ -58,7 +58,7 @@ transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="camera_end" type="Position2D" parent="."]
 
-transform/pos = Vector2( 960, 768 )
+transform/pos = Vector2( 640, 768 )
 transform/scale = Vector2( 3.2, 3.2 )
 
 [node name="Label" type="Label" parent="."]

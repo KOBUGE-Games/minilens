@@ -3,6 +3,8 @@ extends Node2D
 
 signal counters_changed()
 
+const TILE_SIZE = Vector2(64, 64)
+
 export var acid_animation_time = 1.0 # The speed of the acid animation
 
 var level_scene # The scene containing the level
@@ -91,13 +93,17 @@ func window_resize():
 	if !level_node:
 		return
 	var tilemap = level_node.get_node("tilemap")
-	for i in range(ceil(new_size.x/2/64)):
+	for i in range(ceil(new_size.x/2/TILE_SIZE.x)):
 		tilemap.set_cell(tile_map_acid_x_start - i, tile_map_acid_y, 2)
 		tilemap.set_cell(tile_map_acid_x_end + i, tile_map_acid_y, 2)
+	
 	var scale = new_size.x/1024
 	if(scale > 1):
 		level_node.get_node("CanvasLayer").set_scale(Vector2(scale,scale))
 		level_node.get_node("CanvasLayer").set_offset(Vector2(32*scale,32-(scale - 1)*768/2))
+	
+	player.camera.set_limit(MARGIN_LEFT, -new_size.x/2 - tile_map_acid_x_start * TILE_SIZE.x)
+	player.camera.set_limit(MARGIN_RIGHT, new_size.x/2 + tile_map_acid_x_end * TILE_SIZE.x)
 	player.camera.force_update_scroll()
 
 func goal_add(type = ""): # Add one more goal

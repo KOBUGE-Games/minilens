@@ -5,7 +5,7 @@ var option_config = {
 	fullscreen = TYPE_BOOL,
 	music = TYPE_BOOL,
 	sound = TYPE_BOOL,
-	input_mode = {"Touch areas": SettingsManager.INPUT_AREAS, "Touch buttons": SettingsManager.INPUT_BUTTONS}
+	input_mode = {"None": SettingsManager.INPUT_NONE, "Touch areas": SettingsManager.INPUT_AREAS, "Touch buttons": SettingsManager.INPUT_BUTTONS}
 }
 
 onready var settings = get_node("settings")
@@ -28,7 +28,9 @@ func _ready():
 			current_option_config = option_config[option_name]
 		
 		var reached = 0
-		for key in current_option_config:
+		var keys = current_option_config.keys()
+		keys.sort()
+		for key in keys:
 			option_control.add_item(key)
 			option_control.set_item_metadata(reached, current_option_config[key])
 			
@@ -40,9 +42,9 @@ func _ready():
 		option_control.connect("item_selected", self, "option_item_selected", [option_name])
 	
 	# Hide touch input modes on non-touch-based platforms
-	if OS.get_name() != "Android" and OS.get_name() != "iOS":
-		settings.get_node("input_mode_label").hide()
-		settings.get_node("input_mode").hide()
+	var touchscreen = OS.has_touchscreen_ui_hint()
+	settings.get_node("input_mode_label").set_hidden(!touchscreen)
+	settings.get_node("input_mode").set_hidden(!touchscreen)
 
 func option_item_selected(ID, setting):
 	var current_options = SettingsManager.read_settings()

@@ -1,8 +1,9 @@
 
 extends Node
 
-const INPUT_AREAS = 0
-const INPUT_BUTTONS = 1
+const INPUT_NONE = 0
+const INPUT_AREAS = 1
+const INPUT_BUTTONS = 2
 
 const default_settings = {
 	fullscreen = false,

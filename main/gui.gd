@@ -8,6 +8,7 @@ var popup_running = false
 
 onready var timer = get_node("timer")
 onready var popup = get_node("popup")
+onready var lookaround = get_node("lookaround")
 onready var level_holder = get_node("../level_holder")
 onready var player = get_node("../player_holder/player")
 
@@ -109,6 +110,9 @@ func _show_popup(title, text): # Show a popup with title and text
 	popup.show()
 
 func popup_button_pressed(name): # Actions for different popup buttons
+	if name == "look":
+		var toggled = get_node("top_left_buttons/look").is_pressed()
+		lookaround.set_enabled(toggled)
 	if name == "retry":
 		level_holder.retry_level()
 	elif name == "next":
