@@ -373,7 +373,6 @@ exclude_parent = true
 
 [node name="camera" type="Camera2D" parent="."]
 
-transform/rot = -2.0
 anchor_mode = 1
 rotating = true
 current = true
