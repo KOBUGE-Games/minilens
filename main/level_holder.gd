@@ -102,7 +102,7 @@ func window_resize():
 		level_node.get_node("CanvasLayer").set_scale(Vector2(scale,scale))
 		level_node.get_node("CanvasLayer").set_offset(Vector2(32*scale,32-(scale - 1)*768/2))
 	
-	player.camera.set_limit(MARGIN_LEFT, -new_size.x/2 - tile_map_acid_x_start * TILE_SIZE.x)
+	player.camera.set_limit(MARGIN_LEFT, -new_size.x/2 + (tile_map_acid_x_start + 1) * TILE_SIZE.x)
 	player.camera.set_limit(MARGIN_RIGHT, new_size.x/2 + tile_map_acid_x_end * TILE_SIZE.x)
 	player.camera.force_update_scroll()
 
