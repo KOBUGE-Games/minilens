@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=1]
+[gd_scene load_steps=31 format=1]
 
 [ext_resource path="res://main/gui.gd" type="Script" id=1]
 [ext_resource path="res://gfx/turn_icon.png" type="Texture" id=2]
@@ -28,6 +28,40 @@
 [ext_resource path="res://audio/music_3.ogg" type="AudioStream" id=26]
 [ext_resource path="res://audio/music_4.ogg" type="AudioStream" id=27]
 [ext_resource path="res://audio/music_5.ogg" type="AudioStream" id=28]
+
+[sub_resource type="Animation" id=2]
+
+resource/name = "disabled"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("label:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("backdrop:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+
+[sub_resource type="Animation" id=1]
+
+resource/name = "enabled"
+length = 0.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("label:visibility/opacity")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/1/type = "value"
+tracks/1/path = NodePath("backdrop:visibility/opacity")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
 
 [node name="world" type="Node2D"]
 
@@ -303,7 +337,6 @@ max_lines_visible = -1
 
 [node name="touch_controls" type="Control" parent="gui"]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = true
@@ -497,7 +530,6 @@ margin/bottom = 224.0
 
 [node name="areas" type="Control" parent="gui/touch_controls"]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -526,6 +558,7 @@ alignment = 0
 
 [node name="up" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
@@ -588,6 +621,7 @@ margin/bottom = 128.0
 
 [node name="center" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
@@ -668,6 +702,7 @@ centered = false
 
 [node name="down" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
 
+editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 3
@@ -758,6 +793,7 @@ script/script = ExtResource( 12 )
 
 [node name="label" type="Label" parent="gui/lookaround"]
 
+visibility/opacity = 0.0
 anchor/top = 1
 anchor/right = 1
 anchor/bottom = 1
@@ -783,13 +819,32 @@ max_lines_visible = -1
 
 [node name="backdrop" type="Sprite" parent="gui/lookaround"]
 
+visibility/opacity = 0.0
 visibility/behind_parent = true
-transform/pos = Vector2( 3.05176e-05, 2.28882e-05 )
 transform/scale = Vector2( 512, 384 )
 texture = ExtResource( 10 )
 centered = false
 script/script = ExtResource( 11 )
 centered = false
+
+[node name="Tween" type="Tween" parent="gui/lookaround"]
+
+playback/process_mode = 1
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="gui/lookaround"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/disabled = SubResource( 2 )
+anims/enabled = SubResource( 1 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
 
 [node name="top_left_buttons" type="HBoxContainer" parent="gui"]
 
@@ -860,6 +915,7 @@ transform/pos = Vector2( 8.9407e-06, 2.98023e-06 )
 transform/scale = Vector2( 150, 50 )
 texture = ExtResource( 18 )
 centered = false
+modulate = Color( 0.5, 0.8, 1, 1 )
 script/script = ExtResource( 11 )
 centered = false
 
@@ -890,7 +946,6 @@ transform/pos = Vector2( 32, 32 )
 [node name="player" parent="player_holder" instance=ExtResource( 21 )]
 
 transform/pos = Vector2( 228.814, 197.081 )
-collision/margin = 0.08
 
 [node name="sample_player" type="SamplePlayer" parent="."]
 
