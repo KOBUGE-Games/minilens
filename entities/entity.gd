@@ -85,6 +85,9 @@ func _fixed_process(delta):
 				movement_original = Vector2(0, 0)
 				movement_check_collision = ""
 				is_moving = false
+				
+			if ray_status[movement_check_collision] != null and ray_status[movement_check_collision].get("speed_multiplier") != null:
+				speed_multiplier = min(speed_multiplier, ray_status[movement_check_collision].speed_multiplier)
 		
 		var speed = movement_speed * delta * speed_multiplier
 		if movement.length_squared() > speed.length_squared():
@@ -150,6 +153,7 @@ func auto_move():
 	elif old_push_direction != "":
 		movement = tile_directions[old_push_direction] * TILE_SIZE
 		movement_check_collision = old_push_direction
+		speed_multiplier = 0.7
 		emit_signal("auto_move_done", "push")
 	else:
 		return false

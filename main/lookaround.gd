@@ -10,6 +10,7 @@ onready var tween = get_node("Tween")
 onready var animation_player = get_node("AnimationPlayer")
 
 func _ready():
+	hide()
 	set_enabled(false)
 
 func set_enabled(enabled):
@@ -33,6 +34,7 @@ func set_enabled(enabled):
 			player_camera.force_update_scroll()
 		
 		player_camera.set_limit(MARGIN_TOP, player_camera.get_limit(MARGIN_TOP) - 60) # Makes things feel less rigid
+		show()
 	else:
 		player_camera.get_parent().can_move = true
 		if camera_zoom > Vector2(1, 1):
@@ -40,6 +42,7 @@ func set_enabled(enabled):
 			animation_player.connect("finished", self, "set_disabled")
 
 func set_disabled():
+	hide()
 	if animation_player.is_connected("finished", self, "set_disabled"):
 		animation_player.disconnect("finished", self, "set_disabled")
 	player_camera.set_limit(MARGIN_TOP, preenable_top_margin)
