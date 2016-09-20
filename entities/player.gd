@@ -13,6 +13,7 @@ var can_move = true
 
 onready var character = get_node("character")
 onready var animation_player = get_node("animation_player")
+onready var in_and_out = get_node("in_and_out")
 onready var camera = get_node("camera")
 
 func _ready():
@@ -26,9 +27,17 @@ func _process(delta):
 		animation_player.play(current_animation)
 		old_animation = current_animation
 	
+	can_move = true
+	
+	if in_and_out.is_playing():
+		can_move = false
+	
 	# Update the orientation
 	if movement.x != 0 and sign(movement.x) == sign(character.get_scale().x):
-		character.set_scale(character.get_scale() * Vector2(-1,1))
+		var invert_scale = character.get_scale() * Vector2(-1,1)
+		character.set_scale(invert_scale)
+		in_and_out.get_animation("enter").track_set_key_value(0, 1, invert_scale)
+		in_and_out.get_animation("exit").track_set_key_value(0, 0, invert_scale)
 
 func level_load(level_node):
 	current_animation = "idle"
@@ -44,6 +53,7 @@ func level_load(level_node):
 	# Reset variables
 	bombs = 0
 	movement = Vector2(0, 0)
+	in_and_out.play("enter")
 	set_fixed_process(true)
 
 func next_move():

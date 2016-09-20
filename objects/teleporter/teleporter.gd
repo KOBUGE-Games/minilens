@@ -32,16 +32,10 @@ func _fixed_process(delta):
 	if(ray_overlap.is_colliding() && ray_overlap.get_collider()): # We have to teleport something
 		if(!locked && !to.locked): # No locked teleports
 			var collider = ray_overlap.get_collider()
-			if(collider extends player_class):
-					collider.get_node("screen_anims").play("Teleport")
 			if(collider.has_method("set_pos")):
-				collider.set_pos(to.get_pos())
-				locked = true # Lock everything
-				to.locked = true
-				lock_left = locked_timeout
-				to.lock_left = to.locked_timeout
-				if(collider.has_method("stop_movement")):
-					collider.stop_movement()
+				collider.get_node("in_and_out").play("exit")
+				collider.get_node("in_and_out").connect("finished", self, "teleport", [collider])
+				locked = true
 	elif(lock_left < 0):
 		locked = false # Unlock
 	show_locked = (locked || to.locked)
@@ -52,7 +46,18 @@ func _fixed_process(delta):
 		# Show as unlocked
 		sprite.set_region_rect(Rect2(0,0,64,64));
 	was_locked = show_locked
-		
+
+func teleport(var entity):
+	if entity.get_node("in_and_out").is_connected("finished", self, "teleport"):
+		entity.get_node("in_and_out").disconnect("finished", self, "teleport")
+		entity.get_node("in_and_out").play("enter")
+	entity.set_pos(to.get_pos())
+	to.locked = true
+	lock_left = locked_timeout
+	to.lock_left = to.locked_timeout
+	if(entity.has_method("stop_movement")):
+		entity.stop_movement()
+
 func _process(delta):
 	if(!show_locked):
 		# Rotating animation

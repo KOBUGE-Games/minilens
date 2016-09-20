@@ -64,6 +64,8 @@ func load_level(pack, level): # Load level from pack
 	add_child(level_node)
 	
 	# Prepare the player
+	if player.get_node("in_and_out").is_connected("finished", self, "load_level"):
+		player.get_node("in_and_out").disconnect("finished", self, "load_level")
 	player.set_pos(level_node.get_node("start").get_pos())
 	player.set_z(0)
 	player.level_load(level_node)
@@ -124,15 +126,20 @@ func goal_take(type = ""): # Called when a goal is taken
 	goals_left = goals_left - 1
 	
 	if goals_left == 0:
-		SaveManager.set_reached_level(current_pack, current_level + 1)
-		
-		# Check if there are more levels
-		for raw_pack in raw_packs:
-			var line_parts = raw_pack.split(" ")
-			if line_parts.size() >= 2:
-				if line_parts[0] == current_pack:
-					gui.prompt_finsh_level(turns, int(line_parts[1]) >= int(current_level) + 1, goal_wait - OS.get_unix_time())
-					break
+		player.get_node("in_and_out").play("exit")
+		player.get_node("in_and_out").connect("finished", self, "show_end_gui")
+
+func show_end_gui():
+	if player.get_node("in_and_out").is_connected("finished", self, "show_end_gui"):
+		player.get_node("in_and_out").disconnect("finished", self, "show_end_gui")
+	SaveManager.set_reached_level(current_pack, current_level + 1)
+	# Check if there are more levels
+	for raw_pack in raw_packs:
+		var line_parts = raw_pack.split(" ")
+		if line_parts.size() >= 2:
+			if line_parts[0] == current_pack:
+				gui.prompt_finsh_level(turns, int(line_parts[1]) >= int(current_level) + 1, goal_wait - OS.get_unix_time())
+				break
 	
 	emit_signal("counters_changed")
 
@@ -156,7 +163,8 @@ func turn(): # Increment turns
 	emit_signal("counters_changed")
 
 func retry_level(): # Retry the current level
-	load_level(current_pack, current_level)
+	player.get_node("in_and_out").play("exit")
+	player.get_node("in_and_out").connect("finished", self, "load_level", [current_pack, current_level])
 
 func next_level(): # Go to the next level
 	load_level(current_pack, int(current_level) + 1)
