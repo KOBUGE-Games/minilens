@@ -40,6 +40,7 @@ var speed_multiplier = 1
 var pause_frames = 0
 var wait_frames = 3
 var push_direction = ""
+var enabled = true
 
 onready var tilemap = get_node(tilemap_path)
 onready var level_holder = get_node(level_holder_path)
@@ -56,6 +57,7 @@ onready var ray_nodes = {
 }
 
 func _ready():
+	enable()
 	for ray in ray_nodes:
 		ray_nodes[ray].add_exception(self)
 		ray_status[ray] = null
@@ -109,6 +111,17 @@ func _fixed_process(delta):
 		movement_original = movement
 		is_moving = movement.length_squared() > 0.001
 	pause_frames -= 1
+
+func disable():
+	enabled = false
+	stop_movement()
+	set_fixed_process(false)
+	set_layer_mask_bit(1, false)
+
+func enable():
+	enabled = true
+	set_fixed_process(true)
+	set_layer_mask_bit(1, true)
 
 func update_status():
 	update_tile_status()
@@ -178,6 +191,7 @@ func destroy_without_free(): # Virtual
 	if score_goal_on_destroy and goal != "":
 		level_holder.goal_take(goal)
 		goal = ""
+
 func destroy(): # Virtual
 	destroy_without_free()
 	queue_free()
@@ -191,6 +205,8 @@ func stop_movement():
 	pause_frames = 3
 
 func can_move_in_direction(direction, collide_with_climb = false, attempt_push = false, hard_check = false):
+	if !enabled:
+		return false
 	if tile_types[direction] == TileConfig.TILE_SOLID:
 		return false
 	if collide_with_climb and tile_types[direction] == TileConfig.TILE_CLIMB:
@@ -218,7 +234,7 @@ func can_move_in_direction(direction, collide_with_climb = false, attempt_push =
 
 func can_be_pushed_in_direction(direction):
 	update_status()
-	if !pushable or is_moving:
+	if !pushable or is_moving or !enabled:
 		return false
 	if !can_move_in_direction(direction, !fall_though_ladders, false):
 		return false

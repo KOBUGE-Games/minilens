@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=1]
+
+[ext_resource path="res://entities/entity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/platform.gd" type="Script" id=2]
+[ext_resource path="res://gfx/chest.png" type="Texture" id=3]
+
+[node name="platform" instance=ExtResource( 1 )]
+
+script/script = ExtResource( 2 )
+fall = false
+fall_though_ladders = false
+destroy_after_acid = false
+pushable = false
+direction = "left"
+
+[node name="sprite" parent="."]
+
+z/z = -1
+texture = ExtResource( 3 )
+
+[node name="ray_top" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+[node name="ray_right" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+[node name="ray_bottom" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+[node name="ray_left" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+[node name="ray_check_top" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+[node name="ray_check_right" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+[node name="ray_check_bottom" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+[node name="ray_check_left" parent="."]
+
+exclude_parent = true
+layer_mask = 6
+
+

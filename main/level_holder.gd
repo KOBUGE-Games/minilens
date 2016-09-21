@@ -64,6 +64,7 @@ func load_level(pack, level): # Load level from pack
 	add_child(level_node)
 	
 	# Prepare the player
+	player.enable()
 	if player.get_node("in_and_out").is_connected("finished", self, "load_level"):
 		player.get_node("in_and_out").disconnect("finished", self, "load_level")
 	player.set_pos(level_node.get_node("start").get_pos())

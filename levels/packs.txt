@@ -4,4 +4,4 @@ botanica 6
 spaceship 6
 home_sweet_home 4
 seek_and_destroy 5
-special_surprise 5
+special_surprise 6

@@ -112,6 +112,9 @@ func next_move():
 	else:
 		movement = Vector2(0,0)
 
+func should_drop(): # Called by platforms
+	return Input.is_action_pressed("btn_down") or Input.is_action_pressed("btn_up") or Input.is_action_pressed("place_bomb")
+
 func pickup(pickup):
 	if pickup.meta == "bomb":
 		bombs += 1
