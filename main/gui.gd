@@ -90,7 +90,8 @@ func prompt_finsh_level(turns = 1, has_more_levels = true, wait = 0): # Called w
 
 func show_popup(title, text, wait): # Show a popup with title and text, after some time
 	popup_running = true
-	timer.disconnect("timeout", self, "_show_popup")
+	if timer.is_connected("timeout", self, "_show_popup"):
+		timer.disconnect("timeout", self, "_show_popup")
 	if wait > 0:
 		timer.set_wait_time(wait)
 		timer.connect("timeout", self, "_show_popup", [

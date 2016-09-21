@@ -6,7 +6,7 @@ const DATA_DELIMITER = " "
 var save_path = "user://savedata.bin"
 
 func _ready():
-	FileManager.set_file_password(save_path, str("minilens", OS.get_unique_ID())) # Set the password
+	FileManager.set_file_password(save_path, "minilens") # Set the password
 
 func get_reached_level(pack):
 	var save_lines = FileManager.get_file_lines(save_path) # Read the file
