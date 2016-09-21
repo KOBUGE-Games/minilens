@@ -1,7 +1,6 @@
 [gd_scene load_steps=5 format=1]
 
 [ext_resource path="res://entities/entity.gd" type="Script" id=1]
-[ext_resource path="res://gfx/boxCrate_double.png" type="Texture" id=2]
 [ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -32,8 +31,6 @@ tilemap_path = NodePath("../tilemap")
 level_holder_path = NodePath("../..")
 
 [node name="sprite" type="Sprite" parent="."]
-
-texture = ExtResource( 2 )
 
 [node name="positional_audio" type="SamplePlayer2D" parent="."]
 

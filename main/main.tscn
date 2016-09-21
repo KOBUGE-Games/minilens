@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=1]
+[gd_scene load_steps=35 format=1]
 
 [ext_resource path="res://main/gui.gd" type="Script" id=1]
 [ext_resource path="res://gfx/turn_icon.png" type="Texture" id=2]
@@ -9,25 +9,29 @@
 [ext_resource path="res://gfx/bomb.png" type="Texture" id=7]
 [ext_resource path="res://gfx/btn_arrow.png" type="Texture" id=8]
 [ext_resource path="res://gfx/btn_bomb.png" type="Texture" id=9]
-[ext_resource path="res://gfx/btn_alpha.png" type="Texture" id=10]
-[ext_resource path="res://main/resize_to_parent.gd" type="Script" id=11]
-[ext_resource path="res://main/lookaround.gd" type="Script" id=12]
-[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=13]
-[ext_resource path="res://gfx/larger.png" type="Texture" id=14]
-[ext_resource path="res://gfx/smaller.png" type="Texture" id=15]
-[ext_resource path="res://gfx/return.png" type="Texture" id=16]
-[ext_resource path="res://gfx/menuGrid.png" type="Texture" id=17]
-[ext_resource path="res://gfx/top_left_gui_cover.png" type="Texture" id=18]
-[ext_resource path="res://main/popup.tscn" type="PackedScene" id=19]
-[ext_resource path="res://main/level_holder.gd" type="Script" id=20]
-[ext_resource path="res://entities/player.tscn" type="PackedScene" id=21]
-[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=22]
-[ext_resource path="res://main/music.gd" type="Script" id=23]
-[ext_resource path="res://audio/music_1.ogg" type="AudioStream" id=24]
-[ext_resource path="res://audio/music_2.ogg" type="AudioStream" id=25]
-[ext_resource path="res://audio/music_3.ogg" type="AudioStream" id=26]
-[ext_resource path="res://audio/music_4.ogg" type="AudioStream" id=27]
-[ext_resource path="res://audio/music_5.ogg" type="AudioStream" id=28]
+[ext_resource path="res://gfx/arrowv_normal.png" type="Texture" id=10]
+[ext_resource path="res://gfx/arrowv_used.png" type="Texture" id=11]
+[ext_resource path="res://main/resize_to_parent.gd" type="Script" id=12]
+[ext_resource path="res://gfx/arrowh_normal.png" type="Texture" id=13]
+[ext_resource path="res://gfx/arrowh_used.png" type="Texture" id=14]
+[ext_resource path="res://main/lookaround.gd" type="Script" id=15]
+[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=16]
+[ext_resource path="res://gfx/btn_alpha.png" type="Texture" id=17]
+[ext_resource path="res://gfx/larger.png" type="Texture" id=18]
+[ext_resource path="res://gfx/smaller.png" type="Texture" id=19]
+[ext_resource path="res://gfx/return.png" type="Texture" id=20]
+[ext_resource path="res://gfx/menuGrid.png" type="Texture" id=21]
+[ext_resource path="res://gfx/top_left_gui_cover.png" type="Texture" id=22]
+[ext_resource path="res://main/popup.tscn" type="PackedScene" id=23]
+[ext_resource path="res://main/level_holder.gd" type="Script" id=24]
+[ext_resource path="res://entities/player.tscn" type="PackedScene" id=25]
+[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=26]
+[ext_resource path="res://main/music.gd" type="Script" id=27]
+[ext_resource path="res://audio/music_1.ogg" type="AudioStream" id=28]
+[ext_resource path="res://audio/music_2.ogg" type="AudioStream" id=29]
+[ext_resource path="res://audio/music_3.ogg" type="AudioStream" id=30]
+[ext_resource path="res://audio/music_4.ogg" type="AudioStream" id=31]
+[ext_resource path="res://audio/music_5.ogg" type="AudioStream" id=32]
 
 [sub_resource type="Animation" id=1]
 
@@ -69,6 +73,7 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 [node name="gui" type="CanvasLayer" parent="."]
 
 process/pause_mode = 2
+editor/display_folded = true
 layer = 0
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -336,6 +341,7 @@ max_lines_visible = -1
 
 [node name="touch_controls" type="Control" parent="gui"]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = true
@@ -529,6 +535,7 @@ margin/bottom = 224.0
 
 [node name="areas" type="Control" parent="gui/touch_controls"]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -542,6 +549,7 @@ margin/bottom = 0.0
 
 [node name="sides" type="VBoxContainer" parent="gui/touch_controls/areas"]
 
+editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -596,15 +604,14 @@ margin/bottom = 128.0
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/up/up"]
 
-transform/pos = Vector2( 2.03252e-05, 3.8147e-06 )
-transform/scale = Vector2( 341, 64 )
+visibility/opacity = 0.5
 normal = ExtResource( 10 )
-pressed = null
+pressed = ExtResource( 11 )
 bitmask = null
 passby_press = false
 action = "btn_up"
 visibility_mode = 1
-script/script = ExtResource( 11 )
+script/script = ExtResource( 12 )
 centered = false
 
 [node name="hole-up-right" type="Control" parent="gui/touch_controls/areas/sides/up"]
@@ -635,7 +642,6 @@ alignment = 0
 
 [node name="left" type="Control" parent="gui/touch_controls/areas/sides/center"]
 
-editor/display_folded = true
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -648,16 +654,15 @@ margin/bottom = 512.0
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/left"]
 
-transform/pos = Vector2( 5.06639e-06, 512 )
-transform/rot = 90.0
-transform/scale = Vector2( 256, 85 )
-normal = ExtResource( 10 )
-pressed = null
+visibility/opacity = 0.5
+transform/pos = Vector2( 42, 0 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 14 )
 bitmask = null
 passby_press = false
 action = "btn_left"
 visibility_mode = 1
-script/script = ExtResource( 11 )
+script/script = ExtResource( 12 )
 centered = false
 
 [node name="hole-center" type="Control" parent="gui/touch_controls/areas/sides/center"]
@@ -674,7 +679,6 @@ margin/bottom = 512.0
 
 [node name="right" type="Control" parent="gui/touch_controls/areas/sides/center"]
 
-editor/display_folded = true
 rect/min_size = Vector2( 64, 64 )
 focus/ignore_mouse = false
 focus/stop_mouse = true
@@ -682,21 +686,21 @@ size_flags/horizontal = 3
 size_flags/vertical = 3
 margin/left = 852.0
 margin/top = 0.0
-margin/right = 1024.0
+margin/right = 1022.0
 margin/bottom = 512.0
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/right"]
 
-transform/pos = Vector2( 172, 4.57764e-05 )
-transform/rot = -90.0
-transform/scale = Vector2( 256, 86 )
-normal = ExtResource( 10 )
-pressed = null
+visibility/opacity = 0.5
+transform/pos = Vector2( 128, 0 )
+transform/rot = 180.0
+normal = ExtResource( 13 )
+pressed = ExtResource( 14 )
 bitmask = null
 passby_press = false
 action = "btn_right"
 visibility_mode = 1
-script/script = ExtResource( 11 )
+script/script = ExtResource( 12 )
 centered = false
 
 [node name="down" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
@@ -740,16 +744,16 @@ margin/bottom = 128.0
 
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/down/down"]
 
-transform/pos = Vector2( 682, 128 )
-transform/rot = -180.0
-transform/scale = Vector2( 341, 64 )
+visibility/opacity = 0.5
+transform/pos = Vector2( 0, 128 )
+transform/rot = 180.0
 normal = ExtResource( 10 )
-pressed = null
+pressed = ExtResource( 11 )
 bitmask = null
 passby_press = false
 action = "btn_down"
 visibility_mode = 1
-script/script = ExtResource( 11 )
+script/script = ExtResource( 12 )
 centered = false
 
 [node name="bomb" type="Control" parent="gui/touch_controls/areas/sides/down"]
@@ -788,7 +792,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
-script/script = ExtResource( 12 )
+script/script = ExtResource( 15 )
 
 [node name="label" type="Label" parent="gui/lookaround"]
 
@@ -804,7 +808,7 @@ margin/left = 0.0
 margin/top = 103.0
 margin/right = 0.0
 margin/bottom = 0.0
-custom_fonts/font = ExtResource( 13 )
+custom_fonts/font = ExtResource( 16 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 1, 1, 1, 1 )
 custom_constants/shadow_offset_x = 1
@@ -822,9 +826,9 @@ visibility/opacity = 0.0
 visibility/behind_parent = true
 transform/pos = Vector2( 3.05176e-05, 2.28882e-05 )
 transform/scale = Vector2( 512, 384 )
-texture = ExtResource( 10 )
+texture = ExtResource( 17 )
 centered = false
-script/script = ExtResource( 11 )
+script/script = ExtResource( 12 )
 centered = false
 
 [node name="Tween" type="Tween" parent="gui/lookaround"]
@@ -875,8 +879,8 @@ margin/bottom = 100.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 14 )
-textures/pressed = ExtResource( 15 )
+textures/normal = ExtResource( 18 )
+textures/pressed = ExtResource( 19 )
 
 [node name="retry" type="TextureButton" parent="gui/top_left_buttons"]
 
@@ -891,7 +895,7 @@ margin/bottom = 100.0
 toggle_mode = true
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 16 )
+textures/normal = ExtResource( 20 )
 
 [node name="menu" type="TextureButton" parent="gui/top_left_buttons"]
 
@@ -906,20 +910,20 @@ margin/bottom = 100.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-textures/normal = ExtResource( 17 )
+textures/normal = ExtResource( 21 )
 
 [node name="backdrop" type="Sprite" parent="gui/top_left_buttons"]
 
 visibility/behind_parent = true
 transform/pos = Vector2( 8.9407e-06, 2.98023e-06 )
 transform/scale = Vector2( 150, 50 )
-texture = ExtResource( 18 )
+texture = ExtResource( 22 )
 centered = false
 modulate = Color( 0.5, 0.8, 1, 1 )
-script/script = ExtResource( 11 )
+script/script = ExtResource( 12 )
 centered = false
 
-[node name="popup" parent="gui" instance=ExtResource( 19 )]
+[node name="popup" parent="gui" instance=ExtResource( 23 )]
 
 visibility/visible = false
 margin/left = 0.0
@@ -936,21 +940,22 @@ autostart = false
 
 [node name="level_holder" type="Node2D" parent="."]
 
-script/script = ExtResource( 20 )
+script/script = ExtResource( 24 )
 acid_animation_time = 1.0
 
 [node name="player_holder" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( 32, 32 )
 
-[node name="player" parent="player_holder" instance=ExtResource( 21 )]
+[node name="player" parent="player_holder" instance=ExtResource( 25 )]
 
 transform/pos = Vector2( 228.814, 197.081 )
 
 [node name="sample_player" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
-config/samples = ExtResource( 22 )
+config/samples = ExtResource( 26 )
 default/volume_db = -7.0
 default/pitch_scale = 1.0
 default/pan = 0.0
@@ -966,11 +971,12 @@ default/chorus_send = 0.0
 
 [node name="music" type="Node" parent="."]
 
-script/script = ExtResource( 23 )
+editor/display_folded = true
+script/script = ExtResource( 27 )
 
 [node name="1" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 24 )
+stream/stream = ExtResource( 28 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -2.0
@@ -981,7 +987,7 @@ stream/buffering_ms = 500
 
 [node name="2" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 25 )
+stream/stream = ExtResource( 29 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -9.0
@@ -992,7 +998,7 @@ stream/buffering_ms = 500
 
 [node name="3" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 26 )
+stream/stream = ExtResource( 30 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -2.0
@@ -1003,7 +1009,7 @@ stream/buffering_ms = 500
 
 [node name="4" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 27 )
+stream/stream = ExtResource( 31 )
 stream/play = false
 stream/loop = true
 stream/volume_db = -6.0
@@ -1014,7 +1020,7 @@ stream/buffering_ms = 500
 
 [node name="5" type="StreamPlayer" parent="music"]
 
-stream/stream = ExtResource( 28 )
+stream/stream = ExtResource( 32 )
 stream/play = false
 stream/loop = true
 stream/volume_db = 0.0
