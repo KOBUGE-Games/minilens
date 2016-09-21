@@ -68,8 +68,18 @@ func next_move():
 			current_animation = "walk"
 			turn = true
 
+		elif Input.is_action_pressed("btn_right") and !can_move_in_direction("right", false, true) and tile_types["overlap"] == TileConfig.TILE_CLIMB:
+			move_in_direction("top", false, true)
+			current_animation = "walk"
+			turn = true
+
 		elif Input.is_action_pressed("btn_left") and can_move_in_direction("left", false, true):
 			move_in_direction("left", false, true)
+			current_animation = "walk"
+			turn = true
+
+		elif Input.is_action_pressed("btn_left") and !can_move_in_direction("left", false, true) and tile_types["overlap"] == TileConfig.TILE_CLIMB:
+			move_in_direction("top", false, true)
 			current_animation = "walk"
 			turn = true
 
