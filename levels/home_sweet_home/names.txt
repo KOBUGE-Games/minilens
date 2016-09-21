@@ -1,3 +1,4 @@
 1:Box Avalanche
 2:Left or Right
 3:Miners and Builders
+4:Star of Stairs

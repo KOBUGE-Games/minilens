@@ -86,7 +86,7 @@ func _fixed_process(delta):
 				movement_check_collision = ""
 				is_moving = false
 				
-			if ray_status[movement_check_collision] != null and ray_status[movement_check_collision].get("speed_multiplier") != null:
+			if ray_status.has(movement_check_collision) and ray_status[movement_check_collision] != null and ray_status[movement_check_collision].get("speed_multiplier") != null:
 				speed_multiplier = min(speed_multiplier, ray_status[movement_check_collision].speed_multiplier)
 		
 		var speed = movement_speed * delta * speed_multiplier

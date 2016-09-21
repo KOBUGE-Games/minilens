@@ -42,8 +42,7 @@ __meta__ = { "__editor_plugin_screen__":"2D" }
 
 [node name="sprite" type="Sprite" parent="."]
 
-visibility/opacity = 0.0
-transform/pos = Vector2( 0, 56 )
+transform/pos = Vector2( 0, -8 )
 texture = ExtResource( 2 )
 
 [node name="shape" type="CollisionShape2D" parent="."]

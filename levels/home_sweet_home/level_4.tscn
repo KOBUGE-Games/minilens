@@ -1,0 +1,169 @@
+[gd_scene load_steps=9 format=1]
+
+[ext_resource path="res://shared/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://gfx/bg1.png" type="Texture" id=2]
+[ext_resource path="res://entities/box.tscn" type="PackedScene" id=3]
+[ext_resource path="res://objects/breakable_ground/breakable_ground.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://pickups/bomb_pickup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/static_box.tscn" type="PackedScene" id=7]
+[ext_resource path="res://objects/teleporter/teleporter.tscn" type="PackedScene" id=8]
+
+[node name="level" type="Node2D"]
+
+transform/pos = Vector2( 32, 32 )
+__meta__ = { "__editor_plugin_screen__":"2D" }
+
+[node name="tilemap" type="TileMap" parent="."]
+
+transform/pos = Vector2( -32, -32 )
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 4
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 131079, 1, 131080, 4, 131081, 0, 131082, 3, 196615, 1, 262151, 1, 262154, 7, 262155, 1, 262156, 7, 327687, 1, 393223, 1, 458759, 1, 458761, 7, 458762, 1, 458763, 4, 458764, 0, 458765, 3, 524295, 1, 589831, 1, 589836, 4, 589837, 0, 589838, 0, 589839, 0, 589840, 0, 589841, 0, 589842, 0, 589843, 3, 655367, 1, 720897, 1, 720898, 1, 720899, 1, 720900, 1, 720901, 1, 720902, 1, 720903, 1, 786433, 1, 786439, 1, 786444, 1, 851969, 1, 851975, 1, 851980, 1, 917505, 1, 917507, 1, 917508, 7, 917509, 1, 917511, 1, 917516, 1, 983041, 1, 983047, 1, 983052, 1, 983053, 4, 983054, 0, 983055, 0, 983056, 0, 983057, 0, 983058, 0, 983059, 3, 1048577, 1, 1048578, 1, 1048579, 1, 1048580, 1, 1048581, 1, 1048582, 1, 1048583, 1, 1048584, 1, 1048585, 1, 1048588, 1, 1048589, 9, 1048590, 8, 1048594, 9, 1048595, 8, 1114124, 1, 1114127, 1, 1179657, 4, 1179658, 0, 1179659, 3, 1179660, 1, 1179661, 4, 1179662, 0, 1179663, 0, 1179664, 3, 1245196, 1, 1245199, 9, 1245200, 5, 1245201, 11, 1310725, 1, 1310732, 1, 1376259, 4, 1376260, 0, 1376261, 3, 1376262, 1, 1376263, 1, 1376264, 4, 1376265, 0, 1376266, 0, 1376267, 0, 1376268, 0, 1376269, 3, 1376276, 1, 1376277, 7, 1441801, 9, 1441802, 5, 1441803, 8, 1441805, 9, 1441806, 13, 1441807, 0, 1441808, 0, 1441809, 0, 1441810, 0, 1441811, 0, 1441812, 3, 1507338, 9, 1507339, 8, 1572874, 10, 1638400, 2, 1638401, 2, 1638402, 2, 1638403, 2, 1638404, 2, 1638405, 2, 1638406, 2, 1638407, 2, 1638408, 2, 1638409, 2, 1638410, 2, 1638411, 2, 1638412, 2, 1638413, 2, 1638414, 2, 1638415, 2, 1638416, 2, 1638417, 2, 1638418, 2, 1638419, 2, 1638420, 2, 1638421, 2, 1638422, 2, 1638423, 2, 1638424, 2, 1638425, 2, 1638426, 2 )
+
+[node name="tilemap_overlay" type="TileMap" parent="."]
+
+visibility/opacity = 0.5
+transform/pos = Vector2( -32, -32 )
+z/z = -1
+mode = 0
+tile_set = ExtResource( 1 )
+cell/size = Vector2( 64, 64 )
+cell/quadrant_size = 4
+cell/custom_transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+cell/half_offset = 2
+cell/tile_origin = 0
+cell/y_sort = false
+collision/use_kinematic = false
+collision/friction = 1.0
+collision/bounce = 0.0
+collision/layers = 1
+collision/mask = 1
+occluder/light_mask = 1
+tile_data = IntArray( 262154, 4, 262155, 0, 262156, 3, 458761, 4, 458762, 0, 458763, 3, 1179659, 9, 1179660, 5, 1179661, 8 )
+
+[node name="start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 640, 1216 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 32, 32 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+
+[node name="background" type="Sprite" parent="CanvasLayer"]
+
+transform/pos = Vector2( 480, 352 )
+z/z = -999
+z/relative = false
+texture = ExtResource( 2 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="camera_start" type="Position2D" parent="."]
+
+transform/pos = Vector2( 0, -64 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="camera_end" type="Position2D" parent="."]
+
+transform/pos = Vector2( 1728, 1664 )
+transform/scale = Vector2( 3.2, 3.2 )
+
+[node name="box" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 1216, 512 )
+
+[node name="box1" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 384 )
+
+[node name="box2" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 768, 192 )
+
+[node name="box3" parent="." instance=ExtResource( 3 )]
+
+transform/pos = Vector2( 256, 832 )
+
+[node name="breakable_ground" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 640, 960 )
+
+[node name="breakable_ground2" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 640, 896 )
+
+[node name="breakable_ground1" parent="." instance=ExtResource( 4 )]
+
+transform/pos = Vector2( 768, 1152 )
+
+[node name="flower" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1344, 1280 )
+
+[node name="flower1" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 1088, 1024 )
+
+[node name="flower3" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 576, 193 )
+
+[node name="flower4" parent="." instance=ExtResource( 5 )]
+
+transform/pos = Vector2( 704, 320 )
+
+[node name="bomb" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 192, 1216 )
+
+[node name="bomb1" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 832, 192 )
+
+[node name="bomb2" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1280, 1024 )
+
+[node name="bomb3" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1088, 1088 )
+
+[node name="bomb4" parent="." instance=ExtResource( 6 )]
+
+transform/pos = Vector2( 1152, 1088 )
+
+[node name="static" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 1280, 960 )
+
+[node name="static1" parent="." instance=ExtResource( 7 )]
+
+transform/pos = Vector2( 640, 512 )
+
+[node name="teleporter" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 1280, 1280 )
+to_teleport_path = "../teleporter1"
+
+[node name="teleporter1" parent="." instance=ExtResource( 8 )]
+
+transform/pos = Vector2( 640, 768 )
+
+
