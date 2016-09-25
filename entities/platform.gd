@@ -16,20 +16,23 @@ var should_drop = false
 export var direction = "left"
 
 func _ready():
-	pass
+	set_fixed_process(false)
+	get_node("AnimationPlayer").play("ready")
+	get_node("AnimationPlayer").connect("finished", self, "start")
+
+func start():
+	get_node("AnimationPlayer").play("idle")
+	set_fixed_process(true)
 
 func _process(delta):
 	if carried_object != null:
-		if first_movement_with_object:
-			carried_object.set_pos(get_pos() + movement)
-		else:
-			carried_object.set_pos(get_pos() - movement_speed * speed_multiplier * delta)
+		if not first_movement_with_object:
+			carried_object.set_pos(get_pos())
 
 func _fixed_process(delta):
 	if carried_object != null and !first_movement_with_object:
 		if carried_object.should_drop():
 			should_drop = true
-	
 
 func next_move():
 	if should_drop and pause_frames <= 1:
