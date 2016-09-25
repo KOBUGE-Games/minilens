@@ -109,25 +109,31 @@ func _show_popup(title, text): # Show a popup with title and text
 	popup.get_node("popup_node/body/container/level_buttons/next").set_hidden(!allow_next_level)
 	
 	popup.show()
+	popup.get_node("AnimationPlayer").play("show_popup")
 
 func popup_button_pressed(name): # Actions for different popup buttons
 	if name == "look":
 		var toggled = get_node("top_left_buttons/look").is_pressed()
 		lookaround.set_enabled(toggled)
 	if name == "retry":
+		check_hide_popup()
 		level_holder.retry_level()
 	elif name == "next":
 		if allow_next_level:
+			check_hide_popup()
 			allow_next_level = false
 			level_holder.next_level()
 		else:
 			return
 	elif name == "menu":
 		ScenesManager.load_scene("res://menu/menu.tscn")
-	
-	hide_popup()
+
+func check_hide_popup():
+	if popup_running:
+		get_tree().set_pause(false)
+		popup.get_node("AnimationPlayer").play("hide_popup")
+		popup.get_node("AnimationPlayer").connect("finished", self, "hide_popup", [], CONNECT_ONESHOT)
 
 func hide_popup(): # Hide the popup
 	popup_running = false
-	get_tree().set_pause(false)
 	popup.hide()
