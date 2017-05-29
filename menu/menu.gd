@@ -12,6 +12,7 @@ onready var credits = get_node("credits")
 onready var tween = get_node("tween")
 
 func _ready():
+	get_tree().set_pause(false)
 	# Main menu buttons
 	for node in get_node("main/buttons").get_children():
 		if node extends BaseButton:

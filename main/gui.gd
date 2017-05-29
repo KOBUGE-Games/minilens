@@ -5,6 +5,7 @@ const GOAL_TYPES = ["box", "flower", "artefact"]
 
 var allow_next_level = false
 var popup_running = false
+var speed = 1
 
 onready var timer = get_node("timer")
 onready var popup = get_node("popup")
@@ -57,7 +58,7 @@ func _input(event):
 		popup_button_pressed("menu")
 
 func update_counters():
-	get_node("counters/bomb/label").set_text(str(" x ", player.bombs))
+	get_node("counters/resources/bomb/label").set_text(str(" x ", player.bombs))
 	get_node("counters/resources/turns/label").set_text(str(level_holder.turns))
 	
 	for goal_type in GOAL_TYPES:
@@ -94,9 +95,7 @@ func show_popup(title, text, wait): # Show a popup with title and text, after so
 		timer.disconnect("timeout", self, "_show_popup")
 	if wait > 0:
 		timer.set_wait_time(wait)
-		timer.connect("timeout", self, "_show_popup", [
-			title, text
-		], CONNECT_ONESHOT)
+		timer.connect("timeout", self, "_show_popup", [title, text], CONNECT_ONESHOT)
 		timer.start()
 	else:
 		_show_popup(title, text)
@@ -108,13 +107,18 @@ func _show_popup(title, text): # Show a popup with title and text
 	popup.get_node("popup_node/body/container/text").set_text(text)
 	popup.get_node("popup_node/body/container/level_buttons/next").set_hidden(!allow_next_level)
 	
-	popup.show()
 	popup.get_node("AnimationPlayer").play("show_popup")
+	popup.show()
 
 func popup_button_pressed(name): # Actions for different popup buttons
 	if name == "look":
 		var toggled = get_node("top_left_buttons/look").is_pressed()
 		lookaround.set_enabled(toggled)
+	elif name == "speed":
+		speed *= 2
+		if speed > 4:
+			speed = 1
+		update_speed(speed)
 	if name == "retry":
 		check_hide_popup()
 		level_holder.retry_level()
@@ -137,3 +141,9 @@ func check_hide_popup():
 func hide_popup(): # Hide the popup
 	popup_running = false
 	popup.hide()
+
+func update_speed(value):
+	get_node("../player_holder/player").speed_ratio = value
+	get_node("../level_holder").update_speed_values(value)
+	get_node("top_left_buttons/speed/text").set_text(str("x", str(value)))
+	speed = value

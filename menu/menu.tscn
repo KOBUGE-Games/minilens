@@ -25,7 +25,12 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("background:region_rect")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 8 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Rect2( 0, 0, 1024, 768 ), Rect2( 1024, 0, 1024, 768 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 8 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 1024, 768 ), Rect2( 1024, 0, 1024, 768 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -36,12 +41,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath(".:transform/rot")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 15.0502, 19.2 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 15.0502, 19.2 ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath(".:transform/scale")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.5 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.5 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 
@@ -52,12 +67,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("initial_splash/image:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 1, 2 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 1.0, 1.0, 0.0 ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 1, 2 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0 ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("background_layer/background:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 2 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 2 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [node name="menu" type="Control"]
 
@@ -73,7 +98,9 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 script/script = ExtResource( 2 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 screen_move_speed = 800.0
 
 [node name="background_layer" type="CanvasLayer" parent="."]
@@ -225,6 +252,8 @@ margin/bottom = 110.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="buttons" type="GridContainer" parent="main"]
 
@@ -496,6 +525,8 @@ margin/right = 100.0
 margin/bottom = 100.0
 enabled_focus_mode = 2
 shortcut = null
+params/resize_mode = 0
+params/stretch_mode = 0
 
 [node name="options" type="ReferenceFrame" parent="."]
 
@@ -731,7 +762,10 @@ margin/right = 24.0
 margin/bottom = 24.0
 custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "long. loadfajsdnfadkjsasdf a\ntext!! adsfdksfdsflnsfks\n===\nhehe! :D"
+text = "long. loadfajsdnfadkjsasdf a
+text!! adsfdksfdsflnsfks
+===
+hehe! :D"
 valign = 1
 autowrap = true
 percent_visible = 1.0
