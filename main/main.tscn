@@ -130,7 +130,6 @@ __meta__ = {
 [node name="gui" type="CanvasLayer" parent="."]
 
 process/pause_mode = 2
-editor/display_folded = true
 layer = 0
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -1028,9 +1027,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 824.0
+margin/left = 854.0
 margin/top = 0.0
-margin/right = 924.0
+margin/right = 954.0
 margin/bottom = 100.0
 toggle_mode = true
 enabled_focus_mode = 2
@@ -1045,9 +1044,9 @@ focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 2
-margin/left = 924.0
+margin/left = 954.0
 margin/top = 0.0
-margin/right = 1024.0
+margin/right = 1054.0
 margin/bottom = 100.0
 toggle_mode = false
 enabled_focus_mode = 2
@@ -1067,7 +1066,7 @@ modulate = Color( 0.5, 0.8, 1, 1 )
 [node name="backdrop1" type="Sprite" parent="gui/top_left_buttons"]
 
 visibility/behind_parent = true
-transform/pos = Vector2( 824, 0 )
+transform/pos = Vector2( 854, 0 )
 transform/scale = Vector2( 100, 50 )
 texture = ExtResource( 22 )
 centered = false

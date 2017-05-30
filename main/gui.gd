@@ -5,7 +5,6 @@ const GOAL_TYPES = ["box", "flower", "artefact"]
 
 var allow_next_level = false
 var popup_running = false
-var speed = 1
 
 onready var timer = get_node("timer")
 onready var popup = get_node("popup")
@@ -50,11 +49,11 @@ func _ready():
 	set_process_input(true)
 
 func _input(event):
-	if event.is_action("retry") && event.is_pressed() && !event.is_echo():
+	if event.is_action_pressed("retry"):
 		popup_button_pressed("retry")
-	if event.is_action("next_level") && event.is_pressed() && !event.is_echo():
+	if event.is_action_pressed("next_level"):
 		popup_button_pressed("next")
-	if event.is_action("to_menu") && event.is_pressed() && !event.is_echo():
+	if event.is_action_pressed("exit"):
 		popup_button_pressed("menu")
 
 func update_counters():
@@ -115,10 +114,11 @@ func popup_button_pressed(name): # Actions for different popup buttons
 		var toggled = get_node("top_left_buttons/look").is_pressed()
 		lookaround.set_enabled(toggled)
 	elif name == "speed":
-		speed *= 2
+		var speed = config.speed_ratio*2
 		if speed > 4:
 			speed = 1
-		update_speed(speed)
+		config.speed_ratio = speed
+		get_node("top_left_buttons/speed/text").set_text(str("x", str(config.speed_ratio)))
 	if name == "retry":
 		check_hide_popup()
 		level_holder.retry_level()
@@ -130,6 +130,7 @@ func popup_button_pressed(name): # Actions for different popup buttons
 		else:
 			return
 	elif name == "menu":
+		get_tree().set_pause(false)
 		ScenesManager.load_scene("res://menu/menu.tscn")
 
 func check_hide_popup():
@@ -141,9 +142,3 @@ func check_hide_popup():
 func hide_popup(): # Hide the popup
 	popup_running = false
 	popup.hide()
-
-func update_speed(value):
-	get_node("../player_holder/player").speed_ratio = value
-	get_node("../level_holder").update_speed_values(value)
-	get_node("top_left_buttons/speed/text").set_text(str("x", str(value)))
-	speed = value

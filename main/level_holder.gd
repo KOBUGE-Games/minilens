@@ -33,6 +33,7 @@ onready var player = get_node("../player_holder/player")
 onready var raw_packs = FileManager.get_file_lines("res://levels/packs.txt")
 
 func _ready():
+	config.speed_ratio = 1
 	set_process(true)
 	get_node("/root").connect("size_changed",self,"window_resize")
 	
@@ -89,7 +90,6 @@ func load_level(pack, level): # Load level from pack
 	while(tilemap.get_cell(tile_map_acid_x_end, tile_map_acid_y) == 2 && tile_map_acid_x_end < 3000):
 		tile_map_acid_x_end += 1
 	
-	get_node("../gui").update_speed(1)
 	window_resize()
 
 func window_resize():
@@ -170,8 +170,3 @@ func retry_level(): # Retry the current level
 
 func next_level(): # Go to the next level
 	load_level(current_pack, int(current_level) + 1)
-
-func update_speed_values(speed):
-	for node in get_child(0).get_children():
-		if node extends preload("res://entities/entity.gd"):
-			node.speed_ratio = speed

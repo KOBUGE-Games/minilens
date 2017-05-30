@@ -42,8 +42,6 @@ var wait_frames = 3
 var push_direction = ""
 var enabled = true
 
-var speed_ratio = 1
-
 onready var tilemap = get_node(tilemap_path)
 onready var level_holder = get_node(level_holder_path)
 onready var positional_audio = get_node("positional_audio")
@@ -93,7 +91,7 @@ func _fixed_process(delta):
 			if ray_status.has(movement_check_collision) and ray_status[movement_check_collision] != null and ray_status[movement_check_collision].get("speed_multiplier") != null:
 				speed_multiplier = min(speed_multiplier, ray_status[movement_check_collision].speed_multiplier)
 		
-		var speed = movement_speed * delta * speed_multiplier * speed_ratio
+		var speed = movement_speed * delta * speed_multiplier * config.speed_ratio
 		if movement.length_squared() > speed.length_squared():
 			speed = speed * movement.normalized()
 			movement -= speed

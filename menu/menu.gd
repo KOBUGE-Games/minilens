@@ -12,7 +12,6 @@ onready var credits = get_node("credits")
 onready var tween = get_node("tween")
 
 func _ready():
-	get_tree().set_pause(false)
 	# Main menu buttons
 	for node in get_node("main/buttons").get_children():
 		if node extends BaseButton:
@@ -41,7 +40,15 @@ func _ready():
 	
 	# Prepare to move thing when the aspect ratio changes
 	connect("resized", self, "reposition_screens")
+	set_process_input(true)
 	reposition_screens()
+
+func _input(event):
+	if event.is_action_pressed("exit"):
+		if current_screen == "start":
+			get_tree().quit()
+		else:
+			go_to_target("start", true)
 
 func reposition_screens():
 	var size = get_size()

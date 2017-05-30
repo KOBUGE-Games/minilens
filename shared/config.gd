@@ -1,6 +1,8 @@
 
 extends Node
 
+var speed_ratio = 1
+
 func _ready():
 	# Seed the random generator
 	randomize()
