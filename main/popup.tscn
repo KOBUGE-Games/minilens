@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=1]
+[gd_scene load_steps=8 format=1]
 
 [ext_resource path="res://shared/theme.tres" type="Theme" id=1]
 [ext_resource path="res://gfx/popup_bg.png" type="Texture" id=2]
-[ext_resource path="res://main/resize_to_parent.gd" type="Script" id=3]
-[ext_resource path="res://gfx/theme/green_panel.png" type="Texture" id=4]
-[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://gfx/theme/green_panel.png" type="Texture" id=3]
+[ext_resource path="res://fonts/papercut.fnt" type="BitmapFont" id=4]
 
 [sub_resource type="Animation" id=1]
 
@@ -16,12 +15,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("popup_node:rect/scale")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 1, 0 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("popup_bg:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 0.5, 1 ), "update":0, "values":[ 1.0, 0.0 ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 0.5, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -32,12 +41,22 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("popup_node:rect/scale")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 1, 0 ), Vector2( 1, 1 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0 ), Vector2( 1, 1 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("popup_bg:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 0.5, 1 ), "update":0, "values":[ 0.0, 1.0 ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
 
 [sub_resource type="StyleBoxTexture" id=3]
 
@@ -45,7 +64,7 @@ content_margin/left = -1.0
 content_margin/right = -1.0
 content_margin/top = -1.0
 content_margin/bottom = -1.0
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 margin/left = 10.0
 margin/right = 10.0
 margin/top = 10.0
@@ -54,7 +73,6 @@ expand_margin/left = 0.0
 expand_margin/right = 0.0
 expand_margin/top = 0.0
 expand_margin/bottom = 0.0
-modulate/color = Color( 1, 1, 1, 1 )
 draw_center = true
 
 [node name="popup" type="CenterContainer"]
@@ -71,7 +89,9 @@ margin/top = 0.0
 margin/right = 0.0
 margin/bottom = 0.0
 use_top_left = false
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
@@ -87,10 +107,9 @@ autoplay = ""
 
 [node name="popup_bg" type="Sprite" parent="."]
 
-transform/pos = Vector2( 3.05176e-05, 2.28882e-05 )
+visibility/opacity = 0.0
+transform/scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
-centered = false
-script/script = ExtResource( 3 )
 centered = false
 
 [node name="popup_node" type="Control" parent="."]
@@ -131,7 +150,7 @@ margin/left = 10.0
 margin/top = 10.0
 margin/right = 10.0
 margin/bottom = 20.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.989703, 0.989703, 0.989703, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -155,7 +174,9 @@ margin/left = 0.0
 margin/top = 55.0
 margin/right = 0.0
 margin/bottom = 0.0
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="container" type="VBoxContainer" parent="popup_node/body"]
 
@@ -181,7 +202,7 @@ margin/left = 0.0
 margin/top = 0.0
 margin/right = 508.0
 margin/bottom = 177.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 4 )
 text = "Level passed!"
 align = 1
 valign = 1
@@ -247,7 +268,7 @@ margin/bottom = 283.0
 toggle_mode = false
 enabled_focus_mode = 2
 shortcut = null
-text = "Back to menu (M)"
+text = "Back to menu (Escape)"
 flat = false
 
 

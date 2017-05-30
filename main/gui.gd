@@ -14,6 +14,7 @@ onready var player = get_node("../player_holder/player")
 
 func _ready():
 	ScreenManager.set_minimum_size(Vector2(0, 0))
+	get_node("top_left_buttons/backdrop1").set_pos(Vector2())
 	
 	var nodes_left = get_node("popup/popup_node/body/container").get_children()
 	
@@ -100,6 +101,11 @@ func show_popup(title, text, wait): # Show a popup with title and text, after so
 		_show_popup(title, text)
 
 func _show_popup(title, text): # Show a popup with title and text
+	set_disabled(true)
+	if lookaround.enabled:
+		get_node("top_left_buttons/look").set_pressed(false)
+		popup_button_pressed("look")
+		yield(lookaround.animation_player, "finished")
 	get_tree().set_pause(true)
 	
 	popup.get_node("popup_node/header/title").set_text(title)
@@ -142,3 +148,9 @@ func check_hide_popup():
 func hide_popup(): # Hide the popup
 	popup_running = false
 	popup.hide()
+	set_disabled(false)
+
+func set_disabled(disable):
+	for node in get_node("top_left_buttons").get_children():
+		if node extends Button:
+			node.set_disabled(disable)

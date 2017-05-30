@@ -9,7 +9,7 @@ var old_animation = ""
 var bombs = 0
 var did_place_bomb = false
 
-var can_move = true
+var can_move = false
 
 onready var character = get_node("character")
 onready var animation_player = get_node("animation_player")

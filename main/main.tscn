@@ -36,7 +36,7 @@
 [sub_resource type="Animation" id=1]
 
 resource/name = "disabled"
-length = 0.5
+length = 0.4
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -44,7 +44,7 @@ tracks/0/path = NodePath("label:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.5 ),
+"times": FloatArray( 0, 0.4 ),
 "transitions": FloatArray( 0.25, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
@@ -54,7 +54,7 @@ tracks/1/path = NodePath("backdrop:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 0, 0.5 ),
+"times": FloatArray( 0, 0.4 ),
 "transitions": FloatArray( 0.25, 1 ),
 "update": 0,
 "values": [ 1.0, 0.0 ]
@@ -62,7 +62,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=2]
 
-length = 0.5
+length = 0.4
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -70,7 +70,7 @@ tracks/0/path = NodePath("label:visibility/opacity")
 tracks/0/interp = 1
 tracks/0/imported = false
 tracks/0/keys = {
-"times": FloatArray( 0, 0.5 ),
+"times": FloatArray( 0, 0.4 ),
 "transitions": FloatArray( 0.25, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -80,7 +80,7 @@ tracks/1/path = NodePath("backdrop:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = {
-"times": FloatArray( 0, 0.5 ),
+"times": FloatArray( 0, 0.4 ),
 "transitions": FloatArray( 0.25, 1 ),
 "update": 0,
 "values": [ 0.0, 1.0 ]
@@ -682,7 +682,7 @@ margin/bottom = 128.0
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/up/up"]
 
 visibility/opacity = 0.5
-transform/pos = Vector2( 2.03252e-05, 3.8147e-06 )
+transform/pos = Vector2( 682, 0 )
 transform/scale = Vector2( 0.994169, 1 )
 normal = ExtResource( 10 )
 pressed = ExtResource( 11 )
@@ -694,6 +694,7 @@ passby_press = false
 action = "btn_up"
 visibility_mode = 1
 script/script = ExtResource( 12 )
+offset = 0
 centered = false
 
 [node name="hole-up-right" type="Control" parent="gui/touch_controls/areas/sides/up"]
@@ -737,7 +738,7 @@ margin/bottom = 512.0
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/left"]
 
 visibility/opacity = 0.5
-transform/pos = Vector2( 5.06639e-06, 1.52588e-05 )
+transform/pos = Vector2( 170, 0 )
 transform/scale = Vector2( 1.32812, 1 )
 normal = ExtResource( 13 )
 pressed = ExtResource( 14 )
@@ -749,6 +750,7 @@ passby_press = false
 action = "btn_left"
 visibility_mode = 1
 script/script = ExtResource( 12 )
+offset = 0
 centered = false
 
 [node name="hole-center" type="Control" parent="gui/touch_controls/areas/sides/center"]
@@ -778,7 +780,7 @@ margin/bottom = 512.0
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/center/right"]
 
 visibility/opacity = 0.5
-transform/pos = Vector2( 172, 512 )
+transform/pos = Vector2( 172, 0 )
 transform/rot = 180.0
 transform/scale = Vector2( 1.34375, 1 )
 normal = ExtResource( 13 )
@@ -791,6 +793,7 @@ passby_press = false
 action = "btn_right"
 visibility_mode = 1
 script/script = ExtResource( 12 )
+offset = 0
 centered = false
 
 [node name="down" type="HBoxContainer" parent="gui/touch_controls/areas/sides"]
@@ -835,7 +838,7 @@ margin/bottom = 128.0
 [node name="button" type="TouchScreenButton" parent="gui/touch_controls/areas/sides/down/down"]
 
 visibility/opacity = 0.5
-transform/pos = Vector2( 682, 128 )
+transform/pos = Vector2( 682, 0 )
 transform/rot = 180.0
 transform/scale = Vector2( 0.994169, 1 )
 normal = ExtResource( 10 )
@@ -848,6 +851,7 @@ passby_press = false
 action = "btn_down"
 visibility_mode = 1
 script/script = ExtResource( 12 )
+offset = 0
 centered = false
 
 [node name="bomb" type="Control" parent="gui/touch_controls/areas/sides/down"]
@@ -922,11 +926,12 @@ max_lines_visible = -1
 
 visibility/opacity = 0.0
 visibility/behind_parent = true
-transform/pos = Vector2( 3.05176e-05, 2.28882e-05 )
+transform/pos = Vector2( 1024, 0 )
 transform/scale = Vector2( 512, 384 )
 texture = ExtResource( 17 )
 centered = false
 script/script = ExtResource( 12 )
+offset = 0
 centered = false
 
 [node name="Tween" type="Tween" parent="gui/lookaround"]
@@ -1066,11 +1071,15 @@ modulate = Color( 0.5, 0.8, 1, 1 )
 [node name="backdrop1" type="Sprite" parent="gui/top_left_buttons"]
 
 visibility/behind_parent = true
-transform/pos = Vector2( 854, 0 )
+transform/pos = Vector2( 824, 0 )
 transform/scale = Vector2( 100, 50 )
 texture = ExtResource( 22 )
 centered = false
+offset = 200
 modulate = Color( 0.5, 0.8, 1, 1 )
+script/script = ExtResource( 12 )
+offset = 200
+centered = false
 
 [node name="popup" parent="gui" instance=ExtResource( 23 )]
 
@@ -1090,7 +1099,6 @@ acid_animation_time = 1.0
 
 [node name="player_holder" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 32, 32 )
 
 [node name="player" parent="player_holder" instance=ExtResource( 25 )]
