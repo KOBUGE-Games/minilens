@@ -14,7 +14,6 @@ onready var player = get_node("../player_holder/player")
 
 func _ready():
 	ScreenManager.set_minimum_size(Vector2(0, 0))
-	get_node("top_left_buttons/backdrop1").set_pos(Vector2())
 	
 	var nodes_left = get_node("popup/popup_node/body/container").get_children()
 	
@@ -68,6 +67,10 @@ func update_counters():
 			label.set_text(str(level_holder.goals_taken[goal_type], " / ", level_holder.goals_total[goal_type]))
 		else:
 			get_node("counters/resources").get_node(goal_type).hide()
+	
+	if not level_holder.goals_total.has("box"):
+		var node = get_node("counters/resources/flower")
+		node.set_pos(Vector2(0, 90))
 
 func prompt_retry_level(wait = 0): # Called when the robot dies
 	if not popup_running or allow_next_level:
