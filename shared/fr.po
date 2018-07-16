@@ -25,13 +25,13 @@ msgstr "Présenté par :"
 msgid "Special thanks to:"
 msgstr "Un grand merci à :"
 
-##: CREDITS.txt
-#msgid "    Snabisch (some of the music) http://opengameart.org/users/snabisch"
-#msgstr "    Snabisch (certaines pistes audio) http://opengameart.org/users/snabisch"
+#: CREDITS.txt
+msgid "    Snabisch (some of the music) http://opengameart.org/users/snabisch"
+msgstr "    Snabisch (certaines pistes audio) http://opengameart.org/users/snabisch"
 
-##: CREDITS.txt
-#msgid "    Kenney (GUI and icons) http://opengameart.org/users/kenney"
-#msgstr "    Kenney (interface utilisateur et icônes) http://opengameart.org/users/kenney"
+#: CREDITS.txt
+msgid "    Kenney (GUI and icons) http://opengameart.org/users/kenney"
+msgstr "    Kenney (interface utilisateur et icônes) http://opengameart.org/users/kenney"
 
 #: CREDITS.txt
 msgid "For more informations, please visit"
@@ -189,9 +189,9 @@ msgstr "Hm... Peut-être que tu devrais juste le pousser dans l'autre sens ?"
 msgid "I like climbing up ladders... It is like... flying!"
 msgstr "J'aime bien monter aux échelles... C'est un peu comme si je volais !"
 
-##: splashes.txt
-#msgid "(beep) Hi there! It's me, Minilens! (beep)"
-#msgid "(bip) Salut ! C'est moi, Minilens ! (bip)"
+#: splashes.txt
+msgid "(beep) Hi there! It's me, Minilens! (beep)"
+msgstr "(bip) Salut ! C'est moi, Minilens ! (bip)"
 
 #: splashes.txt
 msgid "This was a hardcoded splash, please ignore it for the moment."
