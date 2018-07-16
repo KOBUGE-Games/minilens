@@ -1,0 +1,254 @@
+# Minilens - French translation
+# (c) 2015-2018 KOBUGE Games, GPL-3.0+
+#
+# Rémi Verschelde <rverschelde@gmail.com>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Minilens - Tutorial\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-28 18:31+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Rémi Verschelde <rverschelde@gmail.com>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: CREDITS.txt
+msgid "Brought to you by:"
+msgstr "Présenté par :"
+
+#: CREDITS.txt
+msgid "Special thanks to:"
+msgstr "Un grand merci à :"
+
+##: CREDITS.txt
+#msgid "    Snabisch (some of the music) http://opengameart.org/users/snabisch"
+#msgstr "    Snabisch (certaines pistes audio) http://opengameart.org/users/snabisch"
+
+##: CREDITS.txt
+#msgid "    Kenney (GUI and icons) http://opengameart.org/users/kenney"
+#msgstr "    Kenney (interface utilisateur et icônes) http://opengameart.org/users/kenney"
+
+#: CREDITS.txt
+msgid "For more informations, please visit"
+msgstr "Pour plus d'informations, visiter"
+
+#: main/main.tscn
+msgid "Drag to look around the level; press the zoom-out button again to reset."
+msgstr "Faire glisser pour explorer le niveau ; appuyer sur le bouton Dézoomer pour revenir au départ."
+
+#: main/popup.tscn
+msgid "Pack completed!"
+msgstr "Pack complété !"
+
+#: main/popup.tscn
+msgid "Level passed!"
+msgstr "Niveau complété !"
+
+#: main/popup.tscn
+msgid "Retry (R)"
+msgstr "Réessayer (R)"
+
+#: main/popup.tscn
+msgid "Next level (N)"
+msgstr "Niveau suivant (N)"
+
+#: main/popup.tscn
+msgid "Back to menu (M)"
+msgstr "Retour au menu (M)"
+
+#: menu/levels.gd
+msgid "Level"
+msgstr "Niveau"
+
+#: menu/menu.tscn
+msgid "Options"
+msgstr "Options"
+
+#: menu/menu.tscn
+msgid "Play"
+msgstr "Jouer"
+
+#: menu/menu.tscn
+msgid "Credits"
+msgstr "Crédits"
+
+#: menu/menu.tscn
+msgid "Exit"
+msgstr "Quitter"
+
+#: menu/menu.tscn
+msgid "< Back"
+msgstr "< Retour"
+
+#: menu/menu.tscn
+msgid "Select pack:"
+msgstr "Choisir le pack :"
+
+#: menu/menu.tscn
+msgid "Back >"
+msgstr "Retour >"
+
+#: menu/menu.tscn
+msgid "Fullscreen"
+msgstr "Plein écran"
+
+#: menu/menu.tscn
+msgid "Music"
+msgstr "Musique"
+
+#: menu/menu.tscn
+msgid "Sounds"
+msgstr "Sons"
+
+#: menu/menu.tscn
+msgid "Touchscreen input"
+msgstr "Mode tactile"
+
+#: menu/menu.tscn
+msgid "^ Back"
+msgstr "^ Retour"
+
+#: menu/options.gd
+msgid "None"
+msgstr "Aucun"
+
+#: menu/options.gd
+msgid "Touch areas"
+msgstr "Surfaces tactiles"
+
+#: menu/options.gd
+msgid "Touch buttons"
+msgstr "Boutons tactiles"
+
+#: menu/options.gd
+msgid "Off"
+msgstr "Désactivé"
+
+#: menu/options.gd
+msgid "On"
+msgstr "Activé"
+
+#: splashes.txt
+msgid "Did you know that Minilens can't jump?"
+msgstr "Savais-tu que Minilens ne peut pas sauter ?"
+
+#: splashes.txt
+msgid "Please, could you stop dropping me into the acid?"
+msgstr "Est-ce que tu pourrais arrêter de me lâcher dans l'acide, s'il te plait ?"
+
+#: splashes.txt
+msgid "Please contribute at github.com/KOBUGE-Games/minilens"
+msgstr "Contribuez au développement sur github.com/KOBUGE-Games/minilens"
+
+#: splashes.txt
+msgid "I guess all levels are passable!"
+msgstr "Je crois que tous les niveaux peuvent être résolus !"
+
+#: splashes.txt
+msgid "Aliens forgot about Earth's gravity!"
+msgstr "Les extra-terrestres n'ont pas pensé à la gravité sur Terre !"
+
+#: splashes.txt
+msgid "Have you ever tried making your robot flip upside down?"
+msgstr "As-tu déjà essayé de faire se retourner ton robot de haut en bas ?"
+
+#: splashes.txt
+msgid "I can't help you with any level outside of the tutorial pack."
+msgstr "Je ne peux t'aider que pour les niveaux du pack de tutoriels."
+
+#: splashes.txt
+msgid "Stuck? Try the First Contact pack!"
+msgstr "Coincé ? Essaie le pack Premier Contact !"
+
+#: splashes.txt
+msgid "Did you collect all the flowers? It will soon be Motherboard's Day!"
+msgstr "As-tu récolté toutes les fleurs ? C'est bientôt la fête des cartes mères !"
+
+#: splashes.txt
+msgid "Did you know that the robot falls because of gravity?"
+msgstr "Savais-tu que le robot tombe à cause de la gravité ?"
+
+#: splashes.txt
+msgid "Did you know that the Minilens series was made by aliens?"
+msgstr "Savais-tu que le modèle de robot Minilens a été créé par des extra-terrestres ?"
+
+#: splashes.txt
+msgid "I guess that the only missing thing in this game is... apples!"
+msgstr "Je crois que la seule chose qui manque de ce jeu, c'est... des pommes !"
+
+#: splashes.txt
+msgid "Maybe... you should just push it the other way?"
+msgstr "Hm... Peut-être que tu devrais juste le pousser dans l'autre sens ?"
+
+#: splashes.txt
+msgid "I like climbing up ladders... It is like... flying!"
+msgstr "J'aime bien monter aux échelles... C'est un peu comme si je volais !"
+
+##: splashes.txt
+#msgid "(beep) Hi there! It's me, Minilens! (beep)"
+#msgid "(bip) Salut ! C'est moi, Minilens ! (bip)"
+
+#: splashes.txt
+msgid "This was a hardcoded splash, please ignore it for the moment."
+msgstr "Ceci est le message par défaut, merci de l'ignorer pour l'instant."
+
+#: splashes.txt
+msgid "What? I can't just jump over there? I hate those developers..."
+msgstr "Quoi ? Je peux pas simplement sauter là-bas ? Je déteste ces développeurs..."
+
+#: splashes.txt
+msgid "The cake is a lie. Or is it? Hard to know since robots don't eat."
+msgstr "Le gâteau est un mensonge. Quoique... c'est difficile à dire puisque les robots ne mangent pas."
+
+#: splashes.txt
+msgid "irc.freenode.net #kobuge"
+msgstr "irc.freenode.net #kobuge"
+
+#: splashes.txt
+msgid "GPLv3+ free (libre) puzzle platformer"
+msgstr "Jeu de plateforme et de logique libre sous licence GPLv3+"
+
+#: splashes.txt
+msgid "Proudly made with Godot Engine!"
+msgstr "Fièrement développé avec Godot Engine !"
+
+#: splashes.txt
+msgid "Brought to you by KOBUGE Games!"
+msgstr "Présenté par KOBUGE Games !"
+
+#: splashes.txt
+msgid "Arguably the first libre game made with Godot Engine!"
+msgstr "Probablement le premier jeu libre fait avec Godot Engine !"
+
+#: splashes.txt
+msgid "Winner of the Best KOBUGE Game Award 2015!"
+msgstr "Vainqueur du Prix du meilleur jeu KOBUGE 2015 !"
+
+#: splashes.txt
+msgid "Free as in free beer/sweets as well as in free speech!"
+msgstr "Ce jeu est libre et gratuit : il vous appartient complètement, code source compris !"
+
+#: splashes.txt
+msgid "\"Great demo!\" -- some guy on the Godot forum"
+msgstr "\"Chouette démo !\" -- un gars du forum de Godot"
+
+#: splashes.txt
+msgid "\"N°1 Godot game of all times!\" -- reduz, lead Godot developer"
+msgstr "\"Meilleur jeu Godot de tous les temps !\" -- reduz, développeur principal de Godot"
+
+#: splashes.txt
+msgid "\"Hey, stop impersonating me, I never said that!\" -- reduz, lead Godot developer"
+msgstr "\"Hé, arrêtez de vous faire passer pour moi, je n'ai jamais dit ça !\" -- reduz, développeur principal de Godot"
+
+#: splashes.txt
+msgid "If only Minilens had a jetpack like this famous alpaca..."
+msgstr "Si seulement Minilens avait un jetpack comme ce fameux alpaca..."
+
+#: splashes.txt
+msgid "I heard that Minilens is searching for the Holy Kumquat Flower of Hackerdom..."
+msgstr "J'ai entendu dire que Minilens est à la recherche de la Fleur de Kumquat Sacrée de la Bidouille..."

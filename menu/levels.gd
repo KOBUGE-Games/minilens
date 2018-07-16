@@ -27,7 +27,7 @@ func _ready():
 				path = str(level_packs_dir_path, "/", line_parts[0]),
 				level_count = int(line_parts[1])
 			})
-			packs_option_button.add_item(readable_name)
+			packs_option_button.add_item(tr(readable_name))
 	
 	var lsb_state = level_select_button_scene.get_state()
 	
@@ -71,9 +71,9 @@ func pack_selected(id):
 		new_button.connect("pressed", self, "start_level", [pack.name, id])
 		
 		if level_names.has(id):
-			new_button.set_text(level_names[id])
+			new_button.set_text(tr(level_names[id]))
 		else:
-			new_button.set_text(str("Level ", id)) # When we don't have a name for that level, we just write "Level N"
+			new_button.set_text(str(tr("Level"), " ", id)) # When we don't have a name for that level, we just write "Level N"
 		
 		new_button.set_number(id)
 		new_button.set_locked(id > locked_level_count)
@@ -81,8 +81,10 @@ func pack_selected(id):
 func snake_case_to_name(var string):
 	var split = string.split("_")
 	var name = ""
-	for i in split:
-		name += i.capitalize() + " "
+	for i in range(split.size()):
+		name += split[i].capitalize()
+		if i < split.size() - 1:
+			name += " "
 	return name
 
 var target = []

@@ -132,7 +132,6 @@ autoplay = "default"
 
 [node name="initial_splash" type="CanvasLayer" parent="."]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -166,7 +165,6 @@ autoplay = ""
 
 [node name="main" type="VBoxContainer" parent="."]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 rect/min_size = Vector2( 0, 1 )
@@ -183,7 +181,6 @@ alignment = 0
 
 [node name="logo" type="TextureFrame" parent="main"]
 
-editor/display_folded = true
 focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 1
@@ -198,7 +195,6 @@ stretch_mode = 0
 
 [node name="splash" type="Node2D" parent="main/logo"]
 
-editor/display_folded = true
 transform/pos = Vector2( 602.573, 151.655 )
 transform/rot = 15.0502
 z/z = 4
@@ -215,7 +211,7 @@ theme/theme = ExtResource( 1 )
 margin/left = -216.0
 margin/top = -45.0
 margin/right = 199.0
-margin/bottom = 13.0
+margin/bottom = 47.0
 custom_colors/font_color = Color( 1, 0.665668, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 1
@@ -257,7 +253,6 @@ params/stretch_mode = 0
 
 [node name="buttons" type="GridContainer" parent="main"]
 
-editor/display_folded = true
 rect/min_size = Vector2( 400, 300 )
 focus/ignore_mouse = false
 focus/stop_mouse = false
@@ -403,7 +398,6 @@ max_lines_visible = -1
 
 [node name="levels" type="ReferenceFrame" parent="."]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false
@@ -453,7 +447,6 @@ alignment = 0
 
 [node name="select_pack" type="HBoxContainer" parent="levels/items"]
 
-editor/display_folded = true
 focus/ignore_mouse = false
 focus/stop_mouse = false
 size_flags/horizontal = 2
@@ -519,8 +512,6 @@ columns = 7
 
 [node name="level_select_button" parent="levels/items/levels" instance=ExtResource( 10 )]
 
-margin/left = 0.0
-margin/top = 0.0
 margin/right = 100.0
 margin/bottom = 100.0
 enabled_focus_mode = 2
@@ -530,7 +521,6 @@ params/stretch_mode = 0
 
 [node name="options" type="ReferenceFrame" parent="."]
 
-editor/display_folded = true
 anchor/right = 1
 anchor/bottom = 1
 focus/ignore_mouse = false

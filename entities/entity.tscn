@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=1]
+[gd_scene load_steps=4 format=1]
 
 [ext_resource path="res://entities/entity.gd" type="Script" id=1]
-[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=3]
+[ext_resource path="res://audio/samples.tres" type="SampleLibrary" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -18,7 +18,9 @@ collision/layers = 3
 collision/mask = 1
 collision/margin = 0.08
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"Script" }
+__meta__ = {
+"__editor_plugin_screen__": "Script"
+}
 fall = true
 fall_though_ladders = true
 destroy_after_acid = true
@@ -40,7 +42,7 @@ params/attenuation/min_distance = 1.0
 params/attenuation/max_distance = 2048.0
 params/attenuation/distance_exp = 1.0
 config/polyphony = 2
-config/samples = ExtResource( 3 )
+config/samples = ExtResource( 2 )
 config/pitch_random = 0.0
 
 [node name="collision_shape" type="CollisionShape2D" parent="."]

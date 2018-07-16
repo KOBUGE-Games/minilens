@@ -22,7 +22,9 @@ extents = Vector2( 64, 64 )
 
 transform/pos = Vector2( 32, 32 )
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -61,7 +63,9 @@ transform/pos = Vector2( 480, 352 )
 z/z = -999
 z/relative = false
 texture = ExtResource( 3 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="camera_start" type="Position2D" parent="."]
 
@@ -85,7 +89,7 @@ margin/right = 735.0
 margin/bottom = 321.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
-text = "What is this\?"
+text = "What is this?"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -128,7 +132,8 @@ margin/left = -256.0
 margin/top = -64.0
 margin/right = 64.0
 margin/bottom = 64.0
-text = "Maybe you \nshould jump\?"
+text = "Maybe you
+should jump?"
 align = 1
 valign = 1
 percent_visible = 1.0

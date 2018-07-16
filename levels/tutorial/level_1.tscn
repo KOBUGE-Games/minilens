@@ -26,7 +26,9 @@ extents = Vector2( 34, 64 )
 
 transform/pos = Vector2( 32, 32 )
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="tilemap" type="TileMap" parent="."]
 
@@ -65,7 +67,9 @@ transform/pos = Vector2( 480, 352 )
 z/z = -999
 z/relative = false
 texture = ExtResource( 3 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="camera_start" type="Position2D" parent="."]
 
@@ -89,14 +93,14 @@ margin/right = 735.0
 margin/bottom = 257.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
-text = "Push the radioactive barrel into acid lake...\nLeave none on the surface..."
+text = "Push the radioactive barrel into acid lake...
+Leave none on the surface..."
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 
 [node name="areas" type="Node2D" parent="."]
 
-editor/display_folded = true
 z/z = 2
 
 [node name="Keys" type="Area2D" parent="areas"]
@@ -128,7 +132,8 @@ margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
 margin/bottom = -71.0
-text = "Move with W, A, S and D\nor the arrow keys."
+text = "Move with W, A, S and D
+or the arrow keys."
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -163,8 +168,9 @@ theme/theme = ExtResource( 5 )
 margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
-margin/bottom = -46.0
-text = "Push that box\nby moving right."
+margin/bottom = -43.0
+text = "Push that barrel
+by moving right."
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -200,7 +206,8 @@ margin/left = -64.0
 margin/top = -64.0
 margin/right = 256.0
 margin/bottom = 36.0
-text = "Let it fall into the acid,\nbut be sure not to jump with it!"
+text = "Let it fall into the acid,
+but be sure not to jump with it!"
 align = 1
 valign = 1
 percent_visible = 1.0

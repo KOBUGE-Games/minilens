@@ -14,122 +14,242 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites/Sprite1:modulate")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprites/Sprite7:modulate")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprites/Sprite2:modulate")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ) ] }
+tracks/2/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ) ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprites/Sprite8:modulate")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ) ] }
+tracks/3/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ) ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprites/Sprite3:modulate")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ) ] }
+tracks/4/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ) ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("Sprites/Sprite9:modulate")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ) ] }
+tracks/5/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ), Color( 0.8, 0.498039, 0.447059, 1 ) ]
+}
 tracks/6/type = "value"
 tracks/6/path = NodePath("Sprites/Sprite4:modulate")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ] }
+tracks/6/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ]
+}
 tracks/7/type = "value"
 tracks/7/path = NodePath("Sprites/Sprite10:modulate")
 tracks/7/interp = 1
 tracks/7/imported = false
-tracks/7/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ] }
+tracks/7/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ), Color( 0.4, 0.247059, 0.247059, 1 ) ]
+}
 tracks/8/type = "value"
 tracks/8/path = NodePath("Sprites/Sprite5:modulate")
 tracks/8/interp = 1
 tracks/8/imported = false
-tracks/8/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ) ] }
+tracks/8/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ) ]
+}
 tracks/9/type = "value"
 tracks/9/path = NodePath("Sprites/Sprite11:modulate")
 tracks/9/interp = 1
 tracks/9/imported = false
-tracks/9/keys = { "times":FloatArray( 0, 0.1, 0.2, 0.3 ), "transitions":FloatArray( 1, 1, 1, 1 ), "update":1, "values":[ Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ) ] }
+tracks/9/keys = {
+"times": FloatArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": FloatArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 0.8, 0.498039, 0.447059, 1 ), Color( 0.698039, 0.4, 0.4, 1 ), Color( 0.6, 0.34902, 0.34902, 1 ), Color( 0.498039, 0.298039, 0.298039, 1 ) ]
+}
 tracks/10/type = "value"
 tracks/10/path = NodePath("Sprites/Sprite5:transform/scale")
 tracks/10/interp = 1
 tracks/10/imported = false
-tracks/10/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ] }
+tracks/10/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
 tracks/11/type = "value"
 tracks/11/path = NodePath("Sprites/Sprite5:transform/pos")
 tracks/11/interp = 1
 tracks/11/imported = false
-tracks/11/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 0, 33 ), Vector2( 5, 33 ) ] }
+tracks/11/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 33 ), Vector2( 5, 33 ) ]
+}
 tracks/12/type = "value"
 tracks/12/path = NodePath("Sprites/Sprite11:transform/scale")
 tracks/12/interp = 1
 tracks/12/imported = false
-tracks/12/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ] }
+tracks/12/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
 tracks/13/type = "value"
 tracks/13/path = NodePath("Sprites/Sprite11:transform/pos")
 tracks/13/interp = 1
 tracks/13/imported = false
-tracks/13/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 0, 33 ), Vector2( -5, 33 ) ] }
+tracks/13/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 33 ), Vector2( -5, 33 ) ]
+}
 tracks/14/type = "value"
 tracks/14/path = NodePath("Sprites/Sprite1:transform/pos")
 tracks/14/interp = 1
 tracks/14/imported = false
-tracks/14/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 5, 33 ), Vector2( 15, 33 ) ] }
+tracks/14/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 33 ), Vector2( 15, 33 ) ]
+}
 tracks/15/type = "value"
 tracks/15/path = NodePath("Sprites/Sprite2:transform/pos")
 tracks/15/interp = 1
 tracks/15/imported = false
-tracks/15/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 15, 33 ), Vector2( 25, 33 ) ] }
+tracks/15/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 33 ), Vector2( 25, 33 ) ]
+}
 tracks/16/type = "value"
 tracks/16/path = NodePath("Sprites/Sprite3:transform/pos")
 tracks/16/interp = 1
 tracks/16/imported = false
-tracks/16/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 25, 33 ), Vector2( 35, 33 ) ] }
+tracks/16/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 25, 33 ), Vector2( 35, 33 ) ]
+}
 tracks/17/type = "value"
 tracks/17/path = NodePath("Sprites/Sprite4:transform/pos")
 tracks/17/interp = 1
 tracks/17/imported = false
-tracks/17/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 35, 33 ), Vector2( 40, 33 ) ] }
+tracks/17/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 35, 33 ), Vector2( 40, 33 ) ]
+}
 tracks/18/type = "value"
 tracks/18/path = NodePath("Sprites/Sprite4:transform/scale")
 tracks/18/interp = 1
 tracks/18/imported = false
-tracks/18/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 0, 1 ) ] }
+tracks/18/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
 tracks/19/type = "value"
 tracks/19/path = NodePath("Sprites/Sprite7:transform/pos")
 tracks/19/interp = 1
 tracks/19/imported = false
-tracks/19/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -5, 33 ), Vector2( -15, 33 ) ] }
+tracks/19/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -5, 33 ), Vector2( -15, 33 ) ]
+}
 tracks/20/type = "value"
 tracks/20/path = NodePath("Sprites/Sprite8:transform/pos")
 tracks/20/interp = 1
 tracks/20/imported = false
-tracks/20/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -15, 33 ), Vector2( -25, 33 ) ] }
+tracks/20/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -15, 33 ), Vector2( -25, 33 ) ]
+}
 tracks/21/type = "value"
 tracks/21/path = NodePath("Sprites/Sprite9:transform/pos")
 tracks/21/interp = 1
 tracks/21/imported = false
-tracks/21/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -25, 33 ), Vector2( -35, 33 ) ] }
+tracks/21/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -25, 33 ), Vector2( -35, 33 ) ]
+}
 tracks/22/type = "value"
 tracks/22/path = NodePath("Sprites/Sprite10:transform/pos")
 tracks/22/interp = 1
 tracks/22/imported = false
-tracks/22/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( -35, 33 ), Vector2( -40, 33 ) ] }
+tracks/22/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -35, 33 ), Vector2( -40, 33 ) ]
+}
 tracks/23/type = "value"
 tracks/23/path = NodePath("Sprites/Sprite10:transform/scale")
 tracks/23/interp = 1
 tracks/23/imported = false
-tracks/23/keys = { "times":FloatArray( 0, 0.4 ), "transitions":FloatArray( 1, 1 ), "update":0, "values":[ Vector2( 1, 1 ), Vector2( 0, 1 ) ] }
+tracks/23/keys = {
+"times": FloatArray( 0, 0.4 ),
+"transitions": FloatArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 1 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 
@@ -141,82 +261,162 @@ tracks/0/type = "value"
 tracks/0/path = NodePath("Sprites/Sprite1:transform/pos")
 tracks/0/interp = 1
 tracks/0/imported = false
-tracks/0/keys = { "times":FloatArray( 0.1, 0.4 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 5, 60 ), Vector2( 5, 33 ) ] }
+tracks/0/keys = {
+"times": FloatArray( 0.1, 0.4 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 60 ), Vector2( 5, 33 ) ]
+}
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprites/Sprite1:visibility/opacity")
 tracks/1/interp = 1
 tracks/1/imported = false
-tracks/1/keys = { "times":FloatArray( 0, 0.1, 0.4 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/1/keys = {
+"times": FloatArray( 0, 0.1, 0.4 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 tracks/2/type = "value"
 tracks/2/path = NodePath("Sprites/Sprite7:transform/pos")
 tracks/2/interp = 1
 tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0.1, 0.4 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( -5, 60 ), Vector2( -5, 33 ) ] }
+tracks/2/keys = {
+"times": FloatArray( 0.1, 0.4 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( -5, 60 ), Vector2( -5, 33 ) ]
+}
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprites/Sprite7:visibility/opacity")
 tracks/3/interp = 1
 tracks/3/imported = false
-tracks/3/keys = { "times":FloatArray( 0, 0.1, 0.4 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/3/keys = {
+"times": FloatArray( 0, 0.1, 0.4 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprites/Sprite2:transform/pos")
 tracks/4/interp = 1
 tracks/4/imported = false
-tracks/4/keys = { "times":FloatArray( 0.2, 0.5 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 15, 60 ), Vector2( 15, 33 ) ] }
+tracks/4/keys = {
+"times": FloatArray( 0.2, 0.5 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 15, 60 ), Vector2( 15, 33 ) ]
+}
 tracks/5/type = "value"
 tracks/5/path = NodePath("Sprites/Sprite2:visibility/opacity")
 tracks/5/interp = 1
 tracks/5/imported = false
-tracks/5/keys = { "times":FloatArray( 0, 0.2, 0.5 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/5/keys = {
+"times": FloatArray( 0, 0.2, 0.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 tracks/6/type = "value"
 tracks/6/path = NodePath("Sprites/Sprite8:transform/pos")
 tracks/6/interp = 1
 tracks/6/imported = false
-tracks/6/keys = { "times":FloatArray( 0.2, 0.5 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( -15, 60 ), Vector2( -15, 33 ) ] }
+tracks/6/keys = {
+"times": FloatArray( 0.2, 0.5 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( -15, 60 ), Vector2( -15, 33 ) ]
+}
 tracks/7/type = "value"
 tracks/7/path = NodePath("Sprites/Sprite8:visibility/opacity")
 tracks/7/interp = 1
 tracks/7/imported = false
-tracks/7/keys = { "times":FloatArray( 0, 0.2, 0.5 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/7/keys = {
+"times": FloatArray( 0, 0.2, 0.5 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 tracks/8/type = "value"
 tracks/8/path = NodePath("Sprites/Sprite3:transform/pos")
 tracks/8/interp = 1
 tracks/8/imported = false
-tracks/8/keys = { "times":FloatArray( 0.3, 0.6 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 25, 60 ), Vector2( 25, 33 ) ] }
+tracks/8/keys = {
+"times": FloatArray( 0.3, 0.6 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 25, 60 ), Vector2( 25, 33 ) ]
+}
 tracks/9/type = "value"
 tracks/9/path = NodePath("Sprites/Sprite3:visibility/opacity")
 tracks/9/interp = 1
 tracks/9/imported = false
-tracks/9/keys = { "times":FloatArray( 0, 0.3, 0.6 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/9/keys = {
+"times": FloatArray( 0, 0.3, 0.6 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 tracks/10/type = "value"
 tracks/10/path = NodePath("Sprites/Sprite9:transform/pos")
 tracks/10/interp = 1
 tracks/10/imported = false
-tracks/10/keys = { "times":FloatArray( 0.3, 0.6 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( -25, 60 ), Vector2( -25, 33 ) ] }
+tracks/10/keys = {
+"times": FloatArray( 0.3, 0.6 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( -25, 60 ), Vector2( -25, 33 ) ]
+}
 tracks/11/type = "value"
 tracks/11/path = NodePath("Sprites/Sprite9:visibility/opacity")
 tracks/11/interp = 1
 tracks/11/imported = false
-tracks/11/keys = { "times":FloatArray( 0, 0.3, 0.6 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/11/keys = {
+"times": FloatArray( 0, 0.3, 0.6 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 tracks/12/type = "value"
 tracks/12/path = NodePath("Sprites/Sprite4:transform/pos")
 tracks/12/interp = 1
 tracks/12/imported = false
-tracks/12/keys = { "times":FloatArray( 0.4, 0.7 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( 35, 60 ), Vector2( 35, 33 ) ] }
+tracks/12/keys = {
+"times": FloatArray( 0.4, 0.7 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 35, 60 ), Vector2( 35, 33 ) ]
+}
 tracks/13/type = "value"
 tracks/13/path = NodePath("Sprites/Sprite4:visibility/opacity")
 tracks/13/interp = 1
 tracks/13/imported = false
-tracks/13/keys = { "times":FloatArray( 0, 0.4, 0.7 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/13/keys = {
+"times": FloatArray( 0, 0.4, 0.7 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 tracks/14/type = "value"
 tracks/14/path = NodePath("Sprites/Sprite10:transform/pos")
 tracks/14/interp = 1
 tracks/14/imported = false
-tracks/14/keys = { "times":FloatArray( 0.4, 0.7 ), "transitions":FloatArray( 0.25, 1 ), "update":0, "values":[ Vector2( -35, 60 ), Vector2( -35, 33 ) ] }
+tracks/14/keys = {
+"times": FloatArray( 0.4, 0.7 ),
+"transitions": FloatArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( -35, 60 ), Vector2( -35, 33 ) ]
+}
 tracks/15/type = "value"
 tracks/15/path = NodePath("Sprites/Sprite10:visibility/opacity")
 tracks/15/interp = 1
 tracks/15/imported = false
-tracks/15/keys = { "times":FloatArray( 0, 0.4, 0.7 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ 0.0, 0.0, 1.0 ] }
+tracks/15/keys = {
+"times": FloatArray( 0, 0.4, 0.7 ),
+"transitions": FloatArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 1.0 ]
+}
 
 [node name="platform" instance=ExtResource( 1 )]
 
@@ -234,42 +434,34 @@ z/z = -1
 
 [node name="ray_top" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="ray_right" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="ray_bottom" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="ray_left" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="ray_check_top" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="ray_check_right" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="ray_check_bottom" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="ray_check_left" parent="."]
 
-exclude_parent = true
 layer_mask = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

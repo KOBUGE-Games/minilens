@@ -24,7 +24,9 @@ extents = Vector2( 32, 32 )
 
 transform/pos = Vector2( 32, 32 )
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="background" type="TileMap" parent="."]
 
@@ -84,7 +86,9 @@ transform/pos = Vector2( 480, 352 )
 z/z = -999
 z/relative = false
 texture = ExtResource( 3 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="camera_start" type="Position2D" parent="."]
 
@@ -167,7 +171,9 @@ margin/left = -160.0
 margin/top = -160.0
 margin/right = 224.0
 margin/bottom = -85.0
-text = "See those metal boxes\?\nThey block your way, but you\ncan destroy them with a bomb."
+text = "See those metal boxes?
+They block your way, but you
+can destroy them with a bomb."
 align = 1
 valign = 1
 percent_visible = 1.0

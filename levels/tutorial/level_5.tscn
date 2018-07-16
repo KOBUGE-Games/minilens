@@ -23,7 +23,9 @@ extents = Vector2( 32, 32 )
 
 transform/pos = Vector2( 32, 32 )
 script/script = ExtResource( 1 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="background" type="TileMap" parent="."]
 
@@ -83,7 +85,9 @@ transform/pos = Vector2( 480, 352 )
 z/z = -999
 z/relative = false
 texture = ExtResource( 3 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="camera_start" type="Position2D" parent="."]
 
@@ -111,7 +115,7 @@ margin/right = 707.0
 margin/bottom = 193.0
 custom_fonts/font = ExtResource( 5 )
 custom_colors/font_color = Color( 0.207843, 0.333333, 0.215686, 1 )
-text = "Space = Kaboom !!!"
+text = "Space = Kaboom!!!"
 align = 1
 percent_visible = 1.0
 lines_skipped = 0
@@ -167,8 +171,11 @@ theme/theme = ExtResource( 8 )
 margin/left = -32.0
 margin/top = -96.0
 margin/right = 243.0
-margin/bottom = 4.0
-text = "Some boxes, like the one\non the left, can\'t be pushed\ndown into the acid,\nbecause of the terrain..."
+margin/bottom = 13.0
+text = "Some barrels, like the one
+on the left, can't be pushed
+down into the acid,
+because of the terrain..."
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -203,8 +210,10 @@ theme/theme = ExtResource( 8 )
 margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
-margin/bottom = -71.0
-text = "That\'s why you have BOMBS!\nThey have to be picked up,\nbefore you can use them..."
+margin/bottom = -15.0
+text = "That's why you have BOMBS!
+They have to be picked up,
+before you can use them..."
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -256,9 +265,10 @@ size_flags/vertical = 0
 theme/theme = ExtResource( 8 )
 margin/left = -160.0
 margin/top = 96.0
-margin/right = 160.0
+margin/right = 199.0
 margin/bottom = 160.0
-text = "This is a ladder. While on it, you can\nmove up and down."
+text = "This is a ladder. While on it, you can
+move up and down."
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -293,8 +303,9 @@ theme/theme = ExtResource( 8 )
 margin/left = -160.0
 margin/top = -96.0
 margin/right = 160.0
-margin/bottom = -71.0
-text = "Now... if you press space,\nyou will place a bomb."
+margin/bottom = -43.0
+text = "Now... if you press Space,
+you will place a bomb."
 align = 1
 valign = 1
 percent_visible = 1.0
@@ -348,7 +359,9 @@ margin/left = -160.0
 margin/top = -160.0
 margin/right = 224.0
 margin/bottom = -60.0
-text = "After you\'ve placed the bomb,\nrun away so that your robot\nwill not be harmed."
+text = "After you've placed the bomb,
+run away so that your robot
+will not be harmed."
 align = 1
 valign = 1
 percent_visible = 1.0

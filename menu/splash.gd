@@ -18,4 +18,4 @@ func _ready():
 
 func set_random_splash():
 	var random = randi() % splashes.size()
-	get_node("label").set_text(splashes[random])
+	get_node("label").set_text(tr(splashes[random]))

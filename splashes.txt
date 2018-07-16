@@ -1,4 +1,4 @@
-Did you know that minilens can't jump?
+Did you know that Minilens can't jump?
 Please, could you stop dropping me into the acid?
 Please contribute at github.com/KOBUGE-Games/minilens
 I guess all levels are passable!
@@ -18,13 +18,13 @@ What? I can't just jump over there? I hate those developers...
 The cake is a lie. Or is it? Hard to know since robots don't eat.
 irc.freenode.net #kobuge
 GPLv3+ free (libre) puzzle platformer
-Proudly made with Godot engine!
+Proudly made with Godot Engine!
 Brought to you by KOBUGE Games!
-Arguably the first libre game made with Godot engine!
+Arguably the first libre game made with Godot Engine!
 Winner of the Best KOBUGE Game Award 2015!
 Free as in free beer/sweets as well as in free speech!
 "Great demo!" -- some guy on the Godot forum
-"N°1 Godot game of all times!" -- reduz, main Godot developer
-"Hey, stop impersonating me, I never said that!" -- reduz, main Godot developer
+"N°1 Godot game of all times!" -- reduz, lead Godot developer
+"Hey, stop impersonating me, I never said that!" -- reduz, lead Godot developer
 If only Minilens had a jetpack like this famous alpaca...
 I heard that Minilens is searching for the Holy Kumquat Flower of Hackerdom...

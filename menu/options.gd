@@ -5,7 +5,7 @@ var option_config = {
 	fullscreen = TYPE_BOOL,
 	music = TYPE_BOOL,
 	sound = TYPE_BOOL,
-	input_mode = {"None": SettingsManager.INPUT_NONE, "Touch areas": SettingsManager.INPUT_AREAS, "Touch buttons": SettingsManager.INPUT_BUTTONS}
+	input_mode = {tr("None"): SettingsManager.INPUT_NONE, tr("Touch areas"): SettingsManager.INPUT_AREAS, tr("Touch buttons"): SettingsManager.INPUT_BUTTONS}
 }
 
 onready var settings = get_node("settings")
@@ -23,7 +23,7 @@ func _ready():
 		
 		if typeof(option_config[option_name]) == TYPE_INT:
 			if option_config[option_name] == TYPE_BOOL:
-				current_option_config = {"Off": false, "On": true}
+				current_option_config = {tr("Off"): false, tr("On"): true}
 		else:
 			current_option_config = option_config[option_name]
 		

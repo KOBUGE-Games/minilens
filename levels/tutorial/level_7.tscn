@@ -9,7 +9,9 @@
 [node name="level" type="Node2D"]
 
 transform/pos = Vector2( 32, 32 )
-__meta__ = { "__editor_plugin_screen__":"2D" }
+__meta__ = {
+"__editor_plugin_screen__": "2D"
+}
 
 [node name="background" type="TileMap" parent="."]
 
@@ -80,7 +82,9 @@ transform/pos = Vector2( 480, 352 )
 z/z = -999
 z/relative = false
 texture = ExtResource( 4 )
-__meta__ = { "_edit_lock_":true }
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="camera_start" type="Position2D" parent="."]
 

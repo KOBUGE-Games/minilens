@@ -1,0 +1,234 @@
+# Minilens - French translation
+# (c) 2015-2018 KOBUGE Games, GPL-3.0+
+#
+# Rémi Verschelde <rverschelde@gmail.com>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Minilens - Tutorial\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-06-28 18:31+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Rémi Verschelde <rverschelde@gmail.com>\n"
+"Language-Team: French\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: levels/tutorial
+msgid "Tutorial"
+msgstr "Tutoriel"
+
+#: levels/tutorial/names.txt
+msgid "Hello Earth!"
+msgstr "Bonjour la Terre !"
+
+#: levels/tutorial/names.txt
+msgid "Flowers"
+msgstr "Fleurs"
+
+#: levels/tutorial/names.txt
+msgid "Tricks"
+msgstr "Pièges"
+
+#: levels/tutorial/names.txt
+msgid "Just push a barrel over it!"
+msgstr "Pousse juste un barril dessus !"
+
+#: levels/tutorial/names.txt
+msgid "Time for Bombs"
+msgstr "L'heure des bombes"
+
+#: levels/tutorial/names.txt
+msgid "Stair Quirks"
+msgstr "Escaliers scabreux"
+
+#: levels/tutorial/names.txt
+msgid "Even More Tricks"
+msgstr "Encore plus de pièges"
+
+#: levels/tutorial/names.txt
+msgid "Static Boxes"
+msgstr "Boîtes statiques"
+
+#: levels/tutorial/names.txt
+msgid "Blue Orbs"
+msgstr "Orbes bleus"
+
+#: levels/tutorial/names.txt
+msgid "The Fall"
+msgstr "La chute"
+
+#: levels/tutorial/level_1.tscn
+msgid ""
+"Push the radioactive barrel into acid lake...\n"
+"Leave none on the surface..."
+msgstr ""
+"Pousse les barrils radioactifs dans le lac d'acide...\n"
+"N'en laisse aucun à la surface..."
+
+#: levels/tutorial/level_1.tscn
+msgid ""
+"Move with W, A, S and D\n"
+"or the arrow keys."
+msgstr ""
+"Déplace-toi avec W, A, S et D\n"
+"ou les touches directionnelles."
+
+#: levels/tutorial/level_1.tscn
+msgid ""
+"Push that barrel\n"
+"by moving right."
+msgstr ""
+"Pousse ce barril\n"
+"en allant à droite."
+
+#: levels/tutorial/level_1.tscn
+msgid ""
+"Let it fall into the acid,\n"
+"but be sure not to jump with it!"
+msgstr ""
+"Laisse-la tomber dans l'acide,\n"
+"mais veille à ne pas sauter avec !"
+
+#: levels/tutorial/level_2.tscn
+msgid ""
+"Collect all the flowers...\n"
+"They're the only life form left on this planet..."
+msgstr ""
+"Ramasse toutes les fleurs...\n"
+"Elles sont la dernière forme de vie restant sur cette planète..."
+
+#: levels/tutorial/level_2.tscn
+msgid "Seems like we will have to push it..."
+msgstr "On dirait qu'il va falloir le pousser..."
+
+#: levels/tutorial/level_2.tscn
+msgid "Now fall on top of it."
+msgstr "Maintenant tombe dessus."
+
+#: levels/tutorial/level_2.tscn
+msgid ""
+"Then collect that flower\n"
+"and push the barrel to the left."
+msgstr ""
+"Ensuite ramasse cette fleur\n"
+"et pousse le barril vers la gauche."
+
+#: levels/tutorial/level_3.tscn
+msgid "It's all about jumping... oh, wait..."
+msgstr "Il suffit de sauter... oh, attends..."
+
+#: levels/tutorial/level_3.tscn
+msgid ""
+"Did you know that Minilens can't jump?\n"
+"If you press R or click the Retry button,\n"
+"and just push that barrel before you get here..."
+msgstr ""
+"Sais-tu que Minilens ne peut pas sauter ?\n"
+"Si tu appuies sur R ou cliques sur le bouton Réessayer,\n"
+"et pousse juste ce barril avant d'arriver ici..."
+
+#: levels/tutorial/level_5.tscn
+msgid "Space = Kaboom!!!"
+msgstr "Espace = Boum !!!"
+
+#: levels/tutorial/level_5.tscn
+msgid ""
+"Some barrels, like the one\n"
+"on the left, can't be pushed\n"
+"down into the acid,\n"
+"because of the terrain..."
+msgstr ""
+"Certains barrils, comme celui\n"
+"qui est à gauche, ne peuvent pas être\n"
+"poussés dans l'acide,\n"
+"à cause du terrain..."
+
+#: levels/tutorial/level_5.tscn
+msgid ""
+"That's why you have BOMBS!\n"
+"They have to be picked up,\n"
+"before you can use them..."
+msgstr ""
+"C'est pour ça qu'on a des BOMBES !\n"
+"Il faut les ramasser,\n"
+"avant de pouvoir les utiliser..."
+
+#: levels/tutorial/level_5.tscn
+msgid ""
+"Now... if you press Space,\n"
+"you will place a bomb."
+msgstr ""
+"Maintenant, si tu appuies sur Espace,\n"
+"tu vas poser une bombe."
+
+#: levels/tutorial/level_5.tscn
+msgid "Place me here!"
+msgstr "Pose-moi ici !"
+
+#: levels/tutorial/level_5.tscn
+msgid ""
+"After you've placed the bomb,\n"
+"run away so that your robot\n"
+"will not be harmed."
+msgstr ""
+"Après avoir placé la bombe,\n"
+"éloigne-toi vite pour que ton robot\n"
+"ne soit pas blessé."
+
+#: levels/tutorial/level_5.tscn
+msgid ""
+"This is a ladder. While on it, you can\n"
+"move up and down."
+msgstr ""
+"C'est une échelle. Elle te permet\n"
+"d'aller de haut en bas."
+
+#: levels/tutorial/level_6.tscn
+msgid "How can that ladder be used?"
+msgstr "Comment utiliser cette échelle ?"
+
+#: levels/tutorial/level_7.tscn
+msgid "Be careful! Tricky..."
+msgstr "Prudence ! Il y a un piège..."
+
+#: levels/tutorial/level_8.tscn
+msgid "More types of objects!"
+msgstr "De nouveaux objets !"
+
+#: levels/tutorial/level_8.tscn
+msgid ""
+"See those metal boxes?\n"
+"They block your way, but you\n"
+"can destroy them with a bomb."
+msgstr ""
+"Tu vois ces boîtes en métal ?\n"
+"Elles bloquent ton chemin, mais tu\n"
+"peux les détruire avec une bombe."
+
+#: levels/tutorial/level_8.tscn
+msgid "Destroy me!"
+msgstr "Explose-moi !"
+
+#: levels/tutorial/level_9.tscn
+msgid ""
+"Maybe you\n"
+"should jump?"
+msgstr ""
+"Tu devrais\n"
+"peut-être sauter ?"
+
+#: levels/tutorial/level_9.tscn
+msgid "What is this?"
+msgstr "Qu'est-ce que c'est ?"
+
+#: levels/tutorial/level_9.tscn
+msgid "That looks like a teleporter!"
+msgstr "Ça ressemble à un téléporteur !"
+
+#: levels/tutorial/level_10.tscn
+msgid "If I could just get to that bomb..."
+msgstr "Si seulement je pouvais atteindre cette bombe..."
